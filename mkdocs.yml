@@ -1,0 +1,29 @@
+site_name: Amelia's BrainDump.io
+theme:
+  name: material
+  font:
+    text: Arial
+    code: Red Hat Mono
+  logo: assets/notion.png
+  favicon: assets/notion.png
+  features:
+    - navigation.footer
+  palette:
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Dark mode
+      primary: green
+      accent: deep purple
+
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+      primary: blue
+      accent: deep orange
+  
+copyright: |
+  &copy; 2025 @ <a href="https://github.com/amelial9"  target="_blank" rel="noopener">Amelia Li</a>
