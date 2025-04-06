@@ -18,7 +18,7 @@ hide:
 
     About SQL and databases
 
-    [Details](/SQL/Index)
+    [Details](/milynotes/SQL/Index)
 
 -   A Placeholder category
 
