@@ -1,4 +1,5 @@
 site_name: Amelia's BrainDump.io
+site_url: https://ameliali.com/milynotes/
 theme:
   name: material
   logo: assets/notion.png
