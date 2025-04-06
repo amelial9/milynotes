@@ -1,17 +1,31 @@
-# Welcome to MkDocs
+---
+hide:
+  - navigation
+  - toc
+---
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+# Amelia's brain dump.
 
-## Commands
+<small><i>Last modified: 2025-04-06</i></small>
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Categories
 
-## Project layout
+<div class="grid cards" markdown>
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+-   SQL Notes for TA
+
+    ---
+
+    About SQL and databases
+
+    [Details](/SQL/Index)
+
+-   A Placeholder category
+
+    ---
+
+    Content
+
+    [Not a Link]()
+
+</div>

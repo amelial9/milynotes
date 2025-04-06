@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
 # Notes on JOIN
 
 | pname       | price  | category    | manufacturer |
