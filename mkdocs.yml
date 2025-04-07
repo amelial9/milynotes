@@ -28,6 +28,8 @@ nav:
     - Index: SQL/Index.md
     - Basics: SQL/Basics.md
     - JOINs: SQL/JOINS.md
+  - INFO441:
+    - Index: INFO441/Index.md
 
 extra:
   generator: false

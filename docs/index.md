@@ -20,12 +20,12 @@ hide:
 
     [Details](/milynotes/SQL/Index)
 
--   A Placeholder category
+-   Client-end Development
 
     ---
 
-    Content
+    Amelia's notes about server from INFO 441
 
-    [Not a Link]()
+    [Details](/milynotes/INFO441/Index)
 
 </div>
