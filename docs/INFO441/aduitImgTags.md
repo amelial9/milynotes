@@ -13,14 +13,16 @@ hide:
     <br>
 </div>
 
-# Pluralize words
+# Audit Image Tags from URL
 
 app.js
 ```
 import { promises as fs} from 'fs'
-import pluralize from 'pluralize'
 import express from 'express'
 const app = express()
+
+import fetch from 'node-fetch'
+import parser from 'node-html-parser'
 
 app.get("/", async (req, res) => {
     console.log("got a request for /")
@@ -49,16 +51,48 @@ app.get("/favicon.ico", async (req, res) => {
     res.send(fileContents)
 })
 
-app.get("/api/pluralize", (req, res) => {
-    const inputWord = req.query.word
-    const pluralWord = pluralize(inputWord)    
-    res.type("txt")
-    res.send(pluralWord)
+app.get("/api/auditurl", async (req, res) => {
+    const inputUrl = req.query.url
+    
+    const response = await fetch(inputUrl)
+    const pageText = await response.text()
+
+    console.log(pageText)
+
+    const htmlPage = parser.parse(pageText)
+    const imgTags = htmlPage.querySelectorAll("img")
+
+    var htmlReturn = ""
+    
+    for (let i = 0; i < imgTags.length; i++)
+    {
+        const imgTag = imgTags[i]
+
+        htmlReturn += "<h3>Image " + i + " info: </h3>" 
+        htmlReturn += "alt text: " + imgTag.attributes.alt + "<br>"
+        htmlReturn += "img src: " + imgTag.attributes.src + "<br>"
+        htmlReturn += "<img src='" + inputUrl + imgTag.attributes.src + "' />"
+    }
+
+    res.type("html")
+    res.send(htmlReturn)
+
 })
 
 app.listen(3000, () => {
     console.log("Example app listening at http://localhost:3000")
 })
+```
+
+index.js
+```
+async function auditUrl() {
+    let inputUrl = document.getElementById("urlInput").value
+    let response = await fetch("api/auditurl?url=" + inputUrl)
+    let resultText = await response.text()
+
+    document.getElementById("results").innerHTML = resultText;
+}
 ```
 
 index.html
@@ -69,25 +103,14 @@ index.html
         <script src="index.js"></script>
     </head>
     <body>
-        <h1>Pluralize Demo</h1>
-        <input type="text" id="wordinput" />
-        <button onclick="pluralizeWord()">Pluralize!</button>
+        <h1>Audit Image Tags</h1>
+        <input type="text" id="urlInput" />
+        <button onclick="auditUrl()">Audit Img Tags for URL</button>
         <br>
         <br>
         <div id="results"></div>
     </body>
 </html>
-```
-
-index.js
-```
-async function pluralizeWord() {
-    let inputWord = document.getElementById("wordinput").value
-    let response = await fetch("api/pluralize?word=" + inputWord)
-    let resultText = await response.text()
-
-    document.getElementById("results").innerHTML = resultText
-}
 ```
 
 style.css
@@ -104,5 +127,10 @@ button {
     background-color: lightcoral;
     color: white;
     border-color: skyblue;
+}
+
+img {
+    max-height: 300px;
+    max-width: auto;
 }
 ```

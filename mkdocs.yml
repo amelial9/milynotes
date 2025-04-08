@@ -22,14 +22,20 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 
+plugins:
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: false
+      enable_creation_date: false
+      inject_footer: false
+
 nav:
   - Home: index.md
   - SQL:
     - Index: SQL/Index.md
-    - Basics: SQL/Basics.md
-    - JOINs: SQL/JOINS.md
   - INFO441:
     - Index: INFO441/Index.md
+
 
 extra:
   generator: false

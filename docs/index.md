@@ -6,7 +6,7 @@ hide:
 
 # Amelia's brain dump.
 
-<small><i>Last modified: 2025-04-06</i></small>
+<small><i>Last modified: {{ git_revision_date_localized }}</i></small>
 
 ## Categories
 
@@ -17,8 +17,8 @@ hide:
     ---
 
     About SQL and databases
-
-    [Details](/milynotes/SQL/Index)
+    
+    <a href="/milynotes/SQL/Index" class="details-link">Details</a>
 
 -   Client-end Development
 
@@ -26,6 +26,6 @@ hide:
 
     Amelia's notes about server from INFO 441
 
-    [Details](/milynotes/INFO441/Index)
+    <a href="/milynotes/INFO441/Index" class="details-link">Details</a>
 
 </div>
