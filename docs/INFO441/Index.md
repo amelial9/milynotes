@@ -16,4 +16,4 @@ hide:
 - [Simple server template](simpleTemplate.md)
 - [Check Time](checkTime.md)
 - [Pluralize](pluralize.md)
-- [Audit Img Tags](aduitImgTags.md)
+- [Audit Image Tags](aduitImgTags.md)
