@@ -53,7 +53,7 @@
 }
 
 .md-source-file {
-    display: none;
+    display: none !important;
 }
 
 .md-footer-meta {
