@@ -18,12 +18,12 @@ hide:
 - [Pluralize](pluralize.md)
 - [Audit Image Tags](aduitImgTags.md) -->
 
-<div class="pretty-index">
-  <a href="../../INFO441/simpleTemplate" class="pretty-link">Simple server template</a>
+<div class="category-index">
+  <a href="../../INFO441/simpleTemplate" class="index-link">Simple server template</a>
   <hr>
-  <a href="../../INFO441/checkTime/" class="pretty-link">Check Time</a>
+  <a href="../../INFO441/checkTime/" class="index-link">Check Time</a>
   <hr>
-  <a href="../../INFO441/pluralize/" class="pretty-link">Pluralize</a>
+  <a href="../../INFO441/pluralize/" class="index-link">Pluralize</a>
   <hr>
-  <a href="../../INFO441/aduitImgTags/" class="pretty-link">Audit Image Tags</a>
+  <a href="../../INFO441/aduitImgTags/" class="index-link">Audit Image Tags</a>
 </div>
