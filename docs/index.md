@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 
-# Amelia's brain dump.
+# Amelia's notes & brain dump.
 
 <small><i>Last modified: {{ git_revision_date_localized }}</i></small>
 
@@ -20,11 +20,11 @@ hide:
     
     <a href="/milynotes/SQL/Index" class="details-link">Details</a>
 
--   Client-end Development
+-   Client-side Development
 
     ---
 
-    Amelia's notes about server from INFO 441
+    Notes about server from INFO 441
 
     <a href="/milynotes/INFO441/Index" class="details-link">Details</a>
 
