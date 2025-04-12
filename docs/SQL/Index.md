@@ -13,5 +13,8 @@ hide:
 #
 ## Category: Amelia's SQL TA notes
 
-- [Intro](Basics.md)
-- [JOINs](JOINS.md)
+<div class="category-index">
+  <a href="../../SQL/Basics" class="index-link">Intro</a>
+  <hr>
+  <a href="../../SQL/JOINs/" class="index-link">JOINs</a>
+</div>

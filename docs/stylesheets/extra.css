@@ -64,3 +64,16 @@
 .md-copyright__highlight {
     color: black;
 }
+
+.category-index {
+    margin: 50px 30px 0px 30px;
+}
+
+.category-index hr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.index-link {
+    font-size: 18px;
+    text-decoration: none;
+}

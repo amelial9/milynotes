@@ -13,7 +13,7 @@ hide:
     <br>
 </div>
 
-# Template for a simple server
+# Template for a simple web server
 
 ```
 import { promises as fs} from 'fs'

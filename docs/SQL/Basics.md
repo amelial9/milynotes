@@ -15,7 +15,7 @@ hide:
 
 # Basics
 
-`INT` / `INTEGER`
+`INT` / `INTEGER` *-2,147,483,648 to 2,147,483,647*  
 
 `SMALLINT`
 

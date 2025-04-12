@@ -15,62 +15,102 @@ hide:
 
 # Notes on JOIN
 
-| pname       | price  | category    | manufacturer |
-| ----------- | ------ | ----------- | ------------ |
-| MultiTouch  | 199.99 | gadget      | Canon        |
-| SingleTouch | 49.99  | photography | Canon        |
-| Gizom       | 50     | gadget      | GizmoWorks   |
-| SuperGizmo  | 250.00 | gadget      | GizmoWorks   |
+There are multiple ways to join tables, with the two below being among the most common:
+
+```
+SELECT DISTINCT cname  
+FROM Product, Company  
+WHERE manufacturer = cname
+```
+
+```
+SELECT DISTINCT cname  
+FROM Product
+JOIN Company
+ON manufacturer = cname
+```
+
+<br>
+
+### A simple JOIN example
+
+`Product` 
+
+| pname     | category | manufacturer |
+|-----------|----------|--------------|
+| Gizmo     | gadget   | GizmoWorks   |
+| Camera    | Photo    | Hitachi      |
+| OneClick  | Photo    | Hitachi      |
+
+`Company`
 
 | cname      | country |
-| ---------- | ------- |
+|------------|---------|
 | GizmoWorks | USA     |
 | Canon      | Japan   |
 | Hitachi    | Japan   |
 
 ```
-drop table Product;
-create table Product (
-	pname nvarchar(50),
-	price FLOAT(24),
-	category nvarchar(50),
-	manufacturer nvarchar(50)
-)
-
-INSERT INTO Product
-VALUES
-	('MultiTouch', 199.99, 'gadget', 'Canon'),
-	('SingleTouch', 49.99, 'photography', 'Canon'),
-	('Gizom', 50.00, 'gadget', 'GizmoWorks'),
-	('SuperGizmo', 250.00, 'gadget', 'GizmoWorks')
-
-drop table Company;
-create table Company (
-	cname nvarchar(50),
-	country nvarchar(50)
-)
-
-INSERT INTO Company
-VALUES
-	('GizmoWorks', 'USA'),
-	('Canon', 'Japan'),
-	('Hitachi', 'Japan')
-```
-
-
-Retrieve all Japanese products that cost < $150  
-```
-SELECT pname, price  
-FROM Product, Company  
-WHERE Product.manufacturer = Company.cname  
-AND Company.country = 'Japan'
-AND Product.price < 150
-```
-
-Retrieve all USA companies that manufacture “gadget” products
-```
 SELECT DISTINCT cname  
-FROM Product, Company  
-WHERE country = 'USA' AND category = 'gadget'  
-AND manufacturer = cname
+FROM Product p, Company c
+WHERE p.manufacturer = c.cname;
+``` 
+
+| cname      |
+|------------|
+| GizmoWorks |
+| Hitachi    |
+
+<br>
+
+### (Inner) JOIN
+
+`FROM Product, Company`  
+*"From <u><i>all possible combinations</i></u> of product of company"*
+
+`WHERE`  
+*"... choose only those results where the manufacturer of the product is the same as the company name"*
+
+`SELECT DISTINCT cname`  
+*"... then display only the unique company names."*
+
+<br>
+
+### Outer JOIN
+
+`Employee`
+
+| id | name |
+|----|------|
+| 1  | Joe  |
+| 2  | Jack |
+| 3  | Jill |
+
+`Sales`
+
+| employeeID | productID |
+|------------|-----------|
+| 1          | 344       |
+| 1          | 355       |
+| 2          | 544       |
+
 ```
+// Retrieve employees and their sales
+
+SELECT *
+FROM Employee E
+LEFT OUTER JOIN Sales S
+ON E.id = S.employeeID;
+```
+
+
+| id | name | employeeID | productID |
+|----|------|------------|-----------|
+| 1  | Joe  | 1          | 344       |
+| 1  | Joe  | 1          | 355       |
+| 2  | Jack | 2          | 544       |
+| 3  | Jill | NULL       | NULL      |
+
+
+`FROM Employee E LEFT OUTER JOIN Sales S`  
+_Start with all rows from the `Employee` table, and include matching rows from `Sales` — if there is no match, still include the employee with NULLs for sales data._
