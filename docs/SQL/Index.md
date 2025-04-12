@@ -15,6 +15,4 @@ hide:
 
 <div class="category-index">
   <a href="../../SQL/Basics" class="index-link">Intro</a>
-  <hr>
-  <a href="../../SQL/joins" class="index-link">JOINs</a>
 </div>
