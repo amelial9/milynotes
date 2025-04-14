@@ -16,8 +16,11 @@ hide:
 # First Normal Form
 
 All relations must be flat: we say that the relation is in *first normal form*  
+
 - Every cell holds a single value  
+
 - Table is two-dimensional – just rows and columns  
+
 - No nested structures (arrays, objects, sub-tables)
 
 ### ❌ Not in 1NF:

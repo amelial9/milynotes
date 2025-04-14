@@ -94,3 +94,10 @@ the DB designer will designate one as the primary key
 |----------|-------|-------|
 | 1234     | Shah  | S     |
 | 4456     | Lee   | J     |
+
+- The `isbn` in the **Sales** table refers to the `isbn` in the **Books** table. This tells us which book was sold.
+- The `customer` in the **Sales** table refers to the `customer` in the **Customers** table. This tells us who bought the book.
+
+A **foreign key** is a field (or group of fields) in one table that refers to the **primary key** in another table.  
+
+- It’s how we create relationships between tables in a database.
