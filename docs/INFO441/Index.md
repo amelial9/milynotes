@@ -26,4 +26,6 @@ hide:
   <a href="../../INFO441/pluralize" class="index-link">Pluralize</a>
   <hr>
   <a href="../../INFO441/aduitImgTags" class="index-link">Audit Image Tags</a>
+  <hr>
+  <a href="../../INFO441/pterosaurs" class="index-link">Pterosaurs demo</a>
 </div>
