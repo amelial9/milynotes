@@ -16,7 +16,7 @@ hide:
 # Template for a simple web server
 
 ```
-import { promises as fs} from 'fs'
+import { promises as fs } from 'fs'
 import express from 'express'
 const app = express()
 
