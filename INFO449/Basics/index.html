@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/SQL/insert-update-del/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/INFO449/Basics/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Insert update del - Amelia's BrainDump.io</title>
+        <title>Basics - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#insert-update-delete" class="md-skip">
+        <a href="#basics" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Insert update del
+              Basics
             
           </span>
         </div>
@@ -236,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Index/" class="md-nav__link">
+      <a href="../../SQL/Index/" class="md-nav__link">
         
   
   
@@ -372,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../INFO449/Index/" class="md-nav__link">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -417,6 +417,158 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variable-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      variable types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opereators" class="md-nav__link">
+    <span class="md-ellipsis">
+      opereators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      variable declaration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      control flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="control flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      if
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      switch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-repeat-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      while &amp; repeat while
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composite-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      composite types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="composite types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      arrays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      dictionaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    <span class="md-ellipsis">
+      enums
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuples" class="md-nav__link">
+    <span class="md-ellipsis">
+      tuples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nested-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      nested functions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -433,7 +585,7 @@
 
 
 
-<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 14, 2025 02:21:08">April 14, 2025</span></i></small></p>
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 14, 2025 17:42:24">April 14, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
@@ -441,25 +593,147 @@
     <br>
 </div>
 
-<h1 id="insert-update-delete">INSERT, UPDATE, DELETE</h1>
-<pre><code>INSERT Product(name, category)  
-VALUES (‘gizmo’, ‘toy),  
-    (‘digicam’, ‘camera’)  
+<h1 id="basics">Basics</h1>
+<h4 id="variable-types">variable types</h4>
+<pre><code>bool
+Int, UInt: size inferred by platform
+Float, Double
+Character, String
 </code></pre>
-<p>You can specify which columns you’re providing.<br />
-You can insert multiple records with one  statement. Often much faster than a separate statement for each record.</p>
 <p><br></p>
-<pre><code>UPDATE Product
-SET category = ‘toy’
-WHERE name = ‘digicam’
+<h4 id="opereators">opereators</h4>
+<pre><code>+ - * / (but not %)
++= -= *= /= (but not %= ++ or --)
 </code></pre>
-<p>You can make multiple changes with one statement<br />
-ALL records that match this condition will be updated.</p>
 <p><br></p>
-<pre><code>DELETE Product  
-WHERE category = ‘toy’
+<h4 id="variable-declaration">variable declaration</h4>
+<p>constants: let
+variables: var</p>
+<p><br></p>
+<h4 id="control-flow">control flow</h4>
+<h6 id="if">if</h6>
+<pre><code>var temperatureInFahrenheit = 30
+if temperatureInFahrenheit &lt;= 32 {
+  print(&quot;It's very cold. Consider wearing a scarf.&quot;)
+}
+else if temperatureInFahrenheit &gt; 80 {
+  print(&quot;Holy crud! It's hot!&quot;)
+}
+else {
+  print(&quot;Quit yer whinin'.&quot;)
+}
 </code></pre>
-<p>ALL records that match this condition will be updated.</p>
+<h6 id="switch">switch</h6>
+<pre><code>let temp = 30
+switch temp {
+  case 0:
+    print(&quot;Brr! Freezing!&quot;)
+  case 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+       11, 12, 13, 14, 15, 16, 17, 18:
+    print(&quot;Still damn cold!&quot;)
+  default:
+    print(&quot;Meh&quot;)
+}
+</code></pre>
+<h6 id="while-repeat-while">while &amp; repeat while</h6>
+<pre><code>var index : Int = 0
+while index &lt; 5 {
+  print(&quot;This is the \(index)th time I've said this&quot;)
+  index += 1
+}
+
+var anotherIndex : Int = 0
+repeat {
+  print(&quot;This is the \(index)th time I've said this&quot;)
+  anotherIndex += 1
+} while anotherIndex &lt; 5
+</code></pre>
+<p><br></p>
+<h4 id="composite-types">composite types</h4>
+<h6 id="arrays">arrays</h6>
+<pre><code>var shoppingList : [String] =
+  [&quot;catfish&quot;, &quot;water&quot;, &quot;tulips&quot;, &quot;blue paint&quot;]
+shoppingList[1] = &quot;bottle of water&quot;
+print(&quot;I bought a \(shoppingList[1])&quot;)
+print(&quot;She bought \(shoppingList)&quot;)
+
+// Use for-in over an array
+let names = [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Mallory&quot;, &quot;Eve&quot;, &quot;Trent&quot;]
+for name in names {
+  print(&quot;Hello, \(name)!&quot;)
+}
+</code></pre>
+<h6 id="dictionaries">dictionaries</h6>
+<pre><code>var occupations = [
+    &quot;Malcolm&quot;: &quot;Captain&quot;,
+    &quot;Kaylee&quot;: &quot;Mechanic&quot;,
+]
+occupations[&quot;Jayne&quot;] = &quot;Public Relations&quot;
+let malJob = occupations[&quot;Malcolm&quot;]
+print(&quot;Mal is the \(malJob)&quot;)
+print(&quot;People work as \(occupations)&quot;)
+
+var explore = [ 4.5 : &quot;StringValue&quot; ]
+print(&quot;Can we key by doubles? \(explore[4.5])&quot;)
+
+// Use for-in over dictionaries
+for (key, value) in occupations {
+  print(&quot;\(key) is the \(value)&quot;)
+}
+</code></pre>
+<h6 id="enums">enums</h6>
+<pre><code>enum CompassPoint {
+    case North
+    case South
+    case East
+    case West
+}
+enum Planet {
+    case Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
+}
+
+var direction = CompassPoint.North
+switch direction {
+    case .North: print(&quot;Brrr cold&quot;)
+    case .South: print(&quot;Watch out for penguins&quot;)
+    case .West : print(&quot;Where rises the Sun&quot;)
+    case .East : print(&quot;Where sets the Sun&quot;)
+}
+</code></pre>
+<h6 id="tuples">tuples</h6>
+<p>unnamed grouping of values</p>
+<pre><code>var city = (&quot;Seattle&quot;, &quot;Washington&quot;, 5000000)
+var person = (&quot;Teresa&quot;, &quot;Nguyen&quot;, 39)
+var ssi = city
+ssi = person
+    // Structurally typed!
+print(ssi)
+print(ssi.0)
+</code></pre>
+<p><br></p>
+<h4 id="functions">functions</h4>
+<pre><code>func sayHello(personName : String) -&gt; String {
+    return &quot;Hello, \(personName)&quot;
+}
+print(sayHello(personName: &quot;Fred&quot;))
+</code></pre>
+<h6 id="nested-functions">nested functions</h6>
+<pre><code>func chooseStepFunction(backwards: Bool) -&gt; (Int) -&gt; Int {
+    func stepForward(input: Int) -&gt; Int { return input + 1 }
+    func stepBackward(input: Int) -&gt; Int { return input - 1 }
+    return backwards ? stepBackward : stepForward
+}
+var currentValue = -2
+let moveNearerToZero = chooseStepFunction(backwards: currentValue &gt; 0)
+while currentValue != 0 {
+    print(&quot;\(currentValue)... &quot;)
+    currentValue = moveNearerToZero(currentValue)
+}
+print(&quot;zero!&quot;)
+// -2...
+// -1...
+// zero!
+</code></pre>
 
 
 
@@ -480,7 +754,7 @@ WHERE category = ‘toy’
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 14, 2025 02:21:08">April 14, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 14, 2025 17:42:24">April 14, 2025</span>
   </span>
 
     
