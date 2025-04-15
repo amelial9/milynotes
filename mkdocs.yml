@@ -36,6 +36,8 @@ nav:
     - Index: SQL/Index.md
   - INFO441:
     - Index: INFO441/Index.md
+  - INFO449:
+    - Index: INFO449/Index.md
 
 extra:
   generator: false

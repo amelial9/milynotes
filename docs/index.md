@@ -28,4 +28,12 @@ hide:
 
     <a href="/milynotes/INFO441/Index" class="details-link">Details</a>
 
+-   iOS Development
+
+    ---
+
+    Notes about iOS from INFO 449
+
+    <a href="/milynotes/INFO449/Index" class="details-link">Details</a>
+
 </div>
