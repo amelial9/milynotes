@@ -17,7 +17,7 @@ hide:
 
 ```
 INSERT Product(name, category)  
-VALUES (‘gizmo’, ‘toy),  
+VALUES (‘gizmo’, ‘toy'),  
 	(‘digicam’, ‘camera’)  
 ```
 
