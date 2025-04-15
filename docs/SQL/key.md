@@ -53,7 +53,7 @@ SELECT * FROM employees;
 ```
 
 
-key might be an entire tuple
+key might be an entire tuple  
 all attributes together *always* form a key
 
 | Make   | Model | Year |
