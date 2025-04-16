@@ -18,7 +18,7 @@ hide:
   <hr>
   <a href="../../SQL/JOINs" class="index-link">JOINs</a>
   <hr>
-  <a href="../../SQL/key" class="index-link">Keys, Mult-Attribute keys, Foreign keys</a>
+  <a href="../../SQL/key" class="index-link">Keys</a>
   <hr>
   <a href="../../SQL/1nf" class="index-link">First Normal Form</a>
   <hr>
