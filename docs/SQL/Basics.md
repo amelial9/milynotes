@@ -29,11 +29,13 @@ hide:
 
 `TIME` *(HH:MM:SS)*
 
-`CHAR(n)` / `CHARACTER(n)` *fixed-length string*
+`CHAR(n)` *fixed-length string*
+
+`NCHAR(n)` *fixed-length Unicode string*
 
 `VARCHAR(n)` *variable-length string*
 
-`NVARCHAR(n)` *national variable character*
+`NVARCHAR(n)` *variable-length Unicode string*
 
 `BOOLEAN` *TRUE/FALSE/NULL*
 
