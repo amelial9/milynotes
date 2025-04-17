@@ -27,4 +27,10 @@ hide:
   <a href="../../SQL/create" class="index-link">CREATE TABLE</a>
   <hr>
   <a href="../../SQL/insert-update-del" class="index-link">INSERT, UPDATE, DELETE</a>
+  <hr>
+  <a href="../../SQL/having" class="index-link">HAVING</a>
+   <hr>
+  <a href="../../SQL/groupby" class="index-link">GROUP BY</a>
+  <hr>
+  <a href="../../SQL/aggregation" class="index-link">Simple Aggregation</a>
 </div>

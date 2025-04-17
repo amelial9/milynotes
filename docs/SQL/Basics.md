@@ -37,7 +37,7 @@ hide:
 
 `NVARCHAR(n)` *variable-length Unicode string*
 
-`BOOLEAN` *TRUE/FALSE/NULL*
+`BIT(BOOLEAN)` *TRUE/FALSE/NULL*
 
 ---
 
