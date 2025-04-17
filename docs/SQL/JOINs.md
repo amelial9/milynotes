@@ -95,7 +95,7 @@ WHERE p.manufacturer = c.cname;
 | 2          | 544       |
 
 ```
-// Retrieve employees and their sales
+-- Retrieve employees and their sales
 
 SELECT *
 FROM Employee E

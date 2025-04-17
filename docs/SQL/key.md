@@ -17,6 +17,36 @@ hide:
 
 key = one (or more) attributes that uniquely identify a record
 
+### Primary Key
+
+The one key the db designer picks to be the main way of identifying rows
+
+| student_id | first_name | last_name | major       |
+| ---------- | ---------- | --------- | ----------- |
+| 1          | Alice      | Smith     | Informatics |
+| 2          | Bob        | Lee       | CS          |
+| 3          | Carol      | Johnson   | Informatics |
+```
+-- two ways for assigning PK
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    major VARCHAR(50)
+);
+
+CREATE TABLE students (
+    student_id INT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    major VARCHAR(50),
+    PRIMARY KEY (student_id)
+);
+```
+
+<br>
+
 ### Multi-attribute keys
 
 | fName | lName    | Income | Department |
@@ -49,9 +79,12 @@ VALUES ('Amelia', 'Smith', 'Informatics');
 
 SELECT * FROM employees;
 
-// dont need to insert primary key
+-- dont need to insert primary key
 ```
 
+<br>
+
+### Super key
 
 key might be an entire tuple  
 all attributes together *always* form a key
@@ -63,10 +96,11 @@ all attributes together *always* form a key
 | Toyota | Camry | 2012 |
 | Honda  | Pilot | 2017 |
 
+
 <br>
 
 ### Multiple keys
-a relation can have more than 1 key
+a relation can have more than 1 key  
 the DB designer will designate one as the primary key
 
 | SSN         | fName | lName    | Income | Department |
