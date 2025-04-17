@@ -28,4 +28,10 @@ hide:
   <a href="../../INFO441/aduitImgTags" class="index-link">Audit Image Tags</a>
   <hr>
   <a href="../../INFO441/pterosaurs" class="index-link">Pterosaurs demo</a>
+  <hr>
+  <a href="../../INFO441/jsonDataFileFlow" class="index-link">JSON Data File Flow</a>
+  <hr>
+  <a href="../../INFO441/middleware" class="index-link">Middleware</a>
+  <hr>
+  <a href="../../INFO441/userdatamongo" class="index-link">User Data Demo (MongoDB)</a>
 </div>

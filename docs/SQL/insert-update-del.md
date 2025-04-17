@@ -38,7 +38,7 @@ ALL records that match this condition will be updated.
 <br>
 
 ```
-DELETE Product  
+DELETE FROM Product  
 WHERE category = ‘toy’
 ```
 

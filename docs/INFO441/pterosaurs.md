@@ -15,8 +15,6 @@ hide:
 
 # Pterosaurs demo
 
-<br>
-
 ```
 DEMO_PTEROSAURS/
 ├── data/
