@@ -74,6 +74,7 @@ FROM Purchase
 ```
 `(float * int) / int = float`
 
+<br>
 
 ### Aggregation and NULL
 
