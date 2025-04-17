@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/INFO441/pterosaurs/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/INFO441/jsonDataFileFlow/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Pterosaurs - Amelia's BrainDump.io</title>
+        <title>jsonDataFileFlow - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pterosaurs-demo" class="md-skip">
+        <a href="#json-data-file-flow" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pterosaurs
+              jsonDataFileFlow
             
           </span>
         </div>
@@ -417,6 +417,71 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#files-on-my-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗂 Files on My Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#my-page-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      🖥 My Page Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖥 My Page Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-side-file-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server-Side File Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#my-site-in-a-users-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 My Site in a User's Browser
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 My Site in a User&#39;s Browser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#browser-server-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Browser-Server Communication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -441,107 +506,41 @@
     <br>
 </div>
 
-<h1 id="pterosaurs-demo">Pterosaurs demo</h1>
-<pre><code>DEMO_PTEROSAURS/
-├── data/
-│   └── pterosaur.json
-├── public/
-│   ├── stylesheets/
-│   ├── index.html
-│   └── index.js
-├── routes/
-│   ├── api.js
-│   └── users.js
-└── app.js
-</code></pre>
-<p><br></p>
-<p>app.js</p>
-<pre><code>import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-
-import usersRouter from './routes/users.js';
-import apiRouter from &quot;./routes/api.js&quot;
-
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-var app = express();
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/users', usersRouter);
-app.use('/api', apiRouter)
-
-export default app;
-</code></pre>
-<p>api.js</p>
-<pre><code>import express from 'express'
-import { promises as fs } from 'fs'
-
-var router = express.Router()
-
-router.get('/getPterosaurs', async (req, res) =&gt; {
-    const data = await fs.readFile(&quot;data/pterosaur.json&quot;)
-    let pterosaurInfo = JSON.parse(data)
-
-    let filteredPterosaurInfo = 
-        pterosaurInfo.filter(item =&gt; {
-            if (item.img != &quot;&quot;) {
-                return true
-            }
-            else {
-                return false
-            }
-        })
-
-    res.json(filteredPterosaurInfo)
-});
-
-export default router;
-</code></pre>
-<p>index.html</p>
-<pre><code>&lt;html&gt;
-
-  &lt;head&gt;
-    &lt;title&gt;Pterosaur&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/style.css&quot;&gt;
-    &lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
-  &lt;/head&gt;
-
-  &lt;body&gt;
-    &lt;h1&gt;Pterosaur&lt;/h1&gt;
-    &lt;p&gt;See Pterosaur Deta!&lt;/p&gt;
-    &lt;button onClick=&quot;getPterosaurs()&quot;&gt;Load Pterosaurs&lt;/button&gt;
-    &lt;div id=&quot;results&quot;&gt;&lt;/div&gt;
-  &lt;/body&gt;
-
-&lt;/html&gt;
-</code></pre>
-<p>index.js</p>
-<pre><code>async function getPterosaurs() {
-    let response = await fetch(&quot;api/getPterosaurs&quot;)
-    let dataJson = await response.json()
-
-    let pterosaurHtml = dataJson.map(item =&gt; {
-        return `
-            &lt;div&gt;
-                &lt;p&gt;${item.Genus}&lt;/p&gt;
-                &lt;img src=${item.img} /&gt;
-            &lt;/div&gt;`
-    }).join(&quot;&quot;)
-
-    document.getElementById(&quot;results&quot;).innerHTML = pterosaurHtml
-}
-</code></pre>
+<h1 id="json-data-file-flow">JSON Data File Flow</h1>
+<h3 id="files-on-my-server">🗂 Files on My Server</h3>
+<ul>
+<li><strong>userData.json</strong>: JSON file used to store user information.</li>
+</ul>
+<h3 id="my-page-server">🖥 My Page Server</h3>
+<ul>
+<li>Acts as the intermediary between the user's browser and the JSON file.</li>
+</ul>
+<h4 id="server-side-file-operations">Server-Side File Operations</h4>
+<ul>
+<li><code>fs.readFile(...)</code>: Reads user data from <code>userData.json</code>.</li>
+<li><code>fs.writeFile(...)</code>: Writes user data to <code>userData.json</code>.</li>
+</ul>
+<h3 id="my-site-in-a-users-browser">🌐 My Site in a User's Browser</h3>
+<ul>
+<li>Interface where users interact with the application.</li>
+</ul>
+<h4 id="browser-server-communication">Browser-Server Communication</h4>
+<ul>
+<li>
+<p><strong>GET Request</strong>:</p>
+<ul>
+<li>Endpoint used to <strong>load users</strong> from the server.</li>
+<li>Triggers a read from <code>userData.json</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>POST Request (with JSON body)</strong>:</p>
+<ul>
+<li>Used to <strong>save user info</strong>.</li>
+<li>Sends data to server, which writes to <code>userData.json</code>.</li>
+</ul>
+</li>
+</ul>
 
 
 

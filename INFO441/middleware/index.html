@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/INFO441/pterosaurs/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/INFO441/middleware/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Pterosaurs - Amelia's BrainDump.io</title>
+        <title>Middleware - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pterosaurs-demo" class="md-skip">
+        <a href="#middleware" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pterosaurs
+              Middleware
             
           </span>
         </div>
@@ -417,6 +417,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#structure-of-a-middleware-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure of a middleware function:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -441,106 +458,20 @@
     <br>
 </div>
 
-<h1 id="pterosaurs-demo">Pterosaurs demo</h1>
-<pre><code>DEMO_PTEROSAURS/
-├── data/
-│   └── pterosaur.json
-├── public/
-│   ├── stylesheets/
-│   ├── index.html
-│   └── index.js
-├── routes/
-│   ├── api.js
-│   └── users.js
-└── app.js
-</code></pre>
+<h1 id="middleware">Middleware</h1>
+<p>Functions that run during each request (or a subset of requests)
+- These functions are chained together, each one calling the next function (in the variable next)
+    - At the end they finally call your api endpoint handler (e.g., app.get("/users", …))
+- They generally either
+    - Modify the request
+    - Modify the response
+    - Log something</p>
 <p><br></p>
-<p>app.js</p>
-<pre><code>import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-
-import usersRouter from './routes/users.js';
-import apiRouter from &quot;./routes/api.js&quot;
-
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-var app = express();
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/users', usersRouter);
-app.use('/api', apiRouter)
-
-export default app;
-</code></pre>
-<p>api.js</p>
-<pre><code>import express from 'express'
-import { promises as fs } from 'fs'
-
-var router = express.Router()
-
-router.get('/getPterosaurs', async (req, res) =&gt; {
-    const data = await fs.readFile(&quot;data/pterosaur.json&quot;)
-    let pterosaurInfo = JSON.parse(data)
-
-    let filteredPterosaurInfo = 
-        pterosaurInfo.filter(item =&gt; {
-            if (item.img != &quot;&quot;) {
-                return true
-            }
-            else {
-                return false
-            }
-        })
-
-    res.json(filteredPterosaurInfo)
+<h4 id="structure-of-a-middleware-function">Structure of a middleware function:</h4>
+<pre><code>app.use(function (req, res, next) {
+    // modify req, res, or log something
+    next(); // call the next function (middleware or handler)
 });
-
-export default router;
-</code></pre>
-<p>index.html</p>
-<pre><code>&lt;html&gt;
-
-  &lt;head&gt;
-    &lt;title&gt;Pterosaur&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/style.css&quot;&gt;
-    &lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
-  &lt;/head&gt;
-
-  &lt;body&gt;
-    &lt;h1&gt;Pterosaur&lt;/h1&gt;
-    &lt;p&gt;See Pterosaur Deta!&lt;/p&gt;
-    &lt;button onClick=&quot;getPterosaurs()&quot;&gt;Load Pterosaurs&lt;/button&gt;
-    &lt;div id=&quot;results&quot;&gt;&lt;/div&gt;
-  &lt;/body&gt;
-
-&lt;/html&gt;
-</code></pre>
-<p>index.js</p>
-<pre><code>async function getPterosaurs() {
-    let response = await fetch(&quot;api/getPterosaurs&quot;)
-    let dataJson = await response.json()
-
-    let pterosaurHtml = dataJson.map(item =&gt; {
-        return `
-            &lt;div&gt;
-                &lt;p&gt;${item.Genus}&lt;/p&gt;
-                &lt;img src=${item.img} /&gt;
-            &lt;/div&gt;`
-    }).join(&quot;&quot;)
-
-    document.getElementById(&quot;results&quot;).innerHTML = pterosaurHtml
-}
 </code></pre>
 
 

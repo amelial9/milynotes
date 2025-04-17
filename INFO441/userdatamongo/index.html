@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/INFO441/pterosaurs/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/INFO441/userdatamongo/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Pterosaurs - Amelia's BrainDump.io</title>
+        <title>Userdatamongo - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pterosaurs-demo" class="md-skip">
+        <a href="#user-data-demo-mongodb" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pterosaurs
+              Userdatamongo
             
           </span>
         </div>
@@ -441,28 +441,29 @@
     <br>
 </div>
 
-<h1 id="pterosaurs-demo">Pterosaurs demo</h1>
-<pre><code>DEMO_PTEROSAURS/
-├── data/
-│   └── pterosaur.json
-├── public/
-│   ├── stylesheets/
-│   ├── index.html
-│   └── index.js
+<h1 id="user-data-demo-mongodb">User Data Demo (MongoDB)</h1>
+<pre><code>USER_DATA/
 ├── routes/
-│   ├── api.js
+│   └── api.js
 │   └── users.js
+├── public/
+│   └── index.html
+│   └── index.js
+│   └── stylesheets/
+│       └── style.css
+├── models.js
 └── app.js
 </code></pre>
-<p><br></p>
 <p>app.js</p>
 <pre><code>import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
+import models from &quot;./models.js&quot;
+
 import usersRouter from './routes/users.js';
-import apiRouter from &quot;./routes/api.js&quot;
+import apiRouter from './routes/api.js'
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -478,32 +479,72 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) =&gt; {
+    req.models = models
+    next()
+})
+
 app.use('/users', usersRouter);
 app.use('/api', apiRouter)
 
+
 export default app;
 </code></pre>
+<p>model.js</p>
+<pre><code>import mongoose from 'mongoose'
+
+const models = {}
+
+console.log(&quot;connecting to mongodb&quot;)
+
+await mongoose.connect(&quot;mongodb+srv://&lt;myusername&gt;:&lt;mypw&gt;@cluster0.i36zdqv.mongodb.net/&lt;tablename&gt;&quot;)
+
+console.log(&quot;successfully connected to mongodb!&quot;)
+
+const userSchema = new mongoose.Schema({
+    first_name: String,
+    last_name: String,
+    favorite_ice_cream: String
+})
+
+models.User = mongoose.model('User', userSchema)
+
+console.log(&quot;finished creating models&quot;)
+
+export default models
+</code></pre>
 <p>api.js</p>
-<pre><code>import express from 'express'
-import { promises as fs } from 'fs'
+<pre><code>import { promises as fs } from 'fs'
+import express from 'express'
+const router = express.Router();
 
-var router = express.Router()
+router.get('/getUsers', async (req, res) =&gt; {
+    let allUsers = await req.models.User.find()
+    res.json(allUsers)
+})
 
-router.get('/getPterosaurs', async (req, res) =&gt; {
-    const data = await fs.readFile(&quot;data/pterosaur.json&quot;)
-    let pterosaurInfo = JSON.parse(data)
+router.post('/users', async (req, res) =&gt; {
+    console.log(req.body)
 
-    let filteredPterosaurInfo = 
-        pterosaurInfo.filter(item =&gt; {
-            if (item.img != &quot;&quot;) {
-                return true
-            }
-            else {
-                return false
-            }
-        })
+    const newUser = new req.models.User({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        favorite_ice_cream: req.body.favorite_ice_cream
+    })
 
-    res.json(filteredPterosaurInfo)
+    await newUser.save()
+
+    res.send(&quot;success&quot;)
+})
+
+export default router;
+</code></pre>
+<p>users.js</p>
+<pre><code>import express from 'express';
+var router = express.Router();
+
+router.get('/', function(req, res, next) {
+  res.send('respond with a resource');
 });
 
 export default router;
@@ -511,35 +552,59 @@ export default router;
 <p>index.html</p>
 <pre><code>&lt;html&gt;
 
-  &lt;head&gt;
-    &lt;title&gt;Pterosaur&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/style.css&quot;&gt;
-    &lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
-  &lt;/head&gt;
+&lt;head&gt;
+  &lt;title&gt;User Info Uploader&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/style.css&quot;&gt;
+  &lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
 
-  &lt;body&gt;
-    &lt;h1&gt;Pterosaur&lt;/h1&gt;
-    &lt;p&gt;See Pterosaur Deta!&lt;/p&gt;
-    &lt;button onClick=&quot;getPterosaurs()&quot;&gt;Load Pterosaurs&lt;/button&gt;
-    &lt;div id=&quot;results&quot;&gt;&lt;/div&gt;
-  &lt;/body&gt;
+&lt;body&gt;
+  &lt;h1&gt;User Info Uploader&lt;/h1&gt;
+  First Name: &lt;input type=&quot;text&quot; id=&quot;first_name_input&quot; /&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  Last Name: &lt;input type=&quot;text&quot; id=&quot;last_name_input&quot; /&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  Favorite Ice Cream: &lt;input type=&quot;text&quot; id=&quot;favorite_ice_cream_input&quot; /&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;button onclick=&quot;createUser()&quot;&gt;Create User&lt;/button&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;button onclick=&quot;getUsers()&quot;&gt;Load Users&lt;/button&gt;
+  &lt;div id=&quot;results&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
 
 &lt;/html&gt;
 </code></pre>
 <p>index.js</p>
-<pre><code>async function getPterosaurs() {
-    let response = await fetch(&quot;api/getPterosaurs&quot;)
+<pre><code>async function getUsers(){
+    let response = await fetch(&quot;api/getUsers&quot;)
     let dataJson = await response.json()
 
-    let pterosaurHtml = dataJson.map(item =&gt; {
-        return `
-            &lt;div&gt;
-                &lt;p&gt;${item.Genus}&lt;/p&gt;
-                &lt;img src=${item.img} /&gt;
-            &lt;/div&gt;`
-    }).join(&quot;&quot;)
+    document.getElementById(&quot;results&quot;).innerHTML = JSON.stringify(dataJson)
+}
 
-    document.getElementById(&quot;results&quot;).innerHTML = pterosaurHtml
+async function createUser(){
+    // data from html
+    let first_name = document.getElementById(&quot;first_name_input&quot;).value
+    let last_name = document.getElementById(&quot;last_name_input&quot;).value
+    let favorite_ice_cream = document.getElementById(&quot;favorite_ice_cream_input&quot;).value
+
+    let myData = {
+        first_name: first_name,
+        last_name: last_name,
+        favorite_ice_cream: favorite_ice_cream
+    }
+    // send the data to server as a &quot;POST&quot; request
+    const response = await fetch('api/users', {
+        method: &quot;POST&quot;,
+        body: JSON.stringify(myData),
+        headers: {
+            'Content-Type' : 'application/json'
+        }
+    })
 }
 </code></pre>
 
