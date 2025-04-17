@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/SQL/Index/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/SQL/groupby/">
       
       
-        <link rel="prev" href="../..">
-      
-      
-        <link rel="next" href="../../INFO441/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Groupby - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#group-by" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Groupby
             
           </span>
         </div>
@@ -199,20 +195,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -228,7 +222,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             SQL
@@ -239,32 +233,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -275,35 +247,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,9 +424,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
+  <a href="#group-by-distinct" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
+      GROUP BY + DISTINCT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-by-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      GROUP BY + WHERE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grouping-and-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grouping and Aggregation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-by-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      GROUP BY + JOIN
     </span>
   </a>
   
@@ -507,35 +477,136 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 17, 2025 15:34:34">April 17, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-sql-ta-notes">Category: Amelia's SQL TA notes</h2>
-<div class="category-index">
-  <a href="../../SQL/Basics" class="index-link">Intro</a>
-  <hr>
-  <a href="../../SQL/JOINs" class="index-link">JOINs</a>
-  <hr>
-  <a href="../../SQL/key" class="index-link">Keys</a>
-  <hr>
-  <a href="../../SQL/1nf" class="index-link">First Normal Form</a>
-  <hr>
-  <a href="../../SQL/physical-dependence" class="index-link">Physical Data Dependence</a>
-  <hr>
-  <a href="../../SQL/create" class="index-link">CREATE TABLE</a>
-  <hr>
-  <a href="../../SQL/insert-update-del" class="index-link">INSERT, UPDATE, DELETE</a>
-  <hr>
-  <a href="../../SQL/having" class="index-link">HAVING</a>
-   <hr>
-  <a href="../../SQL/groupby" class="index-link">GROUP BY</a>
-  <hr>
-  <a href="../../SQL/aggregation" class="index-link">Simple Aggregation</a>
-</div>
+<h1 id="group-by">GROUP BY</h1>
+<p>One answer for each product</p>
+<pre><code>SELECT product, count(*)  
+FROM Purchase  
+GROUP BY product
+</code></pre>
+<p>One answer for each month</p>
+<pre><code>SELECT month, count(*)  
+FROM Purchase  
+GROUP BY month
+</code></pre>
+<p>Using multiple aggregates:</p>
+<pre><code>SELECT product, sum(quantity) AS SumQuantity, max(price) AS MaxPrice  
+FROM Purchase
+GROUP BY product
+</code></pre>
+<p><br></p>
+<p><strong>All attributes must be involved in GROUP BY or an aggregate</strong>  </p>
+<p>✅</p>
+<pre><code>SELECT product, max(quantity)  
+FROM Purchase 
+GROUP BY product
+</code></pre>
+<p>❌</p>
+<pre><code>SELECT product, quantity  
+FROM Purchase  
+GROUP BY product
+</code></pre>
+<p><br></p>
+<h3 id="group-by-distinct">GROUP BY + DISTINCT</h3>
+<pre><code>SELECT month  
+FROM Purchase  
+GROUP BY month
+</code></pre>
+<p>=</p>
+<pre><code>SELECT DISTINCT month  
+FROM Purchase
+</code></pre>
+<p><br></p>
+<h3 id="group-by-where">GROUP BY + WHERE</h3>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Quantity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bagel</td>
+<td>3</td>
+<td>20</td>
+</tr>
+<tr>
+<td></td>
+<td>1.50</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Banana</td>
+<td>0.5</td>
+<td>50</td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td>10</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<pre><code>SELECT product, Sum(quantity) AS TotalSales  
+FROM Purchase  
+WHERE price &gt; 1  
+GROUP BY product
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>TotalSales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bagel</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Banana</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="grouping-and-aggregation">Grouping and Aggregation</h3>
+<ol>
+<li>Compute the FROM and WHERE clauses.  </li>
+<li>Group by the attributes in the GROUPBY  </li>
+<li>Compute the SELECT clause: grouped attributes and aggregates.  </li>
+</ol>
+<blockquote>
+<p><b><i>FWGS</i></b></p>
+</blockquote>
+<pre><code>SELECT product, sum(price * quantity) as rev  
+FROM Purchase  
+GROUP BY product  
+ORDER BY rev DESC
+</code></pre>
+<p><br></p>
+<h3 id="group-by-join">GROUP BY + JOIN</h3>
+<pre><code>SELECT x.manufacturer, y.month, COUNT(*)
+FROM Product x, Purchase y
+WHERE x.product_id = y.product_id
+    and y.price &gt; 100
+GROUP BY x.manufacturer, y.month
+</code></pre>
 
 
 

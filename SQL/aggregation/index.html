@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/SQL/Index/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/SQL/aggregation/">
       
       
-        <link rel="prev" href="../..">
-      
-      
-        <link rel="next" href="../../INFO441/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Aggregation - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#simple-aggregation" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Aggregation
             
           </span>
         </div>
@@ -199,20 +195,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -228,7 +222,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             SQL
@@ -239,32 +233,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -275,35 +247,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,9 +424,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
+  <a href="#aggregation-and-null" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
+      Aggregation and NULL
     </span>
   </a>
   
@@ -507,35 +450,99 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 17, 2025 15:34:34">April 17, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-sql-ta-notes">Category: Amelia's SQL TA notes</h2>
-<div class="category-index">
-  <a href="../../SQL/Basics" class="index-link">Intro</a>
-  <hr>
-  <a href="../../SQL/JOINs" class="index-link">JOINs</a>
-  <hr>
-  <a href="../../SQL/key" class="index-link">Keys</a>
-  <hr>
-  <a href="../../SQL/1nf" class="index-link">First Normal Form</a>
-  <hr>
-  <a href="../../SQL/physical-dependence" class="index-link">Physical Data Dependence</a>
-  <hr>
-  <a href="../../SQL/create" class="index-link">CREATE TABLE</a>
-  <hr>
-  <a href="../../SQL/insert-update-del" class="index-link">INSERT, UPDATE, DELETE</a>
-  <hr>
-  <a href="../../SQL/having" class="index-link">HAVING</a>
-   <hr>
-  <a href="../../SQL/groupby" class="index-link">GROUP BY</a>
-  <hr>
-  <a href="../../SQL/aggregation" class="index-link">Simple Aggregation</a>
-</div>
+<h1 id="simple-aggregation">Simple Aggregation</h1>
+<p>Total quantities for all sales over $1, by product.</p>
+<pre><code>SELECT sum(quantity)  
+FROM Purchase  
+WHERE price &gt; 1
+</code></pre>
+<p>Five basic aggregate operations:</p>
+<pre><code>SELECT count(*) FROM Purchase  
+SELECT sum(quantity) FROM Purchase  
+SELECT avg(price) FROM Purchase  
+SELECT max(quantity) FROM Purchase  
+SELECT min(quantity) FROM Purchase
+</code></pre>
+<p>Multiple simple aggregations in one statement   </p>
+<pre><code>SELECT count(*), sum(quantity), avg(price)  
+FROM Purchase
+</code></pre>
+<p>Compute the average price with sum and count  </p>
+<pre><code>SELECT sum(quantity) / count(*) AS average_quant  
+FROM Purchase
+</code></pre>
+<p>SQL as a calculator</p>
+<pre><code>SELECT 1+2+3+4+5 AS expr
+SELECT 25 / 100
+SELECT 25 / 100.0
+SELECT 25 / CAST(100 AS Float)
+</code></pre>
+<pre><code>SELECT sum(quantity) / count(*)  
+FROM Purchase  
+</code></pre>
+<p><code>int / int = int</code></p>
+<pre><code>SELECT (1.0*sum(quantity)) / count(*)  
+FROM Purchase  
+</code></pre>
+<p><code>(float * int) / int = float</code></p>
+<pre><code>SELECT CAST(sum(quantity) AS float) / count(*)  
+FROM Purchase  
+</code></pre>
+<p><code>(float * int) / int = float</code></p>
+<h3 id="aggregation-and-null">Aggregation and NULL</h3>
+<p>NULL values are not used in aggregates</p>
+<pre><code>CREATE TABLE Purchase (
+    id INT,
+    item_name VARCHAR(50),
+    quantity INT,
+    price DECIMAL(10, 2),
+    purchase_month VARCHAR(20)
+);
+
+INSERT INTO Purchase VALUES (12, 'gadget', NULL, NULL, 'april');
+INSERT INTO Purchase VALUES (12, 'gadget', 5, NULL, 'april');
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>item_name</th>
+<th>quantity</th>
+<th>price</th>
+<th>purchase_month</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>gadget</td>
+<td>NULL</td>
+<td>NULL</td>
+<td>april</td>
+</tr>
+<tr>
+<td>12</td>
+<td>gadget</td>
+<td>5</td>
+<td>NULL</td>
+<td>april</td>
+</tr>
+</tbody>
+</table>
+<pre><code>SELECT count(quantity) FROM Purchase
+
+SELECT count(*)  
+FROM Purchase  
+WHERE quantity IS NOT null;
+</code></pre>
 
 
 
