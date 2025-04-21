@@ -44,7 +44,7 @@ hide:
 ```
 create table class (
 	name nvarchar(50),
-	grade int
+	grade FLOAT(24)
 )
 ```
 
