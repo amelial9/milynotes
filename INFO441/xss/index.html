@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/INFO441/Index/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/INFO441/xss/">
       
       
-        <link rel="prev" href="../../SQL/Index/">
-      
-      
-        <link rel="next" href="../../INFO449/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Xss - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#xss" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Xss
             
           </span>
         </div>
@@ -267,20 +263,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -296,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             INFO441
@@ -307,32 +301,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -343,35 +315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -474,23 +417,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -507,40 +433,92 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 21, 2025 20:27:42">April 21, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-server-side-dev-notes">Category: Amelia's server-side dev notes</h2>
-<!-- - [Simple server template](simpleTemplate.md)
-- [Check Time](checkTime.md)
-- [Pluralize](pluralize.md)
-- [Audit Image Tags](aduitImgTags.md) -->
+<h1 id="xss">XSS</h1>
+<p>Cross Site Scripting Attacks<br />
+- vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users  </p>
+<p><br></p>
+<pre><code>import * as cheerio from 'cheerio';
+import express from 'express';
+const app = express();
 
-<div class="category-index">
-  <a href="../../INFO441/simpleTemplate" class="index-link">Simple server template</a>
-  <hr>
-  <a href="../../INFO441/checkTime" class="index-link">Check Time</a>
-  <hr>
-  <a href="../../INFO441/pluralize" class="index-link">Pluralize</a>
-  <hr>
-  <a href="../../INFO441/aduitImgTags" class="index-link">Audit Image Tags</a>
-  <hr>
-  <a href="../../INFO441/pterosaurs" class="index-link">Pterosaurs demo</a>
-  <hr>
-  <a href="../../INFO441/jsonDataFileFlow" class="index-link">JSON Data File Flow</a>
-  <hr>
-  <a href="../../INFO441/middleware" class="index-link">Middleware</a>
-  <hr>
-  <a href="../../INFO441/userdatamongo" class="index-link">User Data Demo (MongoDB)</a>
-  <hr>
-  <a href="../../INFO441/xss" class="index-link">XSS (Cross Site Scripting Attacks)</a>
-  <hr>
-  <a href="../../INFO441/sqlinjection" class="index-link">SQL Injection</a>
-</div>
+
+const escapeHTML = str =&gt; String(str).replace(/[&amp;&lt;&gt;'&quot;]/g, 
+    tag =&gt; ({
+        '&amp;': '&amp;amp;',
+        '&lt;': '&amp;lt;',
+        '&gt;': '&amp;gt;',
+        &quot;'&quot;: '&amp;#39;',
+        '&quot;': '&amp;quot;'
+      }[tag]));
+
+
+// This string mocks what a user might *try* to input on the client side of your site... 
+// you should not allow this/clean it up
+const userInputWithHTML = &quot;&lt;span id=userInput&gt;Don't allow &lt;em&gt;tags&lt;/em&gt; to be &lt;strong&gt;rendered&lt;/strong&gt;&lt;/span&gt;&quot;
+
+// This function mocks the unsafe way of doing this: it doesn't clean the string
+// or check if anything vulnerable is in here. When you see it rendered, you'll notice 
+// that user inputted &lt;em&gt; and &lt;strong&gt; remain
+function vulnerableAddUserInput(){
+  return `
+  &lt;p&gt;
+  &lt;strong&gt;Here is the user input:&lt;/strong&gt; ${userInputWithHTML}
+  &lt;/p&gt;
+  `
+}
+
+// use an excapeHTML function to clean the user input first
+function fixWithFunction () {
+  return `
+  &lt;p&gt;
+  &lt;strong&gt;Here is the user input: &lt;/strong&gt; ${escapeHTML(userInputWithHTML)}
+  &lt;/p&gt;
+  `
+}
+
+function fixWithInnerText() {
+  let htmlString = `
+  &lt;p&gt;
+  &lt;strong&gt;Here is the user input: &lt;/strong&gt; &lt;span id='userInput1'&gt;&lt;/span&gt;
+  `
+
+  const parsedHTML = cheerio.load(htmlString)
+  parsedHTML(&quot;#userInput1&quot;).text(userInputWithHTML)
+  return parsedHTML.html()
+}
+
+// Below are the sections we'll be working though to learn how to avoid XSS
+app.get('/', (req, res) =&gt; {
+  res.send(`
+  &lt;html&gt;&lt;body&gt;
+  &lt;h1&gt; demo for xss escaping&lt;/h1&gt;
+
+  &lt;h2&gt; vulnerable user input &lt;/h2&gt;
+  ${vulnerableAddUserInput()}
+
+  &lt;h2&gt; fix with function &lt;/h2&gt;
+  ${fixWithFunction()}
+
+  &lt;h2&gt; fix with inner HTML &lt;/h2&gt;
+  ${fixWithInnerText()}
+
+  &lt;/body&gt;
+  &lt;/html&gt;
+  `)
+})
+
+app.listen(3000, ()=&gt;{
+  console.log('Example app listening at http://localhost:3000')
+})
+</code></pre>
 
 
 
