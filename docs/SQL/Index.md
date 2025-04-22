@@ -33,4 +33,6 @@ hide:
   <a href="../../SQL/groupby" class="index-link">GROUP BY</a>
   <hr>
   <a href="../../SQL/aggregation" class="index-link">Simple Aggregation</a>
+  <hr>
+  <a href="../../SQL/witnesses" class="index-link">Witnesses</a>
 </div>
