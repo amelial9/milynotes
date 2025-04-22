@@ -34,4 +34,8 @@ hide:
   <a href="../../INFO441/middleware" class="index-link">Middleware</a>
   <hr>
   <a href="../../INFO441/userdatamongo" class="index-link">User Data Demo (MongoDB)</a>
+  <hr>
+  <a href="../../INFO441/xss" class="index-link">XSS (Cross Site Scripting Attacks)</a>
+  <hr>
+  <a href="../../INFO441/sqlinjection" class="index-link">SQL Injection</a>
 </div>
