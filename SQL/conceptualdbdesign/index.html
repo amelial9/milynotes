@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/SQL/Index/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/SQL/conceptualdbdesign/">
       
       
-        <link rel="prev" href="../..">
-      
-      
-        <link rel="next" href="../../INFO441/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Conceptualdbdesign - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#conceptual-database-design" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Conceptualdbdesign
             
           </span>
         </div>
@@ -199,20 +195,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -228,7 +222,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             SQL
@@ -239,32 +233,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -275,35 +247,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,11 +424,104 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
+  <a href="#database-design-process" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
+      Database Design Process
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Database Design Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conceptual-database-design_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptual Database Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-model-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Model Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Levels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptual-design-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptual Design Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptual Design Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entity Identification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationships-among-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relationships Among Entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-relationship-er-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entity-Relationship (E/R) Diagrams
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relations-and-multiplicity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relations and Multiplicity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attributes-on-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attributes on Relationships
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -507,43 +543,73 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 23, 2025 01:40:09">April 23, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-sql-ta-notes">Category: Amelia's SQL TA notes</h2>
-<div class="category-index">
-  <a href="../../SQL/Basics" class="index-link">Intro</a>
-  <hr>
-  <a href="../../SQL/JOINs" class="index-link">JOINs</a>
-  <hr>
-  <a href="../../SQL/key" class="index-link">Keys</a>
-  <hr>
-  <a href="../../SQL/1nf" class="index-link">First Normal Form</a>
-  <hr>
-  <a href="../../SQL/physical-dependence" class="index-link">Physical Data Dependence</a>
-  <hr>
-  <a href="../../SQL/create" class="index-link">CREATE TABLE</a>
-  <hr>
-  <a href="../../SQL/insert-update-del" class="index-link">INSERT, UPDATE, DELETE</a>
-  <hr>
-  <a href="../../SQL/having" class="index-link">HAVING</a>
-   <hr>
-  <a href="../../SQL/groupby" class="index-link">GROUP BY</a>
-  <hr>
-  <a href="../../SQL/aggregation" class="index-link">Simple Aggregation</a>
-  <hr>
-  <a href="../../SQL/witnesses" class="index-link">Witnesses</a>
-  <hr>
-  <a href="../../SQL/conceptualdbdesign" class="index-link">Conceptual Database Design</a>
-  <hr>
-  <a href="../../SQL/erd" class="index-link">Entity Relationship Diagram</a>
-  <hr>
-  <a href="../../SQL/relationship" class="index-link">Relationship</a>
-</div>
+<h1 id="conceptual-database-design">Conceptual Database Design</h1>
+<h3 id="database-design-process">Database Design Process</h3>
+<h4 id="conceptual-database-design_1">Conceptual Database Design</h4>
+<ul>
+<li>Organizing information into a data model.</li>
+<li>Identifies entities, relationships, constraints, and operations.</li>
+<li>Aims to capture requirements independently of specific systems/tools.</li>
+</ul>
+<h4 id="data-model-components">Data Model Components</h4>
+<ul>
+<li><strong>Structures</strong> (e.g., entities like <em>Employee</em>, <em>Product</em>)</li>
+<li><strong>Constraints</strong> (e.g., each employee must have a supervisor)</li>
+<li><strong>Operations</strong> (e.g., make a purchase)</li>
+</ul>
+<h4 id="design-levels">Design Levels</h4>
+<ul>
+<li><strong>Conceptual Schema</strong> (entities and relationships)</li>
+<li><strong>Relational Schema</strong> (tables and constraints)</li>
+<li><strong>Physical Schema</strong> (storage details)</li>
+</ul>
+<p><br></p>
+<h3 id="conceptual-design-process">Conceptual Design Process</h3>
+<h4 id="entity-identification">Entity Identification</h4>
+<ul>
+<li>Begin by identifying entities—the real-world things that data is about.</li>
+<li>Example: For a race-tracking app, possible entities include:<ul>
+<li>Racers, Races, Bicycles/Equipment, Sponsors, Race Results</li>
+</ul>
+</li>
+</ul>
+<h4 id="relationships-among-entities">Relationships Among Entities</h4>
+<ul>
+<li>Recognize how entities are related:</li>
+<li>Parent-Child</li>
+<li>Has-A, Is-A</li>
+<li>Part-Of, Depends-On</li>
+<li>Concepts like Inheritance, Aggregation, Association etc.</li>
+</ul>
+<h4 id="entity-relationship-er-diagrams">Entity-Relationship (E/R) Diagrams</h4>
+<ul>
+<li><strong>Entity Set</strong> = a class/type of object</li>
+<li><strong>Entity</strong> = an instance</li>
+<li>Includes: Attributes, Relationships, Keys for each entity set</li>
+</ul>
+<h4 id="relations-and-multiplicity">Relations and Multiplicity</h4>
+<ul>
+<li>A <strong>relation</strong> is a mathematical subset of the Cartesian product of two sets.</li>
+<li>Relationships may be:<ul>
+<li>One-to-one</li>
+<li>One-to-many</li>
+<li>Many-to-many</li>
+</ul>
+</li>
+</ul>
+<h4 id="attributes-on-relationships">Attributes on Relationships</h4>
+<ul>
+<li>Relationships can have their own attributes<br />
+  (e.g., <em>date of purchase</em> in a "Buys" relationship).</li>
+</ul>
 
 
 

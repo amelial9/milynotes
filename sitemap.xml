@@ -2,106 +2,118 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ameliali.com/milynotes/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/Index/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/aduitImgTags/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/checkTime/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/jsonDataFileFlow/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/middleware/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/pluralize/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/pterosaurs/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/simpleTemplate/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/sqlinjection/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/userdatamongo/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO441/xss/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO449/Basics/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/INFO449/Index/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/1nf/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/Basics/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/Index/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/JOINs/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/aggregation/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
+    </url>
+    <url>
+         <loc>https://ameliali.com/milynotes/SQL/conceptualdbdesign/</loc>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/create/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
+    </url>
+    <url>
+         <loc>https://ameliali.com/milynotes/SQL/erd/</loc>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/groupby/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/having/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/insert-update-del/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/key/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/physical-dependence/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
+    </url>
+    <url>
+         <loc>https://ameliali.com/milynotes/SQL/relationship/</loc>
+         <lastmod>2025-04-23</lastmod>
     </url>
     <url>
          <loc>https://ameliali.com/milynotes/SQL/witnesses/</loc>
-         <lastmod>2025-04-22</lastmod>
+         <lastmod>2025-04-23</lastmod>
     </url>
 </urlset>
