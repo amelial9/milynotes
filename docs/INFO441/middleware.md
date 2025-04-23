@@ -15,13 +15,14 @@ hide:
 
 # Middleware
 
-Functions that run during each request (or a subset of requests)
-- These functions are chained together, each one calling the next function (in the variable next)
-	- At the end they finally call your api endpoint handler (e.g., app.get("/users", …))
-- They generally either
-	- Modify the request
-	- Modify the response
-	- Log something
+Functions that run during each request (or a subset of requests):
+
+- These functions are chained together, each one calling the next function (in the variable `next`)
+    - At the end they finally call your API endpoint handler (e.g., `app.get("/users", …)`)
+- They generally either:
+    - Modify the request  
+    - Modify the response  
+    - Log something
 
 <br>
 
