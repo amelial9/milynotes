@@ -28,7 +28,7 @@ CREATE TABLE Company (
   country VARCHAR(20),
   no_employees INT,
   for_profit BOOLEAN
-);
+)
 ```
 
 or:
@@ -39,7 +39,7 @@ CREATE TABLE Company (
   country VARCHAR(20),
   no_employees INT,
   for_profit BOOLEAN
-);
+)
 ```
 
 <br>
@@ -54,7 +54,7 @@ Product(<u>name</u>, category)
 CREATE TABLE Product (
   name CHAR(30) PRIMARY KEY,
   category VARCHAR(20)
-);
+)
 ```
 
 or:
@@ -63,7 +63,8 @@ or:
 CREATE TABLE Product (  
 	name CHAR(30),  
 	category VARCHAR(20),  
-	PRIMARY KEY (name))  
+	PRIMARY KEY (name)
+)
 ```
 
 <br>
@@ -132,6 +133,6 @@ CREATE TABLE Purchase (
 	category VARCHAR(20),  
 	date DATETIME,  
 	FOREIGN KEY (prodName, category)  
-	REFERENCES Product(name, category)
+	REFERENCES Product(name, category))
 ```
 - (name, category) must be a KEY in Product
