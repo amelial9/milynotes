@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/SQL/relationship/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/SQL/weakentitysets/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Relationship - Amelia's BrainDump.io</title>
+        <title>Weakentitysets - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#relationship" class="md-skip">
+        <a href="#weak-entity-sets" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Relationship
+              Weakentitysets
             
           </span>
         </div>
@@ -417,32 +417,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#multiplicity-cardinality" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multiplicity &amp; Cardinality
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multi-way-relationships" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multi-way Relationships
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -467,79 +441,38 @@
     <br>
 </div>
 
-<h1 id="relationship">Relationship</h1>
-<p>If A and B are sets, then a relation R is a subset of A * B</p>
-<p><img src="../../SQL/img/relationship.png" alt="Relationship" width="500"></p>
-<p><br></p>
+<h1 id="weak-entity-sets">Weak Entity Sets</h1>
+<p><img src="../../SQL/img/weakentity.png" alt="weak entity" width="500"></p>
 <ul>
-<li>One-to-one</li>
-<li>One-to-many; Many-to-one</li>
-<li>Many-to-many</li>
+<li>A <strong>weak entity</strong> can't be uniquely identified by its own attributes alone.</li>
+<li>It <strong>depends</strong> on a <strong>strong entity</strong> (another table/entity) for its <strong>primary key</strong>.</li>
+<li>From the example:
+    <strong>University(name)</strong> → Strong entity (can be identified just by <code>name</code>).
+    <strong>Team(sport, number, universityName)</strong> → Weak entity (needs <code>universityName</code> to uniquely identify a Team).</li>
 </ul>
+<p>Without the university's name, you might have multiple teams with the same sport and number — but <em>which</em> university they belong to would be unclear.</p>
 <p><br></p>
-<p><img src="../../SQL/img/relationship1.png" alt="Relationship 1" width="500"></p>
-<p><br></p>
-<h3 id="multiplicity-cardinality">Multiplicity &amp; Cardinality</h3>
+<p>Why do we care about Weak Entities?</p>
+<ol>
+<li>
+<p><strong>Avoid Duplicating Keys</strong>:</p>
 <ul>
-<li>In UML, multiplicity specifies lower and upper bound constraints on the cardinality of a relationship</li>
+<li>Instead of copying the whole key into every weak entity, you reference it simply.</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Multiplicity</th>
-<th>Cardinality</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0..0</td>
-<td>0</td>
-<td>Collection must be empty</td>
-</tr>
-<tr>
-<td>0..1</td>
-<td></td>
-<td>Either zero or one instance</td>
-</tr>
-<tr>
-<td>1..1</td>
-<td>1</td>
-<td>Exactly one instance</td>
-</tr>
-<tr>
-<td>0..*</td>
-<td>*</td>
-<td>Zero or more instances</td>
-</tr>
-<tr>
-<td>1..*</td>
-<td></td>
-<td>One or more instance</td>
-</tr>
-<tr>
-<td>5..5</td>
-<td>5</td>
-<td>Exactly 5 instances</td>
-</tr>
-<tr>
-<td>m..n</td>
-<td></td>
-<td>At least <em>m</em>, but no more than <em>n</em> instances</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="multi-way-relationships">Multi-way Relationships</h3>
-<p><img src="../../SQL/img/relation.png" alt="relation" width="500"></p>
-<p><strong>A</strong> and <strong>B</strong> are two sets (collections of things).</p>
-<p>Example:<br />
-A = {Person1, Person2}<br />
-B = {Product1, Product2}</p>
-<p><strong>A × B</strong> (called the "Cartesian product") is <strong>all possible combinations</strong> of one item from A and one item from B.<br />
-    A × B = { (Person1, Product1), (Person1, Product2), (Person2, Product1), (Person2, Product2) }</p>
-<p><strong>Relation R</strong> is <strong>some subset</strong> of A × B — meaning R just <strong>picks certain pairs</strong> out of A × B that actually make sense for the relationship you're modeling.</p>
-<p><img src="../../SQL/img/relation1.png" alt="relation1" width="500"></p>
+</li>
+<li>
+<p><strong>Reflect Logical Structure</strong>:</p>
+<ul>
+<li>It models real-world dependency — e.g., a Team exists only <strong>because</strong> a University exists.</li>
+</ul>
+</li>
+<li>
+<p><strong>Automatic Deletion</strong>:</p>
+<ul>
+<li>If the <strong>strong entity</strong> (like a University) is deleted, the <strong>dependent weak entities</strong> (like its Teams) should automatically be deleted too.</li>
+</ul>
+</li>
+</ol>
 
 
 
