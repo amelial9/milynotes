@@ -20,7 +20,7 @@ hide:
     
     <a href="/milynotes/SQL/Index" class="details-link">Details</a>
 
--   Client-side Development
+-   Server-side Development
 
     ---
 
