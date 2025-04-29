@@ -18,7 +18,7 @@ hide:
 
     About SQL and databases
     
-    <a href="/milynotes/SQL/Index" class="details-link">Details</a>
+    <a href="/SQL/Index" class="details-link">Details</a>
 
 -   Server-side Development
 
@@ -26,7 +26,7 @@ hide:
 
     Notes about server from INFO 441
 
-    <a href="/milynotes/INFO441/Index" class="details-link">Details</a>
+    <a href="/INFO441/Index" class="details-link">Details</a>
 
 -   iOS Development
 
@@ -34,6 +34,6 @@ hide:
 
     Notes about iOS from INFO 449
 
-    <a href="/milynotes/INFO449/Index" class="details-link">Details</a>
+    <a href="/INFO449/Index" class="details-link">Details</a>
 
 </div>
