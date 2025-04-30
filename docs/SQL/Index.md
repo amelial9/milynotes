@@ -38,6 +38,8 @@ hide:
   <hr>
   <a href="../../SQL/witnesses" class="index-link">Witnesses</a>
   <hr>
+  <a href="../../SQL/selfjoin" class="index-link">SELF JOIN Practice</a>
+  <hr>
   <a href="../../SQL/conceptualdbdesign" class="index-link">Conceptual Database Design</a>
   <hr>
   <a href="../../SQL/erd" class="index-link">Entity Relationship Diagram</a>
@@ -45,4 +47,10 @@ hide:
   <a href="../../SQL/relationship" class="index-link">Relationship</a>
   <hr>
   <a href="../../SQL/weakentitysets" class="index-link">Weak Entity Sets</a>
+  <hr>
+  <a href="../../SQL/erdtoschema" class="index-link">From ER Diagram to Relational Schema</a>
+  <hr>
+  <a href="../../SQL/check" class="index-link">Check Constraint</a>
+  <hr>
+  <a href="../../SQL/fkconstraints" class="index-link">FK Constraints</a>
 </div>
