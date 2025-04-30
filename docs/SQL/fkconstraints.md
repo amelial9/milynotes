@@ -25,7 +25,7 @@ hide:
 
 What should the DB engine do if execution SQL statement collides with a FOREIGN KEY constraint?  
 &nbsp;&nbsp;&nbsp;&nbsp; For example:  `DELETE FROM Company WHERE name = ‘lmao’;`  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and the Products Table contains Foreign Key entries for  `cname = ‘Imao’`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and the Products Table contains Foreign Key entries for  `cname = ‘lmao’`
 
 <br>
 
