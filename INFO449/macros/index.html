@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/INFO449/Index/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/INFO449/macros/">
       
-      
-        <link rel="prev" href="../../INFO441/Index/">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Macros - Amelia's BrainDump.io</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#macros" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Macros
             
           </span>
         </div>
@@ -333,20 +331,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -362,7 +358,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             INFO449
@@ -373,32 +369,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -409,35 +383,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-ios-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's iOS dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -479,9 +424,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-ios-dev-notes" class="md-nav__link">
+  <a href="#two-kinds-of-macros" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's iOS dev notes
+      Two kinds of macros
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swift-macro-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swift macro types
     </span>
   </a>
   
@@ -505,21 +459,55 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2025 02:32:30">April 30, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-ios-dev-notes">Category: Amelia's iOS dev notes</h2>
-<div class="category-index">
-  <a href="../../INFO449/Basics" class="index-link">Basics</a>
-  <hr>
-  <a href="../../INFO449/macros" class="index-link">Macros</a>
-  <hr>
-  <a href="../../INFO449/ooswift" class="index-link">Object-oriented Swift</a>
-</div>
+<h1 id="macros">Macros</h1>
+<p><em>macros</em>: the ability to write a source-level construct</p>
+<p><br></p>
+<h4 id="two-kinds-of-macros">Two kinds of macros</h4>
+<p><em>syntactic</em> macros (C, C++ preprocessor)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;simple text drop-in replacement<br />
+&nbsp;&nbsp;&nbsp;&nbsp;little to no compiler support<br />
+&nbsp;&nbsp;&nbsp;&nbsp;potentially itself a source of bugs  </p>
+<p><em>semantic</em> macros (Lisp, Scheme, etc)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;fully checked and understood by the compiler<br />
+&nbsp;&nbsp;&nbsp;&nbsp;verified correct<br />
+&nbsp;&nbsp;&nbsp;&nbsp;this is Swift's implementation  </p>
+<p><br></p>
+<h4 id="swift-macro-types">Swift macro types</h4>
+<p><em>freestanding</em> macros<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>#</code>-prefixed<br />
+&nbsp;&nbsp;&nbsp;&nbsp;appear anywhere in code<br />
+&nbsp;&nbsp;&nbsp;&nbsp;almost like source-level function calls  </p>
+<p><em>attached</em> macros<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>@</code>-prefixed<br />
+&nbsp;&nbsp;&nbsp;&nbsp;modify a declaration they're "attached" to<br />
+&nbsp;&nbsp;&nbsp;&nbsp;resemble other languages' "custom attributes" or "annotations"  </p>
+<p>Freestanding macros: "#function" and "#warning"</p>
+<pre><code>func myFunction() {
+    print(&quot;Currently running \(#function)&quot;)
+    #warning(&quot;Something's wrong&quot;)
+}
+</code></pre>
+<p><code>#function</code> returns the name of the currently-scoped function<br />
+<code>#warning</code> issues a warning during compilation  </p>
+<p>An attached macro: "OptionSet"</p>
+<pre><code>@OptionSet&lt;Int&gt;
+struct SundaeToppings {
+    private enum Options: Int {
+        case nuts
+        case cherry
+        case fudge
+    }
+}
+</code></pre>
+<p>This macro sets "nuts", "cherry", and "fudge" to be "bit flags" values (1, 2, 4, ...)</p>
 
 
 

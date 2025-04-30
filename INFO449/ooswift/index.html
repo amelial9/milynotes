@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/INFO449/Index/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/INFO449/ooswift/">
       
-      
-        <link rel="prev" href="../../INFO441/Index/">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Ooswift - Amelia's BrainDump.io</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#object-orientated-swift" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Ooswift
             
           </span>
         </div>
@@ -333,20 +331,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -362,7 +358,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             INFO449
@@ -373,32 +369,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -409,35 +383,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-ios-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's iOS dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -479,9 +424,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-ios-dev-notes" class="md-nav__link">
+  <a href="#failable-initializers" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's iOS dev notes
+      Failable initializers
     </span>
   </a>
   
@@ -505,21 +450,153 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2025 02:32:30">April 30, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-ios-dev-notes">Category: Amelia's iOS dev notes</h2>
-<div class="category-index">
-  <a href="../../INFO449/Basics" class="index-link">Basics</a>
-  <hr>
-  <a href="../../INFO449/macros" class="index-link">Macros</a>
-  <hr>
-  <a href="../../INFO449/ooswift" class="index-link">Object-oriented Swift</a>
-</div>
+<h1 id="object-orientated-swift">Object-orientated Swift</h1>
+<p>new instance</p>
+<pre><code>var aPoint = Point(x:2, y:3)
+print(&quot;aPoint = \(aPoint.stringified)&quot;)
+var anotherPoint = aPoint
+aPoint.x = 12
+print(&quot;anotherPoint = \(anotherPoint), aPoint = \(aPoint)&quot;)
+</code></pre>
+<pre><code>class Person {
+  let firstName : String
+  let lastName : String
+  var spouse : Person?
+
+  init(first: String, last: String) {
+      firstName = first
+      lastName = last
+  }
+  deinit {
+    print(&quot;\(firstName) is being deinitialized&quot;)
+  }
+}
+
+var b = Person(first: &quot;Brad&quot;, last: &quot;Pitt&quot;)
+var a = Person(first: &quot;Angela&quot;, last: &quot;Jolie&quot;)
+b.spouse = angelina
+a.spouse = brad
+</code></pre>
+<p><br></p>
+<p>defining and calling methods on structs</p>
+<pre><code> // ... still in struct Point ...
+  func stringRep() -&gt; String {
+    return &quot;(\(self.x),\(self.y))&quot;
+  }
+  static func compare(left: Point, right: Point) -&gt; Bool {
+    return (left.x == right.x) &amp;&amp; (left.y == right.y)
+  }
+var o = Point.ORIGIN
+print(o.stringRep())
+if Point.compare(left: o, right: Point.ORIGIN) {
+  print(&quot;Yep, they point to the same place&quot;)
+}
+o.move(x: 3, y:5)
+print(o.stringRep())
+</code></pre>
+<pre><code>  init(x:Int32, y:Int32) {
+    self.x = x
+    self.y = y
+  }
+  init(x:Int32, y:Int32, name: String) {
+    self.x = x
+    self.y = y
+    self.name = name
+  }
+  init(y: Int32, x: Int32) {
+    self.x = x
+    self.y = y
+  }
+  init(pt: Point, offsetX: Int32 = 0, offsetY : Int32 = 0) {
+    self = pt
+    self.move(x: offsetX, y:offsetY)
+  }
+}
+</code></pre>
+<p><br></p>
+<h4 id="failable-initializers">Failable initializers</h4>
+<p>Use "init?"
+    Return nil if constuction should fail
+    Makes the receiving reference an optional</p>
+<p>Use "init!"
+    Return unwrapped optional
+    Makes the receiving reference an </p>
+<p><br></p>
+<p>An example class:</p>
+<pre><code>struct Item {
+    var price: Int
+    var count: Int
+}
+class VendingMachine {
+    var inventory = [
+        &quot;Candy Bar&quot;: Item(price: 12, count: 7),
+        &quot;Chips&quot;: Item(price: 10, count: 4),
+        &quot;Pretzels&quot;: Item(price: 7, count: 11)
+    ]
+    var coinsDeposited = 0
+    func dispenseSnack(snack: String) {
+        print(&quot;Dispensing \(snack)&quot;)
+    }
+    enum VendingMachineError: Error {
+        case InvalidSelection(desired: String)
+        case InsufficientFunds(coinsNeeded: Int)
+        case OutOfStock
+    }
+
+    // declare throws
+    func vend(itemNamed name: String) throws -&gt; String {
+        guard var item = inventory[name] else {
+            throw VendingMachineError.InvalidSelection(desired: name)
+        }
+
+        guard item.count &gt; 0 else {
+            throw VendingMachineError.OutOfStock
+        }
+
+        guard item.price &lt;= coinsDeposited else {
+            throw VendingMachineError.InsufficientFunds(coinsNeeded: item.price - coinsDeposited)
+        }
+
+        coinsDeposited -= item.price
+        item.count -= 1
+        inventory[name] = item
+        dispenseSnack(snack: name)
+        return name
+    }
+}
+</code></pre>
+<p><br></p>
+<p>catch exceptions</p>
+<pre><code>let vm = VendingMachine()
+do {
+    vm.coinsDeposited = 12
+    try vm.vend(itemNamed: &quot;Diet Coke&quot;)
+}
+catch VendingMachineError.OutOfStock {
+    print(&quot;I don't have any of that&quot;)
+}
+catch VendingMachineError.InsufficientFunds(let coinsReq) {
+    print(&quot;You need more money: \(coinsReq), to be precise&quot;)
+}
+catch VendingMachineError.InvalidSelection(let desired) 
+    where desired == &quot;Diet Coke&quot; {
+    print(&quot;Sorry, we're a Pepsi place&quot;)
+}
+catch VendingMachineError.InvalidSelection(_) {
+    print(&quot;We don't carry that&quot;)
+}
+catch {
+    print(&quot;We really have no idea what went wrong&quot;)
+}
+</code></pre>
 
 
 

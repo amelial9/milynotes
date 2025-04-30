@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://ameliali.com/milynotes/INFO449/Index/">
+        <link rel="canonical" href="https://ameliali.com/milynotes/SQL/selfjoin/">
       
-      
-        <link rel="prev" href="../../INFO441/Index/">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Selfjoin - Amelia's BrainDump.io</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#self-join-practice" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Selfjoin
             
           </span>
         </div>
@@ -238,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SQL/Index/" class="md-nav__link">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -333,20 +331,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -362,7 +358,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             INFO449
@@ -373,32 +369,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../INFO449/Index/" class="md-nav__link">
         
   
   
@@ -409,35 +383,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-ios-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's iOS dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -472,23 +417,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-ios-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's iOS dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -505,21 +433,52 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 30, 2025 02:32:30">April 30, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-ios-dev-notes">Category: Amelia's iOS dev notes</h2>
-<div class="category-index">
-  <a href="../../INFO449/Basics" class="index-link">Basics</a>
-  <hr>
-  <a href="../../INFO449/macros" class="index-link">Macros</a>
-  <hr>
-  <a href="../../INFO449/ooswift" class="index-link">Object-oriented Swift</a>
-</div>
+<h1 id="self-join-practice">SELF JOIN Practice</h1>
+<p>Which categories of products were purchased on both 3/1/2025 and 3/3/2025?</p>
+<pre><code>SELECT *
+FROM Productwithkeys p
+JOIN purchasewithkeys marchfirst
+  ON p.productID = marchfirst.productid
+  AND CONVERT(date, marchfirst.date) = '3/1/2025'
+JOIN purchasewithkeys marchthird
+  ON p.productID = marchthird.productid
+  AND CONVERT(date, marchthird.date) = '3/3/2025'
+</code></pre>
+<p><br></p>
+<p>same with WHERE syntax</p>
+<pre><code>SELECT *
+FROM Productwithkeys p,
+     purchasewithkeys marchfirst,
+     purchasewithkeys marchthird
+WHERE p.productID = marchfirst.productid
+  AND p.productID = marchthird.productid
+  AND CONVERT(date, marchfirst.date) = '3/1/2025'
+  AND CONVERT(date, marchthird.date) = '3/3/2025'
+</code></pre>
+<p><br></p>
+<p>same with CTE</p>
+<pre><code>WITH marchfirst AS (
+    SELECT *
+    FROM purchasewithkeys marchfirst
+    WHERE CONVERT(date, date) = '3/1/2025'
+), marchthird AS (
+    SELECT *
+    FROM purchasewithkeys marchthird
+    WHERE CONVERT(date, date) = '3/3/2025'
+)
+SELECT *
+FROM Productwithkeys p, marchfirst mf, marchthird mt
+WHERE p.productID = mf.productid
+  AND p.productID = mt.productid
+</code></pre>
 
 
 
