@@ -38,3 +38,9 @@ Why do we care about Weak Entities?
 
 3. **Automatic Deletion**:
     - If the **strong entity** (like a University) is deleted, the **dependent weak entities** (like its Teams) should automatically be deleted too.
+
+<br>
+
+### Weak Relationship
+
+A relationship is weak (identifying) only if it connects a weak entity to its owner (strong entity) and is used to define its primary key.
