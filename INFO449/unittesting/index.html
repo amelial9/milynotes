@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/INFO449/ooswift/">
+        <link rel="canonical" href="https://notes.ameliali.com/INFO449/unittesting/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Ooswift - Amelia's BrainDump.io</title>
+        <title>Unittesting - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#object-orientated-swift" class="md-skip">
+        <a href="#unit-testing" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ooswift
+              Unittesting
             
           </span>
         </div>
@@ -417,32 +417,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#failable-initializers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Failable initializers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#error-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Error Handling
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -467,146 +441,26 @@
     <br>
 </div>
 
-<h1 id="object-orientated-swift">Object-orientated Swift</h1>
-<p>new instance</p>
-<pre><code>var aPoint = Point(x:2, y:3)
-print(&quot;aPoint = \(aPoint.stringified)&quot;)
-var anotherPoint = aPoint
-aPoint.x = 12
-print(&quot;anotherPoint = \(anotherPoint), aPoint = \(aPoint)&quot;)
-</code></pre>
-<pre><code>class Person {
-  let firstName : String
-  let lastName : String
-  var spouse : Person?
-
-  init(first: String, last: String) {
-      firstName = first
-      lastName = last
-  }
-  deinit {
-    print(&quot;\(firstName) is being deinitialized&quot;)
-  }
-}
-
-var b = Person(first: &quot;Brad&quot;, last: &quot;Pitt&quot;)
-var a = Person(first: &quot;Angela&quot;, last: &quot;Jolie&quot;)
-b.spouse = angelina
-a.spouse = brad
-</code></pre>
-<p><br></p>
-<p>defining and calling methods on structs</p>
-<pre><code> // ... still in struct Point ...
-  func stringRep() -&gt; String {
-    return &quot;(\(self.x),\(self.y))&quot;
-  }
-  static func compare(left: Point, right: Point) -&gt; Bool {
-    return (left.x == right.x) &amp;&amp; (left.y == right.y)
-  }
-var o = Point.ORIGIN
-print(o.stringRep())
-if Point.compare(left: o, right: Point.ORIGIN) {
-  print(&quot;Yep, they point to the same place&quot;)
-}
-o.move(x: 3, y:5)
-print(o.stringRep())
-</code></pre>
-<pre><code>  init(x:Int32, y:Int32) {
-    self.x = x
-    self.y = y
-  }
-  init(x:Int32, y:Int32, name: String) {
-    self.x = x
-    self.y = y
-    self.name = name
-  }
-  init(y: Int32, x: Int32) {
-    self.x = x
-    self.y = y
-  }
-  init(pt: Point, offsetX: Int32 = 0, offsetY : Int32 = 0) {
-    self = pt
-    self.move(x: offsetX, y:offsetY)
-  }
-}
-</code></pre>
-<p><br></p>
-<h4 id="failable-initializers">Failable initializers</h4>
-<p>Use "init?"
-    Return nil if constuction should fail
-    Makes the receiving reference an optional</p>
-<p>Use "init!"
-    Return unwrapped optional
-    Makes the receiving reference an </p>
-<p><br></p>
-<h3 id="error-handling">Error Handling</h3>
-<p>An example class:</p>
-<pre><code>struct Item {
-    var price: Int
-    var count: Int
-}
-class VendingMachine {
-    var inventory = [
-        &quot;Candy Bar&quot;: Item(price: 12, count: 7),
-        &quot;Chips&quot;: Item(price: 10, count: 4),
-        &quot;Pretzels&quot;: Item(price: 7, count: 11)
-    ]
-    var coinsDeposited = 0
-    func dispenseSnack(snack: String) {
-        print(&quot;Dispensing \(snack)&quot;)
-    }
-    enum VendingMachineError: Error {
-        case InvalidSelection(desired: String)
-        case InsufficientFunds(coinsNeeded: Int)
-        case OutOfStock
-    }
-
-    // declare throws
-    func vend(itemNamed name: String) throws -&gt; String {
-        guard var item = inventory[name] else {
-            throw VendingMachineError.InvalidSelection(desired: name)
-        }
-
-        guard item.count &gt; 0 else {
-            throw VendingMachineError.OutOfStock
-        }
-
-        guard item.price &lt;= coinsDeposited else {
-            throw VendingMachineError.InsufficientFunds(coinsNeeded: item.price - coinsDeposited)
-        }
-
-        coinsDeposited -= item.price
-        item.count -= 1
-        inventory[name] = item
-        dispenseSnack(snack: name)
-        return name
-    }
-}
-</code></pre>
-<p><br></p>
-<p>catch exceptions</p>
-<pre><code>let vm = VendingMachine()
-do {
-    vm.coinsDeposited = 12
-    try vm.vend(itemNamed: &quot;Diet Coke&quot;)
-}
-catch VendingMachineError.OutOfStock {
-    print(&quot;I don't have any of that&quot;)
-}
-catch VendingMachineError.InsufficientFunds(let coinsReq) {
-    print(&quot;You need more money: \(coinsReq), to be precise&quot;)
-}
-catch VendingMachineError.InvalidSelection(let desired) 
-    where desired == &quot;Diet Coke&quot; {
-    print(&quot;Sorry, we're a Pepsi place&quot;)
-}
-catch VendingMachineError.InvalidSelection(_) {
-    print(&quot;We don't carry that&quot;)
-}
-catch {
-    print(&quot;We really have no idea what went wrong&quot;)
-}
-</code></pre>
+<h1 id="unit-testing">Unit Testing</h1>
+<p>XCTestCase: base class for unit test suite<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>setUp()</code>: run before each individual test<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>tearDown()</code>: run after each individual test<br />
+&nbsp;&nbsp;&nbsp;&nbsp;write "test" methods<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;accept no parameters<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return no value<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prefixed with "test" in the name<br />
+&nbsp;&nbsp;&nbsp;&nbsp;write "performance test" methods<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use "self.measure { ... }" to mesaure time to execute  </p>
+<p>XCTAssert...: assertion functions<br />
+&nbsp;&nbsp;&nbsp;&nbsp;XCTAssert: expression yields true<br />
+&nbsp;&nbsp;&nbsp;&nbsp;XCTAssertTrue: boolean condition is true<br />
+&nbsp;&nbsp;&nbsp;&nbsp;XCTAssertFalse: boolean condition is false<br />
+&nbsp;&nbsp;&nbsp;&nbsp;XCTAssertNil: expression yields Nil 
+&nbsp;&nbsp;&nbsp;&nbsp;XCTAssertEqual: two expressions are equal<br />
+&nbsp;&nbsp;&nbsp;&nbsp;XCTAssertNotEqual: two expressions are inequal<br />
+&nbsp;&nbsp;&nbsp;&nbsp;... and a few others<br />
+&nbsp;&nbsp;&nbsp;&nbsp;all overloaded to take a trailing "message" argument<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this message is what's displayed when the test fails</p>
 
 
 
