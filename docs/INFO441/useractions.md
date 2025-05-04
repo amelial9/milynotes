@@ -18,10 +18,10 @@ hide:
 ```
 demo/
 ├── routes/
-│   └── api
-│       └── v1
+│   └── api/
+│       └── v1/
 │           └── apiv1.js
-│           └── controllers
+│           └── controllers/
 │               └─ users.js
 ├── public/
 │   └── index.html
