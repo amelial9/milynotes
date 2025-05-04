@@ -102,6 +102,8 @@ Use "init!"
 
 <br>
 
+### Error Handling
+
 An example class:
 ```
 struct Item {
