@@ -41,6 +41,7 @@ nav:
 
 extra:
   generator: false
+  cname: notes.ameliali.com
 
 copyright: |
   &copy; 2025 Amelia Li
