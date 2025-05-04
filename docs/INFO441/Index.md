@@ -38,4 +38,6 @@ hide:
   <a href="../../INFO441/xss" class="index-link">XSS (Cross Site Scripting Attacks)</a>
   <hr>
   <a href="../../INFO441/sqlinjection" class="index-link">SQL Injection</a>
+  <hr>
+  <a href="../../INFO441/useractions" class="index-link">User Actions</a>
 </div>
