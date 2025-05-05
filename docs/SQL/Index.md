@@ -53,4 +53,6 @@ hide:
   <a href="../../SQL/check" class="index-link">Check Constraint</a>
   <hr>
   <a href="../../SQL/fkconstraints" class="index-link">FK Constraints</a>
+  <hr>
+  <a href="../../SQL/nestedqueries" class="index-link">Nested Queries</a>
 </div>
