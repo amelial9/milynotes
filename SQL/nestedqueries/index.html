@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/SQL/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/SQL/nestedqueries/">
       
       
-        <link rel="prev" href="../..">
-      
-      
-        <link rel="next" href="../../INFO441/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Nestedqueries - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#nested-queries" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Nestedqueries
             
           </span>
         </div>
@@ -199,20 +195,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -228,7 +222,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             SQL
@@ -239,32 +233,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -275,35 +247,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,9 +424,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
+  <a href="#subqueries-in-select-single-value" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
+      Subqueries in SELECT (single value)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subqueries-in-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subqueries in FROM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subqueries-in-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subqueries in WHERE
     </span>
   </a>
   
@@ -507,57 +468,150 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 4, 2025 17:46:22">May 4, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-sql-ta-notes">Category: Amelia's SQL TA notes</h2>
-<div class="category-index">
-  <a href="../../SQL/Basics" class="index-link">Intro</a>
-  <hr>
-  <a href="../../SQL/JOINs" class="index-link">JOINs</a>
-  <hr>
-  <a href="../../SQL/key" class="index-link">Keys</a>
-  <hr>
-  <a href="../../SQL/1nf" class="index-link">First Normal Form</a>
-  <hr>
-  <a href="../../SQL/physical-dependence" class="index-link">Physical Data Dependence</a>
-  <hr>
-  <a href="../../SQL/create" class="index-link">CREATE TABLE</a>
-  <hr>
-  <a href="../../SQL/insert-update-del" class="index-link">INSERT, UPDATE, DELETE</a>
-  <hr>
-  <a href="../../SQL/having" class="index-link">HAVING</a>
-   <hr>
-  <a href="../../SQL/groupby" class="index-link">GROUP BY</a>
-  <hr>
-  <a href="../../SQL/aggregation" class="index-link">Simple Aggregation</a>
-  <hr>
-  <a href="../../SQL/with" class="index-link">WITH</a>
-  <hr>
-  <a href="../../SQL/witnesses" class="index-link">Witnesses</a>
-  <hr>
-  <a href="../../SQL/selfjoin" class="index-link">SELF JOIN Practice</a>
-  <hr>
-  <a href="../../SQL/conceptualdbdesign" class="index-link">Conceptual Database Design</a>
-  <hr>
-  <a href="../../SQL/erd" class="index-link">Entity Relationship Diagram</a>
-  <hr>
-  <a href="../../SQL/relationship" class="index-link">Relationship</a>
-  <hr>
-  <a href="../../SQL/weakentitysets" class="index-link">Weak Entity Sets</a>
-  <hr>
-  <a href="../../SQL/erdtoschema" class="index-link">From ER Diagram to Relational Schema</a>
-  <hr>
-  <a href="../../SQL/check" class="index-link">Check Constraint</a>
-  <hr>
-  <a href="../../SQL/fkconstraints" class="index-link">FK Constraints</a>
-  <hr>
-  <a href="../../SQL/nestedqueries" class="index-link">Nested Queries</a>
-</div>
+<h1 id="nested-queries">Nested Queries</h1>
+<p>A subquery is a SQL query nested inside a larger query<br />
+Such inner-outer queries are called nested queries  </p>
+<p>A subquery may occur in:  </p>
+<ul>
+<li>A SELECT clause  </li>
+<li>A FROM clause  </li>
+<li>A WHERE clause</li>
+</ul>
+<p>In a SELECT clause, must return <strong>a single value</strong> (1 row, 1 column)<br />
+In a FROM clause, returns a <strong>relation</strong> (many rows, many relations), aliased using a tuple variable<br />
+In a WHERE clause, <strong>may</strong> return a <strong>single value</strong> to be compared with another value<br />
+In a WHERE clause, <strong>may</strong> return a <strong>relation</strong> to be used with WHERE EXISTS  </p>
+<p><br></p>
+<h3 id="subqueries-in-select-single-value">Subqueries in SELECT (single value)</h3>
+<p>For each product return the city where it is manufactured</p>
+<pre><code>SELECT X.pname, (SELECT Y.city  
+    FROM Company Y  
+    WHERE Y.cid = X.cid) as City  
+FROM Product X
+</code></pre>
+<blockquote>
+<p>"Correlated subquery": a subquery that depends on a value from the outer query<br />
+"Using this product's <code>cid</code>, find the <code>city</code> in the <code>Company</code> table."</p>
+</blockquote>
+<p>Same thing as:</p>
+<pre><code>SELECT X.pname, Y.city  
+FROM Product X, Company Y  
+WHERE X.cid = Y.cid
+</code></pre>
+<p>Compute the number of products made by each company</p>
+<pre><code>SELECT C.cid, C.cname, (SELECT count(*)
+    FROM Product P  
+    WHERE P.cid = C.cid)  
+FROM Company C
+</code></pre>
+<p>Same thing as:</p>
+<pre><code>SELECT C.cid, C.cname, count(pname)  
+FROM Company C LEFT JOIN Product P  
+ON C.cid = P.cid  
+GROUP BY C.cid, C.cname
+</code></pre>
+<blockquote>
+<p>Without LEFT JOIN, companies with no products are excluded</p>
+</blockquote>
+<p><br></p>
+<h3 id="subqueries-in-from">Subqueries in FROM</h3>
+<p>Find all products whose prices is &gt; 20 and &lt; 500</p>
+<pre><code>SELECT X.pname  
+FROM (SELECT *  
+    FROM Product AS Y  
+    WHERE price &gt; 20) as X  
+WHERE X.price &lt; 500
+</code></pre>
+<blockquote>
+<p>Every SQL returns a relation, so you can use it in the FROM clause like any other relation</p>
+</blockquote>
+<p>Sometimes we need to compute an intermediate table only to use it later in a SELECT-FROM-WHERE  </p>
+<ul>
+<li>Option 1: use a subquery in the FROM clause</li>
+<li>Option 2: use the WITH clause  </li>
+</ul>
+<pre><code>WITH myTable AS (
+    SELECT *
+    FROM Product AS Y
+    WHERE price &gt; 20)
+SELECT X.pname
+FROM myTable as X
+WHERE X.price &lt; 500
+</code></pre>
+<p><br></p>
+<h3 id="subqueries-in-where">Subqueries in WHERE</h3>
+<p>Find all companies that make <strong>some</strong> products with price &lt; 200</p>
+<p>Using EXISTS:</p>
+<pre><code>SELECT C.cid, C.cname  
+FROM Company C  
+WHERE EXISTS (SELECT *  
+    FROM Product P  
+    WHERE C.cid = P.cid and P.price &lt; 200)
+</code></pre>
+<p>EXISTS returns TRUE if the subquery returns any row</p>
+<p>Using IN:</p>
+<pre><code>SELECT C.cid, C.cname  
+FROM Company C  
+WHERE C.cid IN (SELECT P.cid  
+    FROM Product P  
+    WHERE P.price &lt; 200)
+</code></pre>
+<p>Using ANY:</p>
+<pre><code>SELECT C.cid, C.cname  
+FROM Company C  
+WHERE 200 &gt; ANY (SELECT price  
+    FROM Product P  
+    WHERE P.cid = C.cid)
+</code></pre>
+<blockquote>
+<p>Not supported in some DBMS (avoid)</p>
+</blockquote>
+<p>Unnest it:</p>
+<pre><code>SELECT DISTINCT C.cid, C.cname  
+FROM Company C, Product P  
+WHERE C.cid = P.cid and P.price &lt; 200
+</code></pre>
+<p><br></p>
+<p>Find all companies s.t. all their products have price &lt; 200 = Find all companies that make only products with price &lt; 200</p>
+<ul>
+<li>Find the other companies that make some product ≥ 200</li>
+</ul>
+<pre><code>SELECT C.cid, C.cname
+FROM Company C
+WHERE C.cid NOT IN (
+    SELECT P.cid
+    FROM Product P
+    WHERE P.price &gt;= 200
+)
+</code></pre>
+<ul>
+<li>Find all companies s.t. all their products have price &lt; 200</li>
+</ul>
+<p>Another way using EXISTS</p>
+<pre><code>SELECT C.cid, C.cname
+FROM Company C
+WHERE NOT EXISTS (SELECT *
+    FROM Product P
+    WHERE P.cid = C.cid and P.price &gt;= 200)
+</code></pre>
+<p>Using ALL:</p>
+<pre><code>SELECT C.cid, C.cname  
+FROM Company C  
+WHERE 200 &gt;= ALL (SELECT price  
+    FROM Product P  
+    WHERE P.cid = C.cid)
+</code></pre>
+<blockquote>
+<p>Not supported in some DBMS (avoid)</p>
+</blockquote>
 
 
 
