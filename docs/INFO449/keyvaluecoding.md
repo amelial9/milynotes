@@ -16,10 +16,10 @@ hide:
 # Key-Value Coding
 
 #### Definitions
-a "key" is a string that identifies a specific property
-"key path" is dot-separated keys used to specify a sequence of object properties to traverse
-keys or key paths can be runtime strings or compile-time constants
-a "value" is the value stored in the property
+a "key" is a string that identifies a specific property  
+"key path" is dot-separated keys used to specify a sequence of object properties to traverse  
+keys or key paths can be runtime strings or compile-time constants  
+a "value" is the value stored in the property  
 
 
 ```
