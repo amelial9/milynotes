@@ -24,6 +24,8 @@ hide:
   <hr>
   <a href="../../SQL/physical-dependence" class="index-link">Physical Data Dependence</a>
   <hr>
+  <a href="../../SQL/null" class="index-link">NULL Values</a>
+  <hr>
   <a href="../../SQL/create" class="index-link">CREATE TABLE</a>
   <hr>
   <a href="../../SQL/insert-update-del" class="index-link">INSERT, UPDATE, DELETE</a>
