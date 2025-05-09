@@ -39,5 +39,7 @@ hide:
   <hr>
   <a href="../../INFO441/sqlinjection" class="index-link">SQL Injection</a>
   <hr>
+  <a href="../../INFO441/session" class="index-link">Session (Authentication)</a>
+  <hr>
   <a href="../../INFO441/useractions" class="index-link">User Actions</a>
 </div>
