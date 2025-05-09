@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/INFO441/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/INFO441/session/">
       
       
-        <link rel="prev" href="../../SQL/Index/">
-      
-      
-        <link rel="next" href="../../INFO449/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Session - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#session-authentication" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Session
             
           </span>
         </div>
@@ -267,20 +263,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -296,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             INFO441
@@ -307,32 +301,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -343,35 +315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -474,23 +417,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -507,44 +433,152 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 8, 2025 17:52:40">May 8, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-server-side-dev-notes">Category: Amelia's server-side dev notes</h2>
-<!-- - [Simple server template](simpleTemplate.md)
-- [Check Time](checkTime.md)
-- [Pluralize](pluralize.md)
-- [Audit Image Tags](aduitImgTags.md) -->
+<h1 id="session-authentication">Session (Authentication)</h1>
+<pre><code>demo1/
+├── routes/
+│   └── users.js
+├── public/
+│   └── index.html
+│   └── stylesheets/
+│       └── style.css
+│   └── javascripts/
+│       └── index.js
+└── app.js
+</code></pre>
+<p><br></p>
+<p>app.js</p>
+<pre><code>import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import sessions from 'express-session'
 
-<div class="category-index">
-  <a href="../../INFO441/simpleTemplate" class="index-link">Simple server template</a>
-  <hr>
-  <a href="../../INFO441/checkTime" class="index-link">Check Time</a>
-  <hr>
-  <a href="../../INFO441/pluralize" class="index-link">Pluralize</a>
-  <hr>
-  <a href="../../INFO441/aduitImgTags" class="index-link">Audit Image Tags</a>
-  <hr>
-  <a href="../../INFO441/pterosaurs" class="index-link">Pterosaurs demo</a>
-  <hr>
-  <a href="../../INFO441/jsonDataFileFlow" class="index-link">JSON Data File Flow</a>
-  <hr>
-  <a href="../../INFO441/middleware" class="index-link">Middleware</a>
-  <hr>
-  <a href="../../INFO441/userdatamongo" class="index-link">User Data Demo (MongoDB)</a>
-  <hr>
-  <a href="../../INFO441/xss" class="index-link">XSS (Cross Site Scripting Attacks)</a>
-  <hr>
-  <a href="../../INFO441/sqlinjection" class="index-link">SQL Injection</a>
-  <hr>
-  <a href="../../INFO441/session" class="index-link">Session (Authentication)</a>
-  <hr>
-  <a href="../../INFO441/useractions" class="index-link">User Actions</a>
-</div>
+import usersRouter from './routes/users.js';
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+const oneDay = 1000 * 60 * 60 * 24
+app.use(sessions({
+    secret: &quot;this is some secret key I am making up as9eu034htov9ny9yn3n&quot;,
+    saveUninitialized: true,
+    cookie: {maxAge: oneDay},
+    resave: false
+}))
+
+app.use('/users', usersRouter);
+
+export default app;
+</code></pre>
+<p>users.js</p>
+<pre><code>import express from 'express';
+var router = express.Router();
+
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  if(req.session.userid){
+    res.send(`Here is the information for you (${req.session.userid})`)
+  } else{
+    res.status(401).send(&quot;Error: you must be logged in&quot;)
+  }
+});
+
+
+router.post('/login', (req, res) =&gt; {
+
+  if(req.body.username == &quot;kylethayer&quot; &amp;&amp; req.body.password == &quot;asdasd&quot;){
+    req.session.userid = &quot;kylethayer&quot;
+    res.send(&quot;you logged in&quot;)
+  } else if(req.body.username == &quot;anotheruser&quot; &amp;&amp; req.body.password == &quot;pwd&quot;){
+    req.session.userid = &quot;anotheruser&quot;
+    res.send(&quot;you logged in&quot;)
+  } else {
+    res.send(&quot;wrong login info&quot;)
+  }
+})
+
+router.post('/logout', (req, res) =&gt; {
+  req.session.destroy()
+  res.send(&quot;you are logged out&quot;)
+})
+
+export default router;
+</code></pre>
+<p>index.html</p>
+<pre><code>&lt;html&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Express&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/style.css&quot;&gt;
+  &lt;script src=&quot;javascripts/index.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;h1&gt;Express&lt;/h1&gt;
+  &lt;p&gt;Welcome to Express&lt;/p&gt;
+  &lt;a href=&quot;/users/&quot;&gt;Get your user info&lt;/a&gt;
+  &lt;h3&gt;login&lt;/h3&gt;
+  Username: &lt;input type=text id=&quot;username_input&quot;&gt;&lt;/input&gt;&lt;br&gt;
+  Password: &lt;input type=text id=&quot;password_input&quot;&gt;&lt;/input&gt;
+  &lt;button onclick=&quot;login()&quot;&gt;Log in&lt;/button&gt; 
+  &lt;button onclick=&quot;logout()&quot;&gt;Log out&lt;/button&gt;
+  &lt;div id=&quot;results&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>index.js</p>
+<pre><code>async function login(){
+    let username = document.getElementById(&quot;username_input&quot;).value
+    let password = document.getElementById(&quot;password_input&quot;).value
+    let loginData = {
+        username: username,
+        password: password
+    } 
+    let response = await fetch(
+        &quot;/users/login&quot;,
+        {
+            method: &quot;POST&quot;,
+            body: JSON.stringify(loginData),
+            headers: {
+                'Content-Type': 'application/json'
+              }
+        }
+    );
+    let responesText = await response.text();
+    document.getElementById(&quot;results&quot;).innerText = responesText;
+}
+
+async function logout(){
+    let response = await fetch(
+        '/users/logout',
+        {
+            method: &quot;POST&quot;
+        }
+    )
+    let responesText = await response.text();
+    document.getElementById(&quot;results&quot;).innerText = responesText;
+}
+</code></pre>
 
 
 
