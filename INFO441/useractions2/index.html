@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/SQL/weakentitysets/">
+        <link rel="canonical" href="https://notes.ameliali.com/INFO441/useractions2/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Weakentitysets - Amelia's BrainDump.io</title>
+        <title>Useractions2 - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#weak-entity-sets" class="md-skip">
+        <a href="#user-actions-part-2" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Weakentitysets
+              Useractions2
             
           </span>
         </div>
@@ -236,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Index/" class="md-nav__link">
+      <a href="../../SQL/Index/" class="md-nav__link">
         
   
   
@@ -304,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../INFO441/Index/" class="md-nav__link">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -417,23 +417,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#weak-relationship" class="md-nav__link">
-    <span class="md-ellipsis">
-      Weak Relationship
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -450,7 +433,7 @@
 
 
 
-<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2025 14:21:31">May 2, 2025</span></i></small></p>
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 10, 2025 01:40:57">May 10, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
@@ -458,41 +441,291 @@
     <br>
 </div>
 
-<h1 id="weak-entity-sets">Weak Entity Sets</h1>
-<p><img src="../../SQL/img/weakentity.png" alt="weak entity" width="500"></p>
-<ul>
-<li>A <strong>weak entity</strong> can't be uniquely identified by its own attributes alone.</li>
-<li>It <strong>depends</strong> on a <strong>strong entity</strong> (another table/entity) for its <strong>primary key</strong>.</li>
-<li>From the example:
-    <strong>University(name)</strong> → Strong entity (can be identified just by <code>name</code>).
-    <strong>Team(sport, number, universityName)</strong> → Weak entity (needs <code>universityName</code> to uniquely identify a Team).</li>
-</ul>
-<p>Without the university's name, you might have multiple teams with the same sport and number — but <em>which</em> university they belong to would be unclear.</p>
+<h1 id="user-actions-part-2">User Actions Part 2</h1>
+<pre><code>demo/
+├── routes/
+│   └── api/
+│       └── v1/
+│           └── apiv1.js
+│           └── controllers/
+│               └─ users.js
+├── public/
+│   └── index.html
+│   └── stylesheets/
+│       └── style.css
+│   └── javascripts/
+│       └── index.js
+│   models.js
+└── app.js
+</code></pre>
 <p><br></p>
-<p>Why do we care about Weak Entities?</p>
-<ol>
-<li>
-<p><strong>Avoid Duplicating Keys</strong>:</p>
-<ul>
-<li>Instead of copying the whole key into every weak entity, you reference it simply.</li>
-</ul>
-</li>
-<li>
-<p><strong>Reflect Logical Structure</strong>:</p>
-<ul>
-<li>It models real-world dependency — e.g., a Team exists only <strong>because</strong> a University exists.</li>
-</ul>
-</li>
-<li>
-<p><strong>Automatic Deletion</strong>:</p>
-<ul>
-<li>If the <strong>strong entity</strong> (like a University) is deleted, the <strong>dependent weak entities</strong> (like its Teams) should automatically be deleted too.</li>
-</ul>
-</li>
-</ol>
-<p><br></p>
-<h3 id="weak-relationship">Weak Relationship</h3>
-<p>A relationship is weak (identifying) only if it connects a weak entity to its owner (strong entity) and is used to define its primary key.</p>
+<p>app.js</p>
+<pre><code>import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+
+import apiv1Router from './routes/api/v1/apiv1.js'
+
+import models from './models.js'
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) =&gt; {
+    req.models = models
+    next()
+})
+
+app.use('/api/v1', apiv1Router)
+
+export default app;
+</code></pre>
+<p>models.js</p>
+<pre><code>import mongoose from &quot;mongoose&quot;
+
+const models = {}
+
+console.log(&quot;Trying to connect to mongodb&quot;)
+await mongoose.connect(&quot;mongodb+srv://amelialx99:DgBDwhe7oQWZuKup@cluster0.i36zdqv.mongodb.net/playlists&quot;)
+
+console.log(&quot;successfully connected to mongodb&quot;)
+
+const userSchema = new mongoose.Schema({
+    username: String,
+    favorite_bands: [String]
+})
+
+models.User = mongoose.model(&quot;User&quot;, userSchema)
+
+const playlistSchema = new mongoose.Schema({
+    title: String,
+    songs: String,
+    user: {type: mongoose.Schema.Types.ObjectId, ref: &quot;User&quot;}
+})
+
+models.Playlist = mongoose.model(&quot;Playlist&quot;, playlistSchema)
+
+console.log(&quot;successfully created database models&quot;)
+
+export default models
+</code></pre>
+<p>apiv1.js</p>
+<pre><code>import express from 'express'
+const router = express.Router()
+
+import usersRouter from './controllers/users.js'
+import playlistsRouter from './controllers/playlists.js'
+
+router.use('/users', usersRouter)
+router.use('/playlists', playlistsRouter)
+
+export default router
+</code></pre>
+<p>users.js</p>
+<pre><code>import express from 'express'
+const router = express.Router()
+
+router.get('/', async (req, res) =&gt; {
+    try{
+        let allUsers = await req.models.User.find()
+        res.json(allUsers)
+    } catch(err){
+        console.log(&quot;error&quot;, err)
+        res.status(500).json({status: &quot;server error&quot;})
+    }
+})
+
+router.post('/', async (req, res) =&gt; {
+    try{
+        const username = req.body.username
+        let newUser = new req.models.User({
+            username: username
+        })
+
+        await newUser.save()
+
+        res.json({status: 'success'})
+    } catch(err){
+        console.log(&quot;error&quot;, err)
+        res.status(500).json({status: &quot;server error&quot;})
+    }
+})
+
+router.delete('/', async (req, res) =&gt; {
+    let userId = req.body.userId
+
+    // delete all playlists for the user, then the user itself
+    await req.models.Playlist.deleteMany({user: userId})
+    await req.models.User.deleteOne({_id: userId})
+
+    res.send({status: &quot;success&quot;})
+})
+
+router.post('/bands', async (req, res) =&gt; {
+    let userId = req.body.userId
+    let band = req.body.band
+
+    // find the right user
+    let user = await req.models.User.findById(userId)
+
+    // update with the new band (if it wasn't already there)
+    if(!user.favorite_bands.includes(band)){
+        user.favorite_bands.push(band)
+    }
+
+    // save
+    await user.save()
+    res.json({status: 'success'})
+    // TODO: catch errors
+})
+
+export default router
+</code></pre>
+<p>index.html</p>
+<pre><code>&lt;html&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Info upload&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/style.css&quot;&gt;
+  &lt;script src=&quot;javascripts/index.js&quot; &gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;h1&gt;Playlist&lt;/h1&gt;
+  &lt;h2&gt;Add User&lt;/h2&gt;
+  Name: &lt;input id=&quot;name_input&quot; type=text /&gt;
+  &lt;br&gt;
+  &lt;button onclick = &quot;addUser()&quot;&gt;Add User&lt;/button&gt;
+  &lt;div id=&quot;results&quot;&gt;&lt;/div&gt;
+
+  &lt;hr&gt;
+  &lt;h2&gt;All users&lt;/h2&gt;
+  &lt;button onclick=&quot;loadUsers()&quot;&gt;Load Users&lt;/button&gt;
+  &lt;div id=&quot;allusersdiv&quot;&gt;
+    click &quot;Load Users&quot; to see users
+  &lt;/div&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>index.js</p>
+<pre><code>async function addUser(){
+    let name = document.getElementById(&quot;name_input&quot;).value
+
+    await fetch(&quot;/api/v1/users&quot;, {
+        method: &quot;POST&quot;,
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username: name})
+    })
+}
+
+async function loadUsers(){
+    document.getElementById(&quot;allusersdiv&quot;).innerText = &quot;loading...&quot;
+
+    let response = await fetch(&quot;/api/v1/users&quot;)
+    let usersJson = await response.json()
+
+    let usersHTML = usersJson.map(userInfo =&gt; {
+        return `
+        &lt;hr&gt;
+        &lt;div&gt;
+            &lt;h3&gt;
+                Username: ${userInfo.username}
+                &lt;button onclick=&quot;deleteUser('${userInfo._id}')&quot;&gt;Delete&lt;/button&gt;
+            &lt;/h3&gt;
+            &lt;strong&gt;Favorite Bands:&lt;/strong&gt; ${userInfo.favorite_bands ? userInfo.favorite_bands.join(&quot;, &quot;) : &quot;&quot;} &lt;br&gt;
+            &lt;strong&gt;Add Band:&lt;/strong&gt; &lt;input type=&quot;text&quot; id=&quot;add_band_text_${userInfo._id}&quot; /&gt;
+            &lt;button onclick=&quot;addBand('${userInfo._id}')&quot;&gt;Add Band&lt;/button&gt;
+
+            &lt;h3&gt;Playlists&lt;/h3&gt;
+            &lt;div id=&quot;playlist_div_${userInfo._id}&quot;&gt;Loading playlists...&lt;/div&gt;
+
+            &lt;h3&gt;Add Playlist&lt;/h3&gt;
+            &lt;strong&gt;Title:&lt;/strong&gt; &lt;input type=&quot;text&quot; id=&quot;add_playlist_title_text_${userInfo._id}&quot; /&gt; &lt;br&gt;
+            &lt;strong&gt;Songs:&lt;/strong&gt; &lt;input type=&quot;text&quot; id=&quot;add_playlist_song_text_${userInfo._id}&quot; /&gt; &lt;br&gt;
+            &lt;button onclick=&quot;addPlaylist('${userInfo._id}')&quot;&gt;Add Playlist&lt;/button&gt;
+        &lt;/div&gt;
+        `
+    }).join(&quot;&lt;hr&gt;&quot;)
+
+    document.getElementById(&quot;allusersdiv&quot;).innerHTML = usersHTML 
+
+    usersJson.forEach(userInfo =&gt; {
+        loadPlaylistsForUser(userInfo._id)
+    })
+}
+
+async function loadPlaylistsForUser(userId){
+    // get playlists for that user
+    let response = await fetch(&quot;/api/v1/playlists?userId=&quot; + userId)
+    let playlistJSON = await response.json()
+
+    // add html to the right div for that user
+    let playlistHTML = playlistJSON.map(playalistInfo =&gt; {
+        return `
+        &lt;div&gt;
+            &lt;h4&gt;Playlist: ${playalistInfo.title}&lt;/h4&gt;
+            &lt;strong&gt;Songs:&lt;/strong&gt; ${playalistInfo.songs}
+        &lt;/div&gt;
+        `
+    }).join(&quot;&quot;)
+
+    document.getElementById(&quot;playlist_div_&quot; + userId).innerHTML = playlistHTML
+
+}
+
+async function addPlaylist(id){
+    let title = document.getElementById(&quot;add_playlist_title_text_&quot; + id).value
+    let songs = document.getElementById(&quot;add_playlist_song_text_&quot; + id).value
+
+    await fetch(&quot;/api/v1/playlists&quot;, {
+        method: &quot;POST&quot;,
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            title: title,
+            songs: songs,
+            userId: id
+        })
+    })
+
+}
+
+async function addBand(id){
+    let bandToAdd = document.getElementById(&quot;add_band_text_&quot; + id).value
+
+    await fetch(&quot;/api/v1/users/bands&quot;, {
+        method: &quot;POST&quot;,
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            userId: id,
+            band: bandToAdd
+        })
+    })
+}
+
+async function deleteUser(id){
+    await fetch(&quot;/api/v1/users&quot;, {
+        method: &quot;DELETE&quot;,
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            userId: id
+        })
+    })
+}
+</code></pre>
 
 
 
@@ -513,7 +746,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2025 14:21:31">May 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 10, 2025 01:40:57">May 10, 2025</span>
   </span>
 
     

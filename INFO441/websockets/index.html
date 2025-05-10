@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/SQL/weakentitysets/">
+        <link rel="canonical" href="https://notes.ameliali.com/INFO441/websockets/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Weakentitysets - Amelia's BrainDump.io</title>
+        <title>Websockets - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#weak-entity-sets" class="md-skip">
+        <a href="#websockets" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Weakentitysets
+              Websockets
             
           </span>
         </div>
@@ -236,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Index/" class="md-nav__link">
+      <a href="../../SQL/Index/" class="md-nav__link">
         
   
   
@@ -304,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../INFO441/Index/" class="md-nav__link">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -417,23 +417,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#weak-relationship" class="md-nav__link">
-    <span class="md-ellipsis">
-      Weak Relationship
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -450,7 +433,7 @@
 
 
 
-<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2025 14:21:31">May 2, 2025</span></i></small></p>
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 10, 2025 01:40:57">May 10, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
@@ -458,41 +441,86 @@
     <br>
 </div>
 
-<h1 id="weak-entity-sets">Weak Entity Sets</h1>
-<p><img src="../../SQL/img/weakentity.png" alt="weak entity" width="500"></p>
+<h1 id="websockets">Websockets</h1>
+<p>How does our view (browser) get live updates? (e.g., new posts, chat messages)  </p>
 <ul>
-<li>A <strong>weak entity</strong> can't be uniquely identified by its own attributes alone.</li>
-<li>It <strong>depends</strong> on a <strong>strong entity</strong> (another table/entity) for its <strong>primary key</strong>.</li>
-<li>From the example:
-    <strong>University(name)</strong> → Strong entity (can be identified just by <code>name</code>).
-    <strong>Team(sport, number, universityName)</strong> → Weak entity (needs <code>universityName</code> to uniquely identify a Team).</li>
+<li>One solution is <strong>polling</strong>, that is, keeping sending a request to the server asking "ifs there anything new?"</li>
 </ul>
-<p>Without the university's name, you might have multiple teams with the same sport and number — but <em>which</em> university they belong to would be unclear.</p>
+<p>websockets</p>
+<ul>
+<li>create a connection where messages can be sent at any time in either direction</li>
+</ul>
 <p><br></p>
-<p>Why do we care about Weak Entities?</p>
-<ol>
-<li>
-<p><strong>Avoid Duplicating Keys</strong>:</p>
-<ul>
-<li>Instead of copying the whole key into every weak entity, you reference it simply.</li>
-</ul>
-</li>
-<li>
-<p><strong>Reflect Logical Structure</strong>:</p>
-<ul>
-<li>It models real-world dependency — e.g., a Team exists only <strong>because</strong> a University exists.</li>
-</ul>
-</li>
-<li>
-<p><strong>Automatic Deletion</strong>:</p>
-<ul>
-<li>If the <strong>strong entity</strong> (like a University) is deleted, the <strong>dependent weak entities</strong> (like its Teams) should automatically be deleted too.</li>
-</ul>
-</li>
-</ol>
-<p><br></p>
-<h3 id="weak-relationship">Weak Relationship</h3>
-<p>A relationship is weak (identifying) only if it connects a weak entity to its owner (strong entity) and is used to define its primary key.</p>
+<p>app.js</p>
+<pre><code>import express from 'express'
+import enableWs from 'express-ws'
+
+const app = express()
+enableWs(app)
+
+// track websocket connections
+let socketCounter = 1
+let allSockets = []
+
+app.ws('/chatSocket', (ws, res) =&gt; {
+    const mySocketNum = socketCounter
+    socketCounter++
+    console.log(`user ${mySocketNum} connected`)
+
+    // add this ws to the global array tracking all websockets
+    allSockets.push(ws)
+
+    ws.on('message', (chat) =&gt; {
+        console.log(`chat (user ${mySocketNum}): ${chat}`)
+        allSockets.forEach(socket =&gt; {
+            socket.send(mySocketNum + &quot;: &quot; + chat)
+        })
+    })
+
+    ws.on('close', () =&gt; {
+        console.log(`user ${mySocketNum} disconnected`)
+        console.log(&quot;I should probably delete them from the array or something&quot;)
+    })
+})
+
+app.get('/', (req, res) =&gt; {
+    res.sendFile(process.cwd() + &quot;/index.html&quot;)
+})
+
+app.listen(3000, () =&gt; {
+    console.log(&quot;Example app listening at http://localhost:3000&quot;)
+})
+</code></pre>
+<p>index.html</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;script&gt;
+        const socketURL = &quot;ws://localhost:3000/chatSocket&quot;
+        let webSocket = new WebSocket(socketURL)
+
+        function sendChat() {
+            let chatMsg = document.getElementById(&quot;textInput&quot;).value
+            webSocket.send(chatMsg)
+        }
+
+        webSocket.onmessage = (event) =&gt; {
+            const chat = event.data
+            document.getElementById(&quot;output&quot;)
+                .innerText += chat + &quot;\n&quot;
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Web socket chat demo!&lt;/h1&gt;
+
+    &lt;input type=&quot;text&quot; id=&quot;textInput&quot; /&gt;
+    &lt;button id=&quot;sendBtn&quot; onclick=&quot;sendChat()&quot;&gt;send&lt;/button&gt;
+
+    &lt;h3&gt;chat history&lt;/h3&gt;
+    &lt;div id = &quot;output&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 
 
 
@@ -513,7 +541,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 2, 2025 14:21:31">May 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 10, 2025 01:40:57">May 10, 2025</span>
   </span>
 
     
