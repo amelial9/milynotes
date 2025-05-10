@@ -42,4 +42,8 @@ hide:
   <a href="../../INFO441/session" class="index-link">Session (Authentication)</a>
   <hr>
   <a href="../../INFO441/useractions" class="index-link">User Actions</a>
+  <hr>
+  <a href="../../INFO441/useractions2" class="index-link">User Actions (Part 2)</a>
+  <hr>
+  <a href="../../INFO441/websockets" class="index-link">Websockets</a>
 </div>

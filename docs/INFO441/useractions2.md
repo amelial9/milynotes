@@ -13,7 +13,7 @@ hide:
     <br>
 </div>
 
-# User Actions
+# User Actions Part 2
 
 ```
 demo/
@@ -76,10 +76,10 @@ import mongoose from "mongoose"
 
 const models = {}
 
-console.log("Tryin to connect to mongodb")
-await mongoose.connect("mongodb+srv://<username>:<pw>@cluster0.i36zdqv.mongodb.net/playlists")
+console.log("Trying to connect to mongodb")
+await mongoose.connect("mongodb+srv://amelialx99:DgBDwhe7oQWZuKup@cluster0.i36zdqv.mongodb.net/playlists")
 
-console.log("successfully connected to mondogb")
+console.log("successfully connected to mongodb")
 
 const userSchema = new mongoose.Schema({
     username: String,
@@ -88,7 +88,15 @@ const userSchema = new mongoose.Schema({
 
 models.User = mongoose.model("User", userSchema)
 
-console.log("successfully created db")
+const playlistSchema = new mongoose.Schema({
+    title: String,
+    songs: String,
+    user: {type: mongoose.Schema.Types.ObjectId, ref: "User"}
+})
+
+models.Playlist = mongoose.model("Playlist", playlistSchema)
+
+console.log("successfully created database models")
 
 export default models
 ```
@@ -99,8 +107,10 @@ import express from 'express'
 const router = express.Router()
 
 import usersRouter from './controllers/users.js'
+import playlistsRouter from './controllers/playlists.js'
 
 router.use('/users', usersRouter)
+router.use('/playlists', playlistsRouter)
 
 export default router
 ```
@@ -111,30 +121,39 @@ import express from 'express'
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-    try {
+    try{
         let allUsers = await req.models.User.find()
         res.json(allUsers)
-    } catch(error) {
+    } catch(err){
         console.log("error", err)
         res.status(500).json({status: "server error"})
     }
 })
 
 router.post('/', async (req, res) => {
-    try {
+    try{
         const username = req.body.username
-
         let newUser = new req.models.User({
             username: username
         })
-    
+
         await newUser.save()
 
         res.json({status: 'success'})
-    } catch(error) {
+    } catch(err){
         console.log("error", err)
         res.status(500).json({status: "server error"})
     }
+})
+
+router.delete('/', async (req, res) => {
+    let userId = req.body.userId
+
+    // delete all playlists for the user, then the user itself
+    await req.models.Playlist.deleteMany({user: userId})
+    await req.models.User.deleteOne({_id: userId})
+
+    res.send({status: "success"})
 })
 
 router.post('/bands', async (req, res) => {
@@ -144,7 +163,7 @@ router.post('/bands', async (req, res) => {
     // find the right user
     let user = await req.models.User.findById(userId)
 
-    // update with the new band
+    // update with the new band (if it wasn't already there)
     if(!user.favorite_bands.includes(band)){
         user.favorite_bands.push(band)
     }
@@ -152,6 +171,7 @@ router.post('/bands', async (req, res) => {
     // save
     await user.save()
     res.json({status: 'success'})
+    // TODO: catch errors
 })
 
 export default router
@@ -213,7 +233,7 @@ async function loadUsers(){
                 Username: ${userInfo.username}
                 <button onclick="deleteUser('${userInfo._id}')">Delete</button>
             </h3>
-            <strong>Favorite Bands:</strong> ${userInfo.favorite_bands ? userInfo.favorite_bands.join(", ") : "" } <br>
+            <strong>Favorite Bands:</strong> ${userInfo.favorite_bands ? userInfo.favorite_bands.join(", ") : ""} <br>
             <strong>Add Band:</strong> <input type="text" id="add_band_text_${userInfo._id}" />
             <button onclick="addBand('${userInfo._id}')">Add Band</button>
 
