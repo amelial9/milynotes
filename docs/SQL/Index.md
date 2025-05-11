@@ -57,4 +57,6 @@ hide:
   <a href="../../SQL/fkconstraints" class="index-link">FK Constraints</a>
   <hr>
   <a href="../../SQL/nestedqueries" class="index-link">Nested Queries</a>
+  <hr>
+  <a href="../../SQL/rank_rownum_denserank" class="index-link">Row Number, Rank, Dense Rank</a>
 </div>
