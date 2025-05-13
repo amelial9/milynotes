@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/INFO441/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/INFO441/proxies/">
       
       
-        <link rel="prev" href="../../SQL/Index/">
-      
-      
-        <link rel="next" href="../../INFO449/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Proxies - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#microservices-and-proxies" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Proxies
             
           </span>
         </div>
@@ -267,20 +263,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -296,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             INFO441
@@ -307,32 +301,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -343,35 +315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,11 +424,53 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
+  <a href="#forward-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
+      Forward Proxy
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverse-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverse Proxy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microservices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Microservices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-environment-variables-before-running-npm-start-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      set environment variables before running npm start (mac)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-balancing-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load Balancing Proxy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -507,50 +492,188 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 13, 2025 02:54:15">May 13, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-server-side-dev-notes">Category: Amelia's server-side dev notes</h2>
-<!-- - [Simple server template](simpleTemplate.md)
-- [Check Time](checkTime.md)
-- [Pluralize](pluralize.md)
-- [Audit Image Tags](aduitImgTags.md) -->
+<h1 id="microservices-and-proxies">Microservices and Proxies</h1>
+<h3 id="forward-proxy">Forward Proxy</h3>
+<p>A server that sits between a client (like your computer) and the internet. Forwards your requests to websites and sends the responses back to you. It hides the client from the server.</p>
+<p>Uses:
+- Security (firewalls)
+- Anonymity (VPNs, or hackers)
+- Caching</p>
+<h3 id="reverse-proxy">Reverse Proxy</h3>
+<p>A server that sits in front of web servers. It receives requests from clients and forwards them to the appropriate backend server. It hides the server from the client.</p>
+<p>Benefits:
+- Transparent to client
+- Scalable</p>
+<h3 id="microservices">Microservices</h3>
+<p>What are they good at?
+- Scaling different parts of your app up or down
+- Letting individuals teams choose their own favorite technology
+    - Maybe the /login team loves C# and the /getAllVideosForUser team loves JavaScript… with microservices, you can let each group choose
+- Troubleshooting/rollouts/rollbacks are by endpoint</p>
+<p><br></p>
+<h4 id="set-environment-variables-before-running-npm-start-mac">set environment variables before running npm start (mac)</h4>
+<pre><code>export DEBUG=&quot;express:* express-starter:server&quot;
+export DEBUG=&quot;http-proxy-middleware* node server.js&quot;
 
-<div class="category-index">
-  <a href="../../INFO441/simpleTemplate" class="index-link">Simple server template</a>
-  <hr>
-  <a href="../../INFO441/checkTime" class="index-link">Check Time</a>
-  <hr>
-  <a href="../../INFO441/pluralize" class="index-link">Pluralize</a>
-  <hr>
-  <a href="../../INFO441/aduitImgTags" class="index-link">Audit Image Tags</a>
-  <hr>
-  <a href="../../INFO441/pterosaurs" class="index-link">Pterosaurs demo</a>
-  <hr>
-  <a href="../../INFO441/jsonDataFileFlow" class="index-link">JSON Data File Flow</a>
-  <hr>
-  <a href="../../INFO441/middleware" class="index-link">Middleware</a>
-  <hr>
-  <a href="../../INFO441/userdatamongo" class="index-link">User Data Demo (MongoDB)</a>
-  <hr>
-  <a href="../../INFO441/xss" class="index-link">XSS (Cross Site Scripting Attacks)</a>
-  <hr>
-  <a href="../../INFO441/sqlinjection" class="index-link">SQL Injection</a>
-  <hr>
-  <a href="../../INFO441/session" class="index-link">Session (Authentication)</a>
-  <hr>
-  <a href="../../INFO441/useractions" class="index-link">User Actions</a>
-  <hr>
-  <a href="../../INFO441/useractions2" class="index-link">User Actions (Part 2)</a>
-  <hr>
-  <a href="../../INFO441/websockets" class="index-link">Websockets</a>
-  <hr>
-  <a href="../../INFO441/proxies" class="index-link">Microservices and Proxies</a>
-</div>
+export PORT=3000
+</code></pre>
+<blockquote>
+<p>macbook has airplay on port 5000, turn off in setting first</p>
+</blockquote>
+<p><br></p>
+<h4 id="load-balancing-proxy">Load Balancing Proxy</h4>
+<pre><code>import request from 'request';
+
+const servers = ['http://localhost:6001', 'http://localhost:6002' ];
+let cur_server_index = 0;
+app.use('/api/square', (req, res) =&gt; {
+  try {
+    cur_server_index = (cur_server_index  + 1) % servers.length;
+    req.pipe(request({ url: servers[cur_server_index] + req.originalUrl })).pipe(res);
+  } catch (error) {
+    console.log(&quot;error in /api/square:&quot; + error)
+    res.status(500).json({status: &quot;error&quot;, error: error});
+  }
+})
+</code></pre>
+<p><br></p>
+<pre><code>microservices/
+├── express-reverse-proxy/
+│   └── app.js
+├── express-reverse-double/
+│   └── app.js
+├── express-reverse-square/
+│   └── app.js
+└── react-client/
+</code></pre>
+<p>express-reverse-proxy/app.js</p>
+<pre><code>import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import { createProxyMiddleware } from 'http-proxy-middleware'
+import request from 'request'
+
+import usersRouter from './routes/users.js';
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser()); 
+
+app.use('/users', usersRouter);
+
+app.get('/api/double', createProxyMiddleware({
+    target: 'http://localhost:5000'
+}))
+
+const servers = ['http://localhost:6001', 'http://localhost:6002']
+let cur_server_index = 0
+app.get('/api/square', (req, res) =&gt; {
+    try {
+        cur_server_index = (cur_server_index + 1) % servers.length
+        req
+            .pipe(request({
+                url: servers[cur_server_index] + req.originalUrl
+            }))
+            .pipe(res)
+    } catch (err) {
+        console.log(&quot;Error in /api/square: &quot;, err)
+        res.status(500).json({ status: &quot;error&quot;, error: err })
+    }
+})
+
+app.use('/*', createProxyMiddleware({
+    target: 'http://localhost:4000',
+    pathRewrite: (path, req) =&gt; req.baseUrl,
+    changeOrigin: true
+}))
+
+
+export default app;
+</code></pre>
+<p>express-service-double/app.js</p>
+<pre><code>import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+
+import usersRouter from './routes/users.js';
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/users', usersRouter);
+
+app.get('/api/double', (req, res) =&gt; {
+    let num = req.query.num
+    let doubled = num * 2
+    res.send(&quot;&quot; + doubled)
+})
+
+export default app;
+</code></pre>
+<p>express-service-square/app.js</p>
+<pre><code>import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+
+import usersRouter from './routes/users.js';
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/users', usersRouter);
+
+app.get('/api/square', (req, res) =&gt; {
+    let num = req.query.num
+    let squared = num * num
+    res.send(&quot;&quot; + squared)
+})
+
+export default app;
+</code></pre>
+<p><br></p>
+<p><img src="../../INFO441/img/5-12demo.png" alt="5-12 demo" width="500"></p>
 
 
 
