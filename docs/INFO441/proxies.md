@@ -19,18 +19,25 @@ hide:
 
 A server that sits between a client (like your computer) and the internet. Forwards your requests to websites and sends the responses back to you. It hides the client from the server.
 
-Uses:
+Uses:  
+
 - Security (firewalls)
+
 - Anonymity (VPNs, or hackers)
+
 - Caching
+
 
 ### Reverse Proxy
 
 A server that sits in front of web servers. It receives requests from clients and forwards them to the appropriate backend server. It hides the server from the client.
 
-Benefits:
+Benefits:  
+
 - Transparent to client
+
 - Scalable
+
 
 ### Microservices
 

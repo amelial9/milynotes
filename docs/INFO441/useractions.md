@@ -29,7 +29,7 @@ demo/
 │       └── style.css
 │   └── javascripts/
 │       └── index.js
-│   models.js
+├── models.js
 └── app.js
 ```
 
