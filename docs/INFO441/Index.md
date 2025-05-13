@@ -46,4 +46,6 @@ hide:
   <a href="../../INFO441/useractions2" class="index-link">User Actions (Part 2)</a>
   <hr>
   <a href="../../INFO441/websockets" class="index-link">Websockets</a>
+  <hr>
+  <a href="../../INFO441/proxies" class="index-link">Microservices and Proxies</a>
 </div>
