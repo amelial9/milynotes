@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/INFO441/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/INFO441/cartsnpayments/">
       
       
-        <link rel="prev" href="../../SQL/Index/">
-      
-      
-        <link rel="next" href="../../INFO449/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Cartsnpayments - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#carts-payments" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Cartsnpayments
             
           </span>
         </div>
@@ -267,20 +263,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -296,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             INFO441
@@ -307,32 +301,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -343,35 +315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -474,23 +417,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -507,52 +433,317 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 14, 2025 15:56:48">May 14, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-server-side-dev-notes">Category: Amelia's server-side dev notes</h2>
-<!-- - [Simple server template](simpleTemplate.md)
-- [Check Time](checkTime.md)
-- [Pluralize](pluralize.md)
-- [Audit Image Tags](aduitImgTags.md) -->
+<h1 id="carts-payments">Carts &amp; Payments</h1>
+<pre><code>demo/
+├── routes/
+│   └── items.js
+├── public/
+│   └── index.html
+│   └── stylesheets/
+│   └── javascripts/
+│       └── index.js
+│       └── checkout.js
+├── models.js
+└── app.js
+</code></pre>
+<p><br></p>
+<p>app.js</p>
+<pre><code>import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import sessions from 'express-session';
 
-<div class="category-index">
-  <a href="../../INFO441/simpleTemplate" class="index-link">Simple server template</a>
-  <hr>
-  <a href="../../INFO441/checkTime" class="index-link">Check Time</a>
-  <hr>
-  <a href="../../INFO441/pluralize" class="index-link">Pluralize</a>
-  <hr>
-  <a href="../../INFO441/aduitImgTags" class="index-link">Audit Image Tags</a>
-  <hr>
-  <a href="../../INFO441/pterosaurs" class="index-link">Pterosaurs demo</a>
-  <hr>
-  <a href="../../INFO441/jsonDataFileFlow" class="index-link">JSON Data File Flow</a>
-  <hr>
-  <a href="../../INFO441/middleware" class="index-link">Middleware</a>
-  <hr>
-  <a href="../../INFO441/userdatamongo" class="index-link">User Data Demo (MongoDB)</a>
-  <hr>
-  <a href="../../INFO441/xss" class="index-link">XSS (Cross Site Scripting Attacks)</a>
-  <hr>
-  <a href="../../INFO441/sqlinjection" class="index-link">SQL Injection</a>
-  <hr>
-  <a href="../../INFO441/session" class="index-link">Session (Authentication)</a>
-  <hr>
-  <a href="../../INFO441/useractions" class="index-link">User Actions</a>
-  <hr>
-  <a href="../../INFO441/useractions2" class="index-link">User Actions (Part 2)</a>
-  <hr>
-  <a href="../../INFO441/websockets" class="index-link">Websockets</a>
-  <hr>
-  <a href="../../INFO441/proxies" class="index-link">Microservices and Proxies</a>
-  <hr>
-  <a href="../../INFO441/cartsnpayments" class="index-link">Carts & Payments</a>
-</div>
+
+// This is a public sample test API key.
+// Don’t submit any personally identifiable information in requests made with this key.
+// Sign in to see your own test API key embedded in code samples.
+import stripeLib from 'stripe'
+const stripe = stripeLib('a_key');
+
+
+import models from './models.js'
+import itemsRouter from './routes/items.js';
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(sessions({
+    secret: &quot;thisismysecrctekeyfhrgfgrfrty84fwir767&quot;,
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false 
+}))
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) =&gt;{
+    req.models = models
+    req.stripe = stripe
+    next()
+})
+
+app.use('/items', itemsRouter);
+
+export default app;
+</code></pre>
+<p>models.js</p>
+<pre><code>import mongoose from &quot;mongoose&quot;;
+
+let models = {};
+
+console.log(&quot;connecting to mongodb&quot;);
+// Put your MongoDB Atlas connection string in, or
+await mongoose.connect('mongodb+srv://amelialx99:DgBDwhe7oQWZuKup@cluster0.i36zdqv.mongodb.net/storeDemo');
+console.log(&quot;connected to mongodb&quot;);
+
+//Add schemas and models
+const itemSchema = new mongoose.Schema({
+    name: String,
+    price: Number
+})
+
+models.Item = mongoose.model(&quot;Item&quot;, itemSchema)
+
+console.log(&quot;finished creating models&quot;);
+
+export default models;
+</code></pre>
+<p>index.js</p>
+<pre><code>async function init(){
+    loadItems();
+}
+
+let allItemIds = []
+
+async function loadItems(){
+  document.getElementById(&quot;allitemsdiv&quot;).innerHTML = &quot;Loading...&quot;;
+
+  //load items from server
+  let response = await fetch(&quot;/items&quot;);
+  let itemsJson = await response.json();
+
+  allItemIds = itemsJson.map(itemInfo =&gt; itemInfo._id);
+
+  //display users
+  let itemsHTML = itemsJson.map(itemInfo =&gt; {
+      return `
+      &lt;hr&gt;
+      &lt;div&gt;
+          &lt;h3&gt;Item: ${itemInfo.name}&lt;/h3&gt;
+          &lt;strong&gt;Price: &lt;/strong&gt;$&lt;span id=&quot;item_price_${itemInfo._id}&quot;&gt;${itemInfo.price}&lt;/span&gt;&lt;br&gt;
+          &lt;strong&gt;How many do you want?&lt;/strong&gt; &lt;input type=&quot;number&quot; id=&quot;item_num_${itemInfo._id}&quot; value=0 /&gt; 
+      &lt;/div&gt;`
+  }).join(&quot;&lt;hr&gt;&quot;)
+
+  document.getElementById(&quot;allitemsdiv&quot;).innerHTML = itemsHTML;
+
+}
+
+async function checkout(){
+  let cartInfo = allItemIds.map(itemId =&gt; {
+      return {
+          itemId: itemId,
+          itemCount: document.getElementById(`item_num_${itemId}`).value,
+      }
+  })
+
+  cartInfo = cartInfo.filter(itemInfo =&gt; itemInfo.itemCount &gt; 0)
+
+  let response = await fetch(
+      &quot;/items/saveCart&quot;,
+      {
+          method: &quot;POST&quot;,
+          body: JSON.stringify(cartInfo),
+          headers: {'Content-Type': 'application/json'}
+      }
+  );
+
+  //once cart is saved, redirect to the checkout page
+  location.href = &quot;/checkout.html&quot;
+}
+</code></pre>
+<p>checkout.js</p>
+<pre><code>let totalCost = 0;
+
+async function init(){
+    await loadCart();
+
+    if(totalCost &gt; 0){
+      document.getElementById(&quot;payment-div&quot;).style.display=&quot;&quot;
+      // call functions from Stripe Custom Flow tutorial: https://stripe.com/docs/payments/quickstart
+      initialize();
+      checkStatus();
+    }
+}
+
+async function loadCart(){
+    document.getElementById(&quot;yourcartdiv&quot;).innerHTML = &quot;Loading...&quot;;
+
+    //load items from server
+    let response = await fetch(&quot;/items/getCart&quot;);
+    let cartJson = await response.json();
+
+    //display cart items
+
+    let cartHTML = cartJson.map(itemInfo =&gt; {
+        totalCost += itemInfo.price * itemInfo.itemCount;
+
+        return `
+        &lt;hr&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Item: ${itemInfo.name}&lt;/h3&gt;
+            &lt;strong&gt;Price: &lt;/strong&gt;$${itemInfo.price}&lt;br&gt;
+            &lt;strong&gt;Count&lt;/strong&gt; ${itemInfo.itemCount}
+        &lt;/div&gt;`
+    }).join(&quot;&lt;hr&gt;&quot;)
+
+    document.getElementById(&quot;yourcartdiv&quot;).innerHTML = cartHTML;
+    document.getElementById(&quot;total_price&quot;).innerText = totalCost;
+}
+
+
+// From Stripe Custom Flow tutorial: https://stripe.com/docs/payments/quickstart
+// changed endpoint to: &quot;/items/create-payment-intent
+
+// This is a public sample test API key.
+// Don’t submit any personally identifiable information in requests made with this key.
+// Sign in to see your own test API key embedded in code samples.
+const stripe = Stripe(&quot;pk_test_TYooMQauvdEDq54NiTphI7jx&quot;);
+
+// The items the customer wants to buy
+const items = [{ id: &quot;xl-tshirt&quot; }];
+
+let elements;
+
+// initialize();
+// checkStatus();
+
+document
+  .querySelector(&quot;#payment-form&quot;)
+  .addEventListener(&quot;submit&quot;, handleSubmit);
+
+// Fetches a payment intent and captures the client secret
+async function initialize() {
+  const response = await fetch(&quot;/items/create-payment-intent&quot;, {
+    method: &quot;POST&quot;,
+    headers: { &quot;Content-Type&quot;: &quot;application/json&quot; },
+    body: JSON.stringify({ items }),
+  });
+  const { clientSecret } = await response.json();
+
+  const appearance = {
+    theme: 'stripe',
+  };
+  elements = stripe.elements({ appearance, clientSecret });
+
+  const paymentElementOptions = {
+    layout: &quot;tabs&quot;,
+  };
+
+  const paymentElement = elements.create(&quot;payment&quot;, paymentElementOptions);
+  paymentElement.mount(&quot;#payment-element&quot;);
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  setLoading(true);
+
+  const { error } = await stripe.confirmPayment({
+    elements,
+    confirmParams: {
+      // Make sure to change this to your payment completion page
+      return_url: &quot;http://localhost:3000/checkout.html&quot;,
+    },
+  });
+
+  // This point will only be reached if there is an immediate error when
+  // confirming the payment. Otherwise, your customer will be redirected to
+  // your `return_url`. For some payment methods like iDEAL, your customer will
+  // be redirected to an intermediate site first to authorize the payment, then
+  // redirected to the `return_url`.
+  if (error.type === &quot;card_error&quot; || error.type === &quot;validation_error&quot;) {
+    showMessage(error.message);
+  } else {
+    showMessage(&quot;An unexpected error occurred.&quot;);
+  }
+
+  setLoading(false);
+}
+
+// Fetches the payment intent status after payment submission
+async function checkStatus() {
+  const clientSecret = new URLSearchParams(window.location.search).get(
+    &quot;payment_intent_client_secret&quot;
+  );
+
+  if (!clientSecret) {
+    return;
+  }
+
+  const { paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
+
+  switch (paymentIntent.status) {
+    case &quot;succeeded&quot;:
+      showMessage(&quot;Payment succeeded!&quot;);
+      break;
+    case &quot;processing&quot;:
+      showMessage(&quot;Your payment is processing.&quot;);
+      break;
+    case &quot;requires_payment_method&quot;:
+      showMessage(&quot;Your payment was not successful, please try again.&quot;);
+      break;
+    default:
+      showMessage(&quot;Something went wrong.&quot;);
+      break;
+  }
+}
+
+// ------- UI helpers -------
+
+function showMessage(messageText) {
+  const messageContainer = document.querySelector(&quot;#payment-message&quot;);
+
+  messageContainer.classList.remove(&quot;hidden&quot;);
+  messageContainer.textContent = messageText;
+
+  setTimeout(function () {
+    messageContainer.classList.add(&quot;hidden&quot;);
+    messageContainer.textContent = &quot;&quot;;
+  }, 4000);
+}
+
+// Show a spinner on payment submission
+function setLoading(isLoading) {
+  if (isLoading) {
+    // Disable the button and show a spinner
+    document.querySelector(&quot;#submit&quot;).disabled = true;
+    document.querySelector(&quot;#spinner&quot;).classList.remove(&quot;hidden&quot;);
+    document.querySelector(&quot;#button-text&quot;).classList.add(&quot;hidden&quot;);
+  } else {
+    document.querySelector(&quot;#submit&quot;).disabled = false;
+    document.querySelector(&quot;#spinner&quot;).classList.add(&quot;hidden&quot;);
+    document.querySelector(&quot;#button-text&quot;).classList.remove(&quot;hidden&quot;);
+  }
+}
+</code></pre>
 
 
 
