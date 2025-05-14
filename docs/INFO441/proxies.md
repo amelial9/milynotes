@@ -42,9 +42,13 @@ Benefits:
 ### Microservices
 
 What are they good at?
+
 - Scaling different parts of your app up or down
+
 - Letting individuals teams choose their own favorite technology
+
 	- Maybe the /login team loves C# and the /getAllVideosForUser team loves JavaScript… with microservices, you can let each group choose
+    
 - Troubleshooting/rollouts/rollbacks are by endpoint
 
 <br>
