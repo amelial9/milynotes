@@ -90,7 +90,7 @@ let models = {};
 
 console.log("connecting to mongodb");
 // Put your MongoDB Atlas connection string in, or
-await mongoose.connect('mongodb+srv://amelialx99:DgBDwhe7oQWZuKup@cluster0.i36zdqv.mongodb.net/storeDemo');
+await mongoose.connect('mongodb link');
 console.log("connected to mongodb");
 
 //Add schemas and models
