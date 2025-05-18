@@ -58,5 +58,7 @@ hide:
   <hr>
   <a href="../../SQL/nestedqueries" class="index-link">Nested Queries</a>
   <hr>
+  <a href="../../SQL/windowfunctions" class="index-link">Window Functions</a>
+  <hr>
   <a href="../../SQL/rank_rownum_denserank" class="index-link">Row Number, Rank, Dense Rank</a>
 </div>
