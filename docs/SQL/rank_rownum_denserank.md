@@ -90,3 +90,8 @@ FROM concerts;
 |Adele|United Kingdom|600000|2|2|2|
 |One Direction|United Kingdom|580000|3|3|3|
 |...|...|...|...|...|...|
+
+
+<br>
+
+**Source:** <a href="https://datalemur.com/sql-tutorial/sql-rank-dense_rank-row_number-window-function" target="_blank">SQL Ranking Window Functions With Examples</a>
