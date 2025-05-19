@@ -77,7 +77,7 @@ import mongoose from "mongoose"
 const models = {}
 
 console.log("Trying to connect to mongodb")
-await mongoose.connect("mongodb+srv://amelialx99:DgBDwhe7oQWZuKup@cluster0.i36zdqv.mongodb.net/playlists")
+await mongoose.connect("mongodb+srv://vkuhhyuguhvgfythgvygvtfcvghyvfvh this is a random str")
 
 console.log("successfully connected to mongodb")
 
