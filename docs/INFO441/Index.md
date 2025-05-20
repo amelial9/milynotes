@@ -50,4 +50,6 @@ hide:
   <a href="../../INFO441/proxies" class="index-link">Microservices and Proxies</a>
   <hr>
   <a href="../../INFO441/cartsnpayments" class="index-link">Carts & Payments</a>
+  <hr>
+  <a href="../../INFO441/testing" class="index-link">Testing</a>
 </div>
