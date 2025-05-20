@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/INFO441/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/INFO441/testing/">
       
       
-        <link rel="prev" href="../../SQL/Index/">
-      
-      
-        <link rel="next" href="../../INFO449/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Testing - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#testing" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Testing
             
           </span>
         </div>
@@ -267,20 +263,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -296,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             INFO441
@@ -307,32 +301,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -343,35 +315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,9 +424,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
+  <a href="#non-automated-testing" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
+      NON-automated testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-testing-of-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Testing of Code
     </span>
   </a>
   
@@ -507,54 +459,185 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 19, 2025 18:20:35">May 19, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-server-side-dev-notes">Category: Amelia's server-side dev notes</h2>
-<!-- - [Simple server template](simpleTemplate.md)
-- [Check Time](checkTime.md)
-- [Pluralize](pluralize.md)
-- [Audit Image Tags](aduitImgTags.md) -->
+<h1 id="testing">Testing</h1>
+<h3 id="non-automated-testing">NON-automated testing</h3>
+<ul>
+<li>
+<p>Click around and try things yourself!</p>
+</li>
+<li>
+<p>Manual testing (team): usually has a list of things to click through</p>
+</li>
+<li>
+<p>User (research) testing: give users your site and let them click around</p>
+</li>
+</ul>
+<h3 id="automated-testing-of-code">Automated Testing of Code</h3>
+<ul>
+<li>
+<p>Definition: Automated tests are additional code that tests the code of a project</p>
+<ul>
+<li>This includes how things should go correctly AND incorrectly</li>
+</ul>
+</li>
+<li>
+<p>Types of Tests</p>
+<ul>
+<li>
+<p>Unit tests: test ONE thing</p>
+</li>
+<li>
+<p>Integration Tests: isolate and test code that calls other code, for example, is this code connecting to the db?</p>
+</li>
+<li>
+<p>System Tests/E2E Tests: test the overall system; E2E is the flow end-to-end, System is in the context of a prod-like environment</p>
+</li>
+<li>
+<p>Stress Tests: test what happens when parts of the system fail</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Strategies:</p>
+<ul>
+<li>
+<p>Running Tests: Continuous Integration Testing</p>
+</li>
+<li>
+<p>How do we know our tests are right?</p>
+<ul>
+<li>
+<p>Code Coverage</p>
+</li>
+<li>
+<p>We don’t know (Skype/postmortems/rollbacks)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Best practices:</p>
+<ul>
+<li>
+<p>When something breaks in prod, the fix should include a test that would have caught that change/error</p>
+</li>
+<li>
+<p>CI/CD testing: on PR, if something new is broken, block merge</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<p><code>npm install --save-dev &lt;package&gt;</code></p>
+<ul>
+<li>
+<p>Installs the package as a <strong>development dependency</strong>.</p>
+</li>
+<li>
+<p>Adds it to the <code>"devDependencies"</code> section in <code>package.json</code>.</p>
+</li>
+<li>
+<p>Used when the package is <strong>only needed during development</strong> (e.g. for testing, building, or linting).</p>
+</li>
+</ul>
+<p><code>npm test</code> run test in project</p>
+<p><br></p>
+<p>app.test.js</p>
+<pre><code>import { assert } from 'chai'
+import request from 'supertest'
 
-<div class="category-index">
-  <a href="../../INFO441/simpleTemplate" class="index-link">Simple server template</a>
-  <hr>
-  <a href="../../INFO441/checkTime" class="index-link">Check Time</a>
-  <hr>
-  <a href="../../INFO441/pluralize" class="index-link">Pluralize</a>
-  <hr>
-  <a href="../../INFO441/aduitImgTags" class="index-link">Audit Image Tags</a>
-  <hr>
-  <a href="../../INFO441/pterosaurs" class="index-link">Pterosaurs demo</a>
-  <hr>
-  <a href="../../INFO441/jsonDataFileFlow" class="index-link">JSON Data File Flow</a>
-  <hr>
-  <a href="../../INFO441/middleware" class="index-link">Middleware</a>
-  <hr>
-  <a href="../../INFO441/userdatamongo" class="index-link">User Data Demo (MongoDB)</a>
-  <hr>
-  <a href="../../INFO441/xss" class="index-link">XSS (Cross Site Scripting Attacks)</a>
-  <hr>
-  <a href="../../INFO441/sqlinjection" class="index-link">SQL Injection</a>
-  <hr>
-  <a href="../../INFO441/session" class="index-link">Session (Authentication)</a>
-  <hr>
-  <a href="../../INFO441/useractions" class="index-link">User Actions</a>
-  <hr>
-  <a href="../../INFO441/useractions2" class="index-link">User Actions (Part 2)</a>
-  <hr>
-  <a href="../../INFO441/websockets" class="index-link">Websockets</a>
-  <hr>
-  <a href="../../INFO441/proxies" class="index-link">Microservices and Proxies</a>
-  <hr>
-  <a href="../../INFO441/cartsnpayments" class="index-link">Carts & Payments</a>
-  <hr>
-  <a href="../../INFO441/testing" class="index-link">Testing</a>
-</div>
+import app from '../app.js'
+
+describe('Static server', () =&gt; {
+    it('should return index.html if it is requested', async () =&gt; {
+        const res = await request(app).get('/index.html')
+
+        assert.equal(res.statusCode, 200)
+
+        assert.include(
+            res.text,
+            '&lt;script src=&quot;javascripts/index.js&quot;&gt;&lt;/script&gt;',
+            &quot;body has html code we recognize from index.html&quot;
+        )
+    })
+
+    it(&quot;should return 404 for a non-existing file&quot;, async() =&gt; {
+        const res = await request(app).get(&quot;/fdmaifodamsf.html&quot;)
+        assert.equal(res.statusCode, 404)
+    })
+})
+</code></pre>
+<p>example.test.js</p>
+<pre><code>import assert from 'assert'
+
+describe('DemoTest', () =&gt; {
+    it('should say 2+2 = 4', () =&gt; {
+        assert.equal(2+2, 4)
+    })
+
+    it(&quot;should say 4+4 = 8&quot;, () =&gt; {
+        assert.equal(4+4, 8)
+    })
+
+        it(&quot;should say 1+1 = 3&quot;, () =&gt; {
+        assert.equal(1+1, 3)
+    })
+})
+</code></pre>
+<p>items.test.js</p>
+<pre><code>import { assert } from 'chai'
+import request from 'supertest'
+
+import app from '../app.js'
+
+describe('Items integration test (with database)', () =&gt; {
+    it('should get items from the db for GET items', async () =&gt; {
+        const res = await request(app).get('/items')
+
+        assert.equal(res.statusCode, 200)
+        assert.equal(res.type, 'application/json')
+
+        assert.isArray(res.body)
+        assert.include(res.body[0], {
+            name: &quot;apple&quot;, 
+            price: 2.99
+        })
+    })
+})
+</code></pre>
+<p>package.json</p>
+<pre><code>{
+  &quot;name&quot;: &quot;express-starter&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;private&quot;: true,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node ./bin/www&quot;,
+    &quot;test&quot;: &quot;mocha&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;cookie-parser&quot;: &quot;~1.4.4&quot;,
+    &quot;debug&quot;: &quot;~2.6.9&quot;,
+    &quot;express&quot;: &quot;^4.19.2&quot;,
+    &quot;express-session&quot;: &quot;^1.17.2&quot;,
+    &quot;mongoose&quot;: &quot;^6.0.11&quot;,
+    &quot;morgan&quot;: &quot;~1.9.1&quot;,
+    &quot;stripe&quot;: &quot;^9.0.0&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;mocha&quot;: &quot;^11.4.0&quot;
+  }
+}
+</code></pre>
 
 
 
