@@ -15,7 +15,8 @@ hide:
 
 # XSS
 
-Cross Site Scripting Attacks  
+Cross Site Scripting Attacks
+
 - vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users  
 
 <br>
