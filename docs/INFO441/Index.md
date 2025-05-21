@@ -54,4 +54,6 @@ hide:
   <a href="../../INFO441/cartsnpayments" class="index-link">Carts & Payments</a>
   <hr>
   <a href="../../INFO441/testing" class="index-link">Testing</a>
+  <hr>
+  <a href="../../INFO441/caching" class="index-link">Caching</a>
 </div>
