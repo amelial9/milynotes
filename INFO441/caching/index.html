@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/INFO441/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/INFO441/caching/">
       
       
-        <link rel="prev" href="../../SQL/Index/">
-      
-      
-        <link rel="next" href="../../INFO449/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Caching - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#caching" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Caching
             
           </span>
         </div>
@@ -267,20 +263,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -296,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             INFO441
@@ -307,32 +301,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -343,35 +315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,9 +424,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
+  <a href="#caching-locations" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
+      Caching locations
     </span>
   </a>
   
@@ -507,58 +450,233 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 21, 2025 14:45:19">May 21, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-server-side-dev-notes">Category: Amelia's server-side dev notes</h2>
-<!-- - [Simple server template](simpleTemplate.md)
-- [Check Time](checkTime.md)
-- [Pluralize](pluralize.md)
-- [Audit Image Tags](aduitImgTags.md) -->
+<h1 id="caching">Caching</h1>
+<ul>
+<li>
+<p>Saving the results of a calculation or request so that in the future, those results can be reused instead of redoing the calculation or request</p>
+<ul>
+<li>Caching is often the best first step to make your site faster and able to handle more users</li>
+</ul>
+</li>
+<li>
+<p>Benefits: Makes calculations or requests run faster (or skips them entirely)</p>
+</li>
+<li>
+<p>Risks: The results you saved may be out of date (stale)</p>
+</li>
+<li>
+<p>Also, some requests can’t be cached for different reasons:</p>
+<ul>
+<li>
+<p>The response may be unique each time (e.g., generate a random number)</p>
+</li>
+<li>
+<p>You want the server to perform an action (e.g., POST or DELETE requests)</p>
+</li>
+<li>
+<p>You always want most up to date (e.g., bank account balance)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="caching-locations">Caching locations</h3>
+<p><img src="../../INFO441/img/caching.png" alt="cache types" width="700"></p>
+<p><br>
+app.js</p>
+<pre><code>import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import sessions from 'express-session';
 
-<div class="category-index">
-  <a href="../../INFO441/simpleTemplate" class="index-link">Simple server template</a>
-  <hr>
-  <a href="../../INFO441/checkTime" class="index-link">Check Time</a>
-  <hr>
-  <a href="../../INFO441/pluralize" class="index-link">Pluralize</a>
-  <hr>
-  <a href="../../INFO441/aduitImgTags" class="index-link">Audit Image Tags</a>
-  <hr>
-  <a href="../../INFO441/pterosaurs" class="index-link">Pterosaurs demo</a>
-  <hr>
-  <a href="../../INFO441/jsonDataFileFlow" class="index-link">JSON Data File Flow</a>
-  <hr>
-  <a href="../../INFO441/mongodb" class="index-link">MongoDB Connection</a>
-  <hr>
-  <a href="../../INFO441/middleware" class="index-link">Middleware</a>
-  <hr>
-  <a href="../../INFO441/userdatamongo" class="index-link">User Data Demo (MongoDB)</a>
-  <hr>
-  <a href="../../INFO441/xss" class="index-link">XSS (Cross Site Scripting Attacks)</a>
-  <hr>
-  <a href="../../INFO441/sqlinjection" class="index-link">SQL Injection</a>
-  <hr>
-  <a href="../../INFO441/session" class="index-link">Session (Authentication)</a>
-  <hr>
-  <a href="../../INFO441/useractions" class="index-link">User Actions</a>
-  <hr>
-  <a href="../../INFO441/useractions2" class="index-link">User Actions (Part 2)</a>
-  <hr>
-  <a href="../../INFO441/websockets" class="index-link">Websockets</a>
-  <hr>
-  <a href="../../INFO441/proxies" class="index-link">Microservices and Proxies</a>
-  <hr>
-  <a href="../../INFO441/cartsnpayments" class="index-link">Carts & Payments</a>
-  <hr>
-  <a href="../../INFO441/testing" class="index-link">Testing</a>
-  <hr>
-  <a href="../../INFO441/caching" class="index-link">Caching</a>
-</div>
+
+// This is a public sample test API key.
+// Don’t submit any personally identifiable information in requests made with this key.
+// Sign in to see your own test API key embedded in code samples.
+import stripeLib from 'stripe'
+const stripe = stripeLib('  ');
+
+
+import models from './models.js'
+import itemsRouter from './routes/items.js';
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(sessions({
+    secret: &quot;thisismysecrctekey&quot;,
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false 
+}))
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) =&gt;{
+    req.models = models
+    req.stripe = stripe
+    next()
+})
+
+
+app.use('/items', itemsRouter);
+
+export default app;
+</code></pre>
+<p>items.js</p>
+<pre><code>import cache from 'memory-cache'
+import express from 'express';
+var router = express.Router();
+
+// artificially slow down the response
+async function getItemsSlow(req) {
+    const allItems = await req.models.Item.find()
+
+    const sleepSeconds = 5
+    await new Promise(r =&gt; setTimeout(r, sleepSeconds * 1000))
+
+    return allItems
+}
+
+router.get(&quot;/&quot;, async (req, res) =&gt; {
+    console.log(&quot;got a GET request for all items, first check the cache&quot;)
+
+    let allItems = cache.get(&quot;allItems&quot;)
+
+    if (allItems) {
+        console.log(&quot;cache hit: found items in my cache&quot;)
+    }
+    else {
+        console.log(&quot;cache miss: doing the slow db lookup&quot;)
+
+        // let allItems = await req.models.Item.find()
+        allItems = await getItemsSlow(req);
+        console.log(&quot;loaded items from db, saving to cache&quot;)
+        cache.put(&quot;allItems&quot;, allItems, 30 * 1000)
+    }
+
+    // res.setHeader('Cache-Control', 'public, max-age=30')
+    res.json(allItems)
+})
+
+router.post(&quot;/saveCart&quot;, async (req, res) =&gt; {
+    console.log(
+        &quot;saving card, session is currently: &quot;, 
+        req.session
+    )
+
+    const cartInfo = req.body
+    //TODO: validate cart info is only item ids and counts
+
+    // for some reason if I save an object (instead of string) 
+    // it gets deleted later
+    req.session.cartInfo = JSON.stringify(cartInfo)
+
+    console.log(&quot;session is now&quot;, req.session)
+
+    res.json({status: &quot;success&quot;})
+})
+
+router.get('/getCart', async (req, res) =&gt; {
+    if(!req.session || !req.session.cartInfo){
+        // if no session or saved cart, just return empty cart
+        res.json([])
+        return
+    }
+
+    const cartInfo = JSON.parse(req.session.cartInfo)
+
+    // add item names and prices to the cart info
+    const combinedCartInfo = await addPricesToCart(cartInfo, req.models)
+
+    res.json(combinedCartInfo)
+})
+
+async function addPricesToCart(cartInfo, models){
+    //cartInfo should start like: [{itemId: 342, itemCount: 2}, {itemId:345, itemCount: 1}, ...]
+
+    // look up in the db all the items listed in my cart
+    const cartItemIds = cartInfo.map(cartItem =&gt; cartItem.itemId)
+    const itemsInfo = await models.Item.find().where(&quot;_id&quot;).in(cartItemIds).exec()
+
+    // itemsInfo will be an array of json, like this:
+    // [{_id:342, name: &quot;orange&quot;, price: ...}, {_id: 345, name: &quot;apple&quot;, ...},...]
+
+    // transform itemsInfo into an object where I can look up info by the id
+    let itemsInfoById = {}
+    itemsInfo.forEach(itemInfo =&gt; {
+        itemsInfoById[itemInfo._id] = itemInfo
+    })
+
+    // itemsInfoById will look like
+    // {
+    //  342: {_id:342, name: &quot;orange&quot;, price: ...}
+    //  345: {_id: 345, name: &quot;apple&quot;, ...}
+    // }
+
+    // take the cartInfo, and for each item, make a new object that includes the name and price
+    const combinedCartInfo = cartInfo.map(cartItem =&gt; {
+        return {
+            itemId: cartItem.itemId, // from user cart
+            itemCount: cartItem.itemCount, // from user cart
+            name: itemsInfoById[cartItem.itemId].name, // from the db
+            price: itemsInfoById[cartItem.itemId].price // from the db
+        }
+    })
+    return combinedCartInfo
+}
+
+async function calculateOrderAmount(req){
+    // get cart info, combine with prices, calculate the total price
+    const cartInfo = JSON.parse(req.session.cartInfo)
+
+    const combinedCartInfo = await addPricesToCart(cartInfo, req.models)
+
+    const totalCost = combinedCartInfo
+        .map(item =&gt; item.price * item.itemCount) // get cost for each item type
+        .reduce((prev, curr) =&gt; prev + curr)
+
+    return totalCost
+}
+
+
+router.post('/create-payment-intent', async (req, res) =&gt; {
+    //look up the order amount
+    let orderAmount = await calculateOrderAmount(req)
+
+    // create a PaymentIntent object with the order amount
+    const paymentIntent = await req.stripe.paymentIntents.create({
+        amount: orderAmount * 100,
+        currency: &quot;usd&quot;, // note: 'usd' is actually US cents for some reason (US dollars * 100)
+        automatic_payment_methods: {
+            enabled: true
+        }
+    })
+
+    res.send({
+        clientSecret: paymentIntent.client_secret
+    })
+})
+
+export default router;
+</code></pre>
 
 
 
