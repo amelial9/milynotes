@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/SQL/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/SQL/normalization/">
       
       
-        <link rel="prev" href="../..">
-      
-      
-        <link rel="next" href="../../INFO441/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Normalization - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#normalization" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Normalization
             
           </span>
         </div>
@@ -199,20 +195,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -228,7 +222,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             SQL
@@ -239,32 +233,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -275,35 +247,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,9 +424,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
+  <a href="#1nf-first-normal-form" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
+      1NF (First Normal Form)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2nf-second-normal-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      2NF (Second Normal Form)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3nf-third-normal-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      3NF (Third Normal Form)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bcnf-boyce-codd-normal-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      BCNF (Boyce-Codd Normal Form)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-schema-design-or-logical-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational Schema Design (or Logical Design)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bcnf-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example BCNF Decomposition
     </span>
   </a>
   
@@ -507,67 +495,284 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 24, 2025 18:17:56">May 24, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-sql-ta-notes">Category: Amelia's SQL TA notes</h2>
-<div class="category-index">
-  <a href="../../SQL/Basics" class="index-link">Intro</a>
-  <hr>
-  <a href="../../SQL/JOINs" class="index-link">JOINs</a>
-  <hr>
-  <a href="../../SQL/key" class="index-link">Keys</a>
-  <hr>
-  <a href="../../SQL/1nf" class="index-link">First Normal Form</a>
-  <hr>
-  <a href="../../SQL/physical-dependence" class="index-link">Physical Data Dependence</a>
-  <hr>
-  <a href="../../SQL/null" class="index-link">NULL Values</a>
-  <hr>
-  <a href="../../SQL/create" class="index-link">CREATE TABLE</a>
-  <hr>
-  <a href="../../SQL/insert-update-del" class="index-link">INSERT, UPDATE, DELETE</a>
-  <hr>
-  <a href="../../SQL/having" class="index-link">HAVING</a>
-   <hr>
-  <a href="../../SQL/groupby" class="index-link">GROUP BY</a>
-  <hr>
-  <a href="../../SQL/aggregation" class="index-link">Simple Aggregation</a>
-  <hr>
-  <a href="../../SQL/with" class="index-link">WITH</a>
-  <hr>
-  <a href="../../SQL/witnesses" class="index-link">Witnesses</a>
-  <hr>
-  <a href="../../SQL/selfjoin" class="index-link">SELF JOIN Practice</a>
-  <hr>
-  <a href="../../SQL/conceptualdbdesign" class="index-link">Conceptual Database Design</a>
-  <hr>
-  <a href="../../SQL/erd" class="index-link">Entity Relationship Diagram</a>
-  <hr>
-  <a href="../../SQL/relationship" class="index-link">Relationship</a>
-  <hr>
-  <a href="../../SQL/weakentitysets" class="index-link">Weak Entity Sets</a>
-  <hr>
-  <a href="../../SQL/erdtoschema" class="index-link">From ER Diagram to Relational Schema</a>
-  <hr>
-  <a href="../../SQL/check" class="index-link">Check Constraint</a>
-  <hr>
-  <a href="../../SQL/fkconstraints" class="index-link">FK Constraints</a>
-  <hr>
-  <a href="../../SQL/nestedqueries" class="index-link">Nested Queries</a>
-  <hr>
-  <a href="../../SQL/windowfunctions" class="index-link">Window Functions</a>
-  <hr>
-  <a href="../../SQL/rank_rownum_denserank" class="index-link">Row Number, Rank, Dense Rank</a>
-  <hr>
-  <a href="../../SQL/fd" class="index-link">Functional dependencies</a>
-  <hr>
-  <a href="../../SQL/normalization" class="index-link">Normalization</a>
-</div>
+<h1 id="normalization">Normalization</h1>
+<p><strong>Normalization</strong> is a <strong>process</strong> in database design used to:</p>
+<ul>
+<li>
+<p>Eliminate redundancy</p>
+</li>
+<li>
+<p>Prevent update anomalies</p>
+</li>
+<li>
+<p>Ensure data integrity</p>
+</li>
+</ul>
+<p>Normal forms are levels or stages of normalization.</p>
+<p><br></p>
+<h4 id="1nf-first-normal-form">1NF (First Normal Form)</h4>
+<ul>
+<li>All values in each column must be <strong>atomic</strong> (i.e., indivisible).</li>
+<li>No repeating groups or arrays.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>StudentID</th>
+<th>CourseID</th>
+<th>StudentName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>C101</td>
+<td>Alice</td>
+</tr>
+<tr>
+<td>1</td>
+<td>C102</td>
+<td>Alice</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C101</td>
+<td>Bob</td>
+</tr>
+</tbody>
+</table>
+<p><code>StudentName</code> depends <strong>only on StudentID</strong>, not the full key → <strong>partial dependency</strong></p>
+<p><br></p>
+<h4 id="2nf-second-normal-form">2NF (Second Normal Form)</h4>
+<ul>
+<li>Must be in <strong>1NF</strong></li>
+<li><strong>No partial dependency</strong>: No non-key attribute should depend on <strong>part of a composite key</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>EmployeeID</th>
+<th>DeptID</th>
+<th>DeptName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10</td>
+<td>Sales</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>3</td>
+<td>10</td>
+<td>Sales</td>
+</tr>
+</tbody>
+</table>
+<p><code>DeptID → DeptName</code> (transitive: <code>EmployeeID → DeptID → DeptName</code>)</p>
+<p><br></p>
+<h4 id="3nf-third-normal-form">3NF (Third Normal Form)</h4>
+<ul>
+<li>Must be in <strong>2NF</strong></li>
+<li>No <strong>transitive dependency</strong>: Non-key attributes shouldn’t depend on <strong>other non-key attributes</strong><ul>
+<li>transitive dependency: A non-key attribute depends on another non-key attribute, which in turn depends on the key.</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Course</th>
+<th>Instructor</th>
+<th>Room</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Math101</td>
+<td>Smith</td>
+<td>R1</td>
+</tr>
+<tr>
+<td>CS102</td>
+<td>Jones</td>
+<td>R2</td>
+</tr>
+<tr>
+<td>Math101</td>
+<td>Smith</td>
+<td>R1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Instructor</strong> is not a key, but it's determining <code>Room</code> → violates BCNF</p>
+<p><br></p>
+<h4 id="bcnf-boyce-codd-normal-form">BCNF (Boyce-Codd Normal Form)</h4>
+<ul>
+<li>Must be in <strong>3NF</strong></li>
+<li>For <strong>every functional dependency</strong> <code>X → Y</code>, <code>X</code> must be a <strong>superkey</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Student</th>
+<th>Language</th>
+<th>Hobby</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alice</td>
+<td>French</td>
+<td>Music</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>French</td>
+<td>Sports</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>Spanish</td>
+<td>Music</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>Spanish</td>
+<td>Sports</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="relational-schema-design-or-logical-design">Relational Schema Design  (or Logical Design)</h4>
+<p>• Start with some relational schema<br />
+• Find out its functional dependencies (FDs)<br />
+• Use FDs to normalize the relational schema  </p>
+<p>One person may have multiple phones, but lives in only one city<br />
+Primary key is thus (SSN, PhoneNumber)<br />
+What's wrong?  </p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>SSN</th>
+<th>PhoneNumber</th>
+<th>City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fred</td>
+<td>123-45-6789</td>
+<td>206-555-1234</td>
+<td>Seattle</td>
+</tr>
+<tr>
+<td>Fred</td>
+<td>123-45-6789</td>
+<td>206-555-6543</td>
+<td>Seattle</td>
+</tr>
+<tr>
+<td>Joe</td>
+<td>987-65-4321</td>
+<td>908-555-2121</td>
+<td>Westfield</td>
+</tr>
+<tr>
+<td>Joe</td>
+<td>987-65-4321</td>
+<td>908-555-1234</td>
+<td>Westfield</td>
+</tr>
+</tbody>
+</table>
+<p>The only key is: <code>{SSN, PhoneNumber}</code></p>
+<p>Hence <code>SSN -&gt; Name, City</code> is a “bad” dependency</p>
+<ul>
+<li>
+<p>Why? Partial dependency</p>
+<ul>
+<li>partial dependency: when a non-key attribute depends on part of a composite key, not the full key</li>
+</ul>
+</li>
+</ul>
+<p>In other words:</p>
+<p>SSN<sup>+</sup> = SSN, Name, City and is neither SSN nor All Attributes</p>
+<ul>
+<li>
+<p>Is not enough to uniquely identify tuples</p>
+</li>
+<li>
+<p>But it's also not trivial (more than just itself)</p>
+</li>
+</ul>
+<blockquote>
+<p><code>SSN⁺</code> : the <strong>closure</strong> of the attribute <code>SSN</code>, meaning the set of attributes functionally determined by SSN.
+  <code>SSN⁺ = {SSN, Name, City}</code></p>
+</blockquote>
+<p><br></p>
+<h4 id="example-bcnf-decomposition">Example BCNF Decomposition</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>SSN</th>
+<th>City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fred</td>
+<td>123-45-6789</td>
+<td>Seattle</td>
+</tr>
+<tr>
+<td>Joe</td>
+<td>987-65-4321</td>
+<td>Westfield</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>SSN</th>
+<th>PhoneNumber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>123-45-6789</td>
+<td>206-555-1234</td>
+</tr>
+<tr>
+<td>123-45-6789</td>
+<td>206-555-6543</td>
+</tr>
+<tr>
+<td>987-65-4321</td>
+<td>908-555-2121</td>
+</tr>
+<tr>
+<td>987-65-4321</td>
+<td>908-555-1234</td>
+</tr>
+</tbody>
+</table>
 
 
 
