@@ -61,4 +61,8 @@ hide:
   <a href="../../SQL/windowfunctions" class="index-link">Window Functions</a>
   <hr>
   <a href="../../SQL/rank_rownum_denserank" class="index-link">Row Number, Rank, Dense Rank</a>
+  <hr>
+  <a href="../../SQL/fd" class="index-link">Functional dependencies</a>
+  <hr>
+  <a href="../../SQL/normalization" class="index-link">Normalization</a>
 </div>
