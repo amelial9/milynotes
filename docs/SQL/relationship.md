@@ -29,6 +29,9 @@ If A and B are sets, then a relation R is a subset of A * B
 
 <img src="../../SQL/img/relationship1.png" alt="Relationship 1" width="500">
 
+
+<img src="../../SQL/img/arrows.png" alt="arrows" width="500">
+
 <br>
 
 ### Multiplicity & Cardinality
