@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/INFO441/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/INFO441/docker/">
       
       
-        <link rel="prev" href="../../SQL/Index/">
-      
-      
-        <link rel="next" href="../../INFO449/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Docker - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#docker" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Docker
             
           </span>
         </div>
@@ -267,20 +263,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -296,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             INFO441
@@ -307,32 +301,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -343,35 +315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,11 +424,53 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-server-side-dev-notes" class="md-nav__link">
+  <a href="#run-a-docker-container" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's server-side dev notes
+      Run a docker container
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker demo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demos" class="md-nav__link">
+    <span class="md-ellipsis">
+      demos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="demos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nginxhtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx/html
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodedemo" class="md-nav__link">
+    <span class="md-ellipsis">
+      nodedemo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -507,60 +492,82 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 28, 2025 15:50:46 PDT">May 28, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-server-side-dev-notes">Category: Amelia's server-side dev notes</h2>
-<!-- - [Simple server template](simpleTemplate.md)
-- [Check Time](checkTime.md)
-- [Pluralize](pluralize.md)
-- [Audit Image Tags](aduitImgTags.md) -->
+<h1 id="docker">Docker</h1>
+<h4 id="run-a-docker-container">Run a docker container</h4>
+<pre><code>docker run hello-world
+</code></pre>
+<p>Just prints out hello world (good for testing if Docker is working)</p>
+<pre><code>docker ps
+</code></pre>
+<p>See what is running
+Add “-a” to include stopped containers</p>
+<pre><code>docker rm CONTAINER_NAME
+</code></pre>
+<p>Remove a docker container</p>
+<pre><code>docker run -it ubuntu
+</code></pre>
+<p>Run the ubuntu Linux operating system
+Note: “-it” means to run it as an interactive terminal </p>
+<pre><code>docker run -p 80:80 nginx
+</code></pre>
+<p>nginx is a popular static web server</p>
+<p>Note: by default, a container is closed to traffic on all ports.</p>
+<ul>
+<li>“-p 80:80” says: for traffic coming in on port 80, send it to port 80 inside the container</li>
+</ul>
+<p><br></p>
+<h3 id="docker-demo">Docker demo</h3>
+<pre><code>FROM nginx
+COPY . /usr/share/nginx/html
+</code></pre>
+<p>The “Dockerfile” is a definition for a docker container.
+It consists of a set of steps, starting “FROM” a specific docker container, and then running additional steps (e.g., copying files) to set up the container the way you want it.</p>
+<p><br></p>
+<h3 id="demos">demos</h3>
+<h4 id="nginxhtml">nginx/html</h4>
+<pre><code>demo/
+├── index.html
+└── Dockerfile
+</code></pre>
+<p>Dockerfile</p>
+<pre><code>FROM nginx
+COPY . /usr/share/nginx/html
+</code></pre>
+<pre><code>docker build -t amelial9/dockerdemo .
+docker run -d -p 80:80 amelial9/dockerdemo
+</code></pre>
+<p><br></p>
+<h4 id="nodedemo">nodedemo</h4>
+<pre><code>demo/
+├── one-of-the-prev-demos
+└── Dockerfile
+</code></pre>
+<p>Dockerfile</p>
+<pre><code>FROM node
 
-<div class="category-index">
-  <a href="../../INFO441/simpleTemplate" class="index-link">Simple server template</a>
-  <hr>
-  <a href="../../INFO441/checkTime" class="index-link">Check Time</a>
-  <hr>
-  <a href="../../INFO441/pluralize" class="index-link">Pluralize</a>
-  <hr>
-  <a href="../../INFO441/aduitImgTags" class="index-link">Audit Image Tags</a>
-  <hr>
-  <a href="../../INFO441/pterosaurs" class="index-link">Pterosaurs demo</a>
-  <hr>
-  <a href="../../INFO441/jsonDataFileFlow" class="index-link">JSON Data File Flow</a>
-  <hr>
-  <a href="../../INFO441/mongodb" class="index-link">MongoDB Connection</a>
-  <hr>
-  <a href="../../INFO441/middleware" class="index-link">Middleware</a>
-  <hr>
-  <a href="../../INFO441/userdatamongo" class="index-link">User Data Demo (MongoDB)</a>
-  <hr>
-  <a href="../../INFO441/xss" class="index-link">XSS (Cross Site Scripting Attacks)</a>
-  <hr>
-  <a href="../../INFO441/sqlinjection" class="index-link">SQL Injection</a>
-  <hr>
-  <a href="../../INFO441/session" class="index-link">Session (Authentication)</a>
-  <hr>
-  <a href="../../INFO441/useractions" class="index-link">User Actions</a>
-  <hr>
-  <a href="../../INFO441/useractions2" class="index-link">User Actions (Part 2)</a>
-  <hr>
-  <a href="../../INFO441/websockets" class="index-link">Websockets</a>
-  <hr>
-  <a href="../../INFO441/proxies" class="index-link">Microservices and Proxies</a>
-  <hr>
-  <a href="../../INFO441/cartsnpayments" class="index-link">Carts & Payments</a>
-  <hr>
-  <a href="../../INFO441/testing" class="index-link">Testing</a>
-  <hr>
-  <a href="../../INFO441/caching" class="index-link">Caching</a>
-  <hr>
-  <a href="../../INFO441/docker" class="index-link">Docker</a>
-</div>
+# equivalent to cd /app
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]
+</code></pre>
+<pre><code>docker build -t amelial9/node-app .
+docker run -d -p 4000:3000 amelial9/node-app
+</code></pre>
 
 
 
