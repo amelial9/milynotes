@@ -56,4 +56,6 @@ hide:
   <a href="../../INFO441/testing" class="index-link">Testing</a>
   <hr>
   <a href="../../INFO441/caching" class="index-link">Caching</a>
+  <hr>
+  <a href="../../INFO441/docker" class="index-link">Docker</a>
 </div>
