@@ -65,4 +65,6 @@ hide:
   <a href="../../SQL/fd" class="index-link">Functional dependencies</a>
   <hr>
   <a href="../../SQL/normalization" class="index-link">Normalization</a>
+  <hr>
+  <a href="../../SQL/bcnfdecomp" class="index-link">BCNF Decomposition</a>
 </div>
