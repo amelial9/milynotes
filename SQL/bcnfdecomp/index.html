@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/SQL/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/SQL/bcnfdecomp/">
       
       
-        <link rel="prev" href="../..">
-      
-      
-        <link rel="next" href="../../INFO441/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Bcnfdecomp - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#bcnf-decomposition" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Bcnfdecomp
             
           </span>
         </div>
@@ -199,20 +195,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -228,7 +222,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             SQL
@@ -239,32 +233,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -275,35 +247,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,9 +424,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
+  <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
+      Step 1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4
     </span>
   </a>
   
@@ -507,69 +477,94 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 29, 2025 14:19:22 PDT">May 29, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-sql-ta-notes">Category: Amelia's SQL TA notes</h2>
-<div class="category-index">
-  <a href="../../SQL/Basics" class="index-link">Intro</a>
-  <hr>
-  <a href="../../SQL/JOINs" class="index-link">JOINs</a>
-  <hr>
-  <a href="../../SQL/key" class="index-link">Keys</a>
-  <hr>
-  <a href="../../SQL/1nf" class="index-link">First Normal Form</a>
-  <hr>
-  <a href="../../SQL/physical-dependence" class="index-link">Physical Data Dependence</a>
-  <hr>
-  <a href="../../SQL/null" class="index-link">NULL Values</a>
-  <hr>
-  <a href="../../SQL/create" class="index-link">CREATE TABLE</a>
-  <hr>
-  <a href="../../SQL/insert-update-del" class="index-link">INSERT, UPDATE, DELETE</a>
-  <hr>
-  <a href="../../SQL/having" class="index-link">HAVING</a>
-   <hr>
-  <a href="../../SQL/groupby" class="index-link">GROUP BY</a>
-  <hr>
-  <a href="../../SQL/aggregation" class="index-link">Simple Aggregation</a>
-  <hr>
-  <a href="../../SQL/with" class="index-link">WITH</a>
-  <hr>
-  <a href="../../SQL/witnesses" class="index-link">Witnesses</a>
-  <hr>
-  <a href="../../SQL/selfjoin" class="index-link">SELF JOIN Practice</a>
-  <hr>
-  <a href="../../SQL/conceptualdbdesign" class="index-link">Conceptual Database Design</a>
-  <hr>
-  <a href="../../SQL/erd" class="index-link">Entity Relationship Diagram</a>
-  <hr>
-  <a href="../../SQL/relationship" class="index-link">Relationship</a>
-  <hr>
-  <a href="../../SQL/weakentitysets" class="index-link">Weak Entity Sets</a>
-  <hr>
-  <a href="../../SQL/erdtoschema" class="index-link">From ER Diagram to Relational Schema</a>
-  <hr>
-  <a href="../../SQL/check" class="index-link">Check Constraint</a>
-  <hr>
-  <a href="../../SQL/fkconstraints" class="index-link">FK Constraints</a>
-  <hr>
-  <a href="../../SQL/nestedqueries" class="index-link">Nested Queries</a>
-  <hr>
-  <a href="../../SQL/windowfunctions" class="index-link">Window Functions</a>
-  <hr>
-  <a href="../../SQL/rank_rownum_denserank" class="index-link">Row Number, Rank, Dense Rank</a>
-  <hr>
-  <a href="../../SQL/fd" class="index-link">Functional dependencies</a>
-  <hr>
-  <a href="../../SQL/normalization" class="index-link">Normalization</a>
-  <hr>
-  <a href="../../SQL/bcnfdecomp" class="index-link">BCNF Decomposition</a>
-</div>
+<h1 id="bcnf-decomposition">BCNF Decomposition</h1>
+<p>(recall BCNF: For <strong>every functional dependency</strong> <code>X → Y</code>, <code>X</code> must be a <strong>superkey</strong>)</p>
+<h3 id="step-1">Step 1</h3>
+<p>Check which functional dependencies of R are not in BCNF, if they're all in BCNF we do not need to decompose R.</p>
+<p>AB -&gt; CD</p>
+<p>D -&gt; E</p>
+<p>A -&gt; C</p>
+<p>B -&gt; D</p>
+<p><br></p>
+<p>{AB}<sup>+</sup> = {A,B,C,D,E} -&gt; CK: AB</p>
+<p>AB -&gt; CD</p>
+<p>D -&gt; E (violates BCNF)</p>
+<p>A -&gt; C</p>
+<p>B -&gt; D</p>
+<p><br></p>
+<h3 id="step-2">Step 2</h3>
+<p>Create two sub-relations:</p>
+<ol>
+<li>
+<p>{X}<sup>+</sup></p>
+</li>
+<li>
+<p>R - {X}<sup>+</sup> + X</p>
+</li>
+</ol>
+<p>AB -&gt; CD</p>
+<p>D -&gt; E -&gt;  {D}<sup>+</sup> = {D, E} -&gt; R<sub>1</sub>(DE), R<sub>2</sub>(ABCD)</p>
+<p>A -&gt; C</p>
+<p>B -&gt; D</p>
+<p><br></p>
+<h3 id="step-3">Step 3</h3>
+<p>For each sub-relation we check if all of its functional dependencies are now in BCNF</p>
+<ul>
+<li>
+<p>if they are we keep the sub-relation as it is</p>
+</li>
+<li>
+<p>if not, do Step 2 again for the sub-relation's dependency that does not satisfy BCNF</p>
+</li>
+</ul>
+<p>R<sub>1</sub>(DE)</p>
+<p>CK = D</p>
+<p>D -&gt; E (BCNF)</p>
+<p><br></p>
+<p>R<sub>2</sub>(ABCD)</p>
+<p>CK = AB</p>
+<p>AB -&gt; CD (BCNF)</p>
+<p>A -&gt; C (not in BCNF)</p>
+<p>B -&gt; D</p>
+<p><br></p>
+<p>R<sub>3</sub>(AC)</p>
+<p>CK = A</p>
+<p>A -&gt; C (BCNF)</p>
+<p><br></p>
+<p>R<sub>4</sub>(ABD)</p>
+<p>CK = AB</p>
+<p>AB -&gt; D (BCNF)</p>
+<p>B -&gt; D (not in BCNF)</p>
+<p><br></p>
+<p>R<sub>5</sub>(BD)</p>
+<p>CK = B</p>
+<p>B -&gt; D (BCNF)</p>
+<p><br></p>
+<p>R<sub>6</sub>(AB)</p>
+<p>CK = AB</p>
+<p>AB -&gt; AB (BCNF)</p>
+<p><br></p>
+<h3 id="step-4">Step 4</h3>
+<p>Final decomposition is composed of sub-relations that all their functional dependencies hold BCNF</p>
+<p>R<sub>1</sub>(DE)</p>
+<p>D -&gt; E</p>
+<p><br></p>
+<p>R<sub>3</sub>(AC)</p>
+<p>A -&gt; C</p>
+<p><br></p>
+<p>R<sub>5</sub>(BD)</p>
+<p>B -&gt; D</p>
+<p><br></p>
+<p>R<sub>6</sub>(AB)</p>
+<p>AB -&gt; AB</p>
 
 
 
