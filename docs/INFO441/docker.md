@@ -26,6 +26,7 @@ Just prints out hello world (good for testing if Docker is working)
 docker ps
 ```
 See what is running
+
 Add “-a” to include stopped containers
 
 ```
@@ -37,6 +38,7 @@ Remove a docker container
 docker run -it ubuntu
 ```
 Run the ubuntu Linux operating system
+
 Note: “-it” means to run it as an interactive terminal 
 
 ```
@@ -59,6 +61,7 @@ COPY . /usr/share/nginx/html
 ```
 
 The “Dockerfile” is a definition for a docker container.
+
 It consists of a set of steps, starting “FROM” a specific docker container, and then running additional steps (e.g., copying files) to set up the container the way you want it.
 
 <br>
