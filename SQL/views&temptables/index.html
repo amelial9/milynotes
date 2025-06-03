@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/SQL/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/SQL/views%26temptables/">
       
       
-        <link rel="prev" href="../..">
-      
-      
-        <link rel="next" href="../../INFO441/Index/">
       
       
       <link rel="icon" href="../../assets/notion.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Views&temptables - Amelia's BrainDump.io</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#views-temp-tables" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Views&temptables
             
           </span>
         </div>
@@ -199,20 +195,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -228,7 +222,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             SQL
@@ -239,32 +233,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -275,35 +247,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -481,9 +424,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-amelias-sql-ta-notes" class="md-nav__link">
+  <a href="#views" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Amelia's SQL TA notes
+      Views
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temp-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temp tables
     </span>
   </a>
   
@@ -507,71 +459,54 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 3, 2025 12:11:46 PDT">June 3, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-amelias-sql-ta-notes">Category: Amelia's SQL TA notes</h2>
-<div class="category-index">
-  <a href="../../SQL/Basics" class="index-link">Intro</a>
-  <hr>
-  <a href="../../SQL/JOINs" class="index-link">JOINs</a>
-  <hr>
-  <a href="../../SQL/key" class="index-link">Keys</a>
-  <hr>
-  <a href="../../SQL/1nf" class="index-link">First Normal Form</a>
-  <hr>
-  <a href="../../SQL/physical-dependence" class="index-link">Physical Data Dependence</a>
-  <hr>
-  <a href="../../SQL/null" class="index-link">NULL Values</a>
-  <hr>
-  <a href="../../SQL/create" class="index-link">CREATE TABLE</a>
-  <hr>
-  <a href="../../SQL/insert-update-del" class="index-link">INSERT, UPDATE, DELETE</a>
-  <hr>
-  <a href="../../SQL/having" class="index-link">HAVING</a>
-   <hr>
-  <a href="../../SQL/groupby" class="index-link">GROUP BY</a>
-  <hr>
-  <a href="../../SQL/aggregation" class="index-link">Simple Aggregation</a>
-  <hr>
-  <a href="../../SQL/with" class="index-link">WITH</a>
-  <hr>
-  <a href="../../SQL/witnesses" class="index-link">Witnesses</a>
-  <hr>
-  <a href="../../SQL/selfjoin" class="index-link">SELF JOIN Practice</a>
-  <hr>
-  <a href="../../SQL/conceptualdbdesign" class="index-link">Conceptual Database Design</a>
-  <hr>
-  <a href="../../SQL/erd" class="index-link">Entity Relationship Diagram</a>
-  <hr>
-  <a href="../../SQL/relationship" class="index-link">Relationship</a>
-  <hr>
-  <a href="../../SQL/weakentitysets" class="index-link">Weak Entity Sets</a>
-  <hr>
-  <a href="../../SQL/erdtoschema" class="index-link">From ER Diagram to Relational Schema</a>
-  <hr>
-  <a href="../../SQL/check" class="index-link">Check Constraint</a>
-  <hr>
-  <a href="../../SQL/fkconstraints" class="index-link">FK Constraints</a>
-  <hr>
-  <a href="../../SQL/nestedqueries" class="index-link">Nested Queries</a>
-  <hr>
-  <a href="../../SQL/windowfunctions" class="index-link">Window Functions</a>
-  <hr>
-  <a href="../../SQL/rank_rownum_denserank" class="index-link">Row Number, Rank, Dense Rank</a>
-  <hr>
-  <a href="../../SQL/fd" class="index-link">Functional dependencies</a>
-  <hr>
-  <a href="../../SQL/normalization" class="index-link">Normalization</a>
-  <hr>
-  <a href="../../SQL/bcnfdecomp" class="index-link">BCNF Decomposition</a>
-  <hr>
-  <a href="../../SQL/views&temptables" class="index-link">Views & Temp Tables</a>
-</div>
+<h1 id="views-temp-tables">Views &amp; Temp Tables</h1>
+<h3 id="views">Views</h3>
+<pre><code>CREATE VIEW oldCats as 
+    SELECT *
+    FROM Cats
+    WHERE age &gt; 4
+</code></pre>
+<ul>
+<li>
+<p>Views are virtual tables based on SELECT queries.</p>
+</li>
+<li>
+<p>Do not store data themselves — just a saved query.</p>
+</li>
+<li>
+<p>Auto-update if base table data changes.</p>
+</li>
+<li>
+<p>Can be queried like regular tables.</p>
+</li>
+</ul>
+<p><br></p>
+<h3 id="temp-tables">Temp tables</h3>
+<pre><code>CREATE TABLE #temp_customers (
+    id INT,
+    age INT
+)
+
+SELECT * FROM #temp_customers
+
+DROP TABLE IF EXISTS #temp_customers
+</code></pre>
+<ul>
+<li>
+<p>lives only during current session.</p>
+</li>
+<li>
+<p>Good for storing intermediate results in scripts</p>
+</li>
+</ul>
 
 
 
