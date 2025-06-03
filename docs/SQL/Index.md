@@ -67,4 +67,6 @@ hide:
   <a href="../../SQL/normalization" class="index-link">Normalization</a>
   <hr>
   <a href="../../SQL/bcnfdecomp" class="index-link">BCNF Decomposition</a>
+  <hr>
+  <a href="../../SQL/views&temptables" class="index-link">Views & Temp Tables</a>
 </div>
