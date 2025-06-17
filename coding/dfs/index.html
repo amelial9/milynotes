@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/SQL/aggregation/">
+        <link rel="canonical" href="https://notes.ameliali.com/coding/dfs/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Aggregation - Amelia's BrainDump.io</title>
+        <title>Dfs - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#simple-aggregation" class="md-skip">
+        <a href="#depth-first-search" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Aggregation
+              Dfs
             
           </span>
         </div>
@@ -276,7 +276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Index/" class="md-nav__link">
+      <a href="../../SQL/Index/" class="md-nav__link">
         
   
   
@@ -457,23 +457,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#aggregation-and-null" class="md-nav__link">
-    <span class="md-ellipsis">
-      Aggregation and NULL
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -490,7 +473,7 @@
 
 
 
-<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 17, 2025 15:41:09 PDT">April 17, 2025</span></i></small></p>
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 17, 2025 00:41:07 PDT">June 17, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
@@ -498,92 +481,27 @@
     <br>
 </div>
 
-<h1 id="simple-aggregation">Simple Aggregation</h1>
-<p>Total quantities for all sales over $1, by product.</p>
-<pre><code>SELECT sum(quantity)  
-FROM Purchase  
-WHERE price &gt; 1
+<h1 id="depth-first-search">Depth-First Search</h1>
+<p>Algorithm for searching a graph</p>
+<p>depth = vertical before horizontal</p>
+<pre><code>    A
+   / \
+  B   C
+ / \    \
+D   E    F
 </code></pre>
-<p>Five basic aggregate operations:</p>
-<pre><code>SELECT count(*) FROM Purchase  
-SELECT sum(quantity) FROM Purchase  
-SELECT avg(price) FROM Purchase  
-SELECT max(quantity) FROM Purchase  
-SELECT min(quantity) FROM Purchase
-</code></pre>
-<p>Multiple simple aggregations in one statement   </p>
-<pre><code>SELECT count(*), sum(quantity), avg(price)  
-FROM Purchase
-</code></pre>
-<p>Compute the average price with sum and count  </p>
-<pre><code>SELECT sum(quantity) / count(*) AS average_quant  
-FROM Purchase
-</code></pre>
-<p>SQL as a calculator</p>
-<pre><code>SELECT 1+2+3+4+5 AS expr
-SELECT 25 / 100
-SELECT 25 / 100.0
-SELECT 25 / CAST(100 AS Float)
-</code></pre>
-<pre><code>SELECT sum(quantity) / count(*)  
-FROM Purchase  
-</code></pre>
-<p><code>int / int = int</code></p>
-<pre><code>SELECT (1.0*sum(quantity)) / count(*)  
-FROM Purchase  
-</code></pre>
-<p><code>(float * int) / int = float</code></p>
-<pre><code>SELECT CAST(sum(quantity) AS float) / count(*)  
-FROM Purchase  
-</code></pre>
-<p><code>(float * int) / int = float</code></p>
-<p><br></p>
-<h3 id="aggregation-and-null">Aggregation and NULL</h3>
-<p>NULL values are not used in aggregates</p>
-<pre><code>CREATE TABLE Purchase (
-    id INT,
-    item_name VARCHAR(50),
-    quantity INT,
-    price DECIMAL(10, 2),
-    purchase_month VARCHAR(20)
-);
+<pre><code>def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
 
-INSERT INTO Purchase VALUES (12, 'gadget', NULL, NULL, 'april');
-INSERT INTO Purchase VALUES (12, 'gadget', 5, NULL, 'april');
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>item_name</th>
-<th>quantity</th>
-<th>price</th>
-<th>purchase_month</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>12</td>
-<td>gadget</td>
-<td>NULL</td>
-<td>NULL</td>
-<td>april</td>
-</tr>
-<tr>
-<td>12</td>
-<td>gadget</td>
-<td>5</td>
-<td>NULL</td>
-<td>april</td>
-</tr>
-</tbody>
-</table>
-<pre><code>SELECT count(quantity) FROM Purchase
+    visited.add(start)
+    print(start)
 
-SELECT count(*)  
-FROM Purchase  
-WHERE quantity IS NOT null;
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited)
 </code></pre>
+<p>Time Complexity = O(V + E)</p>
 
 
 
@@ -604,7 +522,7 @@ WHERE quantity IS NOT null;
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 17, 2025 15:41:09 PDT">April 17, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 17, 2025 00:41:07 PDT">June 17, 2025</span>
   </span>
 
     
