@@ -6,8 +6,6 @@ hide:
 
 # Amelia's notes & brain dump.
 
-<small><i>Last modified: {{ git_revision_date_localized }}</i></small>
-
 ## Categories
 
 <div class="grid cards" markdown>
@@ -27,6 +25,12 @@ hide:
     Notes about server from INFO 441
 
     <a href="/INFO441/Index" class="details-link">Details</a>
+
+-   Coding Practice
+
+    ---
+    
+    <a href="/coding/Index" class="details-link">Details</a>
 
 -   iOS Development
 
