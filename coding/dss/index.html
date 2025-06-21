@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/coding/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/coding/dss/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Dss - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#data-structures-cheat-sheet" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Dss
             
           </span>
         </div>
@@ -464,9 +464,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-coding-practice" class="md-nav__link">
+  <a href="#lists" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: Coding Practice
+      lists
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tuples-immutable-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tuples (Immutable Lists)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sets-unordered-unique-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sets (Unordered, Unique Elements)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dictionaries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack &amp; Queues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counter
     </span>
   </a>
   
@@ -490,19 +535,113 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 21, 2025 12:20:50 PDT">June 21, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-coding-practice">Category: Coding Practice</h2>
-<div class="category-index">
-  <a href="../../coding/dfs" class="index-link">DFS</a>
-  <hr>
-  <a href="../../coding/dss" class="index-link">Data Structures Cheat Sheet</a>
-</div>
+<h1 id="data-structures-cheat-sheet">Data Structures Cheat Sheet</h1>
+<h3 id="lists">lists</h3>
+<pre><code>arr = [1, 2, 3]
+arr.append(4)        # [1, 2, 3, 4]
+arr.pop()            # Removes last element -&gt; 4
+arr.insert(1, 9)     # [1, 9, 2, 3]
+arr.remove(2)        # Removes first occurrence of 2
+arr.sort()           # In-place sort
+sorted_arr = sorted(arr)  # Returns new sorted list
+arr.reverse()        # In-place reverse
+</code></pre>
+<p><br></p>
+<h3 id="tuples-immutable-lists">Tuples (Immutable Lists)</h3>
+<pre><code>t = (1, 2, 3)
+x, y, z = t  # Tuple unpacking
+</code></pre>
+<p><br></p>
+<h3 id="sets-unordered-unique-elements">Sets (Unordered, Unique Elements)</h3>
+<pre><code>s = {1, 2, 3}
+s.add(4)
+s.remove(2)
+s.discard(5)  # Safer than remove – no error
+s1 = {1, 2, 3}
+s2 = {2, 3, 4}
+s1 &amp; s2  # Intersection: {2, 3}
+s1 | s2  # Union: {1, 2, 3, 4}
+s1 - s2  # Difference: {1}
+</code></pre>
+<p><br></p>
+<h3 id="dictionaries">Dictionaries</h3>
+<pre><code>d = {'a': 1, 'b': 2}
+d['c'] = 3           # Add key
+value = d['a']       # Access value
+value = d.get('x', 0)  # Safer access
+del d['b']           # Remove key
+for key, val in d.items():
+    print(key, val)
+</code></pre>
+<p><br></p>
+<h3 id="stack-queues">Stack &amp; Queues</h3>
+<pre><code>stack = []
+stack.append(1)
+stack.append(2)
+stack.pop()       # LIFO
+</code></pre>
+<pre><code>from collections import deque
+queue = deque()
+queue.append(1)
+queue.popleft()   # FIFO
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Created As</th>
+<th>Used For</th>
+<th>Typical Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>list</code></td>
+<td><code>[]</code></td>
+<td>general storage</td>
+<td><code>append()</code>, <code>insert()</code>, <code>pop(i)</code>, <code>sort()</code></td>
+</tr>
+<tr>
+<td><code>stack</code></td>
+<td><code>[]</code></td>
+<td>LIFO</td>
+<td><code>append()</code>, <code>pop()</code></td>
+</tr>
+<tr>
+<td><code>queue</code></td>
+<td><code>deque()</code></td>
+<td>FIFO</td>
+<td><code>append()</code>, <code>popleft()</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="counter">Counter</h3>
+<p><code>from collections import Counter</code></p>
+<pre><code>nums = [1, 1, 2, 3, 2, 1]
+
+c = Counter(nums)
+print(c)
+
+// Counter({1: 3, 2: 2, 3: 1})
+</code></pre>
+<pre><code>word = &quot;banana&quot;
+c = Counter(word)
+print(c)
+
+// Counter({'a': 3, 'n': 2, 'b': 1})
+</code></pre>
+<pre><code>for key, value in Counter([1, 1, 2, 2, 2, 3]).items():
+    print(f&quot;{key} appears {value} times&quot;)
+</code></pre>
 
 
 
