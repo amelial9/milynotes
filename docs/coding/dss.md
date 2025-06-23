@@ -42,6 +42,7 @@ x, y, z = t  # Tuple unpacking
 ### Sets (Unordered, Unique Elements)
 
 ```
+// empty: s = set()
 s = {1, 2, 3}
 s.add(4)
 s.remove(2)
