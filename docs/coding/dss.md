@@ -91,6 +91,13 @@ queue.popleft()   # FIFO
 | `stack`  | `[]`       | LIFO            | `append()`, `pop()`                        |
 | `queue`  | `deque()`  | FIFO            | `append()`, `popleft()`                    |
 
+
+```
+// join items in stack into one string
+stack = []
+joined = ''.join(stack)
+```
+
 <br>
 
 ### Counter
