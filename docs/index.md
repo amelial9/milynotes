@@ -26,12 +26,6 @@ hide:
 
     <a href="/INFO441/Index" class="details-link">Details</a>
 
--   Coding Practice
-
-    ---
-    
-    <a href="/coding/Index" class="details-link">Details</a>
-
 -   Machine Learning
 
     ---
@@ -39,6 +33,12 @@ hide:
     Notes about machine learning from CSE 416
     
     <a href="https://www.notion.so/ameli9/CSE-416-21d5d09895ac8071851ec7deafb24f07?source=copy_link" class="details-link">Details</a>
+
+-   Coding Practice
+
+    ---
+    
+    <a href="/coding/Index" class="details-link">Details</a>
 
 -   iOS Development
 

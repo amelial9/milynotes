@@ -14,7 +14,7 @@ hide:
 ## Category: Coding Practice
 
 <div class="category-index">
-  <a href="../../coding/dfs" class="index-link">DFS</a>
-  <hr>
   <a href="../../coding/dss" class="index-link">Data Structures Cheat Sheet</a>
+  <hr>
+  <a href="../../coding/dfs" class="index-link">DFS</a>
 </div>
