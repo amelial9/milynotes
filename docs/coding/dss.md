@@ -112,9 +112,7 @@ c = Counter(nums)
 print(c)
 
 // Counter({1: 3, 2: 2, 3: 1})
-```
 
-```
 word = "banana"
 c = Counter(word)
 print(c)
@@ -125,4 +123,20 @@ print(c)
 ```
 for key, value in Counter([1, 1, 2, 2, 2, 3]).items():
     print(f"{key} appears {value} times")
+```
+
+```
+count[3]  # ➝ 3
+count[99]  # ➝ 0
+count.get(99, 0)  # ➝ 0
+```
+
+```
+max_freq = max(count.values())  # ➝ 3
+min_freq = min(count.values())  # ➝ 1
+
+# One Most Frequent Element
+most_common = count.most_common(1)[0]  # ➝ (3, 3)
+elem = most_common[0]  # ➝ 3
+freq = most_common[1]  # ➝ 3
 ```
