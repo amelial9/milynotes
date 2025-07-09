@@ -26,6 +26,14 @@ hide:
 
     <a href="/INFO441/Index" class="details-link">Details</a>
 
+-   Machine Learning
+
+    ---
+
+    CSE 416 Demos
+
+    <a href="/CSE416/Index" class="details-link">Details</a>
+
 -   Coding Practice
 
     ---
