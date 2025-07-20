@@ -18,7 +18,7 @@ hide:
 
 How does our view (browser) get live updates? (e.g., new posts, chat messages)  
 
-- One solution is **polling**, that is, keeping sending a request to the server asking "ifs there anything new?"
+- One solution is **polling**, that is, keeping sending a request to the server asking "is there anything new?"
 
 websockets
 
