@@ -16,5 +16,5 @@ hide:
 <div class="category-index">
   <a href="../../coding/dss" class="index-link">Data Structures Cheat Sheet</a>
   <hr>
-  <a href="../../coding/dp" class="index-link">DP</a>
+  <a href="../../coding/dp" class="index-link">DP Patterns</a>
 </div>

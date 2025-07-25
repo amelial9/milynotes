@@ -18,6 +18,12 @@ hide:
     
     <a href="/SQL/Index" class="details-link">Details</a>
 
+-   Coding Practice
+
+    ---
+    
+    <a href="/coding/Index" class="details-link">Details</a>
+
 -   Server-side Development
 
     ---
@@ -26,11 +32,6 @@ hide:
 
     <a href="/INFO441/Index" class="details-link">Details</a>
 
--   Coding Practice
-
-    ---
-    
-    <a href="/coding/Index" class="details-link">Details</a>
 
 -   iOS Development
 
