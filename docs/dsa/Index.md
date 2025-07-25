@@ -14,7 +14,7 @@ hide:
 ## Category: DSA
 
 <div class="category-index">
-  <a href="../../coding/dss" class="index-link">Data Structures Cheat Sheet</a>
+  <a href="../../dsa/dss" class="index-link">Data Structures Cheat Sheet</a>
   <hr>
-  <a href="../../coding/dp" class="index-link">DP Patterns</a>
+  <a href="../../dsa/dp" class="index-link">DP Patterns</a>
 </div>
