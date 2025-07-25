@@ -21,6 +21,8 @@ markdown_extensions:
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
 
 plugins:
   - search
@@ -43,6 +45,9 @@ nav:
 extra:
   generator: false
   cname: notes.ameliali.com
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 copyright: |
   &copy; 2025 Amelia Li
