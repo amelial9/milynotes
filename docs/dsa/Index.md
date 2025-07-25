@@ -11,7 +11,7 @@ hide:
 </div>
 
 #
-## Category: Coding Practice
+## Category: DSA
 
 <div class="category-index">
   <a href="../../coding/dss" class="index-link">Data Structures Cheat Sheet</a>
