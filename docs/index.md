@@ -18,11 +18,11 @@ hide:
     
     <a href="/SQL/Index" class="details-link">Details</a>
 
--   Coding Practice
+-   DSA
 
     ---
     
-    <a href="/coding/Index" class="details-link">Details</a>
+    <a href="/dsa/Index" class="details-link">Details</a>
 
 -   Server-side Development
 
