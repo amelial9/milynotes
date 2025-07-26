@@ -183,7 +183,7 @@ factors = set()
 for i in range(1, int(math.sqrt(n)) + 1):
 	if n % 1 == 0:
 		factors.add(i)
-		factors.add(n // i )
+		factors.add(n // i)
 ```
 
 <br>
