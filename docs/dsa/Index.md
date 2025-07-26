@@ -16,5 +16,7 @@ hide:
 <div class="category-index">
   <a href="../../dsa/dss" class="index-link">Data Structures Cheat Sheet</a>
   <hr>
+  <a href="../../dsa/bigo" class="index-link">Big-O Notation</a>
+  <hr>
   <a href="../../dsa/dp" class="index-link">DP Patterns</a>
 </div>
