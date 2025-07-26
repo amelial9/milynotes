@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/dsa/Index/">
+        <link rel="canonical" href="https://notes.ameliali.com/dsa/bigo/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Index - Amelia's BrainDump.io</title>
+        <title>Bigo - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#big-o-notation" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Bigo
             
           </span>
         </div>
@@ -464,9 +464,90 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#category-dsa" class="md-nav__link">
+  <a href="#o1" class="md-nav__link">
     <span class="md-ellipsis">
-      Category: DSA
+      \(O(1)\)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(O(n)\)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on2" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(O(n^2)\)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(O(n * m)\)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#olog-space-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(O(Log \space n)\)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-space-log-space-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(O(n \space Log \space n)\)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o2n" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(O(2^n)\)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ocn" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(O(C^n)\)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osqrt-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(O(\sqrt n)\)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(O(n!)\)
     </span>
   </a>
   
@@ -490,21 +571,150 @@
 
 
 
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 26, 2025 01:02:25 PDT">July 26, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
     <br>
+    <br>
 </div>
 
-<h1 id="_1"></h1>
-<h2 id="category-dsa">Category: DSA</h2>
-<div class="category-index">
-  <a href="../../dsa/dss" class="index-link">Data Structures Cheat Sheet</a>
-  <hr>
-  <a href="../../dsa/bigo" class="index-link">Big-O Notation</a>
-  <hr>
-  <a href="../../dsa/dp" class="index-link">DP Patterns</a>
-</div>
+<h1 id="big-o-notation">Big-O Notation</h1>
+<p>A way of analyzing time it takes for our algorithm to execute as the input size grows.<br />
+worst-case runtime</p>
+<p><br></p>
+<h3 id="o1"><span class="arithmatex">\(O(1)\)</span></h3>
+<p>No matter how much our input size grows, the time complexity of O(1) algorithms is always the same.<br />
+Most efficient algorithm</p>
+<pre><code># Aray
+nums = [1, 2, 3
+nums.append(4)
+nums.pop()
+nums[0]
+
+# HashMap / Set
+hashMap = {}
+nashMap[&quot;key&quot;] = 10
+hashMap.pop(&quot;key&quot;)
+</code></pre>
+<p><br></p>
+<h3 id="on"><span class="arithmatex">\(O(n)\)</span></h3>
+<p>Linear growth scenario<br />
+as our input size grows, our time grows proportionally</p>
+<pre><code>nums = [1, 2, 3]
+sum(sums)
+for n in nums:
+    print(n)
+
+nums.insert(1, 100)
+nums.remove(100)
+
+import heapq
+heapq.heapify(nums)
+</code></pre>
+<p><br></p>
+<h3 id="on2"><span class="arithmatex">\(O(n^2)\)</span></h3>
+<p>Nested loops; two-dimensional arrays</p>
+<pre><code>nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+for i in range(len(nums)):
+    for j in range(len(nums[i])):
+        print(nums[i][j])
+
+nums = [1, 2, 3]
+for i in range(len(nums)):
+    for j in range(i+1, len(nums)):
+        print(nums[i], nums[j])
+
+# Insertion sort
+</code></pre>
+<p><br></p>
+<h3 id="on-m"><span class="arithmatex">\(O(n * m)\)</span></h3>
+<p>A two-dimensional matrix that's not necessarily a square</p>
+<pre><code>nums1, nums2 = [1, 2, 3][4, 5]
+for i in range(len(nums1)):
+    for j in range(len(nums2)):
+        print(nums1[i], nums2[j])
+</code></pre>
+<p><br></p>
+<h3 id="olog-space-n"><span class="arithmatex">\(O(Log \space n)\)</span></h3>
+<p>on every iteration of the loop, we eliminate half of the elements from consideration; we cut array in half until we have nothing remain</p>
+<p>given an array of size n, how many times can you cut the value n by two until it equals 1?<br />
+<span class="arithmatex">\(\rightarrow\)</span> how many times can you take the value 1 and multiply by two until it's equal to n</p>
+<pre><code># binary search
+nums = [1, 2, 3, 4, 5]
+target = 6
+l, r = 0, len(nums) - 1
+while l &lt;= r:
+    m = (1 + r) // 2
+    if target &lt; nums[m]
+        r = m - 1
+    elif target &gt; nums[m]:
+        l = m + 1
+    else:
+        print(m)
+        break
+
+# binary search on BST
+def search(root, target):
+    if not root:
+        return False
+    if target &lt; root.val:
+        return search(root.left, target)
+    elif target &gt; root.val:
+        return search(root.right, target)
+    else:
+        return True
+</code></pre>
+<p><br></p>
+<h3 id="on-space-log-space-n"><span class="arithmatex">\(O(n \space Log \space n)\)</span></h3>
+<pre><code># HeapSort
+import heapq
+nums = [1, 2, 3, 4, 5]
+heapq.heapify(nums) # O(N)
+while nums:
+    heapq.heappop(nums) # O(log n)
+
+# MergeSort
+# (and most built-in sorting functions)
+</code></pre>
+<p><br></p>
+<h3 id="o2n"><span class="arithmatex">\(O(2^n)\)</span></h3>
+<p>recursion; Fibonacci recursively</p>
+<pre><code># recursion, tree height n, two branches
+def recursion(i, nums):
+    if i == len(nums):
+        return 0
+    branch1 = recursion(i + 1, nums)
+    branch2 = recursion(i + 2, nums)
+</code></pre>
+<p><br></p>
+<h3 id="ocn"><span class="arithmatex">\(O(C^n)\)</span></h3>
+<pre><code># c branches, where c is sometimes n
+def recursion(i, nums, c):
+    if i == len(nums):
+        return 0
+
+    for j in range(i, i + c):
+        branch = recursion(j + 1, nums)
+</code></pre>
+<p><br></p>
+<h3 id="osqrt-n"><span class="arithmatex">\(O(\sqrt n)\)</span></h3>
+<pre><code># Get all factors of n
+n = 12
+factors = set()
+for i in range(1, int(math.sqrt(n)) + 1):
+    if n % 1 == 0:
+        factors.add(i)
+        factors.add(n // i )
+</code></pre>
+<p><br></p>
+<h3 id="on_1"><span class="arithmatex">\(O(n!)\)</span></h3>
+<p>Permutations; traveling salesman problem. 
+very inefficient</p>
+<p><br></p>
+<p><img src="../../dsa/img/complexity.png" alt="big o analysis" width="500"></p>
+<p><br></p>
+<p><strong>Source:</strong> <a href="https://www.youtube.com/watch?v=BgLTDT03QtU">Big-O Notation</a> (NeetCode)</p>
 
 
 
