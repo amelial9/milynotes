@@ -27,7 +27,7 @@ Most efficient algorithm
 
 ```
 # Aray
-nums = [1, 2, 3
+nums = [1, 2, 3]
 nums.append(4)
 nums.pop()
 nums[0]
@@ -47,7 +47,7 @@ as our input size grows, our time grows proportionally
 
 ```
 nums = [1, 2, 3]
-sum(sums)
+sum(nums)
 for n in nums:
 	print(n)
 
@@ -190,7 +190,7 @@ for i in range(1, int(math.sqrt(n)) + 1):
 
 ### $O(n!)$
 
-Permutations; traveling salesman problem. 
+Permutations; traveling salesman problem.  
 very inefficient
 
 <br>
