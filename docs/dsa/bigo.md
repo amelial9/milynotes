@@ -34,7 +34,7 @@ nums[0]
 
 # HashMap / Set
 hashMap = {}
-nashMap["key"] = 10
+hashMap["key"] = 10
 hashMap.pop("key")
 ```
 
@@ -106,7 +106,7 @@ nums = [1, 2, 3, 4, 5]
 target = 6
 l, r = 0, len(nums) - 1
 while l <= r:
-	m = (1 + r) // 2
+	m = (l + r) // 2
 	if target < nums[m]
 		r = m - 1
 	elif target > nums[m]:
@@ -132,6 +132,9 @@ def search(root, target):
 ### $O(n \space Log \space n)$
 
 ```
+# sort
+nums.sort()
+
 # HeapSort
 import heapq
 nums = [1, 2, 3, 4, 5]
