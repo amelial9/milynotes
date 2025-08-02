@@ -196,6 +196,24 @@ for i in range(1, int(math.sqrt(n)) + 1):
 Permutations; traveling salesman problem.  
 very inefficient
 
+i.e. [#46](https://leetcode.com/problems/permutations/description/)
+```
+def permute(self, nums: List[int]) -> List[List[int]]:
+    perms = [[]]
+
+    for n in nums:
+    new_perms = []
+        for p in perms:
+            for i in range(len(p)+1):
+                p_copy = p.copy()
+                p_copy.insert(i, n)
+                new_perms.append(p_copy)
+        perms = new_perms
+        
+    return perms
+```
+
+<br>
 <br>
 
 <img src="../../dsa/img/complexity.png" alt="big o analysis" width="500">
