@@ -59,6 +59,21 @@ s1 - s2  # Difference: {1}
 ### Dictionaries
 
 ```
+d = {}
+d["key"] = "value"
+print(d["key"])  # ✅ "value"
+print(d["missing"])  # ❌ KeyError
+
+d = dict(name="Amelia", major="CS")
+d = dict([("a", 1), ("b", 2)])
+
+d = defaultdict(int)  # default value is 0
+d["count"] += 1       # no KeyError
+print(d["count"])     # ✅ 1
+print(d["missing"]) 
+```
+
+```
 d = {'a': 1, 'b': 2}
 d['c'] = 3           # Add key
 value = d['a']       # Access value
