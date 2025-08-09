@@ -491,6 +491,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#stack-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack &amp; Queues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dictionaries" class="md-nav__link">
     <span class="md-ellipsis">
       Dictionaries
@@ -500,9 +509,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stack-queues" class="md-nav__link">
+  <a href="#min-heap" class="md-nav__link">
     <span class="md-ellipsis">
-      Stack &amp; Queues
+      Min-heap
     </span>
   </a>
   
@@ -514,6 +523,66 @@
       Counter
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexity-cheatsheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexity cheatsheet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complexity cheatsheet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      List []
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deque-collectionsdeque" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deque collections.deque
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-and-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set {} and Dict {}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counter-collectionscounter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counter collections.Counter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heap-min-heap-heapq" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heap (Min-Heap) heapq
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -535,7 +604,7 @@
 
 
 
-<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 4, 2025 23:41:52 PDT">August 4, 2025</span></i></small></p>
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 9, 2025 01:22:57 PDT">August 9, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
@@ -547,21 +616,19 @@
 <h3 id="lists">lists</h3>
 <pre><code>arr = [1, 2, 3]
 arr.append(4)        # [1, 2, 3, 4]
-arr.pop()            # Removes last element -&gt; 4
+arr.pop()            # Removes last element -&gt; 4 (.pop(index))
 arr.insert(1, 9)     # [1, 9, 2, 3]
-arr.remove(2)        # Removes first occurrence of 2
+arr.remove(2)        # Removes first occurrence of 2 (.remove(value))
 arr.sort()           # In-place sort
 sorted_arr = sorted(arr)  # Returns new sorted list
 arr.reverse()        # In-place reverse
 </code></pre>
-<p><br></p>
 <h3 id="tuples-immutable-lists">Tuples (Immutable Lists)</h3>
 <pre><code>t = (1, 2, 3)
 x, y, z = t  # Tuple unpacking
 </code></pre>
-<p><br></p>
 <h3 id="sets-unordered-unique-elements">Sets (Unordered, Unique Elements)</h3>
-<pre><code>// empty: s = set()
+<pre><code>s = set()
 s = {1, 2, 3}
 s.add(4)
 s.remove(2)
@@ -572,7 +639,20 @@ s1 &amp; s2  # Intersection: {2, 3}
 s1 | s2  # Union: {1, 2, 3, 4}
 s1 - s2  # Difference: {1}
 </code></pre>
-<p><br></p>
+<h3 id="stack-queues">Stack &amp; Queues</h3>
+<pre><code>stack = []
+stack.append(1)
+stack.append(2)
+stack.pop()       # LIFO
+</code></pre>
+<pre><code>from collections import deque
+
+queue = deque()
+queue.append(1)
+queue.appendleft()
+queue.pop()
+queue.popleft()   # FIFO
+</code></pre>
 <h3 id="dictionaries">Dictionaries</h3>
 <pre><code>d = {}
 d[&quot;key&quot;] = &quot;value&quot;
@@ -595,53 +675,22 @@ del d['b']           # Remove key
 for key, val in d.items():
     print(key, val)
 </code></pre>
-<p><br></p>
-<h3 id="stack-queues">Stack &amp; Queues</h3>
-<pre><code>stack = []
-stack.append(1)
-stack.append(2)
-stack.pop()       # LIFO
+<h3 id="min-heap">Min-heap</h3>
+<pre><code>import heapq
+
+heap = [3, 1, 4]
+heapq.heapify(heap)       # turns list into min-heap in O(n)
+print(heap)               # [1, 3, 4]
+
+heapq.heappush(heap, 2)   # O(log n)
+print(heap)               # [1, 2, 4, 3]
+
+smallest = heapq.heappop(heap)  # O(log n)
+print(smallest)                 # 1
+print(heap)                     # [2, 3, 4]
+
+print(heap[0])                  # 2 (O(1))
 </code></pre>
-<pre><code>from collections import deque
-queue = deque()
-queue.append(1)
-queue.popleft()   # FIFO
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Created As</th>
-<th>Used For</th>
-<th>Typical Methods</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>list</code></td>
-<td><code>[]</code></td>
-<td>general storage</td>
-<td><code>append()</code>, <code>insert()</code>, <code>pop(i)</code>, <code>sort()</code></td>
-</tr>
-<tr>
-<td><code>stack</code></td>
-<td><code>[]</code></td>
-<td>LIFO</td>
-<td><code>append()</code>, <code>pop()</code></td>
-</tr>
-<tr>
-<td><code>queue</code></td>
-<td><code>deque()</code></td>
-<td>FIFO</td>
-<td><code>append()</code>, <code>popleft()</code></td>
-</tr>
-</tbody>
-</table>
-<pre><code>// join items in stack into one string
-stack = []
-joined = ''.join(stack)
-</code></pre>
-<p><br></p>
 <h3 id="counter">Counter</h3>
 <p><code>from collections import Counter</code></p>
 <pre><code>nums = [1, 1, 2, 3, 2, 1]
@@ -672,6 +721,171 @@ most_common = count.most_common(1)[0]  # ➝ (3, 3)
 elem = most_common[0]  # ➝ 3
 freq = most_common[1]  # ➝ 3
 </code></pre>
+<p><br></p>
+<h2 id="complexity-cheatsheet">Complexity cheatsheet</h2>
+<h3 id="list">List <code>[]</code></h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>append(x)</code></td>
+<td><strong>O(1)</strong></td>
+</tr>
+<tr>
+<td><code>pop()</code> (end)</td>
+<td><strong>O(1)</strong></td>
+</tr>
+<tr>
+<td><code>pop(0)</code> / <code>insert(0,x)</code></td>
+<td><strong>O(n)</strong></td>
+</tr>
+<tr>
+<td><code>insert(i,x)</code> / <code>del arr[i]</code></td>
+<td><strong>O(n)</strong></td>
+</tr>
+<tr>
+<td><code>arr[i]</code> / <code>arr[i]=x</code></td>
+<td><strong>O(1)</strong></td>
+</tr>
+<tr>
+<td><code>x in arr</code></td>
+<td><strong>O(n)</strong></td>
+</tr>
+<tr>
+<td><code>sort()</code> / <code>sorted(arr)</code></td>
+<td><strong>O(n log n)</strong></td>
+</tr>
+<tr>
+<td><code>arr[::-1]</code> / <code>reverse()</code></td>
+<td><strong>O(n)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="deque-collectionsdeque">Deque <code>collections.deque</code></h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>append(x)</code> / <code>appendleft(x)</code></td>
+<td><strong>O(1)</strong></td>
+</tr>
+<tr>
+<td><code>pop()</code> / <code>popleft()</code></td>
+<td><strong>O(1)</strong></td>
+</tr>
+<tr>
+<td>Indexing <code>dq[i]</code></td>
+<td><strong>O(n)</strong></td>
+</tr>
+<tr>
+<td>Insert/remove in middle</td>
+<td><strong>O(n)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="set-and-dict">Set <code>{}</code> and Dict <code>{}</code></h3>
+<p>(both are hash tables)</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Avg Complexity</th>
+<th>Worst-case*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insert / Update</td>
+<td><strong>O(1)</strong></td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Lookup (<code>in</code>, <code>get</code>)</td>
+<td><strong>O(1)</strong></td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Delete</td>
+<td><strong>O(1)</strong></td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Iterate all items</td>
+<td><strong>O(n)</strong></td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<p>*Worst cases are rare (pathological hashing). In practice, treat as O(1).</p>
+<h3 id="counter-collectionscounter">Counter <code>collections.Counter</code></h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build from <code>n</code> items</td>
+<td><strong>O(n)</strong></td>
+</tr>
+<tr>
+<td><code>c[x]</code> (missing → 0)</td>
+<td><strong>O(1)</strong> avg</td>
+</tr>
+<tr>
+<td><code>most_common(k)</code></td>
+<td><strong>O(n log k)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="heap-min-heap-heapq">Heap (Min-Heap) <code>heapq</code></h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>heappush(h, x)</code></td>
+<td><strong>O(log n)</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>heappop(h)</code></td>
+<td><strong>O(log n)</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>h[0]</code> (min)</td>
+<td><strong>O(1)</strong></td>
+<td>Peek</td>
+</tr>
+<tr>
+<td><code>heapify(arr)</code></td>
+<td><strong>O(n)</strong></td>
+<td>In-place</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Rule of thumb:</strong><br />
+• Use <strong>list</strong> when you need fast indexing, push/pop at <strong>end</strong>.<br />
+• Use <strong>deque</strong> when you need fast push/pop at <strong>both ends</strong> (queues, sliding windows) and don’t need random indexing.</p>
 
 
 
@@ -692,7 +906,7 @@ freq = most_common[1]  # ➝ 3
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 4, 2025 23:41:52 PDT">August 4, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 9, 2025 01:22:57 PDT">August 9, 2025</span>
   </span>
 
     
