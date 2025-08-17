@@ -96,6 +96,13 @@ for key, val in d.items():
     print(key, val)
 ```
 
+```
+d = collections.defaultdict(list)
+
+d["nums"].append(5)      # no need to check if key exists
+print(d["missing"])      # ✅ 0 (auto-created!)
+``` 
+
 ### Min-heap
 
 ```
