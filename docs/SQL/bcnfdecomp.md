@@ -150,3 +150,8 @@ B -> D
 R<sub>6</sub>(AB)
 
 AB -> AB
+
+<br>
+
+
+**Source:** [BCNF Decomposition](https://www.youtube.com/watch?v=WKJH3V7UAgg)
