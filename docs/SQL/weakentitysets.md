@@ -41,6 +41,28 @@ Why do we care about Weak Entities?
 
 <br>
 
+### Implementation
+
+```
+CREATE TABLE Company (
+    CompanyID NVARCHAR(10) PRIMARY KEY,
+    CompanyName NVARCHAR(50),
+    Address NVARCHAR(50)
+);
+
+CREATE TABLE Product (
+    CompanyID NVARCHAR(10),
+    ProductID NVARCHAR(10),
+    ProductName NVARCHAR(50),
+    Categiry NVARCHAR(50),
+    PRIMARY KEY (CompanyID, ProductCode),
+    FOREIGN KEY (CompanyID) REFERENCES Company(CompanyID) ON DELETE CASCADE,
+);
+
+```
+
+<br>
+
 ### Weak Relationship
 
 A relationship is weak (identifying) only if it connects a weak entity to its owner (strong entity) and is used to define its primary key.

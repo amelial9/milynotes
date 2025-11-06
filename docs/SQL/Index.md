@@ -52,6 +52,8 @@ hide:
   <hr>
   <a href="../../SQL/erdtoschema" class="index-link">From ER Diagram to Relational Schema</a>
   <hr>
+  <a href="../../SQL/mandatoryrelationship" class="index-link">Mandatory Relationship</a>
+  <hr>
   <a href="../../SQL/check" class="index-link">Check Constraint</a>
   <hr>
   <a href="../../SQL/fkconstraints" class="index-link">FK Constraints</a>
