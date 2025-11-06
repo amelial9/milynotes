@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://notes.ameliali.com/INFO441/docker/">
+        <link rel="canonical" href="https://notes.ameliali.com/SQL/mandatoryrelationship/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Docker - Amelia's BrainDump.io</title>
+        <title>Mandatoryrelationship - Amelia's BrainDump.io</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker" class="md-skip">
+        <a href="#mandatory-relationship" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker
+              Mandatoryrelationship
             
           </span>
         </div>
@@ -276,7 +276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SQL/Index/" class="md-nav__link">
+      <a href="../Index/" class="md-nav__link">
         
   
   
@@ -344,7 +344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Index/" class="md-nav__link">
+      <a href="../../INFO441/Index/" class="md-nav__link">
         
   
   
@@ -457,65 +457,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#run-a-docker-container" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run a docker container
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-demo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docker demo
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#demos" class="md-nav__link">
-    <span class="md-ellipsis">
-      demos
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="demos">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nginxhtml" class="md-nav__link">
-    <span class="md-ellipsis">
-      nginx/html
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nodedemo" class="md-nav__link">
-    <span class="md-ellipsis">
-      nodedemo
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -532,7 +473,7 @@
 
 
 
-<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 30, 2025 22:35:54 PDT">May 30, 2025</span></i></small></p>
+<p><small><i>Last modified: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 6, 2025 13:37:26 PST">November 6, 2025</span></i></small></p>
 <div class="back-button">
     <br>
     <a href="javascript:history.back()">← Back</a>
@@ -540,73 +481,27 @@
     <br>
 </div>
 
-<h1 id="docker">Docker</h1>
-<h4 id="run-a-docker-container">Run a docker container</h4>
-<pre><code>docker run hello-world
-</code></pre>
-<p>Just prints out hello world (good for testing if Docker is working)</p>
-<pre><code>docker ps
-</code></pre>
-<p>See what is running</p>
-<p>Add “-a” to include stopped containers</p>
-<pre><code>docker rm CONTAINER_NAME
-</code></pre>
-<p>Remove a docker container</p>
-<pre><code>docker run -it ubuntu
-</code></pre>
-<p>Run the ubuntu Linux operating system</p>
-<p>Note: “-it” means to run it as an interactive terminal </p>
-<pre><code>docker run -p 80:80 nginx
-</code></pre>
-<p>nginx is a popular static web server</p>
-<p>Note: by default, a container is closed to traffic on all ports.</p>
-<ul>
-<li>“-p 80:80” says: for traffic coming in on port 80, send it to port 80 inside the container</li>
-</ul>
-<p><br></p>
-<h3 id="docker-demo">Docker demo</h3>
-<pre><code>FROM nginx
-COPY . /usr/share/nginx/html
-</code></pre>
-<p>The “Dockerfile” is a definition for a docker container.</p>
-<p>It consists of a set of steps, starting “FROM” a specific docker container, and then running additional steps (e.g., copying files) to set up the container the way you want it.</p>
-<p><br></p>
-<h3 id="demos">demos</h3>
-<h4 id="nginxhtml">nginx/html</h4>
-<pre><code>demo/
-├── index.html
-└── Dockerfile
-</code></pre>
-<p>Dockerfile</p>
-<pre><code>FROM nginx
-COPY . /usr/share/nginx/html
-</code></pre>
-<pre><code>docker build -t amelial9/dockerdemo .
-docker run -d -p 80:80 amelial9/dockerdemo
+<h1 id="mandatory-relationship">Mandatory Relationship</h1>
+<p><img src="../../SQL/img/normal_relationship.png" alt="normal relationship" width="500"></p>
+<pre><code>CREATE TABLE Product (
+    product_id INT PRIMARY KEY,
+    pname VARCHAR(50),
+    category VARCHAR(50),
+    company_id INT,  --(can be NULL)
+    FOREIGN KEY (company_id)
+  REFERENCES Company(company_id)
+);
 </code></pre>
 <p><br></p>
-<h4 id="nodedemo">nodedemo</h4>
-<pre><code>demo/
-├── one-of-the-prev-demos
-└── Dockerfile
-</code></pre>
-<p>Dockerfile</p>
-<pre><code>FROM node
-
-# equivalent to cd /app
-WORKDIR /app
-
-COPY package.json package-lock.json ./
-RUN npm install
-
-COPY . .
-
-EXPOSE 3000
-
-ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]
-</code></pre>
-<pre><code>docker build -t amelial9/node-app .
-docker run -d -p 4000:3000 amelial9/node-app
+<p><img src="../../SQL/img/mandatory_relationship.png" alt="mandatory relationship" width="500"></p>
+<pre><code>CREATE TABLE Product (
+    product_id INT PRIMARY KEY,
+    pname VARCHAR(50),
+    category VARCHAR(50),
+    company_id INT NOT NULL,  --(cannot be NULL)
+    FOREIGN KEY (company_id)
+  REFERENCES Company(company_id)
+);
 </code></pre>
 
 
@@ -628,7 +523,7 @@ docker run -d -p 4000:3000 amelial9/node-app
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 30, 2025 22:35:54 PDT">May 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 6, 2025 13:37:26 PST">November 6, 2025</span>
   </span>
 
     
