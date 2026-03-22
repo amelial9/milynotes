@@ -1,3 +1,6 @@
+---
+order: 2
+---
 
 ## Top 5 Dynamic Programming Patterns for Coding Interviews
 

@@ -1,3 +1,6 @@
+---
+order: 3
+---
 
 describes an "intent to conform" for disparate types
 	similar to an interface in C#/Java

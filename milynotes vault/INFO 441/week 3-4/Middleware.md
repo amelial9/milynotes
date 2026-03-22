@@ -1,3 +1,6 @@
+---
+order: 7
+---
 
 Functions that run during each request (or a subset of requests)
 - These functions are chained together, each one calling the next function (in the variable next)

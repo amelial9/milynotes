@@ -1,3 +1,6 @@
+---
+order: 1
+---
 
 A way of analyzing time it takes for our algorithm to execute as the input size grows.
 worst-case runtime

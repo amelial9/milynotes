@@ -1,3 +1,7 @@
+---
+order: 15
+---
+
 ### Forward Proxy
 
 A server that sits between a client (like your computer) and the internet. Forwards your requests to websites and sends the responses back to you. It hides the client from the server.

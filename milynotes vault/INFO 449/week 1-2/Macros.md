@@ -1,3 +1,6 @@
+---
+order: 1
+---
 
 _macros_: the ability to write a source-level construct
 
