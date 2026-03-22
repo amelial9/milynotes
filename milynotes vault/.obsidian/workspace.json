@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "INFO 330/01_basic sql/Relations and datatypes.md",
+                "file": "DSA/DSA Patterns - I.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Relations and datatypes"
+              "title": "DSA Patterns - I"
             }
           }
         ]
@@ -185,6 +185,9 @@
   },
   "active": "3765b8d209b7192f",
   "lastOpenFiles": [
+    "DSA/DSA Patterns - II.md",
+    "DSA/DSA Patterns - I.md",
+    "INFO 330/01_basic sql/Relations and datatypes.md",
     "INFO 330/01_basic sql/JOINs.md",
     "INFO 330/06_logical db design review/Nested Queries.md",
     "INFO 449/week 3-4/Protocols.md",
@@ -217,9 +220,6 @@
     "INFO 441/week 3-4/img/ipaccesslist.png",
     "INFO 441/week 3-4/img",
     "INFO 441/week 3-4/XSS (Cross Site Scripting Attacks).md",
-    "INFO 441/week 3-4/User Data Demo (MongoDB).md",
-    "INFO 441/week 3-4/SQL Injection.md",
-    "INFO 441/week 3-4/Pterosaurs.md",
     "INFO 441/week 1-2",
     "INFO 330/09",
     "INFO 330/08_functional dependencies, normalization, views",

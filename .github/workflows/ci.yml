@@ -36,7 +36,24 @@ jobs:
 
       - name: Install and build
         working-directory: web
+        env:
+          NODE_ENV: production
         run: npm ci && npm run build
+
+      - name: Verify built index (relative assets, no /milynotes/)
+        working-directory: web
+        run: |
+          set -e
+          echo "---- dist/index.html ----"
+          cat dist/index.html
+          if grep -qE '/milynotes/' dist/index.html; then
+            echo "::error::dist/index.html still contains /milynotes/ — wrong base. Fix vite.config base or env."
+            exit 1
+          fi
+          if ! grep -qF './assets/' dist/index.html; then
+            echo "::error::dist/index.html must reference ./assets/ for relative base build"
+            exit 1
+          fi
 
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4

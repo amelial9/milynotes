@@ -4,13 +4,24 @@ import path from 'node:path'
 
 // https://vite.dev/config/
 // Production default is relative (./) so the same build works on a custom domain at the site
-// root (e.g. notes.example.com/assets/...) and on GitHub project pages
-// (user.github.io/repo/assets/...). Override with VITE_BASE_PATH if needed.
-export default defineConfig(({ mode }) => ({
+// root and on GitHub project pages. Override with VITE_BASE_PATH if needed.
+export default defineConfig(({ command }) => ({
   base:
-    process.env.VITE_BASE_PATH ??
-    (mode === 'development' ? '/' : './'),
-  plugins: [react()],
+    process.env.VITE_BASE_PATH ||
+    (command === 'build' ? './' : '/'),
+  plugins: [
+    react(),
+    {
+      name: 'milynotes-build-marker',
+      transformIndexHtml(html) {
+        const sha = process.env.GITHUB_SHA
+        const marker = sha
+          ? `<!-- milynotes-build:${sha.slice(0, 7)} -->`
+          : '<!-- milynotes-build:local -->'
+        return html.replace('<head>', `<head>\n    ${marker}`)
+      },
+    },
+  ],
   server: {
     fs: {
       allow: [path.resolve(__dirname, '..')],
