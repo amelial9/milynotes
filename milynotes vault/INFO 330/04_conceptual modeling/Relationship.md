@@ -11,7 +11,7 @@ If A and B are sets, then a relation R is a subset of A * B
 - One-to-many; Many-to-one
 - Many-to-many
 
-![[relationship1.png]]
+![[relationship1.png|490]]
 
 ![[arrows.png]]
 
@@ -30,7 +30,9 @@ If A and B are sets, then a relation R is a subset of A * B
 | m..n         |             | At least *m*, but no more than *n* instances |
 
 <br>
+
 ### Multi-way Relationships
+
 
 ![[relation.png]]
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "INFO 330/03_intermediate SQL/WITH.md",
+                "file": "INFO 330/04_conceptual modeling/Relationship.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "WITH"
+              "title": "Relationship"
             }
           }
         ]
@@ -185,6 +185,7 @@
   },
   "active": "f93baabd2e842cbd",
   "lastOpenFiles": [
+    "INFO 330/03_intermediate SQL/WITH.md",
     "INFO 330/02_relational model/Keys.md",
     "INFO 330/02_relational model/Create table.md",
     "INFO 330/01_basic sql/Relations and datatypes.md",
@@ -221,7 +222,6 @@
     "INFO 330/08_functional dependencies, normalization, views/BCNF Decomposition.md",
     "INFO 330/07_window functions/Window Functions.md",
     "INFO 330/07_window functions/Row Number, Rank, Dense Rank.md",
-    "INFO 330/06_logical db design review/Nested Queries.md",
     "INFO 330/05_relational schema/img",
     "INFO 330/04_conceptual modeling/img",
     "INFO 330/09",

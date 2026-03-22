@@ -12,13 +12,15 @@
 /* ——— Nav ——— */
 .nav {
   border-bottom: 1px solid var(--nav-border);
-  padding: 16px 0;
+  padding: 24px 0;
 }
 
 .nav__inner {
   max-width: var(--content-max, 900px);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
+  padding-left: max(env(safe-area-inset-left, 0px), var(--page-gutter));
+  padding-right: max(env(safe-area-inset-right, 0px), var(--page-gutter));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,6 +60,16 @@
   text-overflow: ellipsis;
 }
 
+.nav__brand-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav__brand-link:hover {
+  color: #525252;
+  text-decoration: none;
+}
+
 .nav__search {
   flex: 0 1 240px;
 }
@@ -86,45 +98,50 @@
 .nav__search-btn {
   display: none;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  line-height: 1;
-  background: #f6f6f5;
-  border: 1px solid #cfcfcd;
-  border-radius: 10px;
+  color: #737373;
+  background: transparent;
+  border: 1px solid #e5e5e3;
+  border-radius: 6px;
   cursor: pointer;
   padding: 0;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .nav__search-btn:hover {
-  background: #ebeae8;
+  background: #f4f4f2;
+  border-color: #d9d9d6;
+  color: #525252;
+}
+
+.nav__search-btn-icon {
+  display: block;
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
   .nav {
-    padding: 12px 0;
+    padding: 20px 0;
   }
 
   .nav__inner {
-    position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    gap: 12px;
     min-height: 0;
-    padding: 0 20px;
+    padding-left: max(env(safe-area-inset-left, 0px), var(--page-gutter));
+    padding-right: max(env(safe-area-inset-right, 0px), var(--page-gutter));
   }
 
   .nav__title-group {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100% - 64px);
-    max-width: 100%;
-    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: flex-start;
+    gap: 12px;
   }
 
   .nav__portrait {
@@ -133,9 +150,9 @@
   }
 
   .nav__brand {
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     min-width: 0;
-    text-align: center;
+    text-align: left;
     font-size: clamp(14px, 4vw, 17px);
   }
 
@@ -145,8 +162,6 @@
 
   .nav__search-btn {
     display: flex;
-    position: relative;
-    z-index: 1;
     flex-shrink: 0;
   }
 }
@@ -154,7 +169,13 @@
 /* ——— Main wrap ——— */
 :root {
   --content-max: 900px;
-  --content-max-reading: 860px;
+  --page-gutter: 24px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-gutter: 28px;
+  }
 }
 
 .wrap {
@@ -162,19 +183,10 @@
   width: 100%;
   max-width: var(--content-max);
   margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* Higher specificity than .wrap so reading width always wins */
-.layout--reading .nav__inner,
-.layout--reading .wrap {
-  max-width: var(--content-max-reading);
-}
-
-@media (max-width: 768px) {
-  .wrap {
-    padding: 0 20px;
-  }
+  padding: 0;
+  padding-top: 16px;
+  padding-left: max(env(safe-area-inset-left, 0px), var(--page-gutter));
+  padding-right: max(env(safe-area-inset-right, 0px), var(--page-gutter));
 }
 
 /* ——— Categories (home) ——— */
@@ -350,7 +362,7 @@
 
 .note-view__body {
   font-size: 17px;
-  line-height: 1.45;
+  line-height: 1.58;
   color: #2a2a2a;
 }
 
@@ -363,15 +375,15 @@
 }
 
 .note-view__body p {
-  margin: 0 0 1.45em;
-  line-height: 1.38;
+  margin: 0 0 1.68em;
+  line-height: 1.52;
   white-space: normal;
 }
 
 .note-view__body h2,
 .note-view__body h3,
 .note-view__body h4 {
-  margin: 1.35em 0 0.5em;
+  margin: 1.58em 0 0.62em;
   font-weight: 600;
   color: #141414;
   letter-spacing: -0.02em;
@@ -391,13 +403,13 @@
 
 .note-view__body ul,
 .note-view__body ol {
-  margin: 0 0 1em;
+  margin: 0 0 1.12em;
   padding-left: 1.35em;
 }
 
 .note-view__body li {
-  margin: 0.1em 0;
-  line-height: 1.38;
+  margin: 0.22em 0;
+  line-height: 1.52;
   white-space: normal;
 }
 
@@ -432,11 +444,11 @@
 }
 
 .note-view__body pre {
-  margin: 0 0 1em;
+  margin: 0 0 1.2em;
   padding: 14px 16px;
   overflow-x: auto;
   font-size: 0.9em;
-  line-height: 1.5;
+  line-height: 1.55;
   background: #f7f6f3;
   border: 1px solid #e8e6e1;
   border-radius: 6px;
@@ -486,7 +498,7 @@
 
 /* One editor “empty line” per spacer (from 3+ consecutive newlines in .md) */
 .note-view__body .md-blank-line {
-  height: 1.35em;
+  height: 1.55em;
   margin: 0;
   padding: 0;
 }
@@ -494,7 +506,9 @@
 /* ——— Footer ——— */
 .footer {
   flex-shrink: 0;
-  padding: 16px 24px 20px;
+  padding: 16px 0 20px;
+  padding-left: max(env(safe-area-inset-left, 0px), var(--page-gutter));
+  padding-right: max(env(safe-area-inset-right, 0px), var(--page-gutter));
   text-align: center;
   font-size: 13px;
   color: #6a6a6a;

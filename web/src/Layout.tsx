@@ -1,16 +1,8 @@
-import { Outlet, useLocation } from 'react-router-dom'
-
-/** Category list + note pages: narrower column for reading */
-function useReadingLayout(): boolean {
-  const { pathname } = useLocation()
-  return pathname.startsWith('/category')
-}
+import { Link, Outlet } from 'react-router-dom'
 
 export default function Layout() {
-  const reading = useReadingLayout()
-
   return (
-    <div className={`layout${reading ? ' layout--reading' : ''}`}>
+    <div className="layout">
       <header className="nav">
         <div className="nav__inner">
           <div className="nav__title-group">
@@ -21,13 +13,39 @@ export default function Layout() {
               height={40}
               alt=""
             />
-            <h1 className="nav__brand">Amelia&apos;s Notes & Brain Dump.</h1>
+            <h1 className="nav__brand">
+              <Link to="/" className="nav__brand-link">
+                Amelia&apos;s Notes & Brain Dump.
+              </Link>
+            </h1>
           </div>
           <label className="nav__search" aria-label="Search">
             <input type="search" placeholder="Search…" autoComplete="off" />
           </label>
           <button type="button" className="nav__search-btn" aria-label="Search">
-            🔍
+            <svg
+              className="nav__search-btn-icon"
+              width={18}
+              height={18}
+              viewBox="0 0 24 24"
+              aria-hidden={true}
+            >
+              <circle
+                cx="11"
+                cy="11"
+                r="6.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M16.2 16.2 20 20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
           </button>
         </div>
       </header>
