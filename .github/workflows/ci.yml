@@ -1,6 +1,8 @@
 name: Deploy site to GitHub Pages
 
 # Builds the Vite app and pushes web/dist to the gh-pages branch.
+# Production uses a relative asset base so it works on a custom domain (site root) and on
+# https://<user>.github.io/<repo>/.
 # In the repo: Settings → Pages → Build and deployment → Source:
 #   "Deploy from a branch" → Branch: gh-pages, folder: / (root)
 # (Do not use "GitHub Actions" as the Pages source when using this workflow.)
@@ -34,10 +36,7 @@ jobs:
 
       - name: Install and build
         working-directory: web
-        run: |
-          REPO="${GITHUB_REPOSITORY#*/}"
-          export VITE_BASE_PATH="/$(echo "$REPO" | tr '[:upper:]' '[:lower:]')/"
-          npm ci && npm run build
+        run: npm ci && npm run build
 
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
