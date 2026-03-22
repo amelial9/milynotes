@@ -14,9 +14,10 @@ order: 18
 
 ### Caching locations
 
-![[caching.png]]
+![[caching.png|664]]
 
 <br>
+
 app.js
 ```
 import express from 'express';

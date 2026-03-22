@@ -15,6 +15,7 @@ In a FROM clause, returns a **relation** (many rows, many relations), aliased us
 In a WHERE clause, **may** return a **single value** to be compared with another value
 In a WHERE clause, **may** return a **relation** to be used with WHERE EXISTS
 
+
 ### Subqueries in SELECT (single value)
 
 For each product return the city where it is manufactured

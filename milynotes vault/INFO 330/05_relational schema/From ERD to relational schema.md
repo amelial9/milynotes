@@ -4,14 +4,16 @@ order: 18
 
 ### Database design process
 
-![[dbdesignprocess.png]]
+![[dbdesignprocess.png|519]]
+
 
 Conceptual Model -> Relational Model
 	+ schema
 	+ constraints
 
-![[nnrelationshiptorelation.png]]
+
+![[nnrelationshiptorelation.png|563]]
 
 
-![[n1relationshiptorelation.png]]
+![[n1relationshiptorelation.png|526]]
 

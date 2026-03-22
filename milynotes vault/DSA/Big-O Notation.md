@@ -188,7 +188,7 @@ def permute(self, nums: List[int]) -> List[List[int]]:
 
 
 
-![[complexity.png]]
+![[complexity.png|498]]
 
 
 **Source:** [Big-O Notation](https://www.youtube.com/watch?v=BgLTDT03QtU) (NeetCode)

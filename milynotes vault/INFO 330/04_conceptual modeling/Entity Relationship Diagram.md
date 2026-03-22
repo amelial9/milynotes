@@ -2,7 +2,8 @@
 order: 15
 ---
 
-![[ERD_intro.png]]
+![[ERD_intro.png|580]]
+
 
 - An **entity** corresponds to an instance of an object
 	- corresponds to a row in an RDBMS table

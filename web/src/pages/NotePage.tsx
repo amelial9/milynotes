@@ -1,7 +1,9 @@
 import ReactMarkdown from 'react-markdown'
+import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
 import remarkBreaks from 'remark-breaks'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getCategoryById } from '../categories'
 import { getNoteRaw } from '../lib/notesIndex'
@@ -64,8 +66,8 @@ export default function NotePage() {
       <h1 className="note-view__title">{title}</h1>
       <div className="note-view__body">
         <ReactMarkdown
-          remarkPlugins={[remarkGfm, remarkBreaks]}
-          rehypePlugins={[rehypeRaw]}
+          remarkPlugins={[remarkGfm, remarkMath, remarkBreaks]}
+          rehypePlugins={[[rehypeKatex, { strict: false }], rehypeRaw]}
         >
           {body}
         </ReactMarkdown>

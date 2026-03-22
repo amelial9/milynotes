@@ -4,7 +4,7 @@ order: 16
 
 If A and B are sets, then a relation R is a subset of A * B
 
-![[relationship.png]]
+![[relationship.png|641]]
 
 
 - One-to-one
@@ -13,7 +13,8 @@ If A and B are sets, then a relation R is a subset of A * B
 
 ![[relationship1.png|490]]
 
-![[arrows.png]]
+![[arrows.png|471]]
+
 
 ### Multiplicity & Cardinality
 
@@ -34,7 +35,9 @@ If A and B are sets, then a relation R is a subset of A * B
 ### Multi-way Relationships
 
 
-![[relation.png]]
+![[relation.png|579]]
+
+
 
 **A** and **B** are two sets (collections of things).
     
@@ -47,4 +50,5 @@ B = {Product1, Product2}
     
 **Relation R** is **some subset** of A × B — meaning R just **picks certain pairs** out of A × B that actually make sense for the relationship you're modeling.
 
-![[relation1.png]]
+
+![[relation1.png|582]]

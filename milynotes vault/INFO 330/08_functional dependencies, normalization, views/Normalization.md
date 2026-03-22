@@ -87,7 +87,7 @@ SSN<sup>+</sup> = SSN, Name, City and is neither SSN nor All Attributes
 
 
 > `SSN⁺` : the **closure** of the attribute `SSN`, meaning the set of attributes functionally determined by SSN.
-> 	`SSN⁺ = {SSN, Name, City}`
+> `SSN⁺ = {SSN, Name, City}`
 
 #### Example BCNF Decomposition
 

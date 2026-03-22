@@ -21,6 +21,11 @@ function parentDir(noteRelativePath: string): string {
   return noteRelativePath.slice(0, i)
 }
 
+/** For raw `<img alt="...">` — avoid breaking out of the attribute. */
+function escapeHtmlAttr(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+}
+
 /**
  * Resolve Obsidian wiki image names and relative markdown image paths to Vite asset URLs.
  */
@@ -66,7 +71,8 @@ export function resolveVaultImageUrl(
 }
 
 /**
- * Convert Obsidian-style `![[file]]` / `![[file|caption]]` and fix relative `![](...)` paths.
+ * Convert Obsidian-style `![[file]]` / `![[file|caption]]` / `![[file|width]]` (resize) and fix relative `![](...)` paths.
+ * When Obsidian saves a drag-resize, the part after `|` is a pixel width (digits only); that becomes `<img width="...">` so it matches the editor.
  */
 export function preprocessVaultMarkdown(
   body: string,
@@ -76,11 +82,16 @@ export function preprocessVaultMarkdown(
   let out = body
 
   out = out.replace(/!\[\[([^\]]+)\]\]/g, (full, inner: string) => {
-    const target = inner.split('|')[0].trim()
+    const parts = inner.split('|')
+    const target = parts[0].trim()
     if (!target) return full
     const url = resolveVaultImageUrl(vaultFolder, noteRelativePath, target)
     if (!url) return full
     const alt = target.replace(/\.[^./\\]+$/, '').replace(/[/_-]+/g, ' ')
+    const maybeWidth = parts[1]?.trim()
+    if (maybeWidth && /^\d+$/.test(maybeWidth)) {
+      return `<img src="${url}" alt="${escapeHtmlAttr(alt)}" width="${maybeWidth}" />`
+    }
     return `![${alt}](${url})`
   })
 

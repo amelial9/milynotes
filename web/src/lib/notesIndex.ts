@@ -1,7 +1,9 @@
+import { CATEGORIES } from '../categories'
 import type { ParsedNote } from './parseNoteFile'
 import {
   normalizeRelPath,
   parseOrderFromRaw,
+  stripFrontmatter,
   titleFromPathKey,
 } from './parseNoteFile'
 
@@ -60,4 +62,70 @@ export function listNotesForVaultFolder(vaultFolder: string): ParsedNote[] {
 
   out.sort((a, b) => a.order - b.order)
   return out
+}
+
+export type SearchHit = {
+  categoryId: string
+  categoryName: string
+  relativePath: string
+  title: string
+}
+
+const categoryByVaultFolder = new Map(
+  CATEGORIES.map((c) => [c.vaultFolder, c] as const),
+)
+
+/**
+ * Case-insensitive search over note title, path, and body (frontmatter stripped).
+ * Only includes files that declare `order:` in YAML frontmatter (same as category listings).
+ * All whitespace-separated terms must match.
+ */
+export function searchNotes(query: string, limit = 40): SearchHit[] {
+  const trimmed = query.trim().toLowerCase()
+  if (trimmed.length < 2) return []
+
+  const terms = trimmed.split(/\s+/).filter(Boolean)
+  if (terms.length === 0) return []
+
+  const hits: SearchHit[] = []
+
+  outer: for (const [globKey, raw] of Object.entries(rawModules)) {
+    let vaultFolder: (typeof VAULT_FOLDERS)[number] | null = null
+    let relativePath: string | null = null
+
+    for (const folder of VAULT_FOLDERS) {
+      const rel = vaultRelativePath(globKey, folder)
+      if (rel !== null) {
+        vaultFolder = folder
+        relativePath = rel
+        break
+      }
+    }
+
+    if (!vaultFolder || relativePath === null) continue
+
+    const category = categoryByVaultFolder.get(vaultFolder)
+    if (!category) continue
+
+    if (parseOrderFromRaw(raw) === undefined) continue
+
+    const title = titleFromPathKey(relativePath)
+    const normPath = normalizeRelPath(relativePath)
+    const body = stripFrontmatter(raw)
+    const haystack = `${title}\n${normPath}\n${body}`.toLowerCase()
+
+    if (!terms.every((t) => haystack.includes(t))) continue
+
+    hits.push({
+      categoryId: category.id,
+      categoryName: category.name,
+      relativePath: normPath,
+      title,
+    })
+
+    if (hits.length >= limit) break outer
+  }
+
+  hits.sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base' }))
+  return hits
 }

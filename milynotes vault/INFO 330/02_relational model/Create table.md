@@ -51,6 +51,7 @@ CREATE TABLE Product (
 ```
 
 
+
 ### Keys with multiple attributes
 
 Product(<u>name</u>, <u>category</u>, price)
@@ -70,6 +71,7 @@ CREATE TABLE Product (
 | Camera   | Photo        | 20        |
 | Gizmo    | Photo        | 30        |
 | Gizmo    | Gadget       | 40        |
+
 
 ### Other keys
 
@@ -92,6 +94,7 @@ there can be many **UNIQUE**
 | Allows NULL values | ❌ No (NULL not allowed)     | ✅ Yes (unless you say otherwise)               |
 | Number per table   | ❗Only one allowed           | ✅ You can have multiple UNIQUE constraints     |
 | Main identity      | ✅ Used to identify each row | ❌ Just used to enforce rules, not row identity |
+
 
 ### Foreign key constraints
 

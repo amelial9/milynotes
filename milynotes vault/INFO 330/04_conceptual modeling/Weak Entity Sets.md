@@ -2,7 +2,8 @@
 order: 17
 ---
 
-![[weakentity.png]]
+![[weakentity.png|550]]
+
 
 - A **weak entity** can't be uniquely identified by its own attributes alone.
 - It **depends** on a **strong entity** (another table/entity) for its **primary key**.
