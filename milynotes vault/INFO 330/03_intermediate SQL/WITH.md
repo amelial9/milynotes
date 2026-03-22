@@ -26,8 +26,7 @@ WHERE X.price < 500
 
 Multiple results can be named  
 ```
-WITH
-seattlecompanies as (
+WITH seattlecompanies as (
 	SELECT *
 	FROM Company
 	WHERE city = ‘Seattle’
@@ -44,8 +43,7 @@ WHERE e.cid = s.cid
 
 Results can refer to previous results:
 ```
-WITH  
-seattlecompanies as (  
+WITH seattlecompanies as (  
 	SELECT *  
 	FROM Company  
 	WHERE city = ‘Seattle’  
@@ -65,8 +63,7 @@ SELECT * FROM cheapseattleprods
 
 Example: Find companies that sell both cheap and expensive products  
 ```
-WITH  
-	cheap as (  
+WITH cheap as (  
 	SELECT cid  
 	FROM Product p, Company c  
 	WHERE p.cid = c.cid  

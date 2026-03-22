@@ -17,8 +17,10 @@ A Relation R is subset of S1 x S2 x ... x Sn
 		INFO 330 – Au 2024 4
 
 
+
 Each attribute has a type
 Types are enforced
+
 
 
 `INT` / `INTEGER` *-2,147,483,648 to 2,147,483,647*

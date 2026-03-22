@@ -18,7 +18,12 @@ ON manufacturer = cname
 ```
 
 
+<br>
+
+
 #### A simple JOIN example
+
+<br>
 
 `Product` 
 
@@ -46,6 +51,8 @@ WHERE p.manufacturer = c.cname;
 |------------|
 | GizmoWorks |
 | Hitachi    |
+
+<br>
 
 #### (Inner) JOIN
 
@@ -107,6 +114,8 @@ FROM Employee E
 | 2   | Jack | 2          | 544       |
 | 3   | Jill | null       | null      |
 
+
+<br>
 
 #### Outer JOIN
 
