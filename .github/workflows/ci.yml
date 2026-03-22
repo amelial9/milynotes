@@ -39,11 +39,11 @@ jobs:
 
       - name: Install and build
         working-directory: web
-        env:
-          NODE_ENV: production
         run: |
           # Do not inherit VITE_BASE_PATH from org/repo env (would break custom-domain relative builds).
           unset VITE_BASE_PATH || true
+          # Do not set NODE_ENV=production before npm ci — that skips devDependencies and breaks tsc
+          # (vite/client, @types/node). Vite already builds in production mode.
           npm ci && npm run build
 
       - name: Verify built index (relative assets, no /milynotes/)
