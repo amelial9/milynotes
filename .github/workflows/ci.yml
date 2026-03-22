@@ -1,5 +1,10 @@
 name: Deploy site to GitHub Pages
 
+# Builds the Vite app and pushes web/dist to the gh-pages branch.
+# In the repo: Settings → Pages → Build and deployment → Source:
+#   "Deploy from a branch" → Branch: gh-pages, folder: / (root)
+# (Do not use "GitHub Actions" as the Pages source when using this workflow.)
+
 on:
   push:
     branches:
@@ -7,16 +12,14 @@ on:
       - master
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,23 +35,13 @@ jobs:
       - name: Install and build
         working-directory: web
         run: |
-          # GitHub Pages project URLs use a lowercase path; match that so asset URLs resolve.
           REPO="${GITHUB_REPOSITORY#*/}"
           export VITE_BASE_PATH="/$(echo "$REPO" | tr '[:upper:]' '[:lower:]')/"
           npm ci && npm run build
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: web/dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          folder: web/dist
+          branch: gh-pages
+          clean: true
