@@ -31,9 +31,11 @@ jobs:
 
       - name: Install and build
         working-directory: web
-        env:
-          VITE_BASE_PATH: /${{ github.event.repository.name }}/
-        run: npm ci && npm run build
+        run: |
+          # GitHub Pages project URLs use a lowercase path; match that so asset URLs resolve.
+          REPO="${GITHUB_REPOSITORY#*/}"
+          export VITE_BASE_PATH="/$(echo "$REPO" | tr '[:upper:]' '[:lower:]')/"
+          npm ci && npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

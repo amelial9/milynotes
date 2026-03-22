@@ -93,7 +93,7 @@ export default function Layout() {
           <div className="nav__title-group">
             <img
               className="nav__portrait"
-              src="/portrait.svg"
+              src={`${import.meta.env.BASE_URL}portrait.svg`}
               width={40}
               height={40}
               alt=""
