@@ -23,12 +23,15 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      # Until all composite actions ship Node 24 runtimes (removes Node 20 deprecation warnings).
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
           cache: npm
@@ -38,16 +41,18 @@ jobs:
         working-directory: web
         env:
           NODE_ENV: production
-        run: npm ci && npm run build
+        run: |
+          # Do not inherit VITE_BASE_PATH from org/repo env (would break custom-domain relative builds).
+          unset VITE_BASE_PATH || true
+          npm ci && npm run build
 
       - name: Verify built index (relative assets, no /milynotes/)
         working-directory: web
         run: |
-          set -e
           echo "---- dist/index.html ----"
           cat dist/index.html
           if grep -qE '/milynotes/' dist/index.html; then
-            echo "::error::dist/index.html still contains /milynotes/ — wrong base. Fix vite.config base or env."
+            echo "::error::dist/index.html still contains /milynotes/ — remove repo env VITE_BASE_PATH or fix vite base."
             exit 1
           fi
           if ! grep -qF './assets/' dist/index.html; then

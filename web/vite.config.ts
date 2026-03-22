@@ -12,12 +12,12 @@ export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     {
-      name: 'milynotes-build-marker',
+      name: 'build-sha-marker',
       transformIndexHtml(html) {
         const sha = process.env.GITHUB_SHA
         const marker = sha
-          ? `<!-- milynotes-build:${sha.slice(0, 7)} -->`
-          : '<!-- milynotes-build:local -->'
+          ? `<!-- build-sha:${sha.slice(0, 7)} -->`
+          : '<!-- build-sha:local -->'
         return html.replace('<head>', `<head>\n    ${marker}`)
       },
     },
