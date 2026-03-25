@@ -48,15 +48,18 @@ export function resolveVaultImageUrl(
 
   if (noteDir) {
     candidates.push(`${vaultFolder}/${noteDir}/img/${clean}`)
+    candidates.push(`${vaultFolder}/${noteDir}/attachments/${clean}`)
     candidates.push(`${vaultFolder}/${noteDir}/${clean}`)
   } else {
     candidates.push(`${vaultFolder}/img/${clean}`)
+    candidates.push(`${vaultFolder}/attachments/${clean}`)
     candidates.push(`${vaultFolder}/${clean}`)
   }
 
   const baseName = clean.split('/').pop() ?? clean
   if (noteDir && baseName !== clean) {
     candidates.push(`${vaultFolder}/${noteDir}/img/${baseName}`)
+    candidates.push(`${vaultFolder}/${noteDir}/attachments/${baseName}`)
   }
 
   const seen = new Set<string>()
@@ -66,6 +69,23 @@ export function resolveVaultImageUrl(
     const u = urlByVaultRelPath.get(c)
     if (u) return u
   }
+
+  // Obsidian sometimes stores files in other subfolders under the same section; match by filename.
+  const base = baseName
+  if (noteDir) {
+    const underNote = `${vaultFolder}/${noteDir}/`
+    for (const [rel, url] of urlByVaultRelPath) {
+      if (rel.startsWith(underNote) && rel.endsWith(`/${base}`)) return url
+    }
+  }
+
+  const underVault = `${vaultFolder}/`
+  const loose: string[] = []
+  for (const [rel, url] of urlByVaultRelPath) {
+    if (!rel.startsWith(underVault)) continue
+    if (rel === `${vaultFolder}/${base}` || rel.endsWith(`/${base}`)) loose.push(url)
+  }
+  if (loose.length === 1) return loose[0]
 
   return null
 }
