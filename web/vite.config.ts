@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react'
 import path from 'node:path'
 
 // https://vite.dev/config/
-// For GitHub project Pages (`/repo/`), CI sets VITE_BASE_PATH=/<repo>/ so asset and
-// public URLs are root-absolute (e.g. /milynotes/portrait.svg). A relative base (`./`)
-// breaks those URLs after client-side navigation to deep routes (browser resolves `./`
-// against the current path). Local `npm run build` without VITE_BASE_PATH still uses `./`.
+// CI usually sets VITE_BASE_PATH=/<repo>/ for https://user.github.io/repo/. If you use a
+// custom domain or a user-site URL at the domain root, set VITE_BASE_PATH=/ or the browser
+// will request /repo/assets/... while files live at /assets/... (white page + 404s).
+// A relative base (`./`) breaks `${BASE_URL}…` after client-side navigation to deep routes.
 export default defineConfig(({ command }) => ({
   base:
     process.env.VITE_BASE_PATH ||

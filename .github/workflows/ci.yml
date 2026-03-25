@@ -1,9 +1,15 @@
 name: Deploy site to GitHub Pages
 
 # Builds the Vite app and pushes web/dist to the gh-pages branch.
-# Default: VITE_BASE_PATH=/<repo>/ so assets work on https://<user>.github.io/<repo>/ with
-# React Router (root-absolute URLs). Override with repository variable VITE_BASE_PATH (e.g. /
-# for a custom domain at the site root). Build also copies index.html → 404.html for SPA refresh.
+# Default: VITE_BASE_PATH=/<repo>/ for https://<user>.github.io/<repo>/ (project Pages).
+#
+# White page + 404 on /milynotes/assets/... or /milynotes/portrait.svg?
+#   Your live site is served at the DOMAIN ROOT (custom domain like https://example.com/, or
+#   a user/org site repo). Those URLs have NO /milynotes prefix on the server. Fix:
+#   Repo → Settings → Secrets and variables → Actions → Variables → New variable
+#   Name: VITE_BASE_PATH   Value: /   (single slash, then save and re-run the workflow / push)
+#
+# Build also copies index.html → 404.html for SPA refresh on deep links.
 # REQUIRED — or the live site will NOT update (this workflow only updates the gh-pages branch):
 #   Settings → Pages → Build and deployment → Source:
 #   "Deploy from a branch" → Branch: gh-pages → Folder: / (root)
@@ -52,6 +58,7 @@ jobs:
           else
             export VITE_BASE_PATH="$VITE_BASE_PATH_INPUT"
           fi
+          echo "VITE_BASE_PATH for this build: $VITE_BASE_PATH"
           # Do not set NODE_ENV=production before npm ci — that skips devDependencies and breaks tsc
           # (vite/client, @types/node). Vite already builds in production mode.
           npm ci && npm run build
