@@ -1,4 +1,10 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useParams,
+} from 'react-router-dom'
 import Layout from './Layout'
 import Home from './pages/Home'
 import CategoryPage from './pages/CategoryPage'
@@ -18,12 +24,31 @@ function routerBasename(): string | undefined {
   return undefined
 }
 
+function LegacySqlNotesNoteRedirect() {
+  const { notePath } = useParams<{ notePath: string }>()
+  if (!notePath) return <Navigate to="/category/sql-notes" replace />
+  return (
+    <Navigate
+      to={`/category/sql-notes/note/${encodeURIComponent(notePath)}`}
+      replace
+    />
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter basename={routerBasename()}>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route
+            path="/category/sql-notes-for-ta"
+            element={<Navigate to="/category/sql-notes" replace />}
+          />
+          <Route
+            path="/category/sql-notes-for-ta/note/:notePath"
+            element={<LegacySqlNotesNoteRedirect />}
+          />
           <Route path="/category/:categoryId/note/:notePath" element={<NotePage />} />
           <Route path="/category/:categoryId" element={<CategoryPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />

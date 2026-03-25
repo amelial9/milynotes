@@ -27,4 +27,5 @@ export default models
 
 
 > remember to edit IP access list
-> ![[ipaccesslist.png|646]]
+
+![[ipaccesslist.png|646]]

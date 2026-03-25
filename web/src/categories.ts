@@ -8,7 +8,7 @@ export type CategoryDef = {
 
 export const CATEGORIES: CategoryDef[] = [
   {
-    id: 'sql-notes-for-ta',
+    id: 'sql-notes',
     name: 'SQL notes',
     subtitle: 'About SQL and databases',
     vaultFolder: 'INFO 330',
