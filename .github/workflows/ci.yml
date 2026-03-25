@@ -1,13 +1,11 @@
 name: Deploy site to GitHub Pages
 
 # Builds the Vite app and pushes web/dist to the gh-pages branch.
-# Default: VITE_BASE_PATH=/<repo>/ for https://<user>.github.io/<repo>/ (project Pages).
+# Base path comes from web/.env.production (committed). Override with repository variable
+# VITE_BASE_PATH only if you need a different value without editing the file.
 #
-# White page + 404 on /milynotes/assets/... or /milynotes/portrait.svg?
-#   Your live site is served at the DOMAIN ROOT (custom domain like https://example.com/, or
-#   a user/org site repo). Those URLs have NO /milynotes prefix on the server. Fix:
-#   Repo → Settings → Secrets and variables → Actions → Variables → New variable
-#   Name: VITE_BASE_PATH   Value: /   (single slash, then save and re-run the workflow / push)
+# For https://<user>.github.io/<repo>/ only (no custom domain), set web/.env.production to
+#   VITE_BASE_PATH=/milynotes/   (use your repo name).
 #
 # Build also copies index.html → 404.html for SPA refresh on deep links.
 # REQUIRED — or the live site will NOT update (this workflow only updates the gh-pages branch):
@@ -51,14 +49,12 @@ jobs:
           VITE_BASE_PATH_INPUT: ${{ vars.VITE_BASE_PATH }}
         working-directory: web
         run: |
-          # Do not inherit VITE_BASE_PATH from org-level env; CI sets it explicitly below.
+          # Drop inherited env so web/.env.production is used unless repo variable overrides.
           unset VITE_BASE_PATH || true
-          if [ -z "$VITE_BASE_PATH_INPUT" ]; then
-            export VITE_BASE_PATH="/${{ github.event.repository.name }}/"
-          else
+          if [ -n "$VITE_BASE_PATH_INPUT" ]; then
             export VITE_BASE_PATH="$VITE_BASE_PATH_INPUT"
           fi
-          echo "VITE_BASE_PATH for this build: $VITE_BASE_PATH"
+          echo "VITE_BASE_PATH override from Actions vars: ${VITE_BASE_PATH:-"(none — using web/.env.production)"}"
           # Do not set NODE_ENV=production before npm ci — that skips devDependencies and breaks tsc
           # (vite/client, @types/node). Vite already builds in production mode.
           npm ci && npm run build
