@@ -1,6 +1,9 @@
+// Vite 8: use `?url` + `import: 'default'` (same pattern as notesIndex `?raw`). The old `as: 'url'`
+// can yield module objects in the bundle; coercing to string breaks images as `[object Module]`.
 const imageModules = import.meta.glob('../../../milynotes vault/**/*.{png,jpg,jpeg,gif,webp,svg}', {
   eager: true,
-  as: 'url',
+  query: '?url',
+  import: 'default',
 }) as Record<string, string>
 
 /** Vault-relative path after `milynotes vault/`, e.g. `INFO 330/05_relational schema/img/fk.png` */
