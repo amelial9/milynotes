@@ -543,14 +543,23 @@
 
 .note-view__body ul,
 .note-view__body ol {
-  margin: 0 0 1.12em;
+  margin: 0 0 1.55em;
   padding-left: 1.35em;
 }
 
+.note-view__body p:has(+ ul),
+.note-view__body p:has(+ ol) {
+  margin-bottom: 0.22em;
+}
+
 .note-view__body li {
-  margin: 0.22em 0;
+  margin: 0;
   line-height: 1.52;
   white-space: normal;
+}
+
+.note-view__body li + li {
+  margin-top: 0.22em;
 }
 
 .note-view__body li::marker {

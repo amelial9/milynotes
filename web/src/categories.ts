@@ -14,6 +14,12 @@ export const CATEGORIES: CategoryDef[] = [
     vaultFolder: 'INFO 330',
   },
   {
+    id: 'database-systems-internals',
+    name: 'Database Systems Internals',
+    subtitle: 'About databases, more advanced',
+    vaultFolder: 'CSE 444',
+  },
+  {
     id: 'dsa',
     name: 'DSA',
     subtitle: '',

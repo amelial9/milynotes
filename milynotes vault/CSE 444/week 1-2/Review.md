@@ -1,0 +1,20 @@
+---
+order: 0
+---
+Database
+- A collection of related files
+
+Database Management System
+- A program written by someone else that manages the database; PostgreSQL, Oracle, …
+
+Data model
+- A mathematical formalism for data
+
+Relational data model
+- Data is stored in tables (aka relations)
+- Data is queried via relational queries
+- Queries are set-at-a-time relational algebra
+
+
+
+![[dbms-architecture.png|537]]

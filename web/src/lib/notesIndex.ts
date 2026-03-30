@@ -13,7 +13,13 @@ const rawModules = import.meta.glob('../../../milynotes vault/**/*.md', {
   import: 'default',
 }) as Record<string, string>
 
-const VAULT_FOLDERS = ['INFO 330', 'DSA', 'INFO 441', 'INFO 449'] as const
+const VAULT_FOLDERS = [
+  'INFO 330',
+  'DSA',
+  'INFO 441',
+  'INFO 449',
+  'CSE 444',
+] as const
 
 function vaultRelativePath(globKey: string, vaultFolder: string): string | null {
   const normalized = globKey.replace(/\\/g, '/')
