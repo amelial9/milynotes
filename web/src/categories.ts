@@ -16,7 +16,7 @@ export const CATEGORIES: CategoryDef[] = [
   {
     id: 'database-systems-internals',
     name: 'Database Systems Internals',
-    subtitle: 'About databases, more advanced',
+    subtitle: 'CSE 444; About databases, more advanced',
     vaultFolder: 'CSE 444',
   },
   {
