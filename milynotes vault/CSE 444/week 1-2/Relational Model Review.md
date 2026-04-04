@@ -2,6 +2,7 @@
 order: 1
 ---
 
+
 Query Evaluation Steps
 
 ![[query-evaluation-steps.png|459]]
