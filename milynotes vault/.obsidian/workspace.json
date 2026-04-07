@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSE 444/week 1-2/DBMS architecture.md",
+                "file": "CSE 444/week 1-2/Storage.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DBMS architecture"
+              "title": "Storage"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 211.5,
-    "collapsed": true
+    "width": 211.5
   },
   "right": {
     "id": "01aaa43833b62747",
@@ -186,15 +185,22 @@
   },
   "active": "1cd29b1169c47738",
   "lastOpenFiles": [
-    "CSE 444/week 1-2/img/query-execution.png",
+    "CSE 444/week 1-2/img/buffer-manager.png",
+    "CSE 444/week 1-2/img/heap-file-3.png",
+    "CSE 444/week 1-2/img/heap-file-2.png",
+    "CSE 444/week 1-2/img/heap-file-1.png",
+    "CSE 444/week 1-2/img/variable-length-record.png",
+    "CSE 444/week 1-2/img/fixed-length-record.png",
+    "CSE 444/week 1-2/img/slot-directory.png",
+    "CSE 444/week 1-2/img/page-format.png",
+    "CSE 444/week 1-2/Review.md",
+    "CSE 444/week 1-2/Storage.md",
     "CSE 444/week 1-2/DBMS architecture.md",
+    "CSE 444/week 1-2/img/query-execution.png",
     "CSE 444/week 1-2/img/access-methods.png",
     "CSE 444/week 1-2/Relational Model Review.md",
-    "CSE 444/week 1-2/Review.md",
     "CSE 444/week 1-2/img/sql-to-ra.png",
-    "CSE 444/week 1-2/img/query-evaluation-steps.png",
     "CSE 444/week 1-2/Review copy.md",
-    "DSA copy/img/complexity.png",
     "DSA copy/img",
     "DSA copy/Data Structures Cheatsheet",
     "DSA copy/DSA Patterns - II.md",
@@ -203,8 +209,6 @@
     "DSA copy/Big-O Notation.md",
     "DSA copy",
     "INFO 330/04_conceptual modeling/Conceptual Database Design.md",
-    "CSE 444/week 1-2/img/dbms-architecture.png",
-    "CSE 444/week 1-2/img/Snipaste.png",
     "INFO 330/04_conceptual modeling/Relationship.md",
     "INFO 330/04_conceptual modeling/Entity Relationship Diagram.md",
     "INFO 330/05_relational schema/FK Constraints.md",
@@ -224,13 +228,8 @@
     "INFO 330/06_logical db design review/Nested Queries.md",
     "INFO 449/week 3-4/Protocols.md",
     "INFO 449/week 3-4/Unit Testing.md",
-    "INFO 449/week 3-4/UIKit.md",
     "INFO 449/week 3-4",
     "INFO 449/week 1-2",
-    "INFO 441/week 9-10",
-    "INFO 441/week 7-8/img/caching.png",
-    "INFO 441/week 7-8/img/5-12demo.png",
-    "INFO 441/week 3-4/img/ipaccesslist.png",
-    "INFO 330/05_relational schema/img/nnrelationshiptorelation.png"
+    "INFO 441/week 9-10"
   ]
 }
