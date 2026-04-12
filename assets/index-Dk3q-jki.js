@@ -196,7 +196,104 @@ Step 3: follow RID
 \`\`\`
 RID7 → Page 42 → actual row  
 RID12 → Page 99 → actual row
-\`\`\``,er=`---
+\`\`\`
+
+
+
+## B+ Trees
+
+
+**Default index structure on most DBMSs**
+
+
+- search trees
+- idea in B Trees
+	- make 1 node = 1 page ( = 1 block)
+	- maximize number of children per node
+	- ideal is to keep height as small as possible
+- idea in B+ Trees
+	- keys are stored on the leaves (not internal nodes)
+	- leaves are linked in a list, for range queries
+
+
+![[b+tree.png]]
+
+
+Optimizer decides use the B+ tree index
+Executor does:
+1. Read B+ tree root node from disk → "go right, key is > 60"
+2. Read an internal node from disk → "go left, key is < 200"
+3. Read a leaf node from disk → "sid 12345 is at page 47, slot 3"
+4. Read page 47 from disk → return that one record
+
+
+
+- for each node except the root, maintain 50% occupancy of keys
+- insert and delete must rebalance to maintain constraints
+
+
+parameter $d$ = the degree
+each node has $d \\le m \\le 2d$ keys (except root) 
+each node also has $m + 1$ pointers
+
+![[b+nodes.png]]
+each leaf has $d \\le m \\le 2d$ keys
+![[b+leaf.png]]
+
+
+### Insertion in a B+ Tree
+
+1. fine the right leaf, insert the key there
+2. if the leaf now has $\\le 2d$ keys $\\rightarrow$ done
+3. if it has $2d + 1$ keys $\\rightarrow$ split: divide into two nodes, push the middle key up to the parent
+	- for leaves: keep the middle key in the right node AND push a copy up
+		- with $2d+1$ keys, middle one is the $d+1$th key
+	- for internal nodes: the middle key moves up and is removed from below
+4. repeat upward if the parent also overflows
+5. if the root splits, a new root is created with just 1 key
+
+![[b+insert.png|560]]
+
+![[b+split.png|585]]
+
+
+### Deletion in a B+ Tree
+
+1. Find the leaf, delete the key
+2. If the leaf still has $\\ge d$ keys $\\rightarrow$ done
+- If it's now underfull, check an adjacent sibling:
+    - If the sibling has **extra keys** $\\rightarrow$ **rotate** one over (borrow), update the parent key
+    - If the sibling is exactly at d keys $\\rightarrow$ **merge** (with left preferred) the two nodes into one, which removes a key from the parent
+- Repeat upward if the parent is now underfull
+- If the root ends up with 0 keys, it's deleted and its only child becomes the new root
+
+
+![[b+delete1.png|605]]
+
+
+![[b+delete2.png|586]]
+
+
+![[b+delete3.png|601]]
+
+
+![[b+delete4.png|602]]
+
+
+![[b+delete5.png|591]]
+
+
+### Searching a B+ Tree
+
+![[b+serach.png|510]]
+
+
+
+## Practical Numbers
+
+- Typical $d = 100$, nodes $\\approx 66\\%$ full
+- height 3 tree $\\rightarrow$ ~2.3 million records
+- height 4 tree $\\rightarrow$ ~313 million records`,er=`---
 order: 1
 ---
 
@@ -6271,4 +6368,4 @@ l0,-`+(t+144)+`c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
 
 `:`\n\n${`<div class="md-blank-line"></div>
 `.repeat(t).trimEnd()}\n\n`})).join(``)}var kE=4;function AE(e){let t=e.split(/\r?\n/),n=!1,r=[];for(let e of t){if(e.trimStart().startsWith("```")){n=!n,r.push(e);continue}if(n){r.push(e);continue}r.push(jE(e))}return r.join(`
-`)}function jE(e){let t=e.match(/^(> ?\s*)(\t+)(.*)$/);if(t){let e=`\xA0`.repeat(t[2].length*kE);return t[1]+e+t[3]}let n=e.match(/^(\t+)(.*)$/);return n?`\xA0`.repeat(n[1].length*kE)+n[2]:e}var ME=`/assets/access-methods-B9QF5qpc.png`,NE=`/assets/buffer-manager-0Rr6IgS2.png`,PE=`/assets/dbms-architecture-BtvrPSMz.png`,FE=`/assets/fixed-length-record-CIi5reA_.png`,IE=`/assets/heap-file-1-BZqAUvhT.png`,LE=`/assets/heap-file-2-BVUdkyrb.png`,RE=`/assets/heap-file-3-D2slnoKE.png`,zE=`/assets/index-BE1j7b6M.png`,BE=`/assets/page-format-CqAG0utU.png`,VE=`/assets/query-evaluation-steps-Bs2mD3Tn.png`,HE=`/assets/query-execution-DzA6uV8A.png`,UE=`/assets/slot-directory-CJKYfGtR.png`,WE=`/assets/sql-to-ra-Dt1YMBwK.png`,GE=`/assets/variable-length-record-NvdR4NUv.png`,KE=`/assets/complexity-BrAmumT5.png`,qE=`/assets/ERD_intro-Bu1BfdKa.png`,JE=`/assets/arrows-C8mBwyZM.png`,YE=`/assets/relation-BQ9gXyUe.png`,XE=`/assets/relation1-Cb8TgUhc.png`,ZE=`/assets/relationship-CiA-nZlw.png`,QE=`/assets/relationship1-DEgrIkn-.png`,$E=`/assets/weakentity-BTbQ74RO.png`,eD=`/assets/dbdesignprocess-CBEu96q7.png`,tD=`/assets/fk-DmbSNlgC.png`,nD=`/assets/fk1-BVQ_45Dh.png`,rD=`/assets/n1relationshiptorelation-BsMRYB1p.png`,iD=`/assets/nnrelationshiptorelation-BPUNYyFs.png`,aD=`/assets/ipaccesslist-UfLSyKJt.png`,oD=`/assets/5-12demo-ugHZpz-0.png`,sD=`/assets/caching-DIjGBuRG.png`,cD=Object.assign({"../../../milynotes vault/CSE 444/week 1-2/img/access-methods.png":ME,"../../../milynotes vault/CSE 444/week 1-2/img/buffer-manager.png":NE,"../../../milynotes vault/CSE 444/week 1-2/img/dbms-architecture.png":PE,"../../../milynotes vault/CSE 444/week 1-2/img/fixed-length-record.png":FE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-1.png":IE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-2.png":LE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-3.png":RE,"../../../milynotes vault/CSE 444/week 1-2/img/index.png":zE,"../../../milynotes vault/CSE 444/week 1-2/img/page-format.png":BE,"../../../milynotes vault/CSE 444/week 1-2/img/query-evaluation-steps.png":VE,"../../../milynotes vault/CSE 444/week 1-2/img/query-execution.png":HE,"../../../milynotes vault/CSE 444/week 1-2/img/slot-directory.png":UE,"../../../milynotes vault/CSE 444/week 1-2/img/sql-to-ra.png":WE,"../../../milynotes vault/CSE 444/week 1-2/img/variable-length-record.png":GE,"../../../milynotes vault/DSA/img/complexity.png":KE,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/ERD_intro.png":qE,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/arrows.png":JE,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation.png":YE,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation1.png":XE,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship.png":ZE,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship1.png":QE,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/weakentity.png":$E,"../../../milynotes vault/INFO 330/05_relational schema/img/dbdesignprocess.png":eD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk.png":tD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk1.png":nD,"../../../milynotes vault/INFO 330/05_relational schema/img/n1relationshiptorelation.png":rD,"../../../milynotes vault/INFO 330/05_relational schema/img/nnrelationshiptorelation.png":iD,"../../../milynotes vault/INFO 441/week 3-4/img/ipaccesslist.png":aD,"../../../milynotes vault/INFO 441/week 7-8/img/5-12demo.png":oD,"../../../milynotes vault/INFO 441/week 7-8/img/caching.png":sD}),lD=new Map;for(let[e,t]of Object.entries(cD)){let n=e.replace(/\\/g,`/`),r=n.lastIndexOf(`milynotes vault/`);if(r===-1)continue;let i=n.slice(r+16);lD.set(i,t)}function uD(e){let t=e.lastIndexOf(`/`);return t===-1?``:e.slice(0,t)}function dD(e){return e.replace(/&/g,`&amp;`).replace(/"/g,`&quot;`).replace(/</g,`&lt;`)}function fD(e,t,n){let r=n.trim();if(/^https?:\/\//i.test(r))return r;let i=uD(t),a=r.replace(/^\.\//,``).replace(/^\/+/,``),o=[];a.includes(`/`)&&o.push(`${e}/${a}`),i?(o.push(`${e}/${i}/img/${a}`),o.push(`${e}/${i}/attachments/${a}`),o.push(`${e}/${i}/${a}`)):(o.push(`${e}/img/${a}`),o.push(`${e}/attachments/${a}`),o.push(`${e}/${a}`));let s=a.split(`/`).pop()??a;i&&s!==a&&(o.push(`${e}/${i}/img/${s}`),o.push(`${e}/${i}/attachments/${s}`));let c=new Set;for(let e of o){if(c.has(e))continue;c.add(e);let t=lD.get(e);if(t)return t}let l=s;if(i){let t=`${e}/${i}/`;for(let[e,n]of lD)if(e.startsWith(t)&&e.endsWith(`/${l}`))return n}let u=`${e}/`,d=[];for(let[t,n]of lD)t.startsWith(u)&&(t===`${e}/${l}`||t.endsWith(`/${l}`))&&d.push(n);return d.length===1?d[0]:null}function pD(e,t,n){let r=e;return r=r.replace(/!\[\[([^\]]+)\]\]/g,(e,r)=>{let i=r.split(`|`),a=i[0].trim();if(!a)return e;let o=fD(t,n,a);if(!o)return e;let s=a.replace(/\.[^./\\]+$/,``).replace(/[/_-]+/g,` `),c=i[1]?.trim();return c&&/^\d+$/.test(c)?`<img src="${o}" alt="${dD(s)}" width="${c}" />`:`![${s}](${o})`}),r=r.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,(e,r,i)=>{let a=i.trim();if(/^https?:\/\//i.test(a))return e;let o=fD(t,n,a);return o?`![${r}](${o})`:e}),r}function mD(e){if(!e)return``;try{return decodeURIComponent(e)}catch{return e}}function hD(){let{categoryId:e,notePath:t}=gt(),n=e?_i(e):void 0;if(!e||!n)return(0,D.jsx)(Bt,{to:`/`,replace:!0});let r=mD(t),i=r.length>0?Di(n.vaultFolder,r):null;if(!i)return(0,D.jsx)(Bt,{to:`/category/${encodeURIComponent(e)}`,replace:!0});let a=bi(r),o=OE(AE(pD(xi(i),n.vaultFolder,r)));return(0,D.jsxs)(`article`,{className:`note-view`,children:[(0,D.jsxs)(Pn,{to:`/category/${encodeURIComponent(e)}`,className:`note-view__back`,children:[`← `,n.name]}),(0,D.jsx)(`h1`,{className:`note-view__title`,children:a}),(0,D.jsx)(`div`,{className:`note-view__body`,children:(0,D.jsx)(yd,{remarkPlugins:[hE,DE,bC],rehypePlugins:[[fv,{strict:!1}],fC],children:o})})]})}function gD(){if(typeof window<`u`&&window.location.hostname.endsWith(`github.io`)){let e=window.location.pathname.split(`/`).filter(Boolean)[0];if(e)return`/${e}`}}function _D(){let{notePath:e}=gt();return e?(0,D.jsx)(Bt,{to:`/category/sql-notes/note/${encodeURIComponent(e)}`,replace:!0}):(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}function vD(){return(0,D.jsx)(jn,{basename:gD(),children:(0,D.jsx)(Wt,{children:(0,D.jsxs)(Ht,{element:(0,D.jsx)(Ni,{}),children:[(0,D.jsx)(Ht,{path:`/`,element:(0,D.jsx)(Pi,{})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta`,element:(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta/note/:notePath`,element:(0,D.jsx)(_D,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId/note/:notePath`,element:(0,D.jsx)(hD,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId`,element:(0,D.jsx)(Fi,{})}),(0,D.jsx)(Ht,{path:`*`,element:(0,D.jsx)(Bt,{to:`/`,replace:!0})})]})})})}(0,_.createRoot)(document.getElementById(`root`)).render((0,D.jsx)(v.StrictMode,{children:(0,D.jsx)(vD,{})}));
+`)}function jE(e){let t=e.match(/^(> ?\s*)(\t+)(.*)$/);if(t){let e=`\xA0`.repeat(t[2].length*kE);return t[1]+e+t[3]}let n=e.match(/^(\t+)(.*)$/);return n?`\xA0`.repeat(n[1].length*kE)+n[2]:e}var ME=`/assets/access-methods-B9QF5qpc.png`,NE=`/assets/b_delete1-B5F5hAWP.png`,PE=`/assets/b_delete2-COjGKfYs.png`,FE=`/assets/b_delete3-CB7IEFLu.png`,IE=`/assets/b_delete4-BRoCb4Ph.png`,LE=`/assets/b_delete5-B7sGRmiF.png`,RE=`/assets/b_insert-C0E5msDV.png`,zE=`/assets/b_leaf-BJ42ZMjv.png`,BE=`/assets/b_nodes-kbAEGTYa.png`,VE=`/assets/b_serach-CLsFsqGQ.png`,HE=`/assets/b_split-DnZEbjnu.png`,UE=`/assets/b_tree-BqFxeqYj.png`,WE=`/assets/buffer-manager-0Rr6IgS2.png`,GE=`/assets/dbms-architecture-BtvrPSMz.png`,KE=`/assets/fixed-length-record-CIi5reA_.png`,qE=`/assets/heap-file-1-BZqAUvhT.png`,JE=`/assets/heap-file-2-BVUdkyrb.png`,YE=`/assets/heap-file-3-D2slnoKE.png`,XE=`/assets/index-BE1j7b6M.png`,ZE=`/assets/page-format-CqAG0utU.png`,QE=`/assets/query-evaluation-steps-Bs2mD3Tn.png`,$E=`/assets/query-execution-DzA6uV8A.png`,eD=`/assets/slot-directory-CJKYfGtR.png`,tD=`/assets/sql-to-ra-Dt1YMBwK.png`,nD=`/assets/variable-length-record-NvdR4NUv.png`,rD=`/assets/complexity-BrAmumT5.png`,iD=`/assets/ERD_intro-Bu1BfdKa.png`,aD=`/assets/arrows-C8mBwyZM.png`,oD=`/assets/relation-BQ9gXyUe.png`,sD=`/assets/relation1-Cb8TgUhc.png`,cD=`/assets/relationship-CiA-nZlw.png`,lD=`/assets/relationship1-DEgrIkn-.png`,uD=`/assets/weakentity-BTbQ74RO.png`,dD=`/assets/dbdesignprocess-CBEu96q7.png`,fD=`/assets/fk-DmbSNlgC.png`,pD=`/assets/fk1-BVQ_45Dh.png`,mD=`/assets/n1relationshiptorelation-BsMRYB1p.png`,hD=`/assets/nnrelationshiptorelation-BPUNYyFs.png`,gD=`/assets/ipaccesslist-UfLSyKJt.png`,_D=`/assets/5-12demo-ugHZpz-0.png`,vD=`/assets/caching-DIjGBuRG.png`,yD=Object.assign({"../../../milynotes vault/CSE 444/week 1-2/img/access-methods.png":ME,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete1.png":NE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete2.png":PE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete3.png":FE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete4.png":IE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete5.png":LE,"../../../milynotes vault/CSE 444/week 1-2/img/b+insert.png":RE,"../../../milynotes vault/CSE 444/week 1-2/img/b+leaf.png":zE,"../../../milynotes vault/CSE 444/week 1-2/img/b+nodes.png":BE,"../../../milynotes vault/CSE 444/week 1-2/img/b+serach.png":VE,"../../../milynotes vault/CSE 444/week 1-2/img/b+split.png":HE,"../../../milynotes vault/CSE 444/week 1-2/img/b+tree.png":UE,"../../../milynotes vault/CSE 444/week 1-2/img/buffer-manager.png":WE,"../../../milynotes vault/CSE 444/week 1-2/img/dbms-architecture.png":GE,"../../../milynotes vault/CSE 444/week 1-2/img/fixed-length-record.png":KE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-1.png":qE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-2.png":JE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-3.png":YE,"../../../milynotes vault/CSE 444/week 1-2/img/index.png":XE,"../../../milynotes vault/CSE 444/week 1-2/img/page-format.png":ZE,"../../../milynotes vault/CSE 444/week 1-2/img/query-evaluation-steps.png":QE,"../../../milynotes vault/CSE 444/week 1-2/img/query-execution.png":$E,"../../../milynotes vault/CSE 444/week 1-2/img/slot-directory.png":eD,"../../../milynotes vault/CSE 444/week 1-2/img/sql-to-ra.png":tD,"../../../milynotes vault/CSE 444/week 1-2/img/variable-length-record.png":nD,"../../../milynotes vault/DSA/img/complexity.png":rD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/ERD_intro.png":iD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/arrows.png":aD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation.png":oD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation1.png":sD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship.png":cD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship1.png":lD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/weakentity.png":uD,"../../../milynotes vault/INFO 330/05_relational schema/img/dbdesignprocess.png":dD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk.png":fD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk1.png":pD,"../../../milynotes vault/INFO 330/05_relational schema/img/n1relationshiptorelation.png":mD,"../../../milynotes vault/INFO 330/05_relational schema/img/nnrelationshiptorelation.png":hD,"../../../milynotes vault/INFO 441/week 3-4/img/ipaccesslist.png":gD,"../../../milynotes vault/INFO 441/week 7-8/img/5-12demo.png":_D,"../../../milynotes vault/INFO 441/week 7-8/img/caching.png":vD}),bD=new Map;for(let[e,t]of Object.entries(yD)){let n=e.replace(/\\/g,`/`),r=n.lastIndexOf(`milynotes vault/`);if(r===-1)continue;let i=n.slice(r+16);bD.set(i,t)}function xD(e){let t=e.lastIndexOf(`/`);return t===-1?``:e.slice(0,t)}function SD(e){return e.replace(/&/g,`&amp;`).replace(/"/g,`&quot;`).replace(/</g,`&lt;`)}function CD(e,t,n){let r=n.trim();if(/^https?:\/\//i.test(r))return r;let i=xD(t),a=r.replace(/^\.\//,``).replace(/^\/+/,``),o=[];a.includes(`/`)&&o.push(`${e}/${a}`),i?(o.push(`${e}/${i}/img/${a}`),o.push(`${e}/${i}/attachments/${a}`),o.push(`${e}/${i}/${a}`)):(o.push(`${e}/img/${a}`),o.push(`${e}/attachments/${a}`),o.push(`${e}/${a}`));let s=a.split(`/`).pop()??a;i&&s!==a&&(o.push(`${e}/${i}/img/${s}`),o.push(`${e}/${i}/attachments/${s}`));let c=new Set;for(let e of o){if(c.has(e))continue;c.add(e);let t=bD.get(e);if(t)return t}let l=s;if(i){let t=`${e}/${i}/`;for(let[e,n]of bD)if(e.startsWith(t)&&e.endsWith(`/${l}`))return n}let u=`${e}/`,d=[];for(let[t,n]of bD)t.startsWith(u)&&(t===`${e}/${l}`||t.endsWith(`/${l}`))&&d.push(n);return d.length===1?d[0]:null}function wD(e,t,n){let r=e;return r=r.replace(/!\[\[([^\]]+)\]\]/g,(e,r)=>{let i=r.split(`|`),a=i[0].trim();if(!a)return e;let o=CD(t,n,a);if(!o)return e;let s=a.replace(/\.[^./\\]+$/,``).replace(/[/_-]+/g,` `),c=i[1]?.trim();return c&&/^\d+$/.test(c)?`<img src="${o}" alt="${SD(s)}" width="${c}" />`:`![${s}](${o})`}),r=r.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,(e,r,i)=>{let a=i.trim();if(/^https?:\/\//i.test(a))return e;let o=CD(t,n,a);return o?`![${r}](${o})`:e}),r}function TD(e){if(!e)return``;try{return decodeURIComponent(e)}catch{return e}}function ED(){let{categoryId:e,notePath:t}=gt(),n=e?_i(e):void 0;if(!e||!n)return(0,D.jsx)(Bt,{to:`/`,replace:!0});let r=TD(t),i=r.length>0?Di(n.vaultFolder,r):null;if(!i)return(0,D.jsx)(Bt,{to:`/category/${encodeURIComponent(e)}`,replace:!0});let a=bi(r),o=OE(AE(wD(xi(i),n.vaultFolder,r)));return(0,D.jsxs)(`article`,{className:`note-view`,children:[(0,D.jsxs)(Pn,{to:`/category/${encodeURIComponent(e)}`,className:`note-view__back`,children:[`← `,n.name]}),(0,D.jsx)(`h1`,{className:`note-view__title`,children:a}),(0,D.jsx)(`div`,{className:`note-view__body`,children:(0,D.jsx)(yd,{remarkPlugins:[hE,DE,bC],rehypePlugins:[[fv,{strict:!1}],fC],children:o})})]})}function DD(){if(typeof window<`u`&&window.location.hostname.endsWith(`github.io`)){let e=window.location.pathname.split(`/`).filter(Boolean)[0];if(e)return`/${e}`}}function OD(){let{notePath:e}=gt();return e?(0,D.jsx)(Bt,{to:`/category/sql-notes/note/${encodeURIComponent(e)}`,replace:!0}):(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}function kD(){return(0,D.jsx)(jn,{basename:DD(),children:(0,D.jsx)(Wt,{children:(0,D.jsxs)(Ht,{element:(0,D.jsx)(Ni,{}),children:[(0,D.jsx)(Ht,{path:`/`,element:(0,D.jsx)(Pi,{})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta`,element:(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta/note/:notePath`,element:(0,D.jsx)(OD,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId/note/:notePath`,element:(0,D.jsx)(ED,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId`,element:(0,D.jsx)(Fi,{})}),(0,D.jsx)(Ht,{path:`*`,element:(0,D.jsx)(Bt,{to:`/`,replace:!0})})]})})})}(0,_.createRoot)(document.getElementById(`root`)).render((0,D.jsx)(v.StrictMode,{children:(0,D.jsx)(kD,{})}));
