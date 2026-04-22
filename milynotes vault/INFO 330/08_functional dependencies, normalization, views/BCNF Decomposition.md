@@ -13,7 +13,7 @@ D -> E
 A -> C
 B -> D
 
-{AB}<sup>+</sup?> = {A,B,C,D,E} -> CK: AB
+{AB}<sup>+</sup> = {A,B,C,D,E} -> CK: AB
 
 AB -> CD
 D -> E (violates BCNF)

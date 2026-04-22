@@ -1,6 +1,7 @@
 ---
 order: 5
 ---
+
 **execution strategies** for:
 
 **1. Accessing data**
