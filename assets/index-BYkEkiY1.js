@@ -716,7 +716,54 @@ for $n$ relations:
 restrict to left-deep trees
 
 Avoid Cartesian products
-`,ir=`---
+
+
+
+
+## Selinger Algorithm
+
+Selinger enumeration algorithm considers
+- Different logical and physical plans at the same time
+- Cost of a plan is IO + CPU
+- Concept of interesting order during plan enumeration
+	- A sorted order as that requested by ORDER BY or GROUP GY
+	- Or order on attributes that appear in equi-join predicates
+		- Because they may enable cheaper sort-merge joins later
+
+
+
+### Key Ideas
+
+
+**1. Left-Deep Plans Only**
+Rather than considering all tree shapes, Selinger restricts to _left-deep_ trees like \`(((A⋈B)⋈C)⋈D)\`. This is efficient because:
+- It fits naturally with nested-loop and one-pass joins
+- The outer (left) relation stays in memory; the inner (right) relation is read from disk
+- For index joins, you can always put the indexed relation on the right (inner) side
+
+**2. Interesting Orders**
+Some operators naturally produce sorted output (e.g., index scans, merge-joins). If a downstream join can exploit that sorted order (e.g., for a sort-merge join), it's worth tracking even if it's not the cheapest plan in isolation. The algorithm keeps the cheapest plan _per interesting order_, not just one global cheapest plan. This adds complexity by a factor of $k+1$ where $k$ = number of interesting orders.
+
+**3. Dynamic Programming**
+Instead of re-evaluating the same subsets repeatedly, Selinger caches results. The algorithm builds up from single relations → pairs → triples → etc.:
+- **Step 1:** For each single relation, find the cheapest access path (file scan or index scan) for each interesting order
+- **Step 2:** For each pair of relations, try each as outer + inner in a nested-loop or sort-merge join, using cached Step 1 results
+- **Step 3+:** Repeat, adding one relation at a time, always referencing cached subplan costs
+
+**4. Other pruning rules:**
+- Push selections down as early as possible
+- Never consider Cartesian products (joins without predicates
+
+
+
+## DP Algorithm (Pseudocode)
+
+\`\`\`
+For d = 1 to N:
+	For each size-d subset S of relations:
+		optJoin(S) = best of: (S – a) ⋈ a, for each a in S
+		where cost = cost(optJoin(S–a)) + join cost + access cost for a
+\`\`\``,ir=`---
 order: 5
 ---
 
