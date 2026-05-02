@@ -1154,7 +1154,116 @@ A schedule is recoverable if:
 
 If a transaction T aborts, then we need to abort any other transaction T’ that has read an element written by T
 
-A schedule avoids cascading aborts if whenever a transaction reads an element, the transaction that has last written it has already committed.`,sr=`---
+A schedule avoids cascading aborts if whenever a transaction reads an element, the transaction that has last written it has already committed.
+
+
+
+## Locking
+
+### Scheduler
+
+- module that schedules the transaction's actions, ensuring serializability
+
+two approaches:
+- pessimistic: locks
+- optimistic: timestamps, multi-version, validation
+
+#### Pessimistic Scheduler
+
+- each element has a unique **lock**
+- each transaction must first acquire the lock before reading/writing that element
+- if that lock is taken by another transaction, then wait
+- the transaction must release the lock(s)
+
+
+
+> $L_i(A)$ = transaction $T_i$ acquires lock for element $A$
+> $U_i(A)$ = transaction $T_i$ releases lock for element $A$
+
+
+### Two Phase Locking (2PL)
+
+The 2PL rule:
+- In every transaction, all lock requests must precede all unlock requests
+- This ensures conflict serializability
+
+#### Strict 2PL
+
+All locks held by a transaction are released when the transaction is completed; release happens at the time of COMMIT or ROLLBACK
+- Schedule is recoverable
+- Schedule avoids cascading aborts
+
+Ensures:
+- Serializability
+- Recoverability
+- Avoids cascading aborts
+
+
+
+## The Locking Scheduler
+
+
+Task 1: act on behalf of the transaction Add lock/unlock requests to transactions
+- Examine all READ(A) or WRITE(A) actions
+- Add appropriate lock requests
+- On COMMIT/ROLLBACK release all locks
+- Ensures Strict 2PL
+
+Task 2: act on behalf of the system, execute the locks accordingly
+- Lock table: a big, critical data structure in a DBMS 
+- When a lock is requested, check the lock table Grant, or add the transaction to the element’s wait list
+- When lock is released reactivate transaction from its wait list
+- When a transaction aborts, release all its locks
+- Check for deadlocks occasionally
+
+
+
+## Lock Types
+
+S = shared lock (for READ)
+X = exclusive lock (for WRITE)
+
+![[compatibilitymatrix.png|537]]
+
+
+
+## Lock Granularity
+
+Fine granularity locking (e.g., tuples)
+- High concurrency
+- High overhead in managing locks
+
+Coarse grain locking (e.g., tables, predicate locks)
+- Many false conflicts
+- Less overhead in managing locks
+
+
+## 2PL Deadlocks
+
+![[2pldeadlocks.png|598]]
+
+Detection:
+- Build wait-for graph
+- Cycle = deadlock
+
+Solution:
+- Abort a transaction
+
+
+
+## Phantom Problem
+
+
+A “phantom” is a tuple that is invisible during part of a transaction execution but not invisible during the entire execution
+
+![[phantom.png|536]]
+
+
+
+Fixes:
+- Lock entire table
+- Lock index ranges
+- Predicate locking (expensive)`,sr=`---
 order: 1
 ---
 
@@ -6991,4 +7100,4 @@ l0,-`+(t+144)+`c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
 
 `:`\n\n${`<div class="md-blank-line"></div>
 `.repeat(t).trimEnd()}\n\n`})).join(``)}var NE=4;function PE(e){let t=e.split(/\r?\n/),n=!1,r=[];for(let e of t){if(e.trimStart().startsWith("```")){n=!n,r.push(e);continue}if(n){r.push(e);continue}r.push(FE(e))}return r.join(`
-`)}function FE(e){let t=e.match(/^(> ?\s*)(\t+)(.*)$/);if(t){let e=`\xA0`.repeat(t[2].length*NE);return t[1]+e+t[3]}let n=e.match(/^(\t+)(.*)$/);return n?`\xA0`.repeat(n[1].length*NE)+n[2]:e}var IE=`/assets/access-methods-B9QF5qpc.png`,LE=`/assets/b_delete1-B5F5hAWP.png`,RE=`/assets/b_delete2-COjGKfYs.png`,zE=`/assets/b_delete3-CB7IEFLu.png`,BE=`/assets/b_delete4-BRoCb4Ph.png`,VE=`/assets/b_delete5-B7sGRmiF.png`,HE=`/assets/b_insert-C0E5msDV.png`,UE=`/assets/b_leaf-BJ42ZMjv.png`,WE=`/assets/b_nodes-kbAEGTYa.png`,GE=`/assets/b_serach-CLsFsqGQ.png`,KE=`/assets/b_split-DnZEbjnu.png`,qE=`/assets/b_tree-BqFxeqYj.png`,JE=`/assets/buffer-manager-0Rr6IgS2.png`,YE=`/assets/dbms-architecture-BtvrPSMz.png`,XE=`/assets/fixed-length-record-CIi5reA_.png`,ZE=`/assets/heap-file-1-BZqAUvhT.png`,QE=`/assets/heap-file-2-BVUdkyrb.png`,$E=`/assets/heap-file-3-D2slnoKE.png`,eD=`/assets/index-BE1j7b6M.png`,tD=`/assets/page-format-CqAG0utU.png`,nD=`/assets/query-evaluation-steps-Bs2mD3Tn.png`,rD=`/assets/query-execution-DzA6uV8A.png`,iD=`/assets/slot-directory-CJKYfGtR.png`,aD=`/assets/sql-to-ra-Dt1YMBwK.png`,oD=`/assets/variable-length-record-NvdR4NUv.png`,sD=`/assets/bottomup-DqURT0kB.png`,cD=`/assets/bushy-jJCv5ExL.png`,lD=`/assets/dp-B3FvOhEb.png`,uD=`/assets/employeehistogram-CLIEey8r.png`,dD=`/assets/hashjoin1-CCueQrNV.png`,fD=`/assets/hashjoin2-D4KrzPf2.png`,pD=`/assets/leftdeep-Dgps-hiU.png`,mD=`/assets/linear-BOByY97S.png`,hD=`/assets/optimizationoverview-CZ31HSjt.png`,gD=`/assets/physicalplan1-BWUTIm8Z.png`,_D=`/assets/physicalplan2-BhnHdl3v.png`,vD=`/assets/physicalplan3-Bq2JOAA6.png`,yD=`/assets/queryoptimizationsummary-vTnxeyjW.png`,bD=`/assets/rightdeep-xmW4QpcL.png`,xD=`/assets/topdown-DS77ukCD.png`,SD=`/assets/recoverableschedule-LtN1wObE.png`,CD=`/assets/complexity-BrAmumT5.png`,wD=`/assets/ERD_intro-Bu1BfdKa.png`,TD=`/assets/arrows-C8mBwyZM.png`,ED=`/assets/relation-BQ9gXyUe.png`,DD=`/assets/relation1-Cb8TgUhc.png`,OD=`/assets/relationship-CiA-nZlw.png`,kD=`/assets/relationship1-DEgrIkn-.png`,AD=`/assets/weakentity-BTbQ74RO.png`,jD=`/assets/dbdesignprocess-CBEu96q7.png`,MD=`/assets/fk-DmbSNlgC.png`,ND=`/assets/fk1-BVQ_45Dh.png`,PD=`/assets/n1relationshiptorelation-BsMRYB1p.png`,FD=`/assets/nnrelationshiptorelation-BPUNYyFs.png`,ID=`/assets/ipaccesslist-UfLSyKJt.png`,LD=`/assets/5-12demo-ugHZpz-0.png`,RD=`/assets/caching-DIjGBuRG.png`,zD=Object.assign({"../../../milynotes vault/CSE 444/week 1-2/img/access-methods.png":IE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete1.png":LE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete2.png":RE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete3.png":zE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete4.png":BE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete5.png":VE,"../../../milynotes vault/CSE 444/week 1-2/img/b+insert.png":HE,"../../../milynotes vault/CSE 444/week 1-2/img/b+leaf.png":UE,"../../../milynotes vault/CSE 444/week 1-2/img/b+nodes.png":WE,"../../../milynotes vault/CSE 444/week 1-2/img/b+serach.png":GE,"../../../milynotes vault/CSE 444/week 1-2/img/b+split.png":KE,"../../../milynotes vault/CSE 444/week 1-2/img/b+tree.png":qE,"../../../milynotes vault/CSE 444/week 1-2/img/buffer-manager.png":JE,"../../../milynotes vault/CSE 444/week 1-2/img/dbms-architecture.png":YE,"../../../milynotes vault/CSE 444/week 1-2/img/fixed-length-record.png":XE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-1.png":ZE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-2.png":QE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-3.png":$E,"../../../milynotes vault/CSE 444/week 1-2/img/index.png":eD,"../../../milynotes vault/CSE 444/week 1-2/img/page-format.png":tD,"../../../milynotes vault/CSE 444/week 1-2/img/query-evaluation-steps.png":nD,"../../../milynotes vault/CSE 444/week 1-2/img/query-execution.png":rD,"../../../milynotes vault/CSE 444/week 1-2/img/slot-directory.png":iD,"../../../milynotes vault/CSE 444/week 1-2/img/sql-to-ra.png":aD,"../../../milynotes vault/CSE 444/week 1-2/img/variable-length-record.png":oD,"../../../milynotes vault/CSE 444/week 3-4/img/bottomup.png":sD,"../../../milynotes vault/CSE 444/week 3-4/img/bushy.png":cD,"../../../milynotes vault/CSE 444/week 3-4/img/dp.png":lD,"../../../milynotes vault/CSE 444/week 3-4/img/employeehistogram.png":uD,"../../../milynotes vault/CSE 444/week 3-4/img/hashjoin1.png":dD,"../../../milynotes vault/CSE 444/week 3-4/img/hashjoin2.png":fD,"../../../milynotes vault/CSE 444/week 3-4/img/leftdeep.png":pD,"../../../milynotes vault/CSE 444/week 3-4/img/linear.png":mD,"../../../milynotes vault/CSE 444/week 3-4/img/optimizationoverview.png":hD,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan1.png":gD,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan2.png":_D,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan3.png":vD,"../../../milynotes vault/CSE 444/week 3-4/img/queryoptimizationsummary.png":yD,"../../../milynotes vault/CSE 444/week 3-4/img/rightdeep.png":bD,"../../../milynotes vault/CSE 444/week 3-4/img/topdown.png":xD,"../../../milynotes vault/CSE 444/week 5-6/img/recoverableschedule.png":SD,"../../../milynotes vault/DSA/img/complexity.png":CD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/ERD_intro.png":wD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/arrows.png":TD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation.png":ED,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation1.png":DD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship.png":OD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship1.png":kD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/weakentity.png":AD,"../../../milynotes vault/INFO 330/05_relational schema/img/dbdesignprocess.png":jD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk.png":MD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk1.png":ND,"../../../milynotes vault/INFO 330/05_relational schema/img/n1relationshiptorelation.png":PD,"../../../milynotes vault/INFO 330/05_relational schema/img/nnrelationshiptorelation.png":FD,"../../../milynotes vault/INFO 441/week 3-4/img/ipaccesslist.png":ID,"../../../milynotes vault/INFO 441/week 7-8/img/5-12demo.png":LD,"../../../milynotes vault/INFO 441/week 7-8/img/caching.png":RD}),BD=new Map;for(let[e,t]of Object.entries(zD)){let n=e.replace(/\\/g,`/`),r=n.lastIndexOf(`milynotes vault/`);if(r===-1)continue;let i=n.slice(r+16);BD.set(i,t)}function VD(e){let t=e.lastIndexOf(`/`);return t===-1?``:e.slice(0,t)}function HD(e){return e.replace(/&/g,`&amp;`).replace(/"/g,`&quot;`).replace(/</g,`&lt;`)}function UD(e,t,n){let r=n.trim();if(/^https?:\/\//i.test(r))return r;let i=VD(t),a=r.replace(/^\.\//,``).replace(/^\/+/,``),o=[];a.includes(`/`)&&o.push(`${e}/${a}`),i?(o.push(`${e}/${i}/img/${a}`),o.push(`${e}/${i}/attachments/${a}`),o.push(`${e}/${i}/${a}`)):(o.push(`${e}/img/${a}`),o.push(`${e}/attachments/${a}`),o.push(`${e}/${a}`));let s=a.split(`/`).pop()??a;i&&s!==a&&(o.push(`${e}/${i}/img/${s}`),o.push(`${e}/${i}/attachments/${s}`));let c=new Set;for(let e of o){if(c.has(e))continue;c.add(e);let t=BD.get(e);if(t)return t}let l=s;if(i){let t=`${e}/${i}/`;for(let[e,n]of BD)if(e.startsWith(t)&&e.endsWith(`/${l}`))return n}let u=`${e}/`,d=[];for(let[t,n]of BD)t.startsWith(u)&&(t===`${e}/${l}`||t.endsWith(`/${l}`))&&d.push(n);return d.length===1?d[0]:null}function WD(e,t,n){let r=e;return r=r.replace(/!\[\[([^\]]+)\]\]/g,(e,r)=>{let i=r.split(`|`),a=i[0].trim();if(!a)return e;let o=UD(t,n,a);if(!o)return e;let s=a.replace(/\.[^./\\]+$/,``).replace(/[/_-]+/g,` `),c=i[1]?.trim();return c&&/^\d+$/.test(c)?`<img src="${o}" alt="${HD(s)}" width="${c}" />`:`![${s}](${o})`}),r=r.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,(e,r,i)=>{let a=i.trim();if(/^https?:\/\//i.test(a))return e;let o=UD(t,n,a);return o?`![${r}](${o})`:e}),r}function GD(e){if(!e)return``;try{return decodeURIComponent(e)}catch{return e}}function KD(){let{categoryId:e,notePath:t}=gt(),n=e?xi(e):void 0;if(!e||!n)return(0,D.jsx)(Bt,{to:`/`,replace:!0});let r=GD(t),i=r.length>0?ji(n.vaultFolder,r):null;if(!i)return(0,D.jsx)(Bt,{to:`/category/${encodeURIComponent(e)}`,replace:!0});let a=wi(r),o=ME(PE(WD(Ti(i),n.vaultFolder,r)));return(0,D.jsxs)(`article`,{className:`note-view`,children:[(0,D.jsxs)(Pn,{to:`/category/${encodeURIComponent(e)}`,className:`note-view__back`,children:[`← `,n.name]}),(0,D.jsx)(`h1`,{className:`note-view__title`,children:a}),(0,D.jsx)(`div`,{className:`note-view__body`,children:(0,D.jsx)(Cd,{remarkPlugins:[yE,jE,wC],rehypePlugins:[[gv,{strict:!1}],gC],children:o})})]})}function qD(){if(typeof window<`u`&&window.location.hostname.endsWith(`github.io`)){let e=window.location.pathname.split(`/`).filter(Boolean)[0];if(e)return`/${e}`}}function JD(){let{notePath:e}=gt();return e?(0,D.jsx)(Bt,{to:`/category/sql-notes/note/${encodeURIComponent(e)}`,replace:!0}):(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}function YD(){return(0,D.jsx)(jn,{basename:qD(),children:(0,D.jsx)(Wt,{children:(0,D.jsxs)(Ht,{element:(0,D.jsx)(Li,{}),children:[(0,D.jsx)(Ht,{path:`/`,element:(0,D.jsx)(Ri,{})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta`,element:(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta/note/:notePath`,element:(0,D.jsx)(JD,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId/note/:notePath`,element:(0,D.jsx)(KD,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId`,element:(0,D.jsx)(zi,{})}),(0,D.jsx)(Ht,{path:`*`,element:(0,D.jsx)(Bt,{to:`/`,replace:!0})})]})})})}(0,_.createRoot)(document.getElementById(`root`)).render((0,D.jsx)(v.StrictMode,{children:(0,D.jsx)(YD,{})}));
+`)}function FE(e){let t=e.match(/^(> ?\s*)(\t+)(.*)$/);if(t){let e=`\xA0`.repeat(t[2].length*NE);return t[1]+e+t[3]}let n=e.match(/^(\t+)(.*)$/);return n?`\xA0`.repeat(n[1].length*NE)+n[2]:e}var IE=`/assets/access-methods-B9QF5qpc.png`,LE=`/assets/b_delete1-B5F5hAWP.png`,RE=`/assets/b_delete2-COjGKfYs.png`,zE=`/assets/b_delete3-CB7IEFLu.png`,BE=`/assets/b_delete4-BRoCb4Ph.png`,VE=`/assets/b_delete5-B7sGRmiF.png`,HE=`/assets/b_insert-C0E5msDV.png`,UE=`/assets/b_leaf-BJ42ZMjv.png`,WE=`/assets/b_nodes-kbAEGTYa.png`,GE=`/assets/b_serach-CLsFsqGQ.png`,KE=`/assets/b_split-DnZEbjnu.png`,qE=`/assets/b_tree-BqFxeqYj.png`,JE=`/assets/buffer-manager-0Rr6IgS2.png`,YE=`/assets/dbms-architecture-BtvrPSMz.png`,XE=`/assets/fixed-length-record-CIi5reA_.png`,ZE=`/assets/heap-file-1-BZqAUvhT.png`,QE=`/assets/heap-file-2-BVUdkyrb.png`,$E=`/assets/heap-file-3-D2slnoKE.png`,eD=`/assets/index-BE1j7b6M.png`,tD=`/assets/page-format-CqAG0utU.png`,nD=`/assets/query-evaluation-steps-Bs2mD3Tn.png`,rD=`/assets/query-execution-DzA6uV8A.png`,iD=`/assets/slot-directory-CJKYfGtR.png`,aD=`/assets/sql-to-ra-Dt1YMBwK.png`,oD=`/assets/variable-length-record-NvdR4NUv.png`,sD=`/assets/bottomup-DqURT0kB.png`,cD=`/assets/bushy-jJCv5ExL.png`,lD=`/assets/dp-B3FvOhEb.png`,uD=`/assets/employeehistogram-CLIEey8r.png`,dD=`/assets/hashjoin1-CCueQrNV.png`,fD=`/assets/hashjoin2-D4KrzPf2.png`,pD=`/assets/leftdeep-Dgps-hiU.png`,mD=`/assets/linear-BOByY97S.png`,hD=`/assets/optimizationoverview-CZ31HSjt.png`,gD=`/assets/physicalplan1-BWUTIm8Z.png`,_D=`/assets/physicalplan2-BhnHdl3v.png`,vD=`/assets/physicalplan3-Bq2JOAA6.png`,yD=`/assets/queryoptimizationsummary-vTnxeyjW.png`,bD=`/assets/rightdeep-xmW4QpcL.png`,xD=`/assets/topdown-DS77ukCD.png`,SD=`/assets/2pldeadlocks-DcWEw7gW.png`,CD=`/assets/compatibilitymatrix-BG1TiXP1.png`,wD=`/assets/phantom-JNgKabiA.png`,TD=`/assets/recoverableschedule-LtN1wObE.png`,ED=`/assets/complexity-BrAmumT5.png`,DD=`/assets/ERD_intro-Bu1BfdKa.png`,OD=`/assets/arrows-C8mBwyZM.png`,kD=`/assets/relation-BQ9gXyUe.png`,AD=`/assets/relation1-Cb8TgUhc.png`,jD=`/assets/relationship-CiA-nZlw.png`,MD=`/assets/relationship1-DEgrIkn-.png`,ND=`/assets/weakentity-BTbQ74RO.png`,PD=`/assets/dbdesignprocess-CBEu96q7.png`,FD=`/assets/fk-DmbSNlgC.png`,ID=`/assets/fk1-BVQ_45Dh.png`,LD=`/assets/n1relationshiptorelation-BsMRYB1p.png`,RD=`/assets/nnrelationshiptorelation-BPUNYyFs.png`,zD=`/assets/ipaccesslist-UfLSyKJt.png`,BD=`/assets/5-12demo-ugHZpz-0.png`,VD=`/assets/caching-DIjGBuRG.png`,HD=Object.assign({"../../../milynotes vault/CSE 444/week 1-2/img/access-methods.png":IE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete1.png":LE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete2.png":RE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete3.png":zE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete4.png":BE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete5.png":VE,"../../../milynotes vault/CSE 444/week 1-2/img/b+insert.png":HE,"../../../milynotes vault/CSE 444/week 1-2/img/b+leaf.png":UE,"../../../milynotes vault/CSE 444/week 1-2/img/b+nodes.png":WE,"../../../milynotes vault/CSE 444/week 1-2/img/b+serach.png":GE,"../../../milynotes vault/CSE 444/week 1-2/img/b+split.png":KE,"../../../milynotes vault/CSE 444/week 1-2/img/b+tree.png":qE,"../../../milynotes vault/CSE 444/week 1-2/img/buffer-manager.png":JE,"../../../milynotes vault/CSE 444/week 1-2/img/dbms-architecture.png":YE,"../../../milynotes vault/CSE 444/week 1-2/img/fixed-length-record.png":XE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-1.png":ZE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-2.png":QE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-3.png":$E,"../../../milynotes vault/CSE 444/week 1-2/img/index.png":eD,"../../../milynotes vault/CSE 444/week 1-2/img/page-format.png":tD,"../../../milynotes vault/CSE 444/week 1-2/img/query-evaluation-steps.png":nD,"../../../milynotes vault/CSE 444/week 1-2/img/query-execution.png":rD,"../../../milynotes vault/CSE 444/week 1-2/img/slot-directory.png":iD,"../../../milynotes vault/CSE 444/week 1-2/img/sql-to-ra.png":aD,"../../../milynotes vault/CSE 444/week 1-2/img/variable-length-record.png":oD,"../../../milynotes vault/CSE 444/week 3-4/img/bottomup.png":sD,"../../../milynotes vault/CSE 444/week 3-4/img/bushy.png":cD,"../../../milynotes vault/CSE 444/week 3-4/img/dp.png":lD,"../../../milynotes vault/CSE 444/week 3-4/img/employeehistogram.png":uD,"../../../milynotes vault/CSE 444/week 3-4/img/hashjoin1.png":dD,"../../../milynotes vault/CSE 444/week 3-4/img/hashjoin2.png":fD,"../../../milynotes vault/CSE 444/week 3-4/img/leftdeep.png":pD,"../../../milynotes vault/CSE 444/week 3-4/img/linear.png":mD,"../../../milynotes vault/CSE 444/week 3-4/img/optimizationoverview.png":hD,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan1.png":gD,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan2.png":_D,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan3.png":vD,"../../../milynotes vault/CSE 444/week 3-4/img/queryoptimizationsummary.png":yD,"../../../milynotes vault/CSE 444/week 3-4/img/rightdeep.png":bD,"../../../milynotes vault/CSE 444/week 3-4/img/topdown.png":xD,"../../../milynotes vault/CSE 444/week 5-6/img/2pldeadlocks.png":SD,"../../../milynotes vault/CSE 444/week 5-6/img/compatibilitymatrix.png":CD,"../../../milynotes vault/CSE 444/week 5-6/img/phantom.png":wD,"../../../milynotes vault/CSE 444/week 5-6/img/recoverableschedule.png":TD,"../../../milynotes vault/DSA/img/complexity.png":ED,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/ERD_intro.png":DD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/arrows.png":OD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation.png":kD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation1.png":AD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship.png":jD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship1.png":MD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/weakentity.png":ND,"../../../milynotes vault/INFO 330/05_relational schema/img/dbdesignprocess.png":PD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk.png":FD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk1.png":ID,"../../../milynotes vault/INFO 330/05_relational schema/img/n1relationshiptorelation.png":LD,"../../../milynotes vault/INFO 330/05_relational schema/img/nnrelationshiptorelation.png":RD,"../../../milynotes vault/INFO 441/week 3-4/img/ipaccesslist.png":zD,"../../../milynotes vault/INFO 441/week 7-8/img/5-12demo.png":BD,"../../../milynotes vault/INFO 441/week 7-8/img/caching.png":VD}),UD=new Map;for(let[e,t]of Object.entries(HD)){let n=e.replace(/\\/g,`/`),r=n.lastIndexOf(`milynotes vault/`);if(r===-1)continue;let i=n.slice(r+16);UD.set(i,t)}function WD(e){let t=e.lastIndexOf(`/`);return t===-1?``:e.slice(0,t)}function GD(e){return e.replace(/&/g,`&amp;`).replace(/"/g,`&quot;`).replace(/</g,`&lt;`)}function KD(e,t,n){let r=n.trim();if(/^https?:\/\//i.test(r))return r;let i=WD(t),a=r.replace(/^\.\//,``).replace(/^\/+/,``),o=[];a.includes(`/`)&&o.push(`${e}/${a}`),i?(o.push(`${e}/${i}/img/${a}`),o.push(`${e}/${i}/attachments/${a}`),o.push(`${e}/${i}/${a}`)):(o.push(`${e}/img/${a}`),o.push(`${e}/attachments/${a}`),o.push(`${e}/${a}`));let s=a.split(`/`).pop()??a;i&&s!==a&&(o.push(`${e}/${i}/img/${s}`),o.push(`${e}/${i}/attachments/${s}`));let c=new Set;for(let e of o){if(c.has(e))continue;c.add(e);let t=UD.get(e);if(t)return t}let l=s;if(i){let t=`${e}/${i}/`;for(let[e,n]of UD)if(e.startsWith(t)&&e.endsWith(`/${l}`))return n}let u=`${e}/`,d=[];for(let[t,n]of UD)t.startsWith(u)&&(t===`${e}/${l}`||t.endsWith(`/${l}`))&&d.push(n);return d.length===1?d[0]:null}function qD(e,t,n){let r=e;return r=r.replace(/!\[\[([^\]]+)\]\]/g,(e,r)=>{let i=r.split(`|`),a=i[0].trim();if(!a)return e;let o=KD(t,n,a);if(!o)return e;let s=a.replace(/\.[^./\\]+$/,``).replace(/[/_-]+/g,` `),c=i[1]?.trim();return c&&/^\d+$/.test(c)?`<img src="${o}" alt="${GD(s)}" width="${c}" />`:`![${s}](${o})`}),r=r.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,(e,r,i)=>{let a=i.trim();if(/^https?:\/\//i.test(a))return e;let o=KD(t,n,a);return o?`![${r}](${o})`:e}),r}function JD(e){if(!e)return``;try{return decodeURIComponent(e)}catch{return e}}function YD(){let{categoryId:e,notePath:t}=gt(),n=e?xi(e):void 0;if(!e||!n)return(0,D.jsx)(Bt,{to:`/`,replace:!0});let r=JD(t),i=r.length>0?ji(n.vaultFolder,r):null;if(!i)return(0,D.jsx)(Bt,{to:`/category/${encodeURIComponent(e)}`,replace:!0});let a=wi(r),o=ME(PE(qD(Ti(i),n.vaultFolder,r)));return(0,D.jsxs)(`article`,{className:`note-view`,children:[(0,D.jsxs)(Pn,{to:`/category/${encodeURIComponent(e)}`,className:`note-view__back`,children:[`← `,n.name]}),(0,D.jsx)(`h1`,{className:`note-view__title`,children:a}),(0,D.jsx)(`div`,{className:`note-view__body`,children:(0,D.jsx)(Cd,{remarkPlugins:[yE,jE,wC],rehypePlugins:[[gv,{strict:!1}],gC],children:o})})]})}function XD(){if(typeof window<`u`&&window.location.hostname.endsWith(`github.io`)){let e=window.location.pathname.split(`/`).filter(Boolean)[0];if(e)return`/${e}`}}function ZD(){let{notePath:e}=gt();return e?(0,D.jsx)(Bt,{to:`/category/sql-notes/note/${encodeURIComponent(e)}`,replace:!0}):(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}function QD(){return(0,D.jsx)(jn,{basename:XD(),children:(0,D.jsx)(Wt,{children:(0,D.jsxs)(Ht,{element:(0,D.jsx)(Li,{}),children:[(0,D.jsx)(Ht,{path:`/`,element:(0,D.jsx)(Ri,{})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta`,element:(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta/note/:notePath`,element:(0,D.jsx)(ZD,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId/note/:notePath`,element:(0,D.jsx)(YD,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId`,element:(0,D.jsx)(zi,{})}),(0,D.jsx)(Ht,{path:`*`,element:(0,D.jsx)(Bt,{to:`/`,replace:!0})})]})})})}(0,_.createRoot)(document.getElementById(`root`)).render((0,D.jsx)(v.StrictMode,{children:(0,D.jsx)(QD,{})}));
