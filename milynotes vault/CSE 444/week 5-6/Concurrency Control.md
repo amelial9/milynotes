@@ -98,3 +98,112 @@ A schedule is recoverable if:
 If a transaction T aborts, then we need to abort any other transaction T’ that has read an element written by T
 
 A schedule avoids cascading aborts if whenever a transaction reads an element, the transaction that has last written it has already committed.
+
+
+
+## Locking
+
+### Scheduler
+
+- module that schedules the transaction's actions, ensuring serializability
+
+two approaches:
+- pessimistic: locks
+- optimistic: timestamps, multi-version, validation
+
+#### Pessimistic Scheduler
+
+- each element has a unique **lock**
+- each transaction must first acquire the lock before reading/writing that element
+- if that lock is taken by another transaction, then wait
+- the transaction must release the lock(s)
+
+
+
+> $L_i(A)$ = transaction $T_i$ acquires lock for element $A$
+> $U_i(A)$ = transaction $T_i$ releases lock for element $A$
+
+
+### Two Phase Locking (2PL)
+
+The 2PL rule:
+- In every transaction, all lock requests must precede all unlock requests
+- This ensures conflict serializability
+
+#### Strict 2PL
+
+All locks held by a transaction are released when the transaction is completed; release happens at the time of COMMIT or ROLLBACK
+- Schedule is recoverable
+- Schedule avoids cascading aborts
+
+Ensures:
+- Serializability
+- Recoverability
+- Avoids cascading aborts
+
+
+
+## The Locking Scheduler
+
+
+Task 1: act on behalf of the transaction Add lock/unlock requests to transactions
+- Examine all READ(A) or WRITE(A) actions
+- Add appropriate lock requests
+- On COMMIT/ROLLBACK release all locks
+- Ensures Strict 2PL
+
+Task 2: act on behalf of the system, execute the locks accordingly
+- Lock table: a big, critical data structure in a DBMS 
+- When a lock is requested, check the lock table Grant, or add the transaction to the element’s wait list
+- When lock is released reactivate transaction from its wait list
+- When a transaction aborts, release all its locks
+- Check for deadlocks occasionally
+
+
+
+## Lock Types
+
+S = shared lock (for READ)
+X = exclusive lock (for WRITE)
+
+![[compatibilitymatrix.png|537]]
+
+
+
+## Lock Granularity
+
+Fine granularity locking (e.g., tuples)
+- High concurrency
+- High overhead in managing locks
+
+Coarse grain locking (e.g., tables, predicate locks)
+- Many false conflicts
+- Less overhead in managing locks
+
+
+## 2PL Deadlocks
+
+![[2pldeadlocks.png|598]]
+
+Detection:
+- Build wait-for graph
+- Cycle = deadlock
+
+Solution:
+- Abort a transaction
+
+
+
+## Phantom Problem
+
+
+A “phantom” is a tuple that is invisible during part of a transaction execution but not invisible during the entire execution
+
+![[phantom.png|536]]
+
+
+
+Fixes:
+- Lock entire table
+- Lock index ranges
+- Predicate locking (expensive)
