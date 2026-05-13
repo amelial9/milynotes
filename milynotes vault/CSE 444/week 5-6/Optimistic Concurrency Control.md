@@ -180,3 +180,35 @@ each transaction $T$ has three phases:
 IF $RS(T) \cap WS(U)$ and $FIN(U) > START(T)$
 	($U$ has validated and $U$ has not finished before $T$ begun)
 Then $ROLLBACK(T)$
+
+
+
+## Snapshot Isolation 
+
+- A type of multiversion concurrency control algorithm
+- Combines techniques:
+	Timestamps
+	Multiversion
+	Validation
+
+- Each transactions receives a timestamp $TS(T)$
+- Transaction $T$ sees snapshot at time $TS(T)$ of the database
+- W/W conflicts resolved by “first committer wins” rule
+	- loser gets aborted
+- R/W conflicts are ignored
+
+Multiversion concurrency control:
+	-versions of $X$: $X_{t1}, X_{t2}, X_{t3}, \dots$
+When $T$ reads $X$, return $X_{TS(T)}$
+When $T$ writes $X$ (to avoid lost update):
+- if latest version of $X$ is $TS(T)$ then proceed
+- else if $C(X) = true$ then abort
+- else if $C(X) = false$ then wait
+when $T$ commits, write its updates to disk
+
+
+no dirty reads
+- Start each snapshot with consistent state
+No inconsistent reads
+- Two reads by the same transaction will read same snapshot
+No lost updates
