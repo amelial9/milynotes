@@ -1,6 +1,7 @@
 ---
 order: 9
 ---
+
 Isolation Level Design Spectrum
 
 ![[IsolationLevelDesignSpectrum .png|595]]
