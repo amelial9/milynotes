@@ -185,6 +185,8 @@
   },
   "active": "a0d2ec61cac874b9",
   "lastOpenFiles": [
+    "CSE 444/week 7-8/img/checkpoint.png",
+    "CSE 444/week 7-8/img/undo.png",
     "CSE 444/week 7-8/img/policiesandlogs.png",
     "CSE 444/week 5-6/Optimistic Concurrency Control.md",
     "CSE 444/week 7-8/Transactions: Recovery.md",
@@ -202,9 +204,7 @@
     "CSE 444/week 5-6/img/Concurrency Control.png",
     "CSE 444/week 5-6/img/2pldeadlocks.png",
     "CSE 444/week 5-6/img/compatibilitymatrix.png",
-    "CSE 444/week 5-6/img/recoverableschedule.png",
     "CSE 444/week 3-4/Query Optimization.md",
-    "CSE 444/week 3-4/img/dp.png",
     "CSE 444/week 3-4/Query plan costs.md",
     "CSE 444/week 3-4/Query execution and operator algorithms.md",
     "CSE 444/week 1-2/DBMS architecture.md",
