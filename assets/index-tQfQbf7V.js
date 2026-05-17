@@ -1537,7 +1537,9 @@ Aries: is an UNDO-REDO log
 
 ![[policiesandlogs.png]]
 
-#### UNDO Logging
+
+
+## UNDO Logging
 
 Log records
 - \`<START T>\`
@@ -1550,6 +1552,170 @@ Log records
 	- T has updated element X, and its old value was v
 	- Idempotent, physical log records
 
+
+![[undo.png|409]]
+
+
+after crash
+- if we see no commit statement
+	- we UNDO both changes: $A = 8$, $B = 8$
+	- the transaction is atomic, since none of its actions have been executed
+- In we see that $T$ has a commit statement
+	- we don't undo anything
+	- the transaction is atomic, since both its actions have been executed
+
+
+Undo-Logging Rules
+- U1: if T modifies X, then \`<T, X, v>\` must be written to disk before OUTPUT(X)
+- U2: if T commits, then OUTPUT(X) must be written to disk before \`<COMMIT T>\`
+- OUTPUTs are done early, before the transaction commits
+
+
+
+## Checkpointing
+
+checkpoint the database periodically
+- stop accepting new transactions
+- wait until all current transactions complete
+- flush log to disk
+- write a \`<CKPT>\` log record, flush
+- resume transactions
+
+### Nonquiescent Checkpointing
+
+- Write a \`<START CKPT(T1,…,Tk)>\` where T1,…,Tk are all active transactions. Flush log to disk
+- Continue normal operation
+- When all of T1,…,Tk have completed, write \`<END CKPT>\`, flush log to disk
+
+![[checkpoint.png|583]]
+
+
+
+## Implementing ROLLBACK
+
+use the undo-log to implement ROLLBACK
+
+- LSN = Log Sequence Number
+- Log entries for the same transaction are linked, using the LSN’s
+- Read log in reverse, using LSN pointers
+
+
+
+## REDO 
+
+NO-FORCE + NO-STEAL
+
+One minor change to the undo log:
+- \`<T,X,v> = T\` has updated element $X$, and its new value is $v$
+
+
+After a crash:
+1. Decide which transactions committed
+2. Read the log from the **beginning**
+3. Redo all updates from committed transactions
+
+
+
+## ARIES
+
+real-world-style protocol that combines UNDO and REDO.
+supports STEAL + NO-FORCE
+
+
+### ARIES log records
+
+\`<T,X,u,v>\`
+
+- $T$ is the transaction
+- $X$ is the updated item/page
+- $u$ is the old value
+- $v$ is the new value
+
+
+### LSN
+
+- LSN = identifier of a log entry
+	- Log entries belonging to the same TXN are linked with
+
+- Each page contains a pageLSN
+	- LSN of log record for latest update to that page
+
+
+### ARIES data structures
+
+Active Transactions Table
+- Lists all active TXN’s
+- For each TXN: lastLSN = its most recent update LSN
+
+ Dirty Page Table
+ - Lists all dirty pages
+ - For each dirty page: recoveryLSN (recLSN)= first LSN that caused page to become dirty
+
+Write Ahead Log
+- LSN, prevLSN = previous LSN for same txn
+
+
+### Normal operation in ARIES
+
+1. Write a log record \`<T, P, u, v>\`
+2. Set pageLSN = LSN
+3. Set prevLSN = lastLSN
+4. Update transaction table lastLSN = LSN
+5. If page $P$ just became dirty, set recLSN = LSN
+
+
+When buffer manager wants to output page $P$
+Before writing the page to disk:
+1. Flush the log up to \`pageLSN\`
+2. Remove $P$ from the Dirty Page Table
+
+
+When transaction $T$ commits
+ARIES does:
+1. Write \`<COMMIT T>\`
+2. Flush the log up to that commit record
+3. Write \`<END>\`
+4. Remove \`T\` from the Active Transactions Table
+
+
+### ARIES checkpoints
+
+An ARIES checkpoint writes into the log:
+1. The whole Active Transactions Table
+2. The whole Dirty Page Table
+
+
+### The 3 ARIES recovery phases
+
+#### Analysis
+
+Goal: Reconstruct what the system looked like at the time of crash
+
+analysis determines:
+1. Where REDO should start
+2. Which pages were dirty at crash time
+3. Which transactions were active at crash time
+
+rebuilds:
+- Active Transactions Table
+- Dirty Page Table
+
+At the end, ARIES computes \`firstLSN = min⁡(recLSN)\`
+
+#### Redo
+
+Repeat history
+
+ARIES replays the log forward starting from \`firstLSN = min⁡(recLSN)\`
+
+For each update log record, ARIES skips redo if:
+1. $P$ is not in the Dirty Page Table.
+2. recLSN > LSN
+3. After reading the page from disk, pageLSN ≥ LSNpage
+
+Otherwise, it performs the update
+
+#### Undo
 `,lr=`---
 order: 1
 ---
@@ -7387,4 +7553,4 @@ l0,-`+(t+144)+`c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
 
 `:`\n\n${`<div class="md-blank-line"></div>
 `.repeat(t).trimEnd()}\n\n`})).join(``)}var FE=4;function IE(e){let t=e.split(/\r?\n/),n=!1,r=[];for(let e of t){if(e.trimStart().startsWith("```")){n=!n,r.push(e);continue}if(n){r.push(e);continue}r.push(LE(e))}return r.join(`
-`)}function LE(e){let t=e.match(/^(> ?\s*)(\t+)(.*)$/);if(t){let e=`\xA0`.repeat(t[2].length*FE);return t[1]+e+t[3]}let n=e.match(/^(\t+)(.*)$/);return n?`\xA0`.repeat(n[1].length*FE)+n[2]:e}var RE=`/assets/access-methods-B9QF5qpc.png`,zE=`/assets/b_delete1-B5F5hAWP.png`,BE=`/assets/b_delete2-COjGKfYs.png`,VE=`/assets/b_delete3-CB7IEFLu.png`,HE=`/assets/b_delete4-BRoCb4Ph.png`,UE=`/assets/b_delete5-B7sGRmiF.png`,WE=`/assets/b_insert-C0E5msDV.png`,GE=`/assets/b_leaf-BJ42ZMjv.png`,KE=`/assets/b_nodes-kbAEGTYa.png`,qE=`/assets/b_serach-CLsFsqGQ.png`,JE=`/assets/b_split-DnZEbjnu.png`,YE=`/assets/b_tree-BqFxeqYj.png`,XE=`/assets/buffer-manager-0Rr6IgS2.png`,ZE=`/assets/dbms-architecture-BtvrPSMz.png`,QE=`/assets/fixed-length-record-CIi5reA_.png`,$E=`/assets/heap-file-1-BZqAUvhT.png`,eD=`/assets/heap-file-2-BVUdkyrb.png`,tD=`/assets/heap-file-3-D2slnoKE.png`,nD=`/assets/index-BE1j7b6M.png`,rD=`/assets/page-format-CqAG0utU.png`,iD=`/assets/query-evaluation-steps-Bs2mD3Tn.png`,aD=`/assets/query-execution-DzA6uV8A.png`,oD=`/assets/slot-directory-CJKYfGtR.png`,sD=`/assets/sql-to-ra-Dt1YMBwK.png`,cD=`/assets/variable-length-record-NvdR4NUv.png`,lD=`/assets/bottomup-DqURT0kB.png`,uD=`/assets/bushy-jJCv5ExL.png`,dD=`/assets/dp-B3FvOhEb.png`,fD=`/assets/employeehistogram-CLIEey8r.png`,pD=`/assets/hashjoin1-CCueQrNV.png`,mD=`/assets/hashjoin2-D4KrzPf2.png`,hD=`/assets/leftdeep-Dgps-hiU.png`,gD=`/assets/linear-BOByY97S.png`,_D=`/assets/optimizationoverview-CZ31HSjt.png`,vD=`/assets/physicalplan1-BWUTIm8Z.png`,yD=`/assets/physicalplan2-BhnHdl3v.png`,bD=`/assets/physicalplan3-Bq2JOAA6.png`,xD=`/assets/queryoptimizationsummary-vTnxeyjW.png`,SD=`/assets/rightdeep-xmW4QpcL.png`,CD=`/assets/topdown-DS77ukCD.png`,wD=`/assets/2pldeadlocks-DcWEw7gW.png`,TD=`/assets/IsolationLevelDesignSpectrum%20-B-Q2n74X.png`,ED=`/assets/compatibilitymatrix-BG1TiXP1.png`,DD=`/assets/multiversion1-BqZA7M-P.png`,OD=`/assets/phantom-JNgKabiA.png`,kD=`/assets/readtoolate-CPqAPtUg.png`,AD=`/assets/recoverableschedule-LtN1wObE.png`,jD=`/assets/rtwuconflict-D7Dtc0TG.png`,MD=`/assets/policiesandlogs-DiaP4sfE.png`,ND=`/assets/complexity-BrAmumT5.png`,PD=`/assets/ERD_intro-Bu1BfdKa.png`,FD=`/assets/arrows-C8mBwyZM.png`,ID=`/assets/relation-BQ9gXyUe.png`,LD=`/assets/relation1-Cb8TgUhc.png`,RD=`/assets/relationship-CiA-nZlw.png`,zD=`/assets/relationship1-DEgrIkn-.png`,BD=`/assets/weakentity-BTbQ74RO.png`,VD=`/assets/dbdesignprocess-CBEu96q7.png`,HD=`/assets/fk-DmbSNlgC.png`,UD=`/assets/fk1-BVQ_45Dh.png`,WD=`/assets/n1relationshiptorelation-BsMRYB1p.png`,GD=`/assets/nnrelationshiptorelation-BPUNYyFs.png`,KD=`/assets/ipaccesslist-UfLSyKJt.png`,qD=`/assets/5-12demo-ugHZpz-0.png`,JD=`/assets/caching-DIjGBuRG.png`,YD=Object.assign({"../../../milynotes vault/CSE 444/week 1-2/img/access-methods.png":RE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete1.png":zE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete2.png":BE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete3.png":VE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete4.png":HE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete5.png":UE,"../../../milynotes vault/CSE 444/week 1-2/img/b+insert.png":WE,"../../../milynotes vault/CSE 444/week 1-2/img/b+leaf.png":GE,"../../../milynotes vault/CSE 444/week 1-2/img/b+nodes.png":KE,"../../../milynotes vault/CSE 444/week 1-2/img/b+serach.png":qE,"../../../milynotes vault/CSE 444/week 1-2/img/b+split.png":JE,"../../../milynotes vault/CSE 444/week 1-2/img/b+tree.png":YE,"../../../milynotes vault/CSE 444/week 1-2/img/buffer-manager.png":XE,"../../../milynotes vault/CSE 444/week 1-2/img/dbms-architecture.png":ZE,"../../../milynotes vault/CSE 444/week 1-2/img/fixed-length-record.png":QE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-1.png":$E,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-2.png":eD,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-3.png":tD,"../../../milynotes vault/CSE 444/week 1-2/img/index.png":nD,"../../../milynotes vault/CSE 444/week 1-2/img/page-format.png":rD,"../../../milynotes vault/CSE 444/week 1-2/img/query-evaluation-steps.png":iD,"../../../milynotes vault/CSE 444/week 1-2/img/query-execution.png":aD,"../../../milynotes vault/CSE 444/week 1-2/img/slot-directory.png":oD,"../../../milynotes vault/CSE 444/week 1-2/img/sql-to-ra.png":sD,"../../../milynotes vault/CSE 444/week 1-2/img/variable-length-record.png":cD,"../../../milynotes vault/CSE 444/week 3-4/img/bottomup.png":lD,"../../../milynotes vault/CSE 444/week 3-4/img/bushy.png":uD,"../../../milynotes vault/CSE 444/week 3-4/img/dp.png":dD,"../../../milynotes vault/CSE 444/week 3-4/img/employeehistogram.png":fD,"../../../milynotes vault/CSE 444/week 3-4/img/hashjoin1.png":pD,"../../../milynotes vault/CSE 444/week 3-4/img/hashjoin2.png":mD,"../../../milynotes vault/CSE 444/week 3-4/img/leftdeep.png":hD,"../../../milynotes vault/CSE 444/week 3-4/img/linear.png":gD,"../../../milynotes vault/CSE 444/week 3-4/img/optimizationoverview.png":_D,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan1.png":vD,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan2.png":yD,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan3.png":bD,"../../../milynotes vault/CSE 444/week 3-4/img/queryoptimizationsummary.png":xD,"../../../milynotes vault/CSE 444/week 3-4/img/rightdeep.png":SD,"../../../milynotes vault/CSE 444/week 3-4/img/topdown.png":CD,"../../../milynotes vault/CSE 444/week 5-6/img/2pldeadlocks.png":wD,"../../../milynotes vault/CSE 444/week 5-6/img/IsolationLevelDesignSpectrum .png":TD,"../../../milynotes vault/CSE 444/week 5-6/img/compatibilitymatrix.png":ED,"../../../milynotes vault/CSE 444/week 5-6/img/multiversion1.png":DD,"../../../milynotes vault/CSE 444/week 5-6/img/phantom.png":OD,"../../../milynotes vault/CSE 444/week 5-6/img/readtoolate.png":kD,"../../../milynotes vault/CSE 444/week 5-6/img/recoverableschedule.png":AD,"../../../milynotes vault/CSE 444/week 5-6/img/rtwuconflict.png":jD,"../../../milynotes vault/CSE 444/week 7-8/img/policiesandlogs.png":MD,"../../../milynotes vault/DSA/img/complexity.png":ND,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/ERD_intro.png":PD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/arrows.png":FD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation.png":ID,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation1.png":LD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship.png":RD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship1.png":zD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/weakentity.png":BD,"../../../milynotes vault/INFO 330/05_relational schema/img/dbdesignprocess.png":VD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk.png":HD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk1.png":UD,"../../../milynotes vault/INFO 330/05_relational schema/img/n1relationshiptorelation.png":WD,"../../../milynotes vault/INFO 330/05_relational schema/img/nnrelationshiptorelation.png":GD,"../../../milynotes vault/INFO 441/week 3-4/img/ipaccesslist.png":KD,"../../../milynotes vault/INFO 441/week 7-8/img/5-12demo.png":qD,"../../../milynotes vault/INFO 441/week 7-8/img/caching.png":JD}),XD=new Map;for(let[e,t]of Object.entries(YD)){let n=e.replace(/\\/g,`/`),r=n.lastIndexOf(`milynotes vault/`);if(r===-1)continue;let i=n.slice(r+16);XD.set(i,t)}function ZD(e){let t=e.lastIndexOf(`/`);return t===-1?``:e.slice(0,t)}function QD(e){return e.replace(/&/g,`&amp;`).replace(/"/g,`&quot;`).replace(/</g,`&lt;`)}function $D(e,t,n){let r=n.trim();if(/^https?:\/\//i.test(r))return r;let i=ZD(t),a=r.replace(/^\.\//,``).replace(/^\/+/,``),o=[];a.includes(`/`)&&o.push(`${e}/${a}`),i?(o.push(`${e}/${i}/img/${a}`),o.push(`${e}/${i}/attachments/${a}`),o.push(`${e}/${i}/${a}`)):(o.push(`${e}/img/${a}`),o.push(`${e}/attachments/${a}`),o.push(`${e}/${a}`));let s=a.split(`/`).pop()??a;i&&s!==a&&(o.push(`${e}/${i}/img/${s}`),o.push(`${e}/${i}/attachments/${s}`));let c=new Set;for(let e of o){if(c.has(e))continue;c.add(e);let t=XD.get(e);if(t)return t}let l=s;if(i){let t=`${e}/${i}/`;for(let[e,n]of XD)if(e.startsWith(t)&&e.endsWith(`/${l}`))return n}let u=`${e}/`,d=[];for(let[t,n]of XD)t.startsWith(u)&&(t===`${e}/${l}`||t.endsWith(`/${l}`))&&d.push(n);return d.length===1?d[0]:null}function eO(e,t,n){let r=e;return r=r.replace(/!\[\[([^\]]+)\]\]/g,(e,r)=>{let i=r.split(`|`),a=i[0].trim();if(!a)return e;let o=$D(t,n,a);if(!o)return e;let s=a.replace(/\.[^./\\]+$/,``).replace(/[/_-]+/g,` `),c=i[1]?.trim();return c&&/^\d+$/.test(c)?`<img src="${o}" alt="${QD(s)}" width="${c}" />`:`![${s}](${o})`}),r=r.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,(e,r,i)=>{let a=i.trim();if(/^https?:\/\//i.test(a))return e;let o=$D(t,n,a);return o?`![${r}](${o})`:e}),r}function tO(e){if(!e)return``;try{return decodeURIComponent(e)}catch{return e}}function nO(){let{categoryId:e,notePath:t}=gt(),n=e?Ci(e):void 0;if(!e||!n)return(0,D.jsx)(Bt,{to:`/`,replace:!0});let r=tO(t),i=r.length>0?Ni(n.vaultFolder,r):null;if(!i)return(0,D.jsx)(Bt,{to:`/category/${encodeURIComponent(e)}`,replace:!0});let a=Ei(r),o=PE(IE(eO(Di(i),n.vaultFolder,r)));return(0,D.jsxs)(`article`,{className:`note-view`,children:[(0,D.jsxs)(Pn,{to:`/category/${encodeURIComponent(e)}`,className:`note-view__back`,children:[`← `,n.name]}),(0,D.jsx)(`h1`,{className:`note-view__title`,children:a}),(0,D.jsx)(`div`,{className:`note-view__body`,children:(0,D.jsx)(Ed,{remarkPlugins:[xE,NE,EC],rehypePlugins:[[vv,{strict:!1}],vC],children:o})})]})}function rO(){if(typeof window<`u`&&window.location.hostname.endsWith(`github.io`)){let e=window.location.pathname.split(`/`).filter(Boolean)[0];if(e)return`/${e}`}}function iO(){let{notePath:e}=gt();return e?(0,D.jsx)(Bt,{to:`/category/sql-notes/note/${encodeURIComponent(e)}`,replace:!0}):(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}function aO(){return(0,D.jsx)(jn,{basename:rO(),children:(0,D.jsx)(Wt,{children:(0,D.jsxs)(Ht,{element:(0,D.jsx)(zi,{}),children:[(0,D.jsx)(Ht,{path:`/`,element:(0,D.jsx)(Bi,{})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta`,element:(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta/note/:notePath`,element:(0,D.jsx)(iO,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId/note/:notePath`,element:(0,D.jsx)(nO,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId`,element:(0,D.jsx)(Vi,{})}),(0,D.jsx)(Ht,{path:`*`,element:(0,D.jsx)(Bt,{to:`/`,replace:!0})})]})})})}(0,_.createRoot)(document.getElementById(`root`)).render((0,D.jsx)(v.StrictMode,{children:(0,D.jsx)(aO,{})}));
+`)}function LE(e){let t=e.match(/^(> ?\s*)(\t+)(.*)$/);if(t){let e=`\xA0`.repeat(t[2].length*FE);return t[1]+e+t[3]}let n=e.match(/^(\t+)(.*)$/);return n?`\xA0`.repeat(n[1].length*FE)+n[2]:e}var RE=`/assets/access-methods-B9QF5qpc.png`,zE=`/assets/b_delete1-B5F5hAWP.png`,BE=`/assets/b_delete2-COjGKfYs.png`,VE=`/assets/b_delete3-CB7IEFLu.png`,HE=`/assets/b_delete4-BRoCb4Ph.png`,UE=`/assets/b_delete5-B7sGRmiF.png`,WE=`/assets/b_insert-C0E5msDV.png`,GE=`/assets/b_leaf-BJ42ZMjv.png`,KE=`/assets/b_nodes-kbAEGTYa.png`,qE=`/assets/b_serach-CLsFsqGQ.png`,JE=`/assets/b_split-DnZEbjnu.png`,YE=`/assets/b_tree-BqFxeqYj.png`,XE=`/assets/buffer-manager-0Rr6IgS2.png`,ZE=`/assets/dbms-architecture-BtvrPSMz.png`,QE=`/assets/fixed-length-record-CIi5reA_.png`,$E=`/assets/heap-file-1-BZqAUvhT.png`,eD=`/assets/heap-file-2-BVUdkyrb.png`,tD=`/assets/heap-file-3-D2slnoKE.png`,nD=`/assets/index-BE1j7b6M.png`,rD=`/assets/page-format-CqAG0utU.png`,iD=`/assets/query-evaluation-steps-Bs2mD3Tn.png`,aD=`/assets/query-execution-DzA6uV8A.png`,oD=`/assets/slot-directory-CJKYfGtR.png`,sD=`/assets/sql-to-ra-Dt1YMBwK.png`,cD=`/assets/variable-length-record-NvdR4NUv.png`,lD=`/assets/bottomup-DqURT0kB.png`,uD=`/assets/bushy-jJCv5ExL.png`,dD=`/assets/dp-B3FvOhEb.png`,fD=`/assets/employeehistogram-CLIEey8r.png`,pD=`/assets/hashjoin1-CCueQrNV.png`,mD=`/assets/hashjoin2-D4KrzPf2.png`,hD=`/assets/leftdeep-Dgps-hiU.png`,gD=`/assets/linear-BOByY97S.png`,_D=`/assets/optimizationoverview-CZ31HSjt.png`,vD=`/assets/physicalplan1-BWUTIm8Z.png`,yD=`/assets/physicalplan2-BhnHdl3v.png`,bD=`/assets/physicalplan3-Bq2JOAA6.png`,xD=`/assets/queryoptimizationsummary-vTnxeyjW.png`,SD=`/assets/rightdeep-xmW4QpcL.png`,CD=`/assets/topdown-DS77ukCD.png`,wD=`/assets/2pldeadlocks-DcWEw7gW.png`,TD=`/assets/IsolationLevelDesignSpectrum%20-B-Q2n74X.png`,ED=`/assets/compatibilitymatrix-BG1TiXP1.png`,DD=`/assets/multiversion1-BqZA7M-P.png`,OD=`/assets/phantom-JNgKabiA.png`,kD=`/assets/readtoolate-CPqAPtUg.png`,AD=`/assets/recoverableschedule-LtN1wObE.png`,jD=`/assets/rtwuconflict-D7Dtc0TG.png`,MD=`/assets/checkpoint-CTmltf62.png`,ND=`/assets/policiesandlogs-DiaP4sfE.png`,PD=`/assets/undo-FoZ46yO4.png`,FD=`/assets/complexity-BrAmumT5.png`,ID=`/assets/ERD_intro-Bu1BfdKa.png`,LD=`/assets/arrows-C8mBwyZM.png`,RD=`/assets/relation-BQ9gXyUe.png`,zD=`/assets/relation1-Cb8TgUhc.png`,BD=`/assets/relationship-CiA-nZlw.png`,VD=`/assets/relationship1-DEgrIkn-.png`,HD=`/assets/weakentity-BTbQ74RO.png`,UD=`/assets/dbdesignprocess-CBEu96q7.png`,WD=`/assets/fk-DmbSNlgC.png`,GD=`/assets/fk1-BVQ_45Dh.png`,KD=`/assets/n1relationshiptorelation-BsMRYB1p.png`,qD=`/assets/nnrelationshiptorelation-BPUNYyFs.png`,JD=`/assets/ipaccesslist-UfLSyKJt.png`,YD=`/assets/5-12demo-ugHZpz-0.png`,XD=`/assets/caching-DIjGBuRG.png`,ZD=Object.assign({"../../../milynotes vault/CSE 444/week 1-2/img/access-methods.png":RE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete1.png":zE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete2.png":BE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete3.png":VE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete4.png":HE,"../../../milynotes vault/CSE 444/week 1-2/img/b+delete5.png":UE,"../../../milynotes vault/CSE 444/week 1-2/img/b+insert.png":WE,"../../../milynotes vault/CSE 444/week 1-2/img/b+leaf.png":GE,"../../../milynotes vault/CSE 444/week 1-2/img/b+nodes.png":KE,"../../../milynotes vault/CSE 444/week 1-2/img/b+serach.png":qE,"../../../milynotes vault/CSE 444/week 1-2/img/b+split.png":JE,"../../../milynotes vault/CSE 444/week 1-2/img/b+tree.png":YE,"../../../milynotes vault/CSE 444/week 1-2/img/buffer-manager.png":XE,"../../../milynotes vault/CSE 444/week 1-2/img/dbms-architecture.png":ZE,"../../../milynotes vault/CSE 444/week 1-2/img/fixed-length-record.png":QE,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-1.png":$E,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-2.png":eD,"../../../milynotes vault/CSE 444/week 1-2/img/heap-file-3.png":tD,"../../../milynotes vault/CSE 444/week 1-2/img/index.png":nD,"../../../milynotes vault/CSE 444/week 1-2/img/page-format.png":rD,"../../../milynotes vault/CSE 444/week 1-2/img/query-evaluation-steps.png":iD,"../../../milynotes vault/CSE 444/week 1-2/img/query-execution.png":aD,"../../../milynotes vault/CSE 444/week 1-2/img/slot-directory.png":oD,"../../../milynotes vault/CSE 444/week 1-2/img/sql-to-ra.png":sD,"../../../milynotes vault/CSE 444/week 1-2/img/variable-length-record.png":cD,"../../../milynotes vault/CSE 444/week 3-4/img/bottomup.png":lD,"../../../milynotes vault/CSE 444/week 3-4/img/bushy.png":uD,"../../../milynotes vault/CSE 444/week 3-4/img/dp.png":dD,"../../../milynotes vault/CSE 444/week 3-4/img/employeehistogram.png":fD,"../../../milynotes vault/CSE 444/week 3-4/img/hashjoin1.png":pD,"../../../milynotes vault/CSE 444/week 3-4/img/hashjoin2.png":mD,"../../../milynotes vault/CSE 444/week 3-4/img/leftdeep.png":hD,"../../../milynotes vault/CSE 444/week 3-4/img/linear.png":gD,"../../../milynotes vault/CSE 444/week 3-4/img/optimizationoverview.png":_D,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan1.png":vD,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan2.png":yD,"../../../milynotes vault/CSE 444/week 3-4/img/physicalplan3.png":bD,"../../../milynotes vault/CSE 444/week 3-4/img/queryoptimizationsummary.png":xD,"../../../milynotes vault/CSE 444/week 3-4/img/rightdeep.png":SD,"../../../milynotes vault/CSE 444/week 3-4/img/topdown.png":CD,"../../../milynotes vault/CSE 444/week 5-6/img/2pldeadlocks.png":wD,"../../../milynotes vault/CSE 444/week 5-6/img/IsolationLevelDesignSpectrum .png":TD,"../../../milynotes vault/CSE 444/week 5-6/img/compatibilitymatrix.png":ED,"../../../milynotes vault/CSE 444/week 5-6/img/multiversion1.png":DD,"../../../milynotes vault/CSE 444/week 5-6/img/phantom.png":OD,"../../../milynotes vault/CSE 444/week 5-6/img/readtoolate.png":kD,"../../../milynotes vault/CSE 444/week 5-6/img/recoverableschedule.png":AD,"../../../milynotes vault/CSE 444/week 5-6/img/rtwuconflict.png":jD,"../../../milynotes vault/CSE 444/week 7-8/img/checkpoint.png":MD,"../../../milynotes vault/CSE 444/week 7-8/img/policiesandlogs.png":ND,"../../../milynotes vault/CSE 444/week 7-8/img/undo.png":PD,"../../../milynotes vault/DSA/img/complexity.png":FD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/ERD_intro.png":ID,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/arrows.png":LD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation.png":RD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relation1.png":zD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship.png":BD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/relationship1.png":VD,"../../../milynotes vault/INFO 330/04_conceptual modeling/img/weakentity.png":HD,"../../../milynotes vault/INFO 330/05_relational schema/img/dbdesignprocess.png":UD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk.png":WD,"../../../milynotes vault/INFO 330/05_relational schema/img/fk1.png":GD,"../../../milynotes vault/INFO 330/05_relational schema/img/n1relationshiptorelation.png":KD,"../../../milynotes vault/INFO 330/05_relational schema/img/nnrelationshiptorelation.png":qD,"../../../milynotes vault/INFO 441/week 3-4/img/ipaccesslist.png":JD,"../../../milynotes vault/INFO 441/week 7-8/img/5-12demo.png":YD,"../../../milynotes vault/INFO 441/week 7-8/img/caching.png":XD}),QD=new Map;for(let[e,t]of Object.entries(ZD)){let n=e.replace(/\\/g,`/`),r=n.lastIndexOf(`milynotes vault/`);if(r===-1)continue;let i=n.slice(r+16);QD.set(i,t)}function $D(e){let t=e.lastIndexOf(`/`);return t===-1?``:e.slice(0,t)}function eO(e){return e.replace(/&/g,`&amp;`).replace(/"/g,`&quot;`).replace(/</g,`&lt;`)}function tO(e,t,n){let r=n.trim();if(/^https?:\/\//i.test(r))return r;let i=$D(t),a=r.replace(/^\.\//,``).replace(/^\/+/,``),o=[];a.includes(`/`)&&o.push(`${e}/${a}`),i?(o.push(`${e}/${i}/img/${a}`),o.push(`${e}/${i}/attachments/${a}`),o.push(`${e}/${i}/${a}`)):(o.push(`${e}/img/${a}`),o.push(`${e}/attachments/${a}`),o.push(`${e}/${a}`));let s=a.split(`/`).pop()??a;i&&s!==a&&(o.push(`${e}/${i}/img/${s}`),o.push(`${e}/${i}/attachments/${s}`));let c=new Set;for(let e of o){if(c.has(e))continue;c.add(e);let t=QD.get(e);if(t)return t}let l=s;if(i){let t=`${e}/${i}/`;for(let[e,n]of QD)if(e.startsWith(t)&&e.endsWith(`/${l}`))return n}let u=`${e}/`,d=[];for(let[t,n]of QD)t.startsWith(u)&&(t===`${e}/${l}`||t.endsWith(`/${l}`))&&d.push(n);return d.length===1?d[0]:null}function nO(e,t,n){let r=e;return r=r.replace(/!\[\[([^\]]+)\]\]/g,(e,r)=>{let i=r.split(`|`),a=i[0].trim();if(!a)return e;let o=tO(t,n,a);if(!o)return e;let s=a.replace(/\.[^./\\]+$/,``).replace(/[/_-]+/g,` `),c=i[1]?.trim();return c&&/^\d+$/.test(c)?`<img src="${o}" alt="${eO(s)}" width="${c}" />`:`![${s}](${o})`}),r=r.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,(e,r,i)=>{let a=i.trim();if(/^https?:\/\//i.test(a))return e;let o=tO(t,n,a);return o?`![${r}](${o})`:e}),r}function rO(e){if(!e)return``;try{return decodeURIComponent(e)}catch{return e}}function iO(){let{categoryId:e,notePath:t}=gt(),n=e?Ci(e):void 0;if(!e||!n)return(0,D.jsx)(Bt,{to:`/`,replace:!0});let r=rO(t),i=r.length>0?Ni(n.vaultFolder,r):null;if(!i)return(0,D.jsx)(Bt,{to:`/category/${encodeURIComponent(e)}`,replace:!0});let a=Ei(r),o=PE(IE(nO(Di(i),n.vaultFolder,r)));return(0,D.jsxs)(`article`,{className:`note-view`,children:[(0,D.jsxs)(Pn,{to:`/category/${encodeURIComponent(e)}`,className:`note-view__back`,children:[`← `,n.name]}),(0,D.jsx)(`h1`,{className:`note-view__title`,children:a}),(0,D.jsx)(`div`,{className:`note-view__body`,children:(0,D.jsx)(Ed,{remarkPlugins:[xE,NE,EC],rehypePlugins:[[vv,{strict:!1}],vC],children:o})})]})}function aO(){if(typeof window<`u`&&window.location.hostname.endsWith(`github.io`)){let e=window.location.pathname.split(`/`).filter(Boolean)[0];if(e)return`/${e}`}}function oO(){let{notePath:e}=gt();return e?(0,D.jsx)(Bt,{to:`/category/sql-notes/note/${encodeURIComponent(e)}`,replace:!0}):(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}function sO(){return(0,D.jsx)(jn,{basename:aO(),children:(0,D.jsx)(Wt,{children:(0,D.jsxs)(Ht,{element:(0,D.jsx)(zi,{}),children:[(0,D.jsx)(Ht,{path:`/`,element:(0,D.jsx)(Bi,{})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta`,element:(0,D.jsx)(Bt,{to:`/category/sql-notes`,replace:!0})}),(0,D.jsx)(Ht,{path:`/category/sql-notes-for-ta/note/:notePath`,element:(0,D.jsx)(oO,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId/note/:notePath`,element:(0,D.jsx)(iO,{})}),(0,D.jsx)(Ht,{path:`/category/:categoryId`,element:(0,D.jsx)(Vi,{})}),(0,D.jsx)(Ht,{path:`*`,element:(0,D.jsx)(Bt,{to:`/`,replace:!0})})]})})})}(0,_.createRoot)(document.getElementById(`root`)).render((0,D.jsx)(v.StrictMode,{children:(0,D.jsx)(sO,{})}));
