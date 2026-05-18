@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSE 444/week 7-8/Transactions: Recovery.md",
+                "file": "CSE 444/week 7-8/Parallel DBMSs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Transactions: Recovery"
+              "title": "Parallel DBMSs"
             }
           }
         ]
@@ -185,12 +185,28 @@
   },
   "active": "a0d2ec61cac874b9",
   "lastOpenFiles": [
+    "CSE 444/week 7-8/img/block partitioning.png",
+    "CSE 444/week 7-8/img/shared nothing architecture.png",
+    "CSE 444/week 7-8/img/shared disk architecture.png",
+    "CSE 444/week 7-8/Transactions Recovery.md",
+    "CSE 444/week 7-8/Transactions: Recovery.md",
+    "CSE 444/week 7-8/Parallel DBMSs.md",
+    "CSE 444/week 5-6/Optimistic Concurrency Control.md",
+    "CSE 444/week 5-6/Concurrency Control.md",
+    "CSE 444/week 3-4/Query plan costs.md",
+    "CSE 444/week 3-4/Query Optimization.md",
+    "CSE 444/week 3-4/Query execution and operator algorithms.md",
+    "CSE 444/week 1-2/Storage.md",
+    "CSE 444/week 1-2/Review.md",
+    "CSE 444/week 1-2/Relational Model Review.md",
+    "CSE 444/week 1-2/Indexing.md",
+    "CSE 444/week 1-2/DBMS architecture.md",
+    "CSE 444/week 7-8/img/shared memory architecture.png",
+    "CSE 444/week 7-8/Parallel DBMSs",
+    "CSE 444/week 7-8/d",
     "CSE 444/week 7-8/img/checkpoint.png",
     "CSE 444/week 7-8/img/undo.png",
     "CSE 444/week 7-8/img/policiesandlogs.png",
-    "CSE 444/week 5-6/Optimistic Concurrency Control.md",
-    "CSE 444/week 7-8/Transactions: Recovery.md",
-    "CSE 444/week 5-6/Concurrency Control.md",
     "CSE 444/week 7-8/img",
     "CSE 444/week 7-8/f",
     "CSE 444/week 7-8",
@@ -200,18 +216,6 @@
     "CSE 444/week 5-6/img/IsolationLevelDesignSpectrum .png",
     "Untitled",
     "CSE 444/week 5-6/Concurrency Control 1.md",
-    "CSE 444/week 5-6/img/phantom.png",
-    "CSE 444/week 5-6/img/Concurrency Control.png",
-    "CSE 444/week 5-6/img/2pldeadlocks.png",
-    "CSE 444/week 5-6/img/compatibilitymatrix.png",
-    "CSE 444/week 3-4/Query Optimization.md",
-    "CSE 444/week 3-4/Query plan costs.md",
-    "CSE 444/week 3-4/Query execution and operator algorithms.md",
-    "CSE 444/week 1-2/DBMS architecture.md",
-    "CSE 444/week 1-2/Relational Model Review.md",
-    "CSE 444/week 1-2/Storage.md",
-    "CSE 444/week 1-2/Review.md",
-    "CSE 444/week 1-2/Indexing.md",
     "INFO 330/04_conceptual modeling/Conceptual Database Design.md",
     "CSE 444/week 3-4/d",
     "CSE 444/week 3-4/img/Untitled.md",
@@ -219,8 +223,6 @@
     "CSE 444/week 3-4",
     "CSE 444/week 1-2/Untitled",
     "CSE 444/week 1-2/Review copy.md",
-    "DSA copy/img",
-    "DSA copy/Data Structures Cheatsheet",
     "DSA copy/DSA Patterns - II.md",
     "DSA copy/DSA Patterns - I.md",
     "DSA copy/DP.md",
@@ -228,8 +230,6 @@
     "INFO 330/04_conceptual modeling/Relationship.md",
     "INFO 330/04_conceptual modeling/Entity Relationship Diagram.md",
     "INFO 330/05_relational schema/FK Constraints.md",
-    "INFO 330/02_relational model/Create table.md",
-    "INFO 441/week 1-2/AJAX.md",
-    "INFO 441/week 1-2/checkTime.md"
+    "INFO 330/02_relational model/Create table.md"
   ]
 }

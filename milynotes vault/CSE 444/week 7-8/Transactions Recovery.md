@@ -226,14 +226,33 @@ At the end, ARIES computes `firstLSN = min⁡(recLSN)`
 #### Redo
 
 Repeat history
+- process log forward starting from `firstLSN = min⁡(recLSN)`
+- read every log record, sequentially
+- redo actions are not recorded in the log
+- needs the Dirty Page Table
 
-ARIES replays the log forward starting from `firstLSN = min⁡(recLSN)`
-
-For each update log record, ARIES skips redo if:
-1. $P$ is not in the Dirty Page Table.
-2. recLSN > LSN
-3. After reading the page from disk, pageLSN ≥ LSNpage
-
-Otherwise, it performs the update
+for each log entry record
+- if P not in Dirty page then no update
+- if recLSN > LSN, then no update
+- read page from disk:
+	if pageLSN $\ge$  LSN, then no update
+- otherwise perform update
 
 #### Undo
+
+main principle: "logical" undo
+- start from end of log, move backwards
+- read only affected log entries
+
+
+while ToUndo not empty:
+- choose most recent (largest) lSN in ToUndo
+- if LSN = regular record `<T, P, u, v>`
+	- write a CLR where CLR.undoNextLSN = LSN.prevLSN
+	- undo $v$
+- if LSN = CLR record
+	- don't undo
+- if CLR.undoNextLSN not null, insert in ToUndo
+	otherwise, write `<END>` in log
+
+
