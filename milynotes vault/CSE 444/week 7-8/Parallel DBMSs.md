@@ -51,6 +51,9 @@ Workers execute queries
 - Workers can execute multiple queries at the same time
 
 
+
+## Data partitioning
+
 ### Option 1: Unpartitioned Table
 
 - Entire table on just one node in the system
@@ -64,3 +67,88 @@ Workers execute queries
 
 
 Tuples are horizontally (row) partitioned by raw size with no ordering considered
+
+
+### Option 3: Range Partitioning
+
+Node contains tuples in chosen attribute ranges
+
+![[range partitioning.png|495]]
+
+### Option 4: Hash Partitioning
+
+Node contains tuples with chosen attribute hashes
+
+![[hash partioning.png|509]]
+
+
+
+## Parallel selection
+
+
+For a query like:
+
+```
+SELECT *
+FROM R
+WHERE A = 2;
+```
+
+If $R$ is block partitioned, every node scans its own chunk and applies the selection locally. The final output is the union of all local outputs.
+
+
+
+## Parallel aggregation / Group By
+
+For:
+
+```
+SELECT A, sum(B)
+FROM R
+GROUP BY A;
+```
+
+Two cases.
+
+Case 1: $R$ is already partitioned on $A$
+Each node can group locally
+
+Case 2: $R$ is partitioned on something else 
+Then rows with the same $A$ may be spread across many nodes. You need to reshuffle by $A$, so all rows for the same group end up on the same node.
+
+
+Naive plan:
+1. Shuffle all tuples by $A$
+2. Group locally on each node
+
+Better plan:
+1. Do local partial aggregation first
+2. Shuffle the smaller partial results by $A$
+3. Aggregate again
+
+
+## Shuffle operator
+
+
+Serves to re-shuffle data between processes 
+- Handles data routing, buffering, and flow control
+
+Two parts:
+ShuffleProducer and ShuffleConsumer
+
+Producer:
+- Pulls data from child operator and sends to n consumers
+- Producer acts as driver for operators below it in query plan
+
+Consumer: 
+- Buffers input data from n producers and makes it available to operator through getNext() interface
+
+
+
+## Partitioned Hash Equijoin
+
+1. Hash shuffle tuples on join attributes
+2. Local join
+
+
+![[Equijoin.png|589]]
