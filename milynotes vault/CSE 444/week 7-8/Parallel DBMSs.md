@@ -152,3 +152,25 @@ Consumer:
 
 
 ![[Equijoin.png|589]]
+
+
+
+## Parallel Join
+
+
+Step 1
+- Every server holding any chunk of $R$ partitions its chunk using a hash function $h(t.A) \mod P$
+- Every server holding any chunk of $S$ partitions its chunk using a hash function $h(t.B) \mod P$
+
+Step 2:
+- Each server computes the join of its local fragment of $R$ with its local fragment of $S$
+
+
+### Optimization for Small Relations
+
+if $|R| >> |S|$
+- Leave $R$ where it is
+- Replicate entire $S$ relation across nodes
+
+Also called a small join or a broadcast join
+
