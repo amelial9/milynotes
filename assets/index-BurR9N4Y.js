@@ -1696,6 +1696,7 @@ FORCE or NO-FORCE
 - Should all updates of a transaction be forced to disk before the transaction commits?
 - FORCE: Pages of committed transactions must be forced to disk before commit
 - NO-FORCE: Pages of committed transactions need not be written to disk
+
 STEAL or NO-STEAL
 - Can an update made by an uncommitted transaction overwrite the most recent committed value of a data item on disk?
 - STEAL: Pages of uncommitted transactions may be written to disk
