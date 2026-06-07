@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSE 444/week 9-10/Two-Phase Commit.md",
+                "file": "CSE 444/week 9-10/Replication.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Two-Phase Commit"
+              "title": "Replication"
             }
           }
         ]
@@ -185,10 +185,20 @@
   },
   "active": "46c661b2eda67965",
   "lastOpenFiles": [
+    "CSE 444/week 9-10/img/conflicttimestamp.png",
+    "CSE 444/week 9-10/img/asyncrep.png",
+    "CSE 444/week 9-10/img/syncgrouprep.png",
+    "CSE 444/week 9-10/img/syncmasterrep.png",
+    "CSE 444/week 9-10/img/synchronousreplication.png",
+    "CSE 444/week 9-10/img/masterreplication.png",
+    "CSE 444/week 9-10/Column Stores.md",
+    "CSE 444/week 9-10/Two-Phase Commit.md",
+    "sync.md",
+    "CSE 444/week 9-10/Replication.md",
+    "CSE 444/week 9-10/img/Column Stores.png",
     "CSE 444/week 9-10/img/SubordinateStateMachine.png",
     "CSE 444/week 9-10/img/CoordinatorStateMachine.png",
     "CSE 444/week 9-10/MapReduce.md",
-    "CSE 444/week 9-10/Two-Phase Commit.md",
     "CSE 444/week 9-10/Two-Phase Commit",
     "CSE 444/week 9-10/Spark.md",
     "para.md",
@@ -202,12 +212,6 @@
     "Untitled",
     "CSE 444/week 3-4/Query plan costs.md",
     "INFO 441/week 7-8/Caching.md",
-    "CSE 444/week 7-8/img/Equijoin.png",
-    "CSE 444/week 7-8/img/hash partioning.png",
-    "CSE 444/week 7-8/img/range partitioning.png",
-    "CSE 444/week 7-8/img/block partitioning.png",
-    "CSE 444/week 7-8/img/shared nothing architecture.png",
-    "CSE 444/week 7-8/img/shared disk architecture.png",
     "CSE 444/week 7-8/Transactions: Recovery.md",
     "CSE 444/week 5-6/Optimistic Concurrency Control.md",
     "CSE 444/week 5-6/Concurrency Control.md",
@@ -218,7 +222,6 @@
     "CSE 444/week 1-2/Relational Model Review.md",
     "CSE 444/week 1-2/Indexing.md",
     "CSE 444/week 1-2/DBMS architecture.md",
-    "CSE 444/week 7-8/img/shared memory architecture.png",
     "CSE 444/week 7-8/Parallel DBMSs",
     "CSE 444/week 7-8/d",
     "CSE 444/week 7-8/img",
@@ -227,9 +230,6 @@
     "CSE 444/week 5-6/Concurrency Control 1.md",
     "INFO 330/04_conceptual modeling/Conceptual Database Design.md",
     "CSE 444/week 3-4/d",
-    "CSE 444/week 3-4/img/Untitled.md",
-    "CSE 444/week 1-2/Review copy.md",
-    "DSA copy/DSA Patterns - II.md",
-    "DSA copy/DSA Patterns - I.md"
+    "CSE 444/week 3-4/img/Untitled.md"
   ]
 }
