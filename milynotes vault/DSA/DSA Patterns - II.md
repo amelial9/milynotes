@@ -1,3 +1,7 @@
+---
+order: 4
+---
+
 ### Prefix Sum
 
 If the sum of the subarray from index `i` to `j` is `k`, and:
