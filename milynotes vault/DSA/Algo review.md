@@ -4,7 +4,7 @@ order: 5
 
 ## Prim's
 
-**Use when:** MST. need to connect all nodes with minimum total cost
+**Use when:** MST. need to connect all nodes with minimum total cost. **weighted** edges
 
 **Core idea:** Grow the MST outward from a starting node. At each step, pick the cheapest edge from the "visited" set to any unvisited node. Add that node to visited. Repeat until all nodes are in.
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSE 444/week 9-10/Replication.md",
+                "file": "DSA/Algo review.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Replication"
+              "title": "Algo review"
             }
           }
         ]
@@ -41,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -185,6 +187,7 @@
   },
   "active": "46c661b2eda67965",
   "lastOpenFiles": [
+    "CSE 444/week 9-10/Replication.md",
     "CSE 444/week 9-10/img/conflicttimestamp.png",
     "CSE 444/week 9-10/img/asyncrep.png",
     "CSE 444/week 9-10/img/syncgrouprep.png",
@@ -194,7 +197,6 @@
     "CSE 444/week 9-10/Column Stores.md",
     "CSE 444/week 9-10/Two-Phase Commit.md",
     "sync.md",
-    "CSE 444/week 9-10/Replication.md",
     "CSE 444/week 9-10/img/Column Stores.png",
     "CSE 444/week 9-10/img/SubordinateStateMachine.png",
     "CSE 444/week 9-10/img/CoordinatorStateMachine.png",
@@ -203,7 +205,6 @@
     "CSE 444/week 9-10/Spark.md",
     "para.md",
     "CSE 444/week 9-10/img/parallelmapreduce.png",
-    "CSE 444/week 9-10/img/mapreduce.png",
     "CSE 444/week 9-10/img",
     "CSE 444/week 9-10",
     "CSE 444/week 7-8/kk.md",
