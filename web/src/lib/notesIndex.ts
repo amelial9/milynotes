@@ -13,13 +13,7 @@ const rawModules = import.meta.glob('../../../milynotes vault/**/*.md', {
   import: 'default',
 }) as Record<string, string>
 
-const VAULT_FOLDERS = [
-  'INFO 330',
-  'DSA',
-  'INFO 441',
-  'INFO 449',
-  'CSE 444',
-] as const
+const VAULT_FOLDERS = CATEGORIES.map((c) => c.vaultFolder)
 
 function vaultRelativePath(globKey: string, vaultFolder: string): string | null {
   const normalized = globKey.replace(/\\/g, '/')
@@ -96,7 +90,7 @@ export function searchNotes(query: string, limit = 40): SearchHit[] {
   const hits: SearchHit[] = []
 
   outer: for (const [globKey, raw] of Object.entries(rawModules)) {
-    let vaultFolder: (typeof VAULT_FOLDERS)[number] | null = null
+    let vaultFolder: string | null = null
     let relativePath: string | null = null
 
     for (const folder of VAULT_FOLDERS) {

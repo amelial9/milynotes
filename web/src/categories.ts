@@ -20,6 +20,12 @@ export const CATEGORIES: CategoryDef[] = [
     vaultFolder: 'CSE 444',
   },
   {
+    id: 'systems-programming',
+    name: 'Systems Programming',
+    subtitle: 'CSE 333',
+    vaultFolder: 'CSE 333',
+  },
+  {
     id: 'dsa',
     name: 'DSA',
     subtitle: '',
