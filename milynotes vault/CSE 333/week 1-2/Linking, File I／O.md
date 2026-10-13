@@ -53,14 +53,14 @@ C’s `stdio` defines the notion of a stream
 - C streams are manipulated with a `FILE*` pointer, which is defined in `stdio.h`
 
 
-`FILE* fopen(filename, mode);`
-`int fclose(stream);`
-`int fprintf(stream, format, ...);`
-`int fscanf(stream, format, ...);`
-`size_t fwrite(ptr, size, count, stream);`
--   Writes an array of _count_ elements of _size_ bytes from _ptr_ to _stream_
-`size_t fread(ptr, size, count, stream);`
--   Reads an array of _count_ elements of _size_ bytes from _stream_ to _ptr_ 
+- `FILE* fopen(filename, mode);`
+- `int fclose(stream);`
+- `int fprintf(stream, format, ...);`
+- `int fscanf(stream, format, ...);`
+- `size_t fwrite(ptr, size, count, stream);`
+	- Writes an array of _count_ elements of _size_ bytes from _ptr_ to _stream_
+- `size_t fread(ptr, size, count, stream);`
+	- Reads an array of _count_ elements of _size_ bytes from _stream_ to _ptr_ 
 
   
 

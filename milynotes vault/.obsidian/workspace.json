@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c0bbddf06297feee",
+        "id": "7070ae2eb5ece820",
         "type": "tabs",
         "children": [
           {
-            "id": "43d01d2a6b28d921",
+            "id": "dd793d5c5b8e1862",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -185,11 +185,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "43d01d2a6b28d921",
+  "active": "dd793d5c5b8e1862",
   "lastOpenFiles": [
+    "CSE 333/week 1-2/Linking, File I／O.md",
     "CSE 333/img/file-20261012135517496.png",
     "CSE 333/img/file-20261012135301717.png",
-    "CSE 333/week 1-2/Linking, File I／O.md",
     "CSE 333/week 1-2/Intro.md",
     "CSE 333/img/file-20261012135303832.png",
     "CSE 333/week 1-2/Memory, Data, Parameters.md",
@@ -208,7 +208,6 @@
     "CSE 333/img/file-20261005195440958.png",
     "CSE 333/img/file-20261003165533023.png",
     "CSE 333/img/file-20261003165108574.png",
-    "CSE 333/img/file-20261003013253101.png",
     "CSE 333/week 1-2/img",
     "CSE 333/img",
     "CSE 444/week 3-4/Query execution and operator algorithms.md",
