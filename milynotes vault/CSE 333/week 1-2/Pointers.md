@@ -1,6 +1,7 @@
 ---
 order: 2
 ---
+
 ## Pointer Basics
 
 Variables that store addresses

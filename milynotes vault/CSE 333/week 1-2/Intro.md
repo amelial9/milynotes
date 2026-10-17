@@ -2,7 +2,6 @@
 order: 0
 ---
 
-
 ## Generic C Program Layout
 
 ```

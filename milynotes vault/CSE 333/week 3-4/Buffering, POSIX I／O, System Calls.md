@@ -1,6 +1,7 @@
 ---
 order: 6
 ---
+
 ## C Stream Buffering
 
 #### buffering
