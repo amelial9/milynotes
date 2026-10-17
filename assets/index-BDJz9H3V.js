@@ -12,7 +12,6 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
 order: 0
 ---
 
-
 ## Generic C Program Layout
 
 \`\`\`
@@ -277,6 +276,7 @@ The C preprocessor (cpp) is a sequential and stateful search-and-replace text-pr
 `,tr=`---
 order: 2
 ---
+
 ## Pointer Basics
 
 Variables that store addresses
@@ -447,6 +447,7 @@ A memory leak occurs when code fails to deallocate dynamically-allocated memory 
 - e.g., forget to free malloc-ed block, lose/change pointer to malloc-ed block`,rr=`---
 order: 6
 ---
+
 ## C Stream Buffering
 
 #### buffering
@@ -645,7 +646,7 @@ C’s \`stdio\` defines the notion of a stream
 `,ar=`---
 order: 7
 ---
-  
+
 ## Make and Build Tools
 
 
