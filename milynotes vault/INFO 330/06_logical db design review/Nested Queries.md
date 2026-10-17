@@ -73,7 +73,7 @@ WHERE X.price < 500
 
 Sometimes we need to compute an intermediate table only to use it later in a SELECT-FROM-WHERE  
 - Option 1: use a subquery in the FROM clause
-- Option 2: use the WITH clause  
+- Option 2: use the [[WITH]] clause  
 
 ```
 WITH myTable AS (

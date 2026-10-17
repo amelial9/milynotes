@@ -15,14 +15,14 @@ understands and plans your query
 	- Parses query into an internal format
 	- Performs various checks using catalog
 - Step 2: Query rewrite
-	- View rewriting, flattening, etc. (removes abstractions like views)
-- Step 3: Optimizer
+	- View rewriting, flattening, etc. (removes abstractions like [[Views & Temp Tables#Views|views]])
+- Step 3: [[Query Optimization|Optimizer]]
 	- Find an efficient query plan for executing the query
 		- should we scan the whole table?
 		- which table should be read first?
-		- what join algorithm should be used?
+		- what [[Query execution and operator algorithms#Join algorithms|join algorithm]] should be used?
 	- A query plan is
-		- Logical: An extended relational algebra tree
+		- Logical: An extended [[Relational Model Review#Relational Algebra|relational algebra]] tree
 			- what operations to perform
 		- Physical: With additional annotations at each node 
 			- Access method to use for each relation 
@@ -41,7 +41,7 @@ understands and plans your query
 - **Implementation choice** for each operator
 - Access path selection for each relation
 	- Bottom of tree = read from disk
-	- Use a file scan or use an index
+	- Use a file scan or use an [[Indexing|index]]
 
 
 ### Query Executor
@@ -84,8 +84,8 @@ handles:
 ### Access Methods
 
 - Operators: Process data
-- Access methods: Organize data to support fast access to desired subsets of records
-- Buffer manager: Caches data in memory. Reads/writes data to/from disk as needed
+- [[Indexing|Access methods]]: Organize data to support fast access to desired subsets of records
+- [[Storage#Buffer Manager|Buffer manager]]: Caches data in memory. Reads/writes data to/from disk as needed
 - Disk-space manager: Allocates space on disk for files/access methods
 
 

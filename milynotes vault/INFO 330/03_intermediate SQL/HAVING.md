@@ -11,7 +11,7 @@ GROUP BY product
 HAVING sum(quantity) > 30
 ```
 **HAVING clause contains conditions on aggregates**
-Where clause before grouping, having clause after grouping
+Where clause before grouping, having clause after [[GROUP BY|grouping]]
 
 #### WHERE vs HAVING  
 WHERE is applied to individual rows  

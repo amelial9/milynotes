@@ -2,7 +2,7 @@
 order: 11
 ---
 
-Nested queries in the FROM clause:
+[[Nested Queries#Subqueries in FROM|Nested queries in the FROM clause]]:
 ```
 SELECT X.pname  
 FROM (SELECT *  

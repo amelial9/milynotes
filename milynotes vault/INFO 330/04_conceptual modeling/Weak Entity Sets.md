@@ -6,7 +6,7 @@ order: 17
 
 
 - A **weak entity** can't be uniquely identified by its own attributes alone.
-- It **depends** on a **strong entity** (another table/entity) for its **primary key**.
+- It **depends** on a **strong entity** (another table/entity) for its **[[Keys#Primary Key|primary key]]**.
 - From the example:
 	**University(name)** → Strong entity (can be identified just by `name`).
 	**Team(sport, number, universityName)** → Weak entity (needs `universityName` to uniquely identify a Team).

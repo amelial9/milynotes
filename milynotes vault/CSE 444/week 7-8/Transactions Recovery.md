@@ -5,7 +5,7 @@ order: 10
 ## Transaction Management
 
 Two parts:
-- Concurrency control: ACID
+- [[Concurrency Control|Concurrency control]]: ACID
 - Recovery from crashes: ACID
 
 
@@ -13,7 +13,7 @@ Two parts:
 | --------------------------- | ------------------------------ |
 | Wrong data entry            | Constraints and data cleaning  |
 | Disk crashes                | Redundancy: e.g. RAID, archive |
-| Data center failures        | Remote backups or replicas     |
+| Data center failures        | Remote backups or [[Replication\|replicas]]     |
 | System failures: e.g. power | DATABASE RECOVERY              |
 
 
@@ -115,7 +115,7 @@ checkpoint the database periodically
 
 ## Implementing ROLLBACK
 
-use the undo-log to implement ROLLBACK
+use the undo-log to implement [[Concurrency Control#ROLLBACK|ROLLBACK]]
 
 - LSN = Log Sequence Number
 - Log entries for the same transaction are linked, using the LSN’s
@@ -186,7 +186,7 @@ Write Ahead Log
 5. If page $P$ just became dirty, set recLSN = LSN
 
 
-When buffer manager wants to output page $P$
+When [[Storage#Buffer Manager|buffer manager]] wants to output page $P$
 Before writing the page to disk:
 1. Flush the log up to `pageLSN`
 2. Remove $P$ from the Dirty Page Table

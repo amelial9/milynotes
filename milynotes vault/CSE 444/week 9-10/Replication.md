@@ -16,11 +16,11 @@ order: 15
 ## Synchronous Replication
 
 also called eager replication
-all updates are applied to all replicas (or to a majority) as part of a single transaction (need 2PC
+all updates are applied to all replicas (or to a majority) as part of a single transaction (need [[Two-Phase Commit|2PC]]
 transactions must acquire global lock
 main goal: as if there was only one copy
 - maintain consistency
-- maintain one-copy serializability
+- maintain one-copy [[Concurrency Control#Serializability|serializability]]
 
 ![[synchronousreplication.png|538]]
 
@@ -114,7 +114,7 @@ Approach
 
 One master holds primary copy
 - Transactions update primary copy
-- Master asynchronously propagates updates to replicas, which process them in same order E.g. through log shipping 
+- Master asynchronously propagates updates to replicas, which process them in same order E.g. through [[Transactions Recovery|log]] shipping 
 - Ensures single-copy serializability
 
 What happens when master/primary fails?

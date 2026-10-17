@@ -9,7 +9,7 @@ A server that sits between a client (like your computer) and the internet. Forwa
 Uses:
 - Security (firewalls)
 - Anonymity (VPNs, or hackers)
-- Caching
+- [[Caching]]
 
 ### Reverse Proxy
 

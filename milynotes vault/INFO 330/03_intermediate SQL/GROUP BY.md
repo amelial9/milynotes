@@ -26,7 +26,7 @@ GROUP BY product
 
 
 
-**All attributes must be involved in GROUP BY or an aggregate**
+**All attributes must be involved in GROUP BY or an [[Simple Aggregation|aggregate]]**
 ✅
 ```
 SELECT product, max(quantity)  

@@ -2,7 +2,7 @@
 order: 16
 ---
 
-If A and B are sets, then a relation R is a subset of A * B
+If A and B are sets, then a [[Relations and datatypes|relation]] R is a subset of A * B
 
 ![[relationship.png|641]]
 

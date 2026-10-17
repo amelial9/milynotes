@@ -6,7 +6,7 @@ order: 6
 
 #### buffering
 
-- By default, C’s file functions (`fwrite`, `fprintf`, etc.) use a buffer.
+- By default, C’s [[Linking, File I／O|file functions]] (`fwrite`, `fprintf`, etc.) use a buffer.
 - A buffer is a chunk of memory used as a temporary holding spot for data.
 - `fwrite()` copies your data into a buffer inside **your program’s memory**. It does NOT send it to the file yet.
 
@@ -29,7 +29,7 @@ Portable Operating System Interface
 
 
 Same idea as the `f` versions, but:
-- **No buffering.** Every call goes straight to the OS, so every call is a system call.
+- **No buffering.** Every call goes straight to the OS, so every call is a [[#System Calls (High-Level View)|system call]].
 - **Less convenient.** 
 
 

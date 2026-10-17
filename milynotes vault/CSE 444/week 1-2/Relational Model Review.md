@@ -10,7 +10,7 @@ Query Evaluation Steps
 
 #### Database/Relation/Tuple
 - A Database is collection of relations
-- A Relation R is subset of $S_1 \times S_2 \times \dots \times S_n$
+- A [[Relations and datatypes|Relation]] R is subset of $S_1 \times S_2 \times \dots \times S_n$
 	- Where $S_i$ is the domain of attribute $i$
 	- $n$ is number of attributes of the relation 
 	- A relation is a set of tuples
@@ -40,10 +40,10 @@ Query Evaluation Steps
 
 #### Key Constraints
 
-- Super Key: “set of attributes that functionally determines all attributes”
+- Super Key: “set of attributes that [[Functional dependencies|functionally determines]] all attributes”
 - Key: Minimal super-key; a.k.a. “candidate key”
 - Primary key: One minimal key can be selected as primary key
-- Foreign key
+- [[Keys#Foreign key|Foreign key]]
 	- Field that refers to tuples in another relation
 	- This field refers to the primary key of other relation
 
@@ -69,7 +69,7 @@ Query Evaluation Steps
 - Projection: $\pi_{\text{list of attributes}}(S)$
 - Union ($\cup$)
 - Set difference (-)
-- Cross-product/cartesian product ($\times$), Join: $R \bowtie_\theta S = \sigma_\theta (R \times S)$
+- Cross-product/cartesian product ($\times$), [[JOINs|Join]]: $R \bowtie_\theta S = \sigma_\theta (R \times S)$
 
 
 

@@ -3,7 +3,7 @@ order: 23
 ---
 
 In SQL, ranking functions help us assign ranks to rows based on partitioning and order expressions.
-A window is just a set of rows that meet certain conditions
+A [[Window Functions|window]] is just a set of rows that meet certain conditions
 
 Generic syntax:
 ```

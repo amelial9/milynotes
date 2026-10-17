@@ -7,7 +7,7 @@ order: 18
 ![[dbdesignprocess.png|519]]
 
 
-Conceptual Model -> Relational Model
+[[Conceptual Database Design|Conceptual Model]] -> Relational Model
 	+ schema
 	+ constraints
 

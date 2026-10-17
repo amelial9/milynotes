@@ -21,7 +21,7 @@ bar.c  ──(compile)──→  bar.o  ─┼──(link)──→  bar   (the 
 ```
 
 - **`.c` → `.o` (compiling):** each `.c` file gets turned into machine code separately. A `.o` file (“object file”) is **one piece** of the program, not runnable by itself yet.
-- **`.o` files → executable (linking):** all the pieces get glued together into one program you can run.
+- **`.o` files → executable ([[Linking, File I／O|linking]]):** all the pieces get glued together into one program you can run.
 - **`.a` (library/archive):** a bundle of `.o` files someone packaged up. It gets glued in too.
 
 
@@ -137,4 +137,4 @@ clean:
 - **Namespaces:** so two things can share a name without clashing, like `LL::Iterator` vs `HT::Iterator`.
 - **Templates:** like Java generics. `vector<int>` instead of messy `void*` tricks.
 - **A standard library:** ready-made `string`, `vector`, `map`, sort, and more. Less writing everything yourself.
-- **Still no garbage collector**, so can still leak memory and segfault. Smart pointers help.
+- **Still no garbage collector**, so can still [[Structs, Heap#Memory Leaks|leak memory]] and segfault. Smart pointers help.

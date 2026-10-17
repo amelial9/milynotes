@@ -9,7 +9,7 @@ OLTP: Transactions per second
 
 Transaction Scaling Challenges
 - Distribution
-- Replication
+- [[Replication]]
 
 
 2PC Outline
@@ -43,7 +43,7 @@ What to do if there is no response
 
 
 A subordinate fails. During recovery:
-- If the last entry in the log is then the transaction is committed: REDO
-- If the last entry in the log is then the transaction is aborted: UNDO
+- If the last entry in the log is then the transaction is committed: [[Transactions Recovery#REDO|REDO]]
+- If the last entry in the log is then the transaction is aborted: [[Transactions Recovery#UNDO Logging|UNDO]]
 - If no COMMIT/ABORT/PREPARE is found, then presume ABORT
 - If the last entry is then it’s hard: must re-contact coordinator to find out whether ABORT or COMMIT

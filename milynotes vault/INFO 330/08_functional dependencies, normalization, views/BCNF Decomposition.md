@@ -2,7 +2,7 @@
 order: 26
 ---
 
-(recall BCNF: For **every functional dependency** `X → Y`, `X` must be a **superkey**)
+(recall [[Normalization#BCNF (Boyce-Codd Normal Form)|BCNF]]: For **every [[Functional dependencies|functional dependency]]** `X → Y`, `X` must be a **[[Keys#Super key|superkey]]**)
 
 ### Step 1
 

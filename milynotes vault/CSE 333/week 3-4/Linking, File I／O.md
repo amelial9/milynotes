@@ -2,7 +2,7 @@
 order: 5
 ---
 
-preprocessor, cpp, handles everything that starts with `#`
+[[Modules, C Preprocessor#C Preprocessor Intro|preprocessor, cpp]], handles everything that starts with `#`
 - define $\rightarrow$ replace a name with its text
 - include $\rightarrow$ paste in the entire contents of another file (`#include <stdio.h`>)
 - `#ifdef` / `#ifndef` $\rightarrow$ keep or delete a chunk of lines
@@ -37,7 +37,7 @@ If we define a global variable named “counter” in one C file, is it visible 
 #### Static Confusion
 
 C has a different use for “static”: create a persistent local variable
-- The storage for that variable is allocated when the program loads, in either the .data or .bss segment
+- The storage for that variable is allocated when the [[Memory, Data, Parameters#Loading|program loads]], in either the .data or .bss segment
 - Retains its value across multiple function invocations
 
 
@@ -48,7 +48,7 @@ C has a different use for “static”: create a persistent local variable
 C’s `stdio` defines the notion of a stream
 - A sequence of characters that flows to and from a device
 	- Can be either text or binary; Linux does not distinguish
-- Is buffered by default; `libc` reads ahead of your program
+- Is [[Buffering, POSIX I／O, System Calls#C Stream Buffering|buffered]] by default; `libc` reads ahead of your program
 - Three streams provided by default: `stdin`, `stdout`, `stderr`
 - C streams are manipulated with a `FILE*` pointer, which is defined in `stdio.h`
 

@@ -111,10 +111,10 @@ GROUP BY A;
 Two cases.
 
 Case 1: $R$ is already partitioned on $A$
-Each node can group locally
+Each node can [[GROUP BY|group]] locally
 
 Case 2: $R$ is partitioned on something else 
-Then rows with the same $A$ may be spread across many nodes. You need to reshuffle by $A$, so all rows for the same group end up on the same node.
+Then rows with the same $A$ may be spread across many nodes. You need to [[#Shuffle operator|reshuffle]] by $A$, so all rows for the same group end up on the same node.
 
 
 Naive plan:

@@ -104,7 +104,7 @@ CREATE TABLE Purchase (
 	date DATETIME)
 ```
 
-prodName is a foreign key to Product(name)  
+prodName is a [[Keys#Foreign key|foreign key]] to Product(name)  
 name must be a key in Product
 
 Example:

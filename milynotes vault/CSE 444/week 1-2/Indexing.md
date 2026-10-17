@@ -5,9 +5,9 @@ order: 4
 ## Index structures
 
 - index: separate file with mast access by "search key" value
-- contains pairs of the form (key, RID)
+- contains pairs of the form (key, [[Storage#RID|RID]])
 
-- indexes are access methods
+- indexes are [[DBMS architecture#Access Methods|access methods]]
 
 ![[index.png]]
 
@@ -82,7 +82,7 @@ RID12 → Page 99 → actual row
 ![[b+tree.png]]
 
 
-Optimizer decides use the B+ tree index
+[[Query Optimization|Optimizer]] decides use the B+ tree index
 Executor does:
 1. Read B+ tree root node from disk → "go right, key is > 60"
 2. Read an internal node from disk → "go left, key is < 200"

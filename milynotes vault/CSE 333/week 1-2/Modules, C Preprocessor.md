@@ -24,7 +24,7 @@ typedef struct node_st {
 
 
 **`Push`** adds a new box to the _front_ of the list:
-1. `malloc` a new box on the heap.
+1. `malloc` a new box on the [[Structs, Heap#Heap-allocated Memory|heap]].
 2. Put the data in it.
 3. Point its `next` at the old front of the list.
 4. Return the new box, which is now the new front.
@@ -56,7 +56,7 @@ Including:
 - \#include all of headers you reference, even if another header (transitively) includes some of them
 
 Compiling:
-- Any .c file with an associated .h file should be able to be compiled (together via \#include) into a .o file
+- Any .c file with an associated .h file should be able to be compiled (together via \#include) into a [[Makefiles, C++ Preview#The steps of building C|.o file]]
 
 Commenting:
 - If a function is declared in a header file (.h) and defined in a C file (.c), the header needs full documentation because it is the public specification

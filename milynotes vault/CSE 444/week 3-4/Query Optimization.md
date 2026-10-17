@@ -6,7 +6,7 @@ order: 7
 
 
 three components:
-- cost/cardinality estimation
+- [[Query plan costs|cost/cardinality estimation]]
 - search space
 	- algebraic laws
 	- restricting the query plans
@@ -14,7 +14,7 @@ three components:
 
 
 input: a logical query plan
-output: a good physical query plan
+output: a good [[DBMS architecture#Physical Query Plan|physical query plan]]
 best query optimization algorithm
 - enumerate alternative plans (logical and physical)
 - compute estimate cost of each plan
@@ -195,7 +195,7 @@ Selinger enumeration algorithm considers
 - Concept of interesting order during plan enumeration
 	- A sorted order as that requested by ORDER BY or GROUP GY
 	- Or order on attributes that appear in equi-join predicates
-		- Because they may enable cheaper sort-merge joins later
+		- Because they may enable cheaper [[Query execution and operator algorithms#Sort-merge join|sort-merge joins]] later
 
 
 
@@ -204,7 +204,7 @@ Selinger enumeration algorithm considers
 
 **1. Left-Deep Plans Only**
 Rather than considering all tree shapes, Selinger restricts to _left-deep_ trees like `(((A⋈B)⋈C)⋈D)`. This is efficient because:
-- It fits naturally with nested-loop and one-pass joins
+- It fits naturally with [[Query execution and operator algorithms#Nested loop join|nested-loop]] and one-pass joins
 - The outer (left) relation stays in memory; the inner (right) relation is read from disk
 - For index joins, you can always put the indexed relation on the right (inner) side
 

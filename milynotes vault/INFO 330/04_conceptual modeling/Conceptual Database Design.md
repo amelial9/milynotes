@@ -16,8 +16,8 @@ order: 14
 
 **Design Levels**
 	Conceptual Schema (entities and relationships)
-	Relational Schema (tables and constraints)
-	Physical Schema (storage details)
+	[[From ERD to relational schema|Relational Schema]] (tables and constraints)
+	[[Physical data dependence|Physical Schema]] (storage details)
 
 
 ### Conceptual Design Process
@@ -34,14 +34,14 @@ order: 14
 		Part-Of, Depends-On
 	Concepts like Inheritance, Aggregation, Association, etc.
 
-**Entity-Relationship (E/R) Diagrams**
+**[[Entity Relationship Diagram|Entity-Relationship (E/R) Diagrams]]**
 	Entity Set = a class/type of object
 	Entity = an instance
 	Includes attributes, relationships, and keys for each entity set.
 
 **Relations and Multiplicity**
 	A relation is a mathematical subset of the Cartesian product of two sets.
-	Relationships may be:
+	[[Relationship|Relationships]] may be:
 		One-to-one
 		One-to-many
 		Many-to-many

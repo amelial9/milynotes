@@ -5,7 +5,7 @@ order: 1
 _macros_: the ability to write a source-level construct
 
 #### Two kinds of macros
-_syntactic_ macros (C, C++ preprocessor)
+_syntactic_ macros (C, C++ [[Modules, C Preprocessor#C Preprocessor Intro|preprocessor]])
 	simple text drop-in replacement
 	little to no compiler support
 	potentially itself a source of bugs

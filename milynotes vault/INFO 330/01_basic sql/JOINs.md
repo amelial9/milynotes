@@ -146,4 +146,4 @@ ON E.id = S.employeeID;
 | 3  | Jill | NULL       | NULL      |
 
 `FROM Employee E LEFT OUTER JOIN Sales S`  
-_Start with all rows from the `Employee` table, and include matching rows from `Sales` — if there is no match, still include the employee with NULLs for sales data._
+_Start with all rows from the `Employee` table, and include matching rows from `Sales` — if there is no match, still include the employee with [[NULL]]s for sales data._

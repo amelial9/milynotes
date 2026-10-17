@@ -64,7 +64,7 @@ FROM Purchase
 
 ### Aggregation and NULL
 
-NULL values are not used in aggregates
+[[NULL]] values are not used in aggregates
 
 ```
 CREATE TABLE Purchase (

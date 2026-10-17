@@ -60,7 +60,7 @@ Normal forms are levels or stages of normalization.
 #### Relational Schema Design  (or Logical Design)  
 
 • Start with some relational schema  
-• Find out its functional dependencies (FDs)  
+• Find out its [[Functional dependencies|functional dependencies]] (FDs)  
 • Use FDs to normalize the relational schema  
 
 

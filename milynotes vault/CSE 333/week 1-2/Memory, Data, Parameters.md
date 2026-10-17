@@ -8,7 +8,7 @@ order: 1
 
 #### Compiling Multi-file Programs
 
-The **linker** combines multiple object files plus statically-linked libraries to produce an executable
+The **[[Linking, File I／O|linker]]** combines multiple object files plus statically-linked libraries to produce an executable
 
 
 ## Memory Management
@@ -104,7 +104,7 @@ Generic 2D format: `type name[rows][cols] = {{values},…,{values}};`
 
 #### Structs
 
-The size and layout of a struct instance is completely determined by (1) the field ordering and (2) alignment requirements
+The size and layout of a [[Structs, Heap|struct]] instance is completely determined by (1) the field ordering and (2) alignment requirements
 
 
 
@@ -142,7 +142,7 @@ Array parameters are actually passed as pointers to the first array element
 #### Returning an Array
 
 Create the “returned” array in the caller
-- Pass it as an output parameter to CopyArray()
+- Pass it as an [[Pointers#Output Parameters|output parameter]] to CopyArray()
 	- A pointer parameter that allows the called function to store values that the caller can use
 
 

@@ -5,7 +5,7 @@ order: 2
 ## Pointer Basics
 
 Variables that store addresses
-- It points to somewhere in the process’ virtual address space
+- It points to somewhere in the process’ [[Memory, Data, Parameters#Processes and Virtual Memory|virtual address space]]
 - `&foo` produces the virtual address of `foo`
 
 Generic definition: `type* name;` or `type *name;`
@@ -21,7 +21,7 @@ Pointers are typed
 Pointer arithmetic is scaled by `sizeof(*p)`
 Valid pointer arithmetic:
 - Add/subtract an integer to/from a pointer
-- Subtract two pointers (within stack frame or malloc block)
+- Subtract two pointers (within stack frame or [[Structs, Heap#malloc ()|malloc]] block)
 - Compare pointers (<, <=, == , !=, >, >=), including NULL
 
 #### Endianness

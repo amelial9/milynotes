@@ -2,7 +2,7 @@
 order: 12
 ---
 
-refers to a record (or tuple) that provides evidence or support for an aggregate query result
+refers to a record (or tuple) that provides evidence or support for an [[Simple Aggregation|aggregate]] query result
 
 
 ```

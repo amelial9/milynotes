@@ -30,9 +30,9 @@ Allows you to define new data type names/synonyms
 
 #### Structs as Arguments
 
-Structs are passed by value, like everything else in C
+Structs are [[Memory, Data, Parameters#Reference vs. Value|passed by value]], like everything else in C
 - Entire struct is copied
-- To manipulate a struct argument, pass a pointer instead
+- To manipulate a struct argument, [[Pointers#Pointers as Parameters|pass a pointer]] instead
 
 
 

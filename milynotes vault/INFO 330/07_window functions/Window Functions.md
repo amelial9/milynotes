@@ -85,7 +85,7 @@ FROM 'Track' ORDER BY Track.Name ASC LIMIT 20;
 
 ### Summary
 
-- A window function does not cause rows to become grouped into a single output row, it creates a whole output column.
+- A window function does not cause rows to become [[GROUP BY|grouped]] into a single output row, it creates a whole output column.
 - A window function can be broken into groups and organized easily with keywords like: PARTITION BY and ORDER BY.
 	- PARTITION BY- Divides the aggregate function results between different groupings of data.
 	- ORDER BY- Organize the data being worked on by the aggregate functions and create running calculations

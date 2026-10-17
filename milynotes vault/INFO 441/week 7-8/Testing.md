@@ -11,7 +11,7 @@ order: 17
 - Definition: Automated tests are additional code that tests the code of a project
 	- This includes how things should go correctly AND incorrectly
 - Types of Tests
-	- Unit tests: test ONE thing
+	- [[Unit Testing|Unit tests]]: test ONE thing
 	- Integration Tests: isolate and test code that calls other code, for example, is this code connecting to the db?
 	- System Tests/E2E Tests: test the overall system; E2E is the flow end-to-end, System is in the context of a prod-like environment
 	- Stress Tests: test what happens when parts of the system fail

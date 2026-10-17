@@ -24,7 +24,7 @@ And you run:
 
 Now imagine the database admin:
 - Moves that table to a faster disk
-- Adds an index on `ID` to make the query faster
+- Adds an [[Indexing|index]] on `ID` to make the query faster
 - Stores some rows in a different file for performance
 
 #### Query **still works the same**:

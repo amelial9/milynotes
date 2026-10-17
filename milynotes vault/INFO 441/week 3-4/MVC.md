@@ -14,7 +14,7 @@ A way of organizing full stack web application code
 
 
 #### Model
-Database, database connection and data organizaitn definitions
+Database, [[MongoDB connection|database connection]] and data organizaitn definitions
 
 #### Controllers
 The route handlers, allowing the view to perform operations on the model

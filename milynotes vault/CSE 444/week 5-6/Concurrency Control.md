@@ -85,7 +85,7 @@ A schedule is view serializable if it is view equivalent to a serial schedule
 
 ### Schedules with Aborted Transactions
 
-When a transaction aborts, the recovery manager undoes its updates, but some of its updates may have affected other transactions
+When a transaction aborts, the [[Transactions Recovery|recovery manager]] undoes its updates, but some of its updates may have affected other transactions
 
 A schedule is recoverable if:
 - It is conflict-serializable, and
@@ -109,7 +109,7 @@ A schedule avoids cascading aborts if whenever a transaction reads an element, t
 
 two approaches:
 - pessimistic: locks
-- optimistic: timestamps, multi-version, validation
+- [[Optimistic Concurrency Control|optimistic]]: timestamps, multi-version, validation
 
 #### Pessimistic Scheduler
 
@@ -205,5 +205,5 @@ A “phantom” is a tuple that is invisible during part of a transaction execut
 
 Fixes:
 - Lock entire table
-- Lock index ranges
+- Lock [[Indexing|index]] ranges
 - Predicate locking (expensive)

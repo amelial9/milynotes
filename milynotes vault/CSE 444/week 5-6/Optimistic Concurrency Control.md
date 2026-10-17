@@ -12,12 +12,12 @@ Isolation Level Design Spectrum
 ### Dirty Read
 
 "Long duration" write locks
-- Strict 2PL
+- [[Concurrency Control#Strict 2PL|Strict 2PL]]
 
 No READ Locks
 - Read-only transactions are never delayed
 
-Possible problems: dirty and inconsistent read
+Possible problems: [[Concurrency Control#Concurrent Execution Problems|dirty and inconsistent read]]
 
 ### Read Committed
 
@@ -48,13 +48,13 @@ not serializable yet
 - Strict 2PL
 
 Predicate locking
- - To deal with phantoms
+ - To deal with [[Concurrency Control#Phantom Problem|phantoms]]
 
 
 
 ## Pessimistic vs. Optimistic
 
-Pessimistic CC (locking)
+[[Concurrency Control#Locking|Pessimistic CC (locking)]]
 - Prevents unserializable schedules
 - Never abort for serializability (but may abort for deadlocks) 
 - Best for workloads with high levels of contention
@@ -74,7 +74,7 @@ could be:
 
 Timestamp order defines the serialization order of the transaction
 
-Will generate a schedule that is view-equivalent to a serial schedule, and recoverable
+Will generate a schedule that is [[Concurrency Control#View-Serializability|view-equivalent]] to a serial schedule, and recoverable
 
 
 

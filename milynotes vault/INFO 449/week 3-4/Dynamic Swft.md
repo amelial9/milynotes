@@ -6,7 +6,7 @@ order: 4
 
 pattern used a lot within iOS
 enables a class to hand off (delegate) some of its responsibilities
-define a protocol to define the expected functionality
+define a [[Protocols|protocol]] to define the expected functionality
 hold one (or more) instances of the delegate in the class
 call to the delegate as the situation warrants/requires
 

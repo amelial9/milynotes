@@ -114,7 +114,7 @@ while r and s:
 
 ### Index Nested Loop Join Cost
 
-If index on S is clustered: $B(R) + \frac{T(R)B(S)}{V(S,a)}$
+If index on S is [[Indexing|clustered]]: $B(R) + \frac{T(R)B(S)}{V(S,a)}$
 If index on S is unclustered: $B(R) + \frac{T(R)T(S)}{V(S,a)}$
 
 
@@ -171,7 +171,7 @@ cost: $3B(R) + 3B(S)$
 
 ### Index-Based Selection
 
-Use an **index** to avoid scanning the entire table for a selection
+Use an **[[Indexing|index]]** to avoid scanning the entire table for a selection
   
 Given:  
 - B(R): # of pages  
