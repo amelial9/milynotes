@@ -18,6 +18,8 @@ type GraphNode = {
 type GraphLink = { source: string; target: string }
 
 const VAULT_DIR = path.resolve(__dirname, '../milynotes vault')
+/** Vault folders left out of the graph (they stay on the notes site). */
+const EXCLUDED_FOLDERS = new Set(['DSA'])
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/
 
 function listMarkdown(dir: string): string[] {
@@ -57,6 +59,7 @@ export function buildGraph(): { nodes: GraphNode[]; links: GraphLink[] } {
   const bodies = new Map<string, string>()
 
   for (const category of CATEGORIES) {
+    if (EXCLUDED_FOLDERS.has(category.vaultFolder)) continue
     const folderDir = path.join(VAULT_DIR, category.vaultFolder)
     for (const file of listMarkdown(folderDir)) {
       const raw = fs.readFileSync(file, 'utf8')
