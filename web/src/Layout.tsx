@@ -7,12 +7,14 @@ import {
 } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { noteViewPath, searchNotes } from './lib/notesIndex'
+import Sidebar from './Sidebar'
 
 export default function Layout() {
   const { pathname } = useLocation()
   const [query, setQuery] = useState('')
   const [panelOpen, setPanelOpen] = useState(false)
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const wrapRef = useRef<HTMLDivElement>(null)
 
   const hits = useMemo(() => searchNotes(query), [query])
@@ -27,6 +29,7 @@ export default function Layout() {
   useEffect(() => {
     setMobileSearchOpen(false)
     setPanelOpen(false)
+    setMenuOpen(false)
   }, [pathname])
 
   useEffect(() => {
@@ -40,13 +43,16 @@ export default function Layout() {
   }, [])
 
   useEffect(() => {
-    if (!mobileSearchOpen) return
+    if (!mobileSearchOpen && !menuOpen) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMobileSearchOpen(false)
+      if (e.key === 'Escape') {
+        setMobileSearchOpen(false)
+        setMenuOpen(false)
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [mobileSearchOpen])
+  }, [mobileSearchOpen, menuOpen])
 
   const openMobileSearch = () => {
     setMobileSearchOpen(true)
@@ -91,6 +97,24 @@ export default function Layout() {
       <header className="nav">
         <div className="nav__inner">
           <div className="nav__title-group">
+            <button
+              type="button"
+              className="nav__menu-btn"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              aria-controls="site-sidebar"
+              onClick={() => setMenuOpen((o) => !o)}
+            >
+              <svg width={18} height={18} viewBox="0 0 24 24" aria-hidden={true}>
+                <path
+                  d="M4 7h16M4 12h16M4 17h16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
             <img
               className="nav__portrait"
               src={`${import.meta.env.BASE_URL}portrait.svg`}
@@ -220,9 +244,25 @@ export default function Layout() {
         </div>
       ) : null}
 
-      <main className="wrap">
-        <Outlet />
-      </main>
+      <div className="shell">
+        {menuOpen ? (
+          <button
+            type="button"
+            className="shell__backdrop"
+            aria-label="Close menu"
+            onClick={() => setMenuOpen(false)}
+          />
+        ) : null}
+        <aside
+          id="site-sidebar"
+          className={`shell__sidebar${menuOpen ? ' shell__sidebar--open' : ''}`}
+        >
+          <Sidebar />
+        </aside>
+        <main className="shell__main">
+          <Outlet />
+        </main>
+      </div>
 
       <footer className="footer">
         <p>© 2026 Amelia Li</p>

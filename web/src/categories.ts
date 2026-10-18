@@ -14,22 +14,16 @@ export const CATEGORIES: CategoryDef[] = [
     vaultFolder: 'INFO 330',
   },
   {
-    id: 'database-systems-internals',
-    name: 'Database Systems Internals',
-    subtitle: 'CSE 444; About databases, more advanced',
-    vaultFolder: 'CSE 444',
-  },
-  {
     id: 'systems-programming',
     name: 'Systems Programming',
     subtitle: 'CSE 333',
     vaultFolder: 'CSE 333',
   },
   {
-    id: 'dsa',
-    name: 'DSA',
-    subtitle: '',
-    vaultFolder: 'DSA',
+    id: 'database-systems-internals',
+    name: 'Database Systems Internals',
+    subtitle: 'CSE 444; About databases, more advanced',
+    vaultFolder: 'CSE 444',
   },
   {
     id: 'server-side-development',
@@ -42,6 +36,12 @@ export const CATEGORIES: CategoryDef[] = [
     name: 'iOS Development',
     subtitle: 'Notes about iOS from INFO 449',
     vaultFolder: 'INFO 449',
+  },
+  {
+    id: 'dsa',
+    name: 'DSA',
+    subtitle: '',
+    vaultFolder: 'DSA',
   },
 ]
 

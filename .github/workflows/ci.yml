@@ -36,6 +36,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Full history so each note's last-edited date (home page "recent notes") is real.
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v6

@@ -1,3 +1,4 @@
+import noteDates from 'virtual:note-dates'
 import { CATEGORIES } from '../categories'
 import type { ParsedNote } from './parseNoteFile'
 import {
@@ -128,4 +129,26 @@ export function searchNotes(query: string, limit = 40): SearchHit[] {
 
   hits.sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base' }))
   return hits
+}
+
+export type RecentNote = SearchHit & { added: Date }
+
+/** Notes (with `order:`) across every category, newest first. */
+export function listRecentNotes(limit = 12): RecentNote[] {
+  const out: RecentNote[] = []
+  for (const category of CATEGORIES) {
+    for (const n of listNotesForVaultFolder(category.vaultFolder)) {
+      const iso = noteDates[`${category.vaultFolder}/${normalizeRelPath(n.relativePath)}`]
+      if (!iso) continue
+      out.push({
+        categoryId: category.id,
+        categoryName: category.name,
+        relativePath: normalizeRelPath(n.relativePath),
+        title: n.title,
+        added: new Date(iso),
+      })
+    }
+  }
+  out.sort((a, b) => b.added.getTime() - a.added.getTime())
+  return out.slice(0, limit)
 }
