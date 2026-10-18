@@ -330,7 +330,6 @@
   overflow-y: auto;
   /* Lines up with the page heading in .shell__main (16px + 56px) */
   padding: 72px 20px 40px 0;
-  border-right: 1px solid var(--note-row-divider);
   scrollbar-width: thin;
 }
 
