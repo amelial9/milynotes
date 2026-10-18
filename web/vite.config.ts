@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'node:path'
+import { notesGraph } from './graphPlugin'
 
 // https://vite.dev/config/
 // Config runs before Vite injects .env files into process.env — use loadEnv so
@@ -16,6 +17,7 @@ export default defineConfig(({ command, mode }) => {
     base,
     plugins: [
       react(),
+      notesGraph(),
       {
         name: 'build-sha-marker',
         transformIndexHtml(html) {

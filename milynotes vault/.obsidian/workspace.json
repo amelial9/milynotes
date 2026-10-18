@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "e702c5ff1ee15210",
+        "id": "f02af25e4a12fd2d",
         "type": "tabs",
         "children": [
           {
-            "id": "b1a8ac0e2ffbbf51",
+            "id": "1c7be9bc541ef6df",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -181,7 +181,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "b1a8ac0e2ffbbf51",
+  "active": "1c7be9bc541ef6df",
   "lastOpenFiles": [
     "INFO 449/week 1-2/Macros.md",
     "CSE 333/week 1-2/Modules, C Preprocessor.md",
