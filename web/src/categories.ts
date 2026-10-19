@@ -38,6 +38,12 @@ export const CATEGORIES: CategoryDef[] = [
     vaultFolder: 'INFO 449',
   },
   {
+    id: 'dump',
+    name: 'dump',
+    subtitle: 'my brain dump',
+    vaultFolder: 'dump',
+  },
+  {
     id: 'dsa',
     name: 'DSA',
     subtitle: '',
