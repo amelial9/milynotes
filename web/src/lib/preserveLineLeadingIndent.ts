@@ -27,6 +27,10 @@ export function preserveLeadingTabsOutsideCode(body: string): string {
 }
 
 function transformIndentedLine(line: string): string {
+  // Whitespace-only lines are blank lines; tab-indented list items must keep their tabs to nest.
+  if (!line.trim()) return ''
+  if (/^\t+([-*+]|\d+[.)])\s/.test(line)) return line
+
   const quoted = line.match(/^(> ?\s*)(\t+)(.*)$/)
   if (quoted) {
     const pad = '\u00a0'.repeat(quoted[2].length * NBSP_PER_TAB)

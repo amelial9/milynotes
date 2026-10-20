@@ -4,14 +4,14 @@ import rehypeRaw from 'rehype-raw'
 import remarkBreaks from 'remark-breaks'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
-import { Children, isValidElement, useEffect, type ReactNode } from 'react'
-import type { Components } from 'react-markdown'
+import { Children, isValidElement, useEffect, type ComponentProps, type ReactNode } from 'react'
+import type { Components, ExtraProps } from 'react-markdown'
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
 import { getCategoryById } from '../categories'
 import { getNoteRaw } from '../lib/notesIndex'
-import { preserveExtraBlankLinesOutsideCode } from '../lib/preserveExtraBlankLines'
 import { preserveLeadingTabsOutsideCode } from '../lib/preserveLineLeadingIndent'
 import { preprocessVaultMarkdown } from '../lib/vaultImages'
+import remarkBlankLineGaps from '../lib/blankLineGaps'
 import { stripFrontmatter, titleFromPathKey } from '../lib/parseNoteFile'
 import { convertWikiLinks, slugifyHeading } from '../lib/wikiLinks'
 
@@ -26,8 +26,13 @@ function nodeText(node: ReactNode): string {
 }
 
 function heading(Tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') {
-  return function Heading({ children }: { children?: ReactNode }) {
-    return <Tag id={slugifyHeading(nodeText(children))}>{children}</Tag>
+  return function Heading({ children, ...props }: ComponentProps<typeof Tag> & ExtraProps) {
+    delete props.node
+    return (
+      <Tag {...props} id={slugifyHeading(nodeText(children))}>
+        {children}
+      </Tag>
+    )
   }
 }
 
@@ -93,16 +98,14 @@ export default function NotePage() {
   }
 
   const title = titleFromPathKey(decodedPath)
-  const body = preserveExtraBlankLinesOutsideCode(
-    preserveLeadingTabsOutsideCode(
-      convertWikiLinks(
-        preprocessVaultMarkdown(
-          stripFrontmatter(raw),
-          category.vaultFolder,
-          decodedPath,
-        ),
+  const body = preserveLeadingTabsOutsideCode(
+    convertWikiLinks(
+      preprocessVaultMarkdown(
+        stripFrontmatter(raw),
         category.vaultFolder,
+        decodedPath,
       ),
+      category.vaultFolder,
     ),
   )
 
@@ -117,7 +120,7 @@ export default function NotePage() {
       <h1 className="note-view__title">{title}</h1>
       <div className="note-view__body">
         <ReactMarkdown
-          remarkPlugins={[remarkGfm, remarkMath, remarkBreaks]}
+          remarkPlugins={[remarkGfm, remarkMath, remarkBreaks, remarkBlankLineGaps]}
           rehypePlugins={[[rehypeKatex, { strict: false }], rehypeRaw]}
           components={markdownComponents}
         >
