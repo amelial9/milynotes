@@ -11,6 +11,10 @@ function gapStyle(blankLines: number): string {
   return `margin-top: calc(${blankLines} * var(--note-line))`
 }
 
+function spacer(blankLines: number): MdNode {
+  return { type: 'html', value: `<div style="${gapStyle(blankLines)}"></div>` }
+}
+
 function applyGaps(parent: MdNode) {
   const children = parent.children
   if (!children) return
@@ -25,6 +29,12 @@ function applyGaps(parent: MdNode) {
 
     if (node.type === 'html') {
       node.value = `<div style="${gapStyle(blankLines)}"></div>\n${node.value ?? ''}`
+      continue
+    }
+    // Fenced code/math props land on the inner <code>, not the <pre> box, so add a spacer before it.
+    if (node.type === 'code' || node.type === 'math') {
+      children.splice(i, 0, spacer(blankLines))
+      i++
       continue
     }
     node.data = node.data ?? {}
