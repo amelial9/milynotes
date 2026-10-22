@@ -5537,9 +5537,9 @@ order: 28
 - $\\cup$: UNION
 - $\\cap$: intersection; INTERSECT
 - $-$: difference; EXCEPT
- - $\\tau$: sort
+ - $\\tau$ (tau): sort
 - $\\delta$ (delta): duplicate elimination; SELECT DISTINCT
-- $\\rho$: rename
+- $\\rho$ (rho): rename
 
 #### Unary operator
 
