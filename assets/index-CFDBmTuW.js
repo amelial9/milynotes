@@ -5530,8 +5530,11 @@ order: 28
 - $\\gamma$ (gamma): grouping & aggregation
 - $\\sigma$ (sigma): WHERE, selection
 - $\\bowtie$: JOIN
+- ⟕: LEFT OUTER JOIN
+- ⟖: RIGHT OUTER JOIN
+- ⟗: FULL OUTER JOIN
 - $\\times$: cartesian product, \`FROM T, S\` with no WHERE
-- $\\cup$: union; UNION
+- $\\cup$: UNION
 - $\\cap$: intersection; INTERSECT
 - $-$: difference; EXCEPT
  - $\\tau$: sort
