@@ -9,8 +9,8 @@ order: 28
 ## RA Operators
 
 - $\pi / \Pi$: SELECT, projection
-- $\gamma$ (gamma): grouping & aggregation
 - $\sigma$ (sigma): WHERE, selection
+- $\gamma$ (gamma): grouping & aggregation
 - $\bowtie$: JOIN
 - ⟕: LEFT OUTER JOIN
 - ⟖: RIGHT OUTER JOIN
